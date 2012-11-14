@@ -15,4 +15,12 @@
 
 class Company < ActiveRecord::Base
   attr_accessible :address, :email, :logo_url, :name, :nif, :state
+  has_many :bills
+
+  validates :address, :presence => true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }, :uniqueness => { :case_sensitive => false }
+  validates :name, :presence => true, :length { :maximum => 100 }
+  validates :nif, :presence => true
+  validates :state, :presence => true
 end
