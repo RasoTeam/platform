@@ -18,7 +18,10 @@ class Company < ActiveRecord::Base
   has_many :bills
 
   before_save { |company| company.tag = tag.downcase
-                          company.email = email.downcase }
+                          unless company.email.nil? 
+                            company.email = email.downcase 
+                          end
+                        }
 
   VALID_EMAIL_REGEX = /\A([\w+\-.]+@[a-z\d\-.]+\.[a-z]+)?\z/i
   validates :email, :format => { :with => VALID_EMAIL_REGEX }, :uniqueness => { :case_sensitive => false }
