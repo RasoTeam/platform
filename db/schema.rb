@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20121114152628) do
     t.integer  "state"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "tag"
   end
 
   create_table "super_users", :force => true do |t|
