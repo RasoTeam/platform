@@ -13,6 +13,7 @@
 
 class Bill < ActiveRecord::Base
   attr_accessible :issued_date, :state, :value
+  belongs_to :companies
 
   validates :issued_date, presence:true
   validates :state, presence: true
