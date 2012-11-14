@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114120633) do
+ActiveRecord::Schema.define(:version => 20121114143734) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
-    t.date     "issued_date"
     t.integer  "state"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.date     "payment_date"
   end
 
   create_table "companies", :force => true do |t|
