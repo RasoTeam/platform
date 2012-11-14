@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: 9.99
+  issued_date: 2012-11-14
+  state: 1
+
+two:
+  value: 9.99
+  issued_date: 2012-11-14
+  state: 1
