@@ -12,10 +12,11 @@
 #
 
 class Bill < ActiveRecord::Base
-  attr_accessible :issued_date, :state, :value
+  attr_accessible :payment_date, :state, :value, :company_id
   belongs_to :companies
 
-  validates :issued_date, presence:true
+  validates :company_id, presence: true
+  validates :payment_date, presence: true
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 end
