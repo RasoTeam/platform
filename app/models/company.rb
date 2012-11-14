@@ -17,13 +17,12 @@ class Company < ActiveRecord::Base
   attr_accessible :address, :email, :logo_url, :name, :nif, :state, :tag
   has_many :bills
 
-  before_save { |company| company.tag = tag.downcase, company.email = email.downcase }
+  before_save { |company| company.tag = tag.downcase
+                          company.email = email.downcase }
 
-  validates :address, :presence => false
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, :presence => false, :format => { :with => VALID_EMAIL_REGEX }, :uniqueness => { :case_sensitive => false }
+  VALID_EMAIL_REGEX = /\A([\w+\-.]+@[a-z\d\-.]+\.[a-z]+)?\z/i
+  validates :email, :format => { :with => VALID_EMAIL_REGEX }, :uniqueness => { :case_sensitive => false }
   validates :name, :presence => true, :length => { :maximum => 100 }
-  validates :nif, :presence => false
   validates :state, :presence => true
   VALID_TAG_REGEX = /\A[a-z\d][a-z\d_-]*\z/i
   validates :tag, :presence => true, :length => { :maximum => 20, :minimum => 3 }, :format => { :with => VALID_TAG_REGEX }, :uniqueness => { :case_sensitive => false }
