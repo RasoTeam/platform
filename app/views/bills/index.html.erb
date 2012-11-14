@@ -1,0 +1,4 @@
+<h1>Bills for company <%= @company.name %> with id <%= @company.id %> </h1>
+<% @bills.each do |bill| %>
+  <p> ID: <%= bill.id %>; Value: <%= bill.value %>; State: <%= bill.state %>; Created: <%= bill.created_at %>; Payment Date: <%= bill.payment_date %>; Link: <%= link_to "View", company_bill_path(@company, bill) %></p>
+<% end %>

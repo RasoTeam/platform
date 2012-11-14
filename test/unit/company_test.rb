@@ -11,6 +11,7 @@
 #  state      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  tag        :string(255)
 #
 
 require 'test_helper'
