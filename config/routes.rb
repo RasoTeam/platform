@@ -6,6 +6,8 @@ Platform::Application.routes.draw do
     resources :users
     resources :bills
   end
+
+  match '/dashboard', :to => 'dashboard#start'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

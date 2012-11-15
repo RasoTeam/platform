@@ -1,7 +1,4 @@
-<%= params[:company_id] %>
-<%= @user.company_id %>
-
-<%= form_for [@company, @user] do |f| %>
+<%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :email %>
