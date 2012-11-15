@@ -1,0 +1,13 @@
+<table>
+	<tbody>
+		<tr>
+			<th>Companies</th>
+		</tr>
+		<% @companies.each do |company| %>
+			<tr>
+				<td><%= link_to company.name, company_path(company) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate @companies %>

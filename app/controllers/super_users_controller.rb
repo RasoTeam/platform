@@ -42,4 +42,7 @@ class SuperUsersController < ApplicationController
 			redirect_back_or_to super_users_path
 		end
 	end
+
+	def home
+	end
 end
