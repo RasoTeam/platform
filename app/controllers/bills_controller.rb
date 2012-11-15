@@ -7,4 +7,8 @@ class BillsController < ApplicationController
     @company = Company.find(params[:company_id])
     @bills = @company.bills
   end
+
+  def show_all
+    @bills = Bill.all
+  end
 end
