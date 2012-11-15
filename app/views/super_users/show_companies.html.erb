@@ -13,7 +13,7 @@
 		<% @companies.each do |company| %>
 			<tr>
 				<td><%= link_to company.name, :action => "show_company", :id => company %></td>
-				<td><%= link_to company.tag+"rasohr.com", company.tag+"rasohr.com" %></td>
+				<td><%= link_to company.tag+".rasohr.com", company.tag+".rasohr.com" %></td>
 				<td><%= company.nif %></td>
 				<td><%= company.state %></td>
 				<td>Edit|Block|Remove</td>
