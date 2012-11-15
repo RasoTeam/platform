@@ -1,8 +1,23 @@
-<% @companies.each do |com| %>
-  <%= com.tag %><br>
-  <%= com.name %><br>
-  <%= com.email %><br>
-  <%= com.nif %><br>
-  <%= com.address %><br>
-  <br>
-<% end %>
+<h1>Companies</h1>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Name</th>
+			<th>Slug</th>
+			<th>Nif</th>
+			<th>State</th>
+			<th>Actions</th>
+		</tr>
+
+		<% @companies.each do |company| %>
+			<tr>
+				<td><%= link_to company.name, company_path(company) %></td>
+				<td><%= link_to company.tag+".rasohr.com", company.tag+".rasohr.com" %></td>
+				<td><%= company.nif %></td>
+				<td><%= company.state %></td>
+				<td>Edit|Block|Remove</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
