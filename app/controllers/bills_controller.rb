@@ -5,10 +5,10 @@ class BillsController < ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @bills = @company.bills
+    @bills = @company.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4)
   end
 
   def show_all
-    @bills = Bill.all
+    @bills = Bill.order("created_at Desc").paginate(:page => params[:page], :per_page => 4)
   end
 end

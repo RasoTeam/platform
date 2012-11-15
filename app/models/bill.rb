@@ -16,7 +16,6 @@ class Bill < ActiveRecord::Base
   belongs_to :companies
 
   validates :company_id, presence: true
-  validates :payment_date, presence: true
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 end

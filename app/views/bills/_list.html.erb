@@ -8,3 +8,4 @@
     Link: <%= link_to "View", company_bill_path(bill.company_id, bill) %>
   </p>
 <% end %>
+<%= will_paginate @bills %>
