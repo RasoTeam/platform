@@ -42,4 +42,14 @@ class SuperUsersController < ApplicationController
 			redirect_back_or_to super_users_path
 		end
 	end
+
+	def show_companies
+		@companies = Company.all
+	end
+
+	def show_company
+		@companies = Company.all
+		@company = Company.find(params[:company][:id])
+		@bills = @company.bills
+	end
 end
