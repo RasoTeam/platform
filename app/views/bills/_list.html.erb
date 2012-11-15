@@ -1,8 +1,10 @@
 <% @bills.each do |bill| %>
-  <%= bill.id %><br>
-  <%= bill.created_at %><br>
-  <%= bill.value %><br>
-  <%= bill.payment_date %><br>
-  <%= bill.state %><br>
-  <br>
+  <p> 
+    ID: <%= bill.id %>; 
+    Value: <%= bill.value %>; 
+    State: <%= bill.state %>; 
+    Created: <%= bill.created_at %>; 
+    Payment Date: <%= bill.payment_date %>; 
+    Link: <%= link_to "View", company_bill_path(bill.company_id, bill) %>
+  </p>
 <% end %>
