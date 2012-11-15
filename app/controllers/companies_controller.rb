@@ -4,6 +4,11 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
+  def show
+    @company = Company.find(params[:id])
+    @bills = @company.bills
+  end
+
   def edit
     @company = Company.find( params[:id])
   end
