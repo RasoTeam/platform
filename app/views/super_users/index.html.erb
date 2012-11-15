@@ -1,2 +1,11 @@
-<%= render 'companies/list' %>
-<%= render 'bills/list' %>
+<h1>All SuperUsers</h1>
+
+<ul>
+  <% @super_users.each do |super_user| %>
+    <li>
+      <%= link_to super_user.name, super_user_path(super_user) %>, <%= super_user.email %>, <%= link_to "Edit", edit_super_user_path(super_user) %>, <%= link_to "Delete", super_user_path(super_user), :method => :delete, :confirm => "Really delete the Super User" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a New Super User", new_super_user_path %>

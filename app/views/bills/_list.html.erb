@@ -1,3 +1,8 @@
 <% @bills.each do |bill| %>
-  <p> ID: <%= bill.id %>; Value: <%= bill.value %>; State: <%= bill.state %>; Created: <%= bill.created_at %>; Payment Date: <%= bill.payment_date %>;</p>
+  <%= bill.id %><br>
+  <%= bill.created_at %><br>
+  <%= bill.value %><br>
+  <%= bill.payment_date %><br>
+  <%= bill.state %><br>
+  <br>
 <% end %>
