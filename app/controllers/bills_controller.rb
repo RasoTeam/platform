@@ -9,6 +9,10 @@ class BillsController < ApplicationController
   end
 
   def show_all
-    @bills = Bill.order("created_at Desc").paginate(:page => params[:page], :per_page => 4)
+    if super_user_signed_in?
+      @bills = Bill.order("created_at Desc").paginate(:page => params[:page], :per_page => 4)
+    else
+      redirect_to root_path
+    end
   end
 end

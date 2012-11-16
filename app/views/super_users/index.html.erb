@@ -3,7 +3,7 @@
 <ul>
   <% @super_users.each do |super_user| %>
     <li>
-      <%= link_to super_user.name, super_user_path(super_user) %>, <%= super_user.email %>, <%= link_to "Edit", edit_super_user_path(super_user) %>, <%= link_to "Delete", super_user_path(super_user), :method => :delete, :confirm => "Really delete the Super User" %>
+      <%= link_to super_user.name, super_user_path(super_user) %>, <%= super_user.email %>
     </li>
   <% end %>
 </ul>

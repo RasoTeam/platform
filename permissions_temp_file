@@ -1,0 +1,31 @@
+app/views//bills:
+index.html.erb          super_user; company_admin; 
+show.html.erb           super_user; company_admin;
+show_all.html.erb       super_user;
+
+app/views//companies:
+edit.html.erb           super_user; company_admin;
+new.html.erb            
+index.html.erb          super_user;
+show.html.erb           super_user; comapny_admin;
+
+app/views//dashboard:
+start.html.erb          
+
+app/views//layouts:
+application.html.erb
+
+app/views//super_user_sessions:
+new.html.erb
+
+app/views//super_users:
+edit.html.erb           self_super_user;
+index.html.erb          super_user;
+new.html.erb            super_user;
+show.html.erb           super_user;
+
+app/views//users:
+edit.html.erb           company_admin; self_comapny_employee;
+index.html.erb          company_admin; ...
+new.html.erb            company_admin; ...
+new_temp.html.erb       ...

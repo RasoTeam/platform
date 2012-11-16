@@ -1,3 +1,7 @@
-<h1><%= @super_user.name %></h1>
-<p><%= @super_user.email %></p>
+<h1> Super User Show </h1>
+<p> <%= @super_user.name %> </p>
+<p> <%= @super_user.email %> </p>
+<p> <%= current_super_user.id %> <%= @super_user.id %>
+<p> <%= link_to_unless current_super_user.id != @super_user.id,  "Edit", edit_super_user_path(@super_user) %> </p>
+<p> <%= link_to "Delete", super_user_path(@super_user), :method => :delete, :confirm => "Really delete the Super User" %> </p>
 <%= link_to "<< Back to Super Users List", super_users_path %>

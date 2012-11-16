@@ -1,7 +1,11 @@
 class CompaniesController < ApplicationController
 
   def index
-    @companies = Company.order("name").paginate(:page => params[:page], :per_page => 10)
+    if super_user_signed_in?
+      @companies = Company.order("name").paginate(:page => params[:page], :per_page => 10)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
