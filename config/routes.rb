@@ -15,6 +15,8 @@ Platform::Application.routes.draw do
   match '/supersignout', to:"super_user_sessions#destroy"
 
   match '/dashboard', :to => 'dashboard#start'
+
+  match '/home', :to => 'super_users#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

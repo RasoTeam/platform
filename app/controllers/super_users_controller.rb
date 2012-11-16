@@ -71,4 +71,10 @@ class SuperUsersController < ApplicationController
 		end
 	end
 
+	def home
+		@received = Bill.where("state = 1").sum("value")
+		@debt = Bill.where("state = 0").sum("value")
+		@nr_companies = Company.count
+		@avg_users = User.count#/@nr_companies
+	end
 end
