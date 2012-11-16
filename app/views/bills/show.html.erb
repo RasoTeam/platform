@@ -1,6 +1,13 @@
 <h1> Show Bill </h1>
 <p> ID: <%= @bill.id %> </p>
-<p> Value: <%= @bill.value %> </p>
-<p> State: <%= @bill.state %> </p>
+<p> 
+      <% if !@bill.company.nil? %>
+     Company: <%= link_to @bill.company.name, company_path(@bill.company_id) %>; 
+    <%else%>
+      Unknown_Company; 
+    <% end %>
+</p>
 <p> Created: <%= @bill.created_at %> </p>
 <p> Payment Date: <%= @bill.payment_date %> </p>
+<p> Value: <%= @bill.value %> </p>
+<p> State: <%= @bill.state %> </p>

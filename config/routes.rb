@@ -1,13 +1,18 @@
 Platform::Application.routes.draw do
 
-  resources :super_users
+  root :to => 'dashboard#start'
 
+  resources :super_users
+  resources :super_user_sessions, only: [:new, :create, :destroy]
   resources :companies do
     resources :users
     resources :bills
   end
 
   match '/bills', to: "bills#show_all"
+
+  match '/supersignin', to:"super_user_sessions#new"
+  match '/supersignout', to:"super_user_sessions#destroy"
 
   match '/dashboard', :to => 'dashboard#start'
   # The priority is based upon order of creation:

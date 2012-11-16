@@ -13,7 +13,7 @@
 
 class Bill < ActiveRecord::Base
   attr_accessible :payment_date, :state, :value, :company_id
-  belongs_to :companies
+  belongs_to :company
 
   validates :company_id, presence: true
   validates :state, presence: true

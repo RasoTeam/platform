@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114152628) do
+ActiveRecord::Schema.define(:version => 20121115174617) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -40,7 +40,10 @@ ActiveRecord::Schema.define(:version => 20121114152628) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
+    t.string   "remember_token"
   end
+
+  add_index "super_users", ["remember_token"], :name => "index_super_users_on_remember_token"
 
   create_table "users", :force => true do |t|
     t.integer  "company_id"

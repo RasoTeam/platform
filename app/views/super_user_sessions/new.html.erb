@@ -1,0 +1,10 @@
+<h1> Super User Login </h1>
+<%= form_for(:super_user_session, url: super_user_sessions_path) do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email, :required => true %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, :required => true %>
+
+  <%= f.submit "Sign in" %>
+<% end %>
