@@ -75,6 +75,10 @@ class SuperUsersController < ApplicationController
 		@received = Bill.where("state = 1").sum("value")
 		@debt = Bill.where("state = 0").sum("value")
 		@nr_companies = Company.count
-		@avg_users = User.count#/@nr_companies
+		if @nr_companies > 0
+			@avg_users = User.count/@nr_companies
+		else
+			@avg_users = 0
+		end
 	end
 end
