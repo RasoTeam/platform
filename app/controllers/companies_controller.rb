@@ -3,8 +3,8 @@ class CompaniesController < ApplicationController
   def index
     if super_user_signed_in?
       @companies = Company.order("name").paginate(:page => params[:page], :per_page => 10)
-    else
-      redirect_to root_path
+    else 
+      redirect_to root_path, notice: t(:no_permission_to_access)
     end
   end
 

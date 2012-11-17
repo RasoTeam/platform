@@ -1,5 +1,14 @@
 <h1><%= @company.name %></h1>
-
+<% if !user_signed_in? %>
+	<%= link_to "Sign In on Company", company_signin_path(params[:id]) %>
+	<br/>
+	<br/>
+<% else %>
+	<%= current_user.name %> |
+	<%= link_to "Sign Out on Company", company_signout_path(params[:id]), method: "delete" %>
+	<br/>
+	<br/>
+<% end %>
 <label>Details</label>
 
 <p>Company Name <%= @company.name %></p>

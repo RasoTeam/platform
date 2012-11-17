@@ -8,6 +8,7 @@ class SuperUserSessionsController < ApplicationController
       sign_in_super_user super_user
       redirect_to companies_path
     else
+      flash.now[:error] = t(:invalid_login)
       render 'new'
     end
   end

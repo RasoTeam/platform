@@ -4,7 +4,7 @@ class SuperUsersController < ApplicationController
 		if super_user_signed_in?
 			@super_users = SuperUser.all
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 
@@ -12,7 +12,7 @@ class SuperUsersController < ApplicationController
 		if super_user_signed_in?
 			@super_user = SuperUser.find(params[:id])
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 	
@@ -20,7 +20,7 @@ class SuperUsersController < ApplicationController
 		if super_user_signed_in? && (current_super_user.id.to_s == params[:id])
 			@super_user = SuperUser.find(params[:id])
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 
@@ -33,7 +33,7 @@ class SuperUsersController < ApplicationController
 				render 'edit'
 			end
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 
@@ -41,7 +41,7 @@ class SuperUsersController < ApplicationController
 		if super_user_signed_in?
 			@super_user = SuperUser.new
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 
@@ -54,7 +54,7 @@ class SuperUsersController < ApplicationController
 				render 'new'
 			end
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 
@@ -67,7 +67,7 @@ class SuperUsersController < ApplicationController
 				redirect_back_or_to super_users_path
 			end
 		else
-			redirect_to root_path
+			redirect_to root_path, notice: t(:no_permission_to_access)
 		end
 	end
 

@@ -1,0 +1,11 @@
+<h1> User Login </h1>
+<%= form_for(:user_session, url: company_user_sessions_path) do |f| %>
+  
+  <%= f.label :email %>
+  <%= f.text_field :email, :required => true %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, :required => true %>
+
+  <%= f.submit "Sign In" %>
+<% end %>
