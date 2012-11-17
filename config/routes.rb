@@ -21,6 +21,8 @@ Platform::Application.routes.draw do
   match '/companies/:company_id/signout', to:'user_sessions#destroy', as: 'company_signout'
 
   match '/dashboard', :to => 'dashboard#start'
+
+  match '/home', :to => 'super_users#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
