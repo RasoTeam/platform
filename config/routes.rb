@@ -10,6 +10,7 @@ Platform::Application.routes.draw do
     resources :user_sessions, only: [:new, :create, :destroy]
   end
 
+  match '/test', :to => 'dashboard#debug'
 
   match 'company_root/:id', to:  'companies#show', as: 'company_root'
 
