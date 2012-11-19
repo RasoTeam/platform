@@ -2,6 +2,8 @@ Platform::Application.routes.draw do
 
   root :to => 'dashboard#start'
 
+  get '/companies/:company_id/users/verify', :to => 'users#verify'
+
   resources :super_users
   resources :super_user_sessions, only: [:new, :create, :destroy]
   resources :companies do

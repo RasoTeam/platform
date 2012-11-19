@@ -3,6 +3,8 @@
   <%= f.text_field :name %>
   <%= f.label :tag %>
   <%= f.text_field :tag %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
   <%= f.submit %>
   <% @company.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
