@@ -2,7 +2,6 @@ class CompaniesController < ApplicationController
 
   def index
     order = params[:order]
-    
     order ||= ""
     if super_user_signed_in?
       @companies = Company.order("tag "+order).paginate(:page => params[:page], :per_page => 4)
