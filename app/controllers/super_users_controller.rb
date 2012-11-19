@@ -27,10 +27,17 @@ class SuperUsersController < ApplicationController
 	def update
 		if super_user_signed_in? && (current_super_user.id.to_s == params[:id])
 			@super_user = SuperUser.find(params[:id])
-			if @super_user.update_attributes(params[:super_user])
-				redirect_to super_users_path
-			else
+
+			if !@super_user.authenticate(params[:super_user][:current_password])
+				@super_user.errors.add(:current_password, "is incorrect")
 				render 'edit'
+			else
+				params[:super_user].delete(:current_password)		
+				if @super_user.update_attributes(params[:super_user])
+					redirect_to super_users_path
+				else
+					render 'edit'
+				end
 			end
 		else
 			redirect_to root_path, notice: t(:no_permission_to_access)
