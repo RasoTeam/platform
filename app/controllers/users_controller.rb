@@ -19,6 +19,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def verify
+    @debug_company_id = params[:company_id]
+    @company = Company.find( params[:company_id])
+    @user = User.find_by_remember_token( params[:token])
+    if @user.nil? || @user.company_id != @company.id
+      @msg = "should redirect"
+    end
+  end
+
   def new
     @company = Company.find( params[:company_id])
     @user = @company.users.build

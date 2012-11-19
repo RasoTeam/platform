@@ -133,6 +133,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   jquery-rails
+  mail (= 2.4.4)
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   sqlite3
