@@ -1,5 +1,9 @@
 <h1>Companies</h1>
-
+<br/>
+<%= link_to "Z-A", companies_path(params.merge({order: "ASC"}) ) %>
+<%= link_to "A-Z", companies_path(params.merge({order: "DESC"}) )%>
+<%= link_to "2000", companies_path(params.merge({year: "2000"}) )%>
+<br/>
 <table>
 	<tbody>
 		<tr>
