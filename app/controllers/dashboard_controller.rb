@@ -1,6 +1,9 @@
 class DashboardController < ApplicationController
   def index
   end
+  
+  def start
+  end
 
   def debug
     @v = params[:val]
