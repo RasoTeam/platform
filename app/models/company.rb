@@ -15,7 +15,8 @@
 #
 
 class Company < ActiveRecord::Base
-  attr_accessible :address, :email, :logo_url, :name, :nif, :state, :tag
+  attr_accessible :address, :email, :logo_url, :name, :nif, :state, :tag, :password, :password_confirmation
+  has_secure_password
   has_many :bills
   has_many :users
 
@@ -36,6 +37,9 @@ class Company < ActiveRecord::Base
             :length => { :maximum => 20, :minimum => 3 },
             :format => { :with => VALID_TAG_REGEX }, :uniqueness => { :case_sensitive => false }
   
+  validates :password, :presence => true, :length => { :minimum => 6 }
+  validates :password_confirmation, :presence => true
+
   def has_email?
     !self.email.nil?
   end

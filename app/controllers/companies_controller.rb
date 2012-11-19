@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
     @company = Company.new( params[:company])
     @company.state = 0;
     if @company.save
-      redirect_to new_company_user_path @company.id
+      redirect_to company_path(@company)
     else
       render 'new'
     end
