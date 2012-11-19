@@ -40,4 +40,4 @@
 	</tbody>
 </table>
 
-<%= render :partial => 'name_list' %>
+<%= render :partial => 'name_list' if super_user_signed_in? %>

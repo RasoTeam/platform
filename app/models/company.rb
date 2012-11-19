@@ -36,8 +36,10 @@ class Company < ActiveRecord::Base
   validates :tag, :presence => true, 
             :length => { :maximum => 20, :minimum => 3 },
             :format => { :with => VALID_TAG_REGEX }, :uniqueness => { :case_sensitive => false }
-  
+
+
 #  def has_email?
 #    !self.email.nil?
 #  end
+
 end
