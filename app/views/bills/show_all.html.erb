@@ -1,3 +1,6 @@
 <h1> All Bills </h1>
-
+<%= form_tag bills_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
 <%= render 'bills/list' %>

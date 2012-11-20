@@ -10,7 +10,7 @@ class BillsController < ApplicationController
 
   def show_all
     if super_user_signed_in?
-      @bills = Bill.order("created_at Desc").paginate(:page => params[:page], :per_page => 4)
+      @bills = Bill.search(params[:search]).paginate(:page => params[:page], :per_page => 4)
     else
       redirect_to root_path, notice: t(:no_permission_to_access)
     end

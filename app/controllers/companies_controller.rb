@@ -1,10 +1,8 @@
 class CompaniesController < ApplicationController
 
   def index
-    order = params[:order]
-    order ||= ""
     if super_user_signed_in?
-      @companies = Company.order("tag "+order).paginate(:page => params[:page], :per_page => 4)
+      @companies = Company.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 4)
     else 
       redirect_to root_path, notice: t(:no_permission_to_access)
     end
