@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find( params[:id])
-    if @company.update_attributes( params[ :company])
+    if @company.update_attributes(params[ :company])
       redirect_to edit_company_path @company.id
     else
       render 'edit'
