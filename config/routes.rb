@@ -15,8 +15,6 @@ Platform::Application.routes.draw do
 
   match '/test', :to => 'dashboard#debug'
 
-  match 'company_root/:id', to:  'companies#show', as: 'company_root'
-
   match '/bills', to: 'bills#show_all'
 
   match '/supersignin', to:'super_user_sessions#new'

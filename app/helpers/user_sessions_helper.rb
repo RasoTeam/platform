@@ -1,15 +1,16 @@
 module UserSessionsHelper
+  @@x = "fdlsakb123kfjdaFSADyshfdyKJDHAkuyre"
 
   def make_cookie(val, tag)
-    cookies.permanent[ tag] = val
+    cookies.permanent[ @@x+tag] = val
   end
 
   def read_cookie( tag)
-    return cookies[ tag]
+    return cookies[ @@x+tag]
   end
 
   def sign_in_user(user, tag)
-    cookies.permanent[ tag] = user.remember_token
+    cookies.permanent[ @@x+tag] = user.remember_token
     self.current_user = user
   end
 
@@ -18,7 +19,7 @@ module UserSessionsHelper
   end
 
   def current_user(tag)
-    @current_user ||= User.find_by_remember_token(cookies[ tag])
+    @current_user = User.find_by_remember_token(cookies[@@x+tag])
   end
 
   def user_signed_in?(tag)
@@ -27,7 +28,7 @@ module UserSessionsHelper
 
   def user_sign_out(tag)
     self.current_user = nil
-    cookies.delete( tag)
+    cookies.delete(@@x+tag)
   end
 
 end

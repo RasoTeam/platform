@@ -1,11 +1,14 @@
-<p>testing</p>
-<%= @msg %><br>
-<%= @user.name %><br>
-<%= @user.company_id%><br><%= @debug_company_id %>
+<p>Verify Account</p>
 <%= form_for [@company, @user] do |f| %>
-<%= f.label :password %>
-<%= f.text_field :password %>
-<%= f.label :password_confirmation %>
-<%= f.text_field :password_confirmation %>
-<%= f.submit %>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation %>
+
+  <%= f.submit %>
 <% end %>

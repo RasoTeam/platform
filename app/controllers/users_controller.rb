@@ -12,19 +12,26 @@ class UsersController < ApplicationController
   def update
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
-    if @user.update_attributes( params[ :user])
-      redirect_to company_users_path
+    if @user.state==-1
+      @user.state=1
+    end
+    if @user.update_attributes( params[:user])
+      redirect_to company_path @company.id
     else
       render 'edit'
     end
   end
 
   def verify
-    @debug_company_id = params[:company_id]
-    @company = Company.find( params[:company_id])
-    @user = User.find_by_remember_token( params[:token])
-    if @user.nil? || @user.company_id != @company.id
-      @msg = "should redirect"
+    if !params[:token] || !params[:company_id]
+      redirect_to root_path
+    else
+      @company = Company.find(params[:company_id])
+      @user = User.find_by_remember_token(params[:token])
+      if @user.nil? || @user.company_id != @company.id
+        flash[:error] = "ERROOOOOOOOOOOOOO"
+        redirect_to company_path @company
+      end
     end
   end
 

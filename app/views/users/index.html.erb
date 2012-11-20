@@ -1,6 +1,8 @@
+<h1> User List </h1>
+<br/>
 <% @users.each do |u| %>
-  <%= u.id %><br>
-  <%= u.email %><br>
-  <%= u.name %><br>
-  <%= u.role %><br>
+  User id: <%= u.id %>; Email: <%= u.email %>; Name: <%= u.name %>; Role: <%= u.role %>
+  <br/>
 <% end %>
+<br/>
+<br/>
