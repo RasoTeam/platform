@@ -53,11 +53,25 @@ class SuperUsersController < ApplicationController
 	end
 
 	def home
-		@received = Bill.where("state = 1").sum("value")
-		@debt = Bill.where("state = 0").sum("value")
-		@nr_companies = Company.count
+		if params[:year] != nil
+			year = Integer(params[:year])
+			final_year = year + 1
+		else
+			year=2012
+			final_year=Date.today.year + 1
+		end
+
+		initial_date = DateTime.new(year)
+		final_date = DateTime.new(final_year)
+
+		@first_year = Company.first.created_at.year
+		@current_year = Date.today.year
+		@received = Bill.where(:created_at => initial_date..final_date).where("state = 1").sum("value")
+		@debt = Bill.where(:created_at => initial_date..final_date).where("state = 0").sum("value")
+		@nr_companies = Company.where(:created_at => initial_date..final_date).count
+
 		if @nr_companies > 0
-			@avg_users = User.count/@nr_companies
+			@avg_users = User.where(:created_at => initial_date..final_date).count/@nr_companies
 		else
 			@avg_users = 0
 		end

@@ -47,7 +47,3 @@ class Company < ActiveRecord::Base
   end
 
 end
-
-#order = params[:order]
-#      order ||= ""
-#      @companies = Company.order("tag "+order).paginate(:page => params[:page], :per_page => 4)

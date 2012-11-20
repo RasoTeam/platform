@@ -1,5 +1,12 @@
 <h1>Welcome to Raso Back-office</h1>
 
+<ul>
+	<li><%= link_to "All time", home_path %></li>
+	<% for i in @first_year..@current_year %>
+		<li><%= link_to i, home_path( params.merge({year: i})) %></li>
+	<% end %>
+</ul>
+
 <table>
 	<tbody>
 		<tr><th>Stats</th></tr>
