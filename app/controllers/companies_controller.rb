@@ -9,7 +9,9 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @companies = Company.order("name").paginate(:page => params[:page], :per_page => 10)
+    order = params[:order]
+    order ||= ""
+    @companies = Company.order("name "+order).paginate(:page => params[:page], :per_page => 10)
     @company = Company.find(params[:id])
     @bills = @company.bills
   end

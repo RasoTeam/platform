@@ -2,6 +2,7 @@
 	<tbody>
 		<tr>
 			<th>Companies</th>
+			<th><%= link_to "A-Z", company_path(@company, params.merge({order: "ASC"})) %> <%= link_to "Z-A", company_path(@company, params.merge({order: "DESC"})) %></th>
 		</tr>
 		<% @companies.each do |company| %>
 			<tr>
