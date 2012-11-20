@@ -38,14 +38,17 @@ class UsersController < ApplicationController
   def new
     @company = Company.find( params[:company_id])
     @user = @company.users.build
+    @roles = [[ "DEUS JUST FOR DEBUG !", 0], [ "GESTOR", 1], [ "Colaborador", 2], [ "Escravo", 3]]
   end
 
   def create
+    @roles = [[ "DEUS JUST FOR DEBUG !", 0], [ "GESTOR", 1], [ "Colaborador", 2], [ "Escravo", 3]]
     @company = Company.find( params[:company_id])
     @user = @company.users.build( params[:user])
-    @user.role = 0
-    @user.state = 0
+    @user.state = -1
+    @user.password_digest = 0
     if @user.save
+      UserMailer.verification_email( @user).deliver
       redirect_to company_users_path
     else
       render 'new'
