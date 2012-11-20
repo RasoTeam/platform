@@ -37,9 +37,17 @@ class Company < ActiveRecord::Base
             :length => { :maximum => 20, :minimum => 3 },
             :format => { :with => VALID_TAG_REGEX }, :uniqueness => { :case_sensitive => false }
 
-
-#  def has_email?
-#    !self.email.nil?
-#  end
+  def self.search(search,order)
+    order ||= ""
+    if search
+      where('name LIKE ? OR tag LIKE ?', '%'+search+'%', '%'+search+'%').order("tag "+order)
+    else
+      order("tag "+order)
+    end
+  end
 
 end
+
+#order = params[:order]
+#      order ||= ""
+#      @companies = Company.order("tag "+order).paginate(:page => params[:page], :per_page => 4)
