@@ -9,11 +9,8 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.label :role %>
+  <%= f.select :role, @roles %>
 
   <%= f.submit %>
 <% end %>

@@ -12,9 +12,11 @@ class UsersController < ApplicationController
   def update
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
+
     if @user.state==-1
       @user.state=1
     end
+
     if @user.update_attributes( params[:user])
       redirect_to company_path @company.id
     else
@@ -38,6 +40,7 @@ class UsersController < ApplicationController
   def new
     @company = Company.find( params[:company_id])
     @user = @company.users.build
+    @roles = {manager: 1, coolaborator: 2}
   end
 
   def create
