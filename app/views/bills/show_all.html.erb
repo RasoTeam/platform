@@ -1,3 +1,4 @@
 <h1> All Bills </h1>
-
+<p><%= link_to "A-Z", bills_path( params.merge({order: "ASC"})) %> <%= link_to "Z-A", bills_path( params.merge({order: "DESC"})) %></p>
+<p>Filter: <%= link_to "All", bills_path( params.merge({filt: ">= 0"})) %> <%= link_to "OK", bills_path( params.merge({filt: "= 1"})) %> <%= link_to "Delayed", bills_path( params.merge({filt: "= 0"})) %></p>
 <%= render 'bills/list' %>
