@@ -1,24 +1,5 @@
 Platform::Application.routes.draw do
 
-  root :to => 'rasocomp/dashboard#start'
-
-  scope :module => "backoffice" do
-    resources :super_users
-    resources :super_user_sessions, only: [:new, :create, :destroy]
-  end
-
-  scope :module => "rasocomp" do
-    resources :companies do
-      resources :users do
-        member do
-          put 'activate'
-        end
-      end
-      resources :bills
-      resources :user_sessions, only: [:new, :create, :destroy]
-    end
-  end
-
 #super_users
   match '/supersignin', to:'backoffice/super_user_sessions#new'
   match '/supersignout', to:'backoffice/super_user_sessions#destroy'
@@ -40,4 +21,23 @@ Platform::Application.routes.draw do
   match '/aboutus' => 'staticpages#aboutus'
   match '/ideas' => 'staticpages#ideas'
   match '/contacts' => 'staticpages#contacts'
+
+  root :to => 'rasocomp/dashboard#start'
+
+  scope :module => "backoffice" do
+    resources :super_users
+    resources :super_user_sessions, only: [:new, :create, :destroy]
+  end
+
+  scope :module => "rasocomp" do
+    resources :companies do
+      resources :users do
+        member do
+          put 'activate'
+        end
+      end
+      resources :bills
+      resources :user_sessions, only: [:new, :create, :destroy]
+    end
+  end
 end

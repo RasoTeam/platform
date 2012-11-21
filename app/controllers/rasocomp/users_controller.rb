@@ -51,7 +51,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
 
       if @user.nil? || @user.state != -1
         flash[:error] = t(:invalid_verification)
-        redirect_to root_path
+        #redirect_to root_path
       end
     end
   end
