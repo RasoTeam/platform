@@ -1,5 +1,6 @@
 class SuperUsersController < ApplicationController
-	before_filter :super_user_only
+	before_filter :super_user_only, :only => [:index, :show, :new, :create, :home]
+	before_filter :super_user_self, :only => [:edit, :update, :destroy]
 	
 	def index
 		@super_users = SuperUser.all
@@ -80,5 +81,10 @@ class SuperUsersController < ApplicationController
 	private
 		def super_user_only
 			redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+		end
+
+	private
+		def super_user_self
+			redirect_to root_path, notice: t(:no_permission_to_access) unless super_user_signed_in? && current_super_user.id == params[:id]
 		end
 end
