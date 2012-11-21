@@ -1,11 +1,9 @@
 class CompaniesController < ApplicationController
+  before_filter :super_user_or_manager_or_root, :only => [:show, :edit, :update]
+  before_filter :super_user_only, :only => :index
 
   def index
-    if super_user_signed_in?
-      @companies = Company.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 10)
-    else 
-      redirect_to root_path, notice: t(:no_permission_to_access)
-    end
+    @companies = Company.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -21,6 +19,7 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find( params[:id])
     if @company.update_attributes(params[ :company])
+      flash[:success]= t(:successful_update)
       redirect_to edit_company_path @company.id
     else
       render 'edit'
@@ -48,4 +47,15 @@ class CompaniesController < ApplicationController
       render 'new'
     end
   end
+
+  private
+    def super_user_or_manager_or_root
+      @comp = Company.find(params[:id])
+      redirect_to company_signin_path(params[:id]), notice: t(:no_permission_to_access) unless manager_signed_in?(@comp.tag) || root_signed_in?(@comp.tag) || super_user_signed_in?
+    end
+
+  private
+    def super_user_only
+      redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+    end
 end

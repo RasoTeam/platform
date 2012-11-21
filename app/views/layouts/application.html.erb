@@ -60,6 +60,12 @@
 							<a href="#">blog</a>
 						</li>
 					</ul>
+					<% if super_user_signed_in? %>
+    <%= current_super_user.name %> |
+    <%= link_to "Super Sign Out", supersignout_path, method: "delete" %>
+  <% else %>
+    <%= link_to "Super Sign In", supersignin_path %>
+  <% end %>
 				</div>
 	  		</nav>
 	  		<!-- End Navigation -->

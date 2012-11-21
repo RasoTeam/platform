@@ -1,7 +1,9 @@
 class BillsController < ApplicationController
-  
+  before_filter :super_user_or_manager, :only => [:show, :index]
+  before_filter :super_user_only, :only => :show_all
+
   def show
-    @bill = Bill.find(params[:id])
+    @bill = Company.find(params[:company_id]).bills.find(params[:id])
   end
 
   def index
@@ -10,10 +12,17 @@ class BillsController < ApplicationController
   end
 
   def show_all
-    if super_user_signed_in?
       @bills = Bill.search(params[:search], params[:order], params[:filt]).paginate(:page => params[:page], :per_page => 4)
-    else
-      redirect_to root_path, notice: t(:no_permission_to_access)
-    end
   end
+
+  private
+    def super_user_or_manager
+      @comp = Company.find(params[:company_id])
+      redirect_to company_signin_path(params[:company_id]), notice: t(:no_permission_to_access) unless manager_signed_in?(@comp.tag) || super_user_signed_in?
+    end
+
+  private
+    def super_user_only
+      redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+    end
 end

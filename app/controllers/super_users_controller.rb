@@ -1,5 +1,5 @@
 class SuperUsersController < ApplicationController
-	before_filter :authenticate
+	before_filter :super_user_only
 	
 	def index
 		@super_users = SuperUser.all
@@ -78,7 +78,7 @@ class SuperUsersController < ApplicationController
 	end
 
 	private
-		def authenticate
-			redirect_to root_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+		def super_user_only
+			redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
 		end
 end
