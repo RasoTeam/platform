@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def show
+    @company = Company.find(params[:company_id])
+    @user = @company.users.find(params[:id])
+  end
+
   def index
     @users = Company.find( params[:company_id]).users
   end
