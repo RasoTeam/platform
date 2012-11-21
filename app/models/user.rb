@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
                                     :if => :verified?
   validates :role, :numericality => { :only_integer => true, 
                                       :greater_than_or_equal_to => 0,
-                                      :less_than_or_equal_to => 3 }
+                                      :less_than_or_equal_to => 10 }
 
   validates :state, :numericality => { :only_integer => true,
                                        :greater_than_or_equal_to => -1,
@@ -42,11 +42,6 @@ class User < ActiveRecord::Base
   
   def verified?
     self.state != -1
-  end
-
-  def set_default_base_password
-    self.password = self.remember_token
-    self.password_confirmation = self.remember_token
   end
 
   private

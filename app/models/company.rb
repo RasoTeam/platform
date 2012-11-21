@@ -38,6 +38,8 @@ class Company < ActiveRecord::Base
             :length => { :maximum => 20, :minimum => 3 },
             :format => { :with => VALID_TAG_REGEX }, :uniqueness => { :case_sensitive => false }
 
+  #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
+
   def self.search(search,order)
     order ||= ""
     if search

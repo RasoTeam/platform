@@ -1,5 +1,6 @@
-class SuperUsersController < ApplicationController
-	before_filter :authenticate
+class Backoffice::SuperUsersController < ApplicationController
+	before_filter :super_user_only, :only => [:index, :show, :new, :create, :home]
+	before_filter :super_user_self, :only => [:edit, :update, :destroy]
 	
 	def index
 		@super_users = SuperUser.all
@@ -66,7 +67,6 @@ class SuperUsersController < ApplicationController
 
 		@first_year = Company.first.created_at.year
 		@current_year = Date.today.year
-		
 		@received = Bill.where(:created_at => initial_date..final_date).where("state = 1").sum("value")
 		@debt = Bill.where(:created_at => initial_date..final_date).where("state = 0").sum("value")
 		@nr_companies = Company.where(:created_at => initial_date..final_date).count
@@ -79,7 +79,12 @@ class SuperUsersController < ApplicationController
 	end
 
 	private
-		def authenticate
-			redirect_to root_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+		def super_user_only
+			redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+		end
+
+	private
+		def super_user_self
+			redirect_to root_path, notice: t(:no_permission_to_access) unless super_user_signed_in? && current_super_user.id == Integer(params[:id])
 		end
 end

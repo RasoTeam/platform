@@ -31,4 +31,12 @@ module UserSessionsHelper
     cookies.delete(@@x+tag)
   end
 
+  def manager_signed_in?(tag)
+    user_signed_in?(tag) && current_user(tag).role == ROLE[:manager]
+  end
+
+  def root_signed_in?(tag)
+    user_signed_in?(tag) && current_user(tag).role == ROOT
+  end
+
 end
