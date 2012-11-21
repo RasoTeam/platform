@@ -6,11 +6,15 @@ Platform::Application.routes.draw do
 
   resources :super_users
   resources :super_user_sessions, only: [:new, :create, :destroy]
+
+
   
   resources :companies do
   	resources :users
   	resources :bills
   	resources :user_sessions, only: [:new, :create, :destroy]
+
+    resources :job_offers , :only => [:index , :new , :create , :show , :delete, :edit ,:update]
   end
 
   match '/test', :to => 'dashboard#debug'

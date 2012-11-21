@@ -1,0 +1,26 @@
+<h1>Edit Job Offer - <%= @offer.job_name  %></h1>
+
+<%= form_for @offer do |f| %>
+    <% @offer.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+
+    <%= f.label :job_name , 'Job Name' %>
+    <%= f.text_field :job_name %>
+
+    <%= f.label :description , 'Description' %>
+    <%= f.text_area :description %>
+
+    <%= f.label :required_education , 'Education/Professional History'%>
+    <%= f.text_area :required_education %>
+
+    <%= f.label :skills , 'Skills' %>
+    <%= f.text_area :skills %>
+
+    <%= f.label :conditions , 'Terms' %>
+    <%= f.text_area :conditions %>
+    </br>
+
+    <%= f.submit 'Update the Job Offer!'  %>
+
+<% end %>

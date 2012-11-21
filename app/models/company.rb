@@ -19,6 +19,9 @@ class Company < ActiveRecord::Base
   has_many :bills
   has_many :users
 
+  has_many :job_offers
+
+
   before_save { |company| company.tag = tag.downcase
                           unless company.email.nil? 
                             company.email = email.downcase 
