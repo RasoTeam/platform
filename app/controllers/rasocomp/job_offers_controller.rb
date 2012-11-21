@@ -1,4 +1,4 @@
-class JobOffersController < ApplicationController
+class Rasocomp::JobOffersController < Rasocomp::ApplicationController
 
   def index
     @offers = JobOffer.all

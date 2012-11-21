@@ -1,0 +1,23 @@
+<h1>All the Job Offers</h1>
+
+<table>
+  <tr>
+    <th>Job Offer</th>
+    <th>Date</th>
+    <th>Candidates</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.job_name %></td>
+        <td><%= offer.created_at %></td>
+        <td>0</td>
+        <td><%= offer.active %></td>
+        <td><%= link_to 'Show Offer' , company_job_offer_path(@company,offer) %>
+           | <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]) %>
