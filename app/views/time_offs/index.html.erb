@@ -1,0 +1,18 @@
+<h1> Time Offs </h1>
+<br/>
+<h1>CREDITS <%= @user.time_off_days %></h1><br>
+<%= link_to 'click here avoit work', new_company_user_time_off_path( @company, @user) %><br>
+
+<% @timeoffs.each do |t| %>
+  Timeoff id: <%= t.id %>;
+  Start: <%= t.start_date %>;
+  End: <%= t.end_date %>;
+  Days: <%= t.days %>;
+  Type: <%= t.category %>;
+  State: <%= t.state %>;
+  Desc: <%= t.description %>;
+  <%= link_to "cancel", [@company, @user, t], :method => :delete, :data => { :confirm => 'Confirmation Box'} %>
+  <br/>
+<% end %>
+<br/>
+<br/>
