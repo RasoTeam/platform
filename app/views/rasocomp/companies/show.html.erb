@@ -6,15 +6,19 @@
 <% else %>
 	<%= current_user( @company.tag).name %> |
 	<%= link_to "Sign Out on Company", company_signout_path(params[:id]), method: "delete" %>
-	<br/>
-	<br/>
+	<% if current_user( @company.tag).role == 0 %>
+		DEUS PRESENTE !
+		<%= link_to "Add User", new_company_user_path( params[:id]) %>
+        <% end %>
+<br>
+<br>
 <% end %>
 <label>Details</label>
 
 <p>Company Name <%= @company.name %></p>
 <p>Nif <%= @company.nif %></p>
 <p>Slug <%= @company.tag+".rasohr.com" %></p>
-<p>Employees <%= @company.users.length %></p>
+<p>Employees <%= @company.users.length-1 %></p>
 
 <table>
 	<tbody>

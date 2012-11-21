@@ -19,11 +19,14 @@ class Bill < ActiveRecord::Base
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 
-  def self.search(search)
+  def self.search(search,order,filt)
+    order ||= "DESC"
+    filt ||= ">= 0"
+    
     if search
-      where('id LIKE ? OR company_id IN (SELECT id FROM companies WHERE name LIKE ?)','%'+search+'%','%'+search+'%' ).order("created_at Desc")
+      where('state '+filt+ ' AND (id LIKE ? OR company_id IN (SELECT id FROM companies WHERE name LIKE ?))','%'+search+'%','%'+search+'%' ).order("created_at "+order)
     else
-      order("created_at Desc")
+      order("created_at "+order)
     end
   end
 end

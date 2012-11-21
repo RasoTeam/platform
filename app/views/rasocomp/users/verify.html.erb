@@ -1,14 +1,14 @@
 <p>Verify Account</p>
-<%= form_for [@company, @user] do |f| %>
+<%= form_for [@company, @user], :url => activate_company_user_path(@company, @user) do |f| %>
   <% @user.errors.full_messages.each do |error| %>
     <li><%= error %></li>
   <% end %>
 
   <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password %>
 
   <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
 
   <%= f.submit %>
 <% end %>
