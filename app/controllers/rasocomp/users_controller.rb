@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Rasocomp::UsersController < Rasocomp::ApplicationController
   before_filter :super_user_or_manager_or_root, :only => [:new, :create]
   before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
   before_filter :super_user_or_manager, :only => [:index]

@@ -1,4 +1,4 @@
-class UserSessionsController < ApplicationController
+class Rasocomp::UserSessionsController < Rasocomp::ApplicationController
   def new
   end
 

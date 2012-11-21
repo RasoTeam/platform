@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class Rasocomp::CompaniesController < Rasocomp::ApplicationController
   before_filter :super_user_or_manager_or_root, :only => [:show, :edit, :update]
   before_filter :super_user_only, :only => :index
 

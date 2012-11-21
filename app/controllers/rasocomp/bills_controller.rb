@@ -1,4 +1,4 @@
-class BillsController < ApplicationController
+class Rasocomp::BillsController < Rasocomp::ApplicationController
   before_filter :super_user_or_manager, :only => [:show, :index]
   before_filter :super_user_only, :only => :show_all
 
@@ -8,7 +8,7 @@ class BillsController < ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @bills = @company.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4)
+    @bills = @company.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) 
   end
 
   def show_all
