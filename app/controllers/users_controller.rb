@@ -54,9 +54,11 @@ class UsersController < ApplicationController
   def new
     @company = Company.find( params[:company_id])
     @user = @company.users.build
+    @roles = [[ "DEUS JUST FOR DEBUG !", 0], [ "GESTOR", 1], [ "Colaborador", 2], [ "Escravo", 3]]
   end
 
   def create
+    @roles = [[ "DEUS JUST FOR DEBUG !", 0], [ "GESTOR", 1], [ "Colaborador", 2], [ "Escravo", 3]]
     @company = Company.find( params[:company_id])
     @user = @company.users.build( params[:user])
     @user.role = Integer params[:role] unless !params[:role]
