@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :super_user_or_manager_or_root, :only => [:new, :create]
-  before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update]
+  before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
   before_filter :super_user_or_manager, :only => [:index]
 
   def show
@@ -54,22 +54,21 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     end
-  #    @company = Company.find(params[:company_id])
-  #    @user = User.find(params[:user_id])
-
   end
 
   def new
     @company = Company.find( params[:company_id])
     @user = @company.users.build
-    @roles = [[ "DEUS JUST FOR DEBUG !", 0], [ "GESTOR", 1], [ "Colaborador", 2], [ "Escravo", 3]]
+    @roles = ROLE
   end
 
   def create
-    @roles = [[ "DEUS JUST FOR DEBUG !", 0], [ "GESTOR", 1], [ "Colaborador", 2], [ "Escravo", 3]]
+    @roles = ROLE
     @company = Company.find( params[:company_id])
+    role = params[:user][:role]
+    params[:user].delete(:role)
     @user = @company.users.build( params[:user])
-    @user.role = Integer params[:role] unless !params[:role]
+    @user.role = Integer role
     @user.state = -1
     @user.password_digest = 0
     if @user.save
@@ -78,6 +77,11 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def dashboard
+    @company = Company.find(params[:company_id])
+    @user = @company.users.find(params[:id])
   end
 
   private

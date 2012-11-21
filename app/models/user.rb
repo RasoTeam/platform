@@ -14,7 +14,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :role, :state, :password, :password_confirmation
+  attr_accessible :company_id, :email, :name, :password, :password_confirmation
   has_secure_password
   belongs_to :company
 

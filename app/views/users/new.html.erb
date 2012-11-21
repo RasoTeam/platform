@@ -1,4 +1,4 @@
-<%= form_for [@company, @user] :action => "activate" do |f| %>
+<%= form_for [@company, @user] do |f| %>
   <% @user.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end %>
