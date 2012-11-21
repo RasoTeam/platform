@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     #use some base64 for company ?
     if user && user.authenticate(params[:user_session][:password])
       sign_in_user(user, company.tag)
-      redirect_to company_user user
+      redirect_to company_user_path company, user
     else
       flash.now[:error] = t(:invalid_login)
       render 'new'

@@ -51,7 +51,7 @@ class CompaniesController < ApplicationController
   private
     def super_user_or_manager_or_root
       @comp = Company.find(params[:id])
-      redirect_to company_signin_path(params[:id]), notice: t(:no_permission_to_access) unless manager_signed_in?(@comp.tag) || root_signed_in?(@comp.tag) || super_user_signed_in?
+      redirect_to company_signin_path(@comp), notice: t(:no_permission_to_access) unless manager_signed_in?(@comp.tag) || root_signed_in?(@comp.tag) || super_user_signed_in?
     end
 
   private

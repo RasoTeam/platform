@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   
   validates :role, :numericality => { :only_integer => true, 
 	                              :greater_than_or_equal_to => 0,
-                                      :less_than_or_equal_to => 3 }
+                                      :less_than_or_equal_to => 10 }
 
   validates :state, :numericality => { :only_integer => true,
 	                               :greater_than_or_equal_to => -1,
