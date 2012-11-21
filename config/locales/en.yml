@@ -5,6 +5,7 @@ en:
   hello: "Hello world"
   no_permission_to_access: "No permission to access (isto está no config/locales)"
   invalid_login: "Wrong username or password! (config/locales)"
+  successful_update: "Successfully updted"
    
   activerecord:
     attributes:
