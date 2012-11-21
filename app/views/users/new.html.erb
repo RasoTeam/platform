@@ -1,4 +1,4 @@
-<%= form_for [@company, @user] do |f| %>
+<%= form_for [@company, @user] :action => "activate" do |f| %>
   <% @user.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end %>
@@ -10,7 +10,7 @@
   <%= f.email_field :email %>
 
   <%= f.label :role %>
-  <%= f.select :role, @roles %>
+  <%= f.select :role, ROLE %>
 
   <%= f.submit %>
 <% end %>

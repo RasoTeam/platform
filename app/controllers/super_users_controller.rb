@@ -66,7 +66,6 @@ class SuperUsersController < ApplicationController
 
 		@first_year = Company.first.created_at.year
 		@current_year = Date.today.year
-		
 		@received = Bill.where(:created_at => initial_date..final_date).where("state = 1").sum("value")
 		@debt = Bill.where(:created_at => initial_date..final_date).where("state = 0").sum("value")
 		@nr_companies = Company.where(:created_at => initial_date..final_date).count

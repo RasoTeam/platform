@@ -5,7 +5,9 @@ en:
   hello: "Hello world"
   no_permission_to_access: "No permission to access (isto está no config/locales)"
   invalid_login: "Wrong username or password! (config/locales)"
-   
+  account_activated: "Your account has been successfuly activated"
+  invalid_verification: "Invalid Verification"
+
   activerecord:
     attributes:
       user:

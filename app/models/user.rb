@@ -27,10 +27,9 @@ class User < ActiveRecord::Base
 	    :format => { :with => VALID_EMAIL_REGEX },
 	    :uniqueness => { :case_sensitive => false }
 
-  validates :password,  :length => { :minimum => 6 },
-                       :if => :verified?
-  validates :password_confirmation, :presence => true,
-                       :if => :verified?
+  validates :password,  :length => { :minimum => 6 }, :if => :verified?
+  validates :password_confirmation, :presence => true, :if => :verified?
+  
   validates :role, :numericality => { :only_integer => true, 
 	                              :greater_than_or_equal_to => 0,
                                       :less_than_or_equal_to => 3 }
@@ -41,11 +40,6 @@ class User < ActiveRecord::Base
   
   def verified?
     self.state != -1
-  end
-
-  def set_default_base_password
-    self.password = self.remember_token
-    self.password_confirmation = self.remember_token
   end
 
   private
