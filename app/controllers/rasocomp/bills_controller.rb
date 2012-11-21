@@ -1,6 +1,6 @@
 class Rasocomp::BillsController < Rasocomp::ApplicationController
-  before_filter :super_user_or_manager, :only => [:show, :index]
-  before_filter :super_user_only, :only => :show_all
+  #before_filter :super_user_or_manager, :only => [:show, :index]
+  #before_filter :super_user_only, :only => :show_all
 
   def show
     @bill = Company.find(params[:company_id]).bills.find(params[:id])

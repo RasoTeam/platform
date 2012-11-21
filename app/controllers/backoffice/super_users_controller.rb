@@ -1,6 +1,6 @@
 class Backoffice::SuperUsersController < ApplicationController
-	before_filter :super_user_only, :only => [:index, :show, :new, :create, :home]
-	before_filter :super_user_self, :only => [:edit, :update, :destroy]
+	#before_filter :super_user_only, :only => [:index, :show, :new, :create, :home]
+	#before_filter :super_user_self, :only => [:edit, :update, :destroy]
 	
 	def index
 		@super_users = SuperUser.all

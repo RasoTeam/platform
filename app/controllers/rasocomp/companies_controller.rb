@@ -1,6 +1,6 @@
 class Rasocomp::CompaniesController < Rasocomp::ApplicationController
-  before_filter :super_user_or_manager_or_root, :only => [:show, :edit, :update]
-  before_filter :super_user_only, :only => :index
+  #before_filter :super_user_or_manager_or_root, :only => [:show, :edit, :update]
+  #before_filter :super_user_only, :only => :index
 
   def index
     @companies = Company.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 10)
