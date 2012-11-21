@@ -8,7 +8,11 @@ Platform::Application.routes.draw do
   resources :super_user_sessions, only: [:new, :create, :destroy]
   
   resources :companies do
-  	resources :users
+  	resources :users do
+      member do
+        put 'activate'
+      end
+    end
   	resources :bills
   	resources :user_sessions, only: [:new, :create, :destroy]
   end
