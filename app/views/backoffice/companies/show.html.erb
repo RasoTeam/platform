@@ -14,7 +14,7 @@
 		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
 		            	<div class="panel details">
 		              		<h4 class="hide-for-small"><%= @company.name %>
-		              			<span class="secondary label radius"><%= link_to "Edit", edit_company_path(@company) %></span>
+		              			<span class="secondary label radius"><a href="/editcomp">Edit</a></span>
 		              			<hr/>
 		              		</h4>
 		            		<h5>Details</h5>
@@ -73,7 +73,5 @@
 	<%= link_to "Sign Out on Company", company_signout_path(params[:id]), method: "delete" %>
 <br>
 <% end %>
-
-<%= link_to "Manage Job Offers" , company_job_offers_path(params[:id]) %>
 
 <%= render :partial => 'name_list' if super_user_signed_in? %>

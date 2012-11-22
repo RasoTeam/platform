@@ -30,7 +30,6 @@ Platform::Application.routes.draw do
 
 #resources
   namespace "public" do
-    resources :user_sessions, only: [:new, :create, :destroy]
     resources :super_user_sessions, only: [:new, :create, :destroy]
 
 #job_offers de candidatos
@@ -44,10 +43,13 @@ Platform::Application.routes.draw do
 
   #root :to => 'rasocomp/dashboard#start'
     resources :companies do
-      resources :users
-
       resources :job_offers , :only => [:index , :show , :create]
-
+      resources :user_sessions, only: [:new, :create, :destroy]
+      resources :users do
+        member do
+          put 'activate'
+        end
+      end
     end
   end
 
@@ -63,9 +65,6 @@ Platform::Application.routes.draw do
   scope :module => "rasocomp" do
     resources :companies do
       resources :users do
-        member do
-          put 'activate'
-        end
         resources :time_offs
       end
       resources :bills

@@ -1,0 +1,19 @@
+<%= form_for @company do |f| %>
+  <%= @company.tag %><br>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :tag %>
+  <%= f.text_field :tag %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :logo_url %>
+  <%= f.text_field :logo_url %>
+  <%= f.label :nif %>
+  <%= f.text_field :nif %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.submit %>
+  <% @company.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>

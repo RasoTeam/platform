@@ -1,6 +1,6 @@
 <br/>
-<%= link_to "A-Z", companies_path(params.merge({order: "ASC"}) ) %>
-<%= link_to "Z-A", companies_path(params.merge({order: "DESC"})  )%>
+<%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"}) ) %>
+<%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%>
 <br/>
 <table>
 	<tbody>
@@ -14,7 +14,7 @@
 
 		<% @companies.each do |company| %>
 			<tr>
-				<td><%= link_to company.name, company_path(company) %></td>
+				<td><%= link_to company.name, backoffice_company_path(company) %></td>
 				<td><%= link_to company.tag+".rasohr.com", company.tag+".rasohr.com" %></td>
 				<td><%= company.nif %></td>
 				<td><%= company.state %></td>

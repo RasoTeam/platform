@@ -1,0 +1,9 @@
+<h1> All Bills </h1>
+<p><%= link_to "A-Z", backoffice_bills_path( params.merge({order: "ASC"})) %> <%= link_to "Z-A", backoffice_bills_path( params.merge({order: "DESC"})) %></p>
+<p>Filter: <%= link_to "All", backoffice_bills_path( params.merge({filt: ">= 0"})) %> <%= link_to "OK", backoffice_bills_path( params.merge({filt: "= 1"})) %> <%= link_to "Delayed", backoffice_bills_path( params.merge({filt: "= 0"})) %></p>
+
+<%= form_tag backoffice_bills_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+<%= render :partial => 'list' %>
