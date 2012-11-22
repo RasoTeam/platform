@@ -1,6 +1,6 @@
 <h1>Edit Job Offer - <%= @offer.job_name  %></h1>
 
-<%= form_for @offer do |f| %>
+<%= form_for [@company ,@offer] do |f| %>
     <% @offer.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>

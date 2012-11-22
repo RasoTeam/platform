@@ -23,4 +23,5 @@
   </tr>
 </table>
 
-<%= link_to 'Back to Job Offers' , company_job_offers_path %>
+<%= link_to 'Go for it!' , apply_form_path(@company , @offer)%>
+<%= link_to 'Back to Job Offers' , apply_index_path(@company)%>

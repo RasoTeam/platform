@@ -3,6 +3,9 @@ class JobOffer < ActiveRecord::Base
   #pertence a uma Empresa
   belongs_to :company
 
+  #tem vários candidatos
+  has_many :candidates
+
   attr_accessible :active, :conditions, :description, :job_name, :required_education, :skills , :created_at
 
   #VALIDATIONS
