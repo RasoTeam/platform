@@ -1,2 +1,2 @@
-module SuperUsersHelper
+module Backoffice::SuperUsersHelper
 end

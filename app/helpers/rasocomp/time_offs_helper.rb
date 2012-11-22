@@ -1,2 +1,2 @@
-module TimeOffsHelper
+module Rasocomp::TimeOffsHelper
 end
