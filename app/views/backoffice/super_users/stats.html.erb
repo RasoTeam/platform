@@ -1,9 +1,9 @@
 <h1>Welcome to Raso Back-office</h1>
 
 <ul>
-	<li><%= link_to "All time", home_path %></li>
+	<li><%= link_to "All time", backoffice_stats_path %></li>
 	<% for i in @first_year..@current_year %>
-		<li><%= link_to i, home_path( params.merge({year: i})) %></li>
+		<li><%= link_to i, backoffice_stats_path( params.merge({year: i})) %></li>
 	<% end %>
 </ul>
 

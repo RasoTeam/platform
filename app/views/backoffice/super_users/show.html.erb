@@ -2,6 +2,6 @@
 <p> <%= @super_user.name %> </p>
 <p> <%= @super_user.email %> </p>
 <p> <%= current_super_user.id %> <%= @super_user.id %>
-<p> <%= link_to_unless current_super_user.id != @super_user.id,  "Edit", edit_super_user_path(@super_user) %> </p>
-<p> <%= link_to "Delete", super_user_path(@super_user), :method => :delete, :confirm => "Really delete the Super User" %> </p>
-<%= link_to "<< Back to Super Users List", super_users_path %>
+<p> <%= link_to_unless current_super_user.id != @super_user.id,  "Edit", edit_backoffice_super_user_path(@super_user) %> </p>
+<p> <%= link_to "Delete", backoffice_super_user_path(@super_user), :method => :delete, :confirm => "Really delete the Super User" %> </p>
+<%= link_to "<< Back to Super Users List", backoffice_super_users_path %>

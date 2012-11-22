@@ -1,4 +1,4 @@
-class Rasocomp::UserSessionsController < Rasocomp::ApplicationController
+class Rasocomp::UserSessionsController < Public::ApplicationController
   layout "nolayout"
   def new
   end

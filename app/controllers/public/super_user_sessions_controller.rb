@@ -1,4 +1,4 @@
-class Backoffice::SuperUserSessionsController < ApplicationController
+class Backoffice::SuperUserSessionsController < Public::ApplicationController
   def new
   end
 
@@ -6,7 +6,7 @@ class Backoffice::SuperUserSessionsController < ApplicationController
     super_user = SuperUser.find_by_email(params[:super_user_session][:email])
     if super_user && super_user.authenticate(params[:super_user_session][:password])
       sign_in_super_user super_user
-      redirect_to companies_path
+      redirect_to backoffice_stats_path
     else
       flash.now[:error] = t(:invalid_login)
       render 'new'

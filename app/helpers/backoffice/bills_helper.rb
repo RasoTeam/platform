@@ -1,0 +1,2 @@
+module Backoffice::BillsHelper
+end
