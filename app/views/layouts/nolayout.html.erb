@@ -1,0 +1,72 @@
+	<!DOCTYPE html>
+	<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+	<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+	<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+	<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+	<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		
+		<!-- Uncomment to make IE8 render like IE7 -->
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+		
+		<!-- Set the viewport width to device width for mobile -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<title><%= content_for?(:title) ? yield(:title) : "BackOffice" %></title>
+	  
+		<!-- Included CSS Files -->
+		<%= stylesheet_link_tag    "application" %>
+		
+		<!-- Included JS Files  -->
+		<%= javascript_include_tag "application" %>
+
+		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,600' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'> -->
+
+	  <%= csrf_meta_tags %>
+	</head>
+	<body >
+		<div class="<%= controller.controller_name %>">
+		<div class="row" >
+			<%= yield %>
+		</div>
+
+	  
+
+	  <!-- Footer -->
+
+	<footer class="row footer_raso">
+		<div class="twelve columns" style="padding: 0;">
+			<hr/>
+			<div class="row">
+
+				<div class="six columns" style="width: 70%;">
+					<p>Copyright &copy; 2012 Raso. Todos os direitos reservados. Desenvolvido por Raso Team.</p>
+				</div>
+
+				<div class="six columns" style="width: 30%;">
+					<ul class="link-list right">
+						<li><a href="https://www.facebook.com/rasohr" target="_blank" id="facebook"></a></li>
+						<li><a href="http://twitter.com" target="_blank" id="twitter"></a></li>
+						<li><a href="http://youtube.com" target="_blank" id="youtube"></a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+</div>
+	<!-- End Footer -->
+	<!-- Included JS Files -->
+	<script src="../public/assets/templates.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('#featured').orbit({ fluid: '2x1' });
+			});
+			</script>
+
+		</body>
+	</html>

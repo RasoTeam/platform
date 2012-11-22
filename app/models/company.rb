@@ -18,6 +18,7 @@ class Company < ActiveRecord::Base
   attr_accessible :address, :email, :logo_url, :name, :nif, :state, :tag
   has_many :bills
   has_many :users
+  has_many :time_outs, :through => :users
 
   has_many :job_offers
 

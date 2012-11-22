@@ -1,0 +1,14 @@
+TIME OFF
+<%= form_for [@company, @user, @timeoff] do |f| %>
+  <% @timeoff.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+  <%= f.select :category, [["CANCRO", 1],["DORMIR", 2]] %>
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>

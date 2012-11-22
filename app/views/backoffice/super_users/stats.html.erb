@@ -1,0 +1,30 @@
+<h1>Welcome to Raso Back-office</h1>
+
+<ul>
+	<li><%= link_to "All time", backoffice_stats_path %></li>
+	<% for i in @first_year..@current_year %>
+		<li><%= link_to i, backoffice_stats_path( params.merge({year: i})) %></li>
+	<% end %>
+</ul>
+
+<table>
+	<tbody>
+		<tr><th>Stats</th></tr>
+		<tr>
+			<td>Total Received</td>
+			<td><%= @received %></td>
+		</tr>
+		<tr>
+			<td>Total in Debt</td>
+			<td><%= @debt %></td>
+		</tr>
+		<tr>
+			<td>Number of Companies</td>
+			<td><%= @nr_companies %></td>
+		</tr>
+		<tr>
+			<td>Average number of users by company</td>
+			<td><%= @avg_users %></td>
+		</tr>
+	</tbody>
+</table>

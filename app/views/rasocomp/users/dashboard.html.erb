@@ -1,6 +1,96 @@
-<h1> <%= @company.name %> / <%= @user.name %> - Dashboard </h1>
+<div class="row">
+	<div class="three columns push-nine">
 
-<h2> Alerts </h2>
-<br/>
-<h2> Time Off </h2>
-<br/>
+			<div class=" twelve columns row collapse">
+			  <div class="eight mobile-four columns">
+			    <input type="text" />
+			  </div>
+			  <div class="four mobile-one columns">
+			    <a class="button expand postfix">Search</a>
+			  </div>
+			</div>
+
+			<div class="twelve columns" style="padding-bottom:20px">
+				<a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
+			</div>
+
+			<div class="twelve columns" style="padding-bottom:20px">
+				<div class="panel callout radius">
+			      <h5>Formações</h5>
+			      <p>Texto aqui</p>
+			    </div>
+		    </div>
+			<div class="twelve columns" style="padding-bottom:20px">
+				<div class="panel">
+			      <h5>Calendário</h5>
+			      <p>Texto aqui</p>
+			    </div>
+		    </div>
+	</div> 
+	<!-- Cena Grande -->
+	<div class="nine columns pull-three">
+			<dl class="tabs">
+			  <dd class="active"><a href="#dashboard">Dashboard</a></dd>
+			  <dd><a href="#profile">Profile</a></dd>
+			  <dd><a href="#contract">Contract</a></dd>
+			</dl>
+			<ul class="tabs-content">
+			  <li class="active" id="dashboardTab">
+
+			  	<h4> Alertas </h4>
+
+					<div class="alert-box">
+						This is a standard alert (div.alert-box).
+					 
+					</div>
+
+					<div class="alert-box success">
+					  This is a success alert (div.alert-box.success).
+					  <a href="" class="close">&times;</a>
+					</div>
+
+					<div class="alert-box alert">
+					  This is an alert (div.alert-box.alert)
+					</div>
+
+					<%= link_to "company", company_path(@company), :class=>"button" %>
+					<%= link_to "users list", company_users_path(@company), :class=>"button" %>
+
+
+			  	<hr/>
+			  	<h4> Time Offs </h4>
+				<div class="button-bar">
+					<ul class="button-group">
+						<li><a href="#" class="button">Book Holidays</a></li>
+					</ul>
+
+					<ul class="button-group">
+					    <li><a href="#" class="button">Call In Sick</a></li>
+					</ul>
+				</div>
+			  </li>
+			  <li id="profileTab">
+
+			  	<h3> User Profile </h3>
+			  	<hr/>
+			  	<p><span class=" radius label">User Name</span><span> <%= @user.name %></span></p>
+			  	<p><span class="radius label">User Email</span><span> <%= @user.email %></span></p>
+			  	<div style:"text-alig">
+
+				<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
+			  	</div>
+
+			  </li>
+			  <li id="contractTab">
+
+				<h3> Contract </h3>
+			  	<hr/>
+			  	<p><span class=" radius label">Job Title</span><span> Job Title</span></p>
+			  	<p><span class=" radius label">Begin Date</span><span> Date</span></p>
+			  	<p><span class=" radius label">End Date</span><span> Date</span></p>
+			  </li>
+			</ul>
+		</div>
+
+
+</div>

@@ -1,3 +1,3 @@
 class Rasocomp::ApplicationController < ::ApplicationController
-  layout "application"
+  layout "rasoemp"
 end

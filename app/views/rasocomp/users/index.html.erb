@@ -1,8 +1,89 @@
-<h1> User List </h1>
-<br/>
-<% @users.each do |u| %>
-  User id: <%= u.id %>; Email: <%= u.email %>; Name: <%= u.name %>; Role: <%= u.role %>
+<div class="row">
+	<div class="twelve columns">
+
+			<h3>Company employees</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="nine columns">
+		<!-- Listagem -->
+		<div class="panel">
+			<div class="row">
+				<div class="twelve columns">
+					<table class="twelve tableJobs">
+						<thead>
+							<tr>
+								<th>Cod.</th>
+								<th>Name</th>
+								<th>E-Mail</th>
+								<th>Role</th>
+								<th>Profile</th>
+								<!--<th>Status</th>-->
+							</tr>
+						</thead>
+						<tbody>
+							<% @users.each do |u| %>
+								<tr>
+							    	<td><%= u.id %></td>
+							      	<td><%= u.name %></td>
+							      	<td><%= u.email %></td>
+							 
+							      	<td><%= t(ROLE.invert[u.role]) %></td>
+							      	<td><%= link_to "Profile", company_user_path(u.company_id, u) %> </td>
+
+							      	<!-- <td>
+							      		<form class="custom" style="margin:0;"><label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span></label></form>
+							      	</td> -->
+							    </tr>
   <br/>
 <% end %>
+
+
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="eight columns">
+					<ul class="pagination">
+						<li class="arrow unavailable"><a href="">&laquo;</a></li>
+						<li class="current"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">4</a></li>
+						<li class="unavailable"><a href="">&hellip;</a></li>
+						<li><a href="">12</a></li>
+						<li><a href="">13</a></li>
+						<li class="arrow"><a href="">&raquo;</a></li>
+					</ul>
+				</div>
+				<div class="four columns">
+					<div class="row collapse">
+				  		<div class="eight mobile-four columns">
+				    		<input type="text" />
+				  		</div>
+				  		<div class="four mobile-one columns">
+				    		<a class="button expand postfix">Search</a>
+				  		</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+			<!-- Fim Listagem -->
+	</div>
+	<div class="three columns">
+		<div class="panel callout radius">
+		    <h5>Add User</h5>
+			<% if (current_user( @company.tag).role == ROOT || current_user( @company.tag).role == ROLE[:manager])  %>
+				<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"button" %>
+        	<% end %>
+		</div>
+	</div>
+</div>
+<br/>
+
 <br/>
 <br/>
