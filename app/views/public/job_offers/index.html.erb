@@ -1,0 +1,18 @@
+<h1>Job Offers from <%= @company.name %></h1>
+
+<table>
+  <tr>
+    <th>Job Offer</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.job_name %></td>
+        <td><%= offer.created_at %></td>
+        <td><%= offer.active %></td>
+        <td><%= link_to 'Apply 4 this stuff.' , new_apply_path(@company,offer) %></td>
+      </tr>
+  <% end %>
+</table>

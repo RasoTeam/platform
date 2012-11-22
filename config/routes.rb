@@ -22,6 +22,8 @@ Platform::Application.routes.draw do
   get '/idea' , :to => 'public/frontoffice#idea'
   get '/contacts' , :to => 'public/frontoffice#contacts'
   get '/signup', :to => 'public/frontoffice#new'
+  get '/public/companies/:company_id/job_offers/:id' , :to => 'public/job_offers#new' , :as => 'new_apply'
+
 
 #root
   root :to => 'public/frontoffice#index'
@@ -32,10 +34,10 @@ Platform::Application.routes.draw do
     resources :super_user_sessions, only: [:new, :create, :destroy]
 
 #job_offers de candidatos
- # get '/companies/:company_id/job_offers/appliances', :to => 'rasocomp/job_offers#appliances'   , as: 'apply_index'
- # get '/companies/:company_id/job_offers/:id/showapply' , :to => 'rasocomp/job_offers#showapply' , as: 'apply_show'
- # get '/companies/:company_id/job_offers/:id/formapply' , :to => 'rasocomp/job_offers#formapply'  , as: 'apply_form'
- # post '/companies/:company_id/job_offers/:id/formapply' , :to => 'rasocomp/job_offers#createapply'  , as: 'apply_create'
+  #get '/companies/:company_id/job_offers/appliances', :to => 'rasocomp/job_offers#appliances'   , as: 'apply_index'
+  #get '/companies/:company_id/job_offers/:id/showapply' , :to => 'rasocomp/job_offers#showapply' , as: 'apply_show'
+  #get '/companies/:company_id/job_offers/:id/formapply' , :to => 'rasocomp/job_offers#formapply'  , as: 'apply_form'
+  #post '/companies/:company_id/job_offers/:id/formapply' , :to => 'rasocomp/job_offers#createapply'  , as: 'apply_create'
 
   #job_offers extra de empresas
   #get '/companies/:company_id/job_offers'
@@ -43,6 +45,9 @@ Platform::Application.routes.draw do
   #root :to => 'rasocomp/dashboard#start'
     resources :companies do
       resources :users
+
+      resources :job_offers , :only => [:index , :show , :create]
+
     end
   end
 
