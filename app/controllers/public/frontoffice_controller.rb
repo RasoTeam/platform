@@ -1,4 +1,4 @@
-class Frontoffice::FrontofficeController < Frontoffice::ApplicationController
+class Public::FrontofficeController < Public::ApplicationController
 
 	def new
 		@company = Company.new
