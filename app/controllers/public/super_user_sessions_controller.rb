@@ -1,4 +1,4 @@
-class Backoffice::SuperUserSessionsController < Public::ApplicationController
+class Public::SuperUserSessionsController < Public::ApplicationController
   def new
   end
 

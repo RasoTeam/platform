@@ -9,10 +9,10 @@ Platform::Application.routes.draw do
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
   get '/companies/:company_id/users/:user_id/time_offs/:id/approve', :to => 'rasocomp/time_offs#approve'
 
-  get '/companies/:company_id/users/verify', :to => 'rasocomp/users#verify'
   get '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard', as: 'user_dashboard'
 
 #public
+  get '/companies/:company_id/users/verify', :to => 'public/users#verify'
   match '/companies/:company_id/signin', to:'public/user_sessions#new', as: 'company_signin'
   match '/companies/:company_id/signout', to:'public/user_sessions#destroy', as: 'company_signout'
   match '/supersignin', to:'public/super_user_sessions#new', as: 'super_user_signin'
@@ -23,6 +23,7 @@ Platform::Application.routes.draw do
   get '/contacts' , :to => 'public/frontoffice#contacts'
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id' , :to => 'public/job_offers#new' , :as => 'new_apply'
+
 
 
 #root
