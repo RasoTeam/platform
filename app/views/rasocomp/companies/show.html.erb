@@ -14,7 +14,7 @@
 		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
 		            	<div class="panel details">
 		              		<h4 class="hide-for-small"><%= @company.name %>
-		              			<span class="secondary label radius"><a href="/editcomp">Edit</a></span>
+		              			<span class="secondary label radius"><%= link_to "Edit", edit_company_path(@company) %></span>
 		              			<hr/>
 		              		</h4>
 		            		<h5>Details</h5>
