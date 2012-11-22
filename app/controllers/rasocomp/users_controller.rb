@@ -1,6 +1,6 @@
 class Rasocomp::UsersController < Rasocomp::ApplicationController
-  before_filter :super_user_or_manager_or_root, :only => [:new, :create, :index]
-  before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
+  #before_filter :super_user_or_manager_or_root, :only => [:new, :create, :index]
+  #before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
   #before_filter :super_user_or_manager, :only => [:index]
 
   def show
@@ -22,38 +22,9 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
     if @user.update_attributes( params[:user])
-      redirect_to user_dashboard_path @company.id, @user
+      redirect_to company_user_path @company.id, @user
     else
       render 'edit'
-    end
-  end
-
-  def activate
-    @company = Company.find( params[:company_id])
-    @user = @company.users.find( params[:id])
-    if @user.state == -1
-      @user.state = 1
-    end
-    if @user.update_attributes( params[:user])
-      flash[:success] = t(:account_activated)
-      redirect_to company_path @company.id
-    else
-      render 'verify'
-    end
-  end
-
-  def verify
-    if !params[:token] || !params[:company_id]
-      flash[:error] = t(:invalid_verification)
-      redirect_to root_path
-    else
-      @company = Company.find(params[:company_id])
-      @user = @company.users.find_by_remember_token(params[:token])
-
-      if @user.nil? || @user.state != -1
-        flash[:error] = t(:invalid_verification)
-        #redirect_to root_path
-      end
     end
   end
 

@@ -1,9 +1,9 @@
-class Public::FrontofficeController < Public::ApplicationController
-def new
-	@company = Company.new
-end
+class Public::CompaniesController < Public::ApplicationController
+  def new
+    @company = Company.new
+  end
 
-def create
+  def create
     @company = Company.new( params[:company])
     @company.state = 0;
     if @company.save
@@ -15,9 +15,9 @@ def create
       user.password_digest = 0
       user.save
       UserMailer.verification_email(user).deliver
-      redirect_to company_path @company.id
+      redirect_to company_signin_path @company.id
     else
       render 'new'
     end
-	end
+  end
 end

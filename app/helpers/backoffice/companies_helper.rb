@@ -1,0 +1,2 @@
+module Backoffice::CompaniesHelper
+end
