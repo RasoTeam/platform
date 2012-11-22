@@ -1,4 +1,4 @@
-module SuperUserSessionsHelper
+module Public::SuperUserSessionsHelper
   
   def sign_in_super_user(superuser)
     cookies.permanent[:remember_super_user_token] = superuser.remember_token
