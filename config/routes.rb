@@ -27,11 +27,15 @@ Platform::Application.routes.draw do
 
 #resources
   namespace "public" do
-    resources :user_sessions, only: [:new, :create, :destroy]
     resources :super_user_sessions, only: [:new, :create, :destroy]
 
     resources :companies do
-      resources :users
+      resources :user_sessions, only: [:new, :create, :destroy]
+      resources :users do
+        member do
+          put 'activate'
+        end
+      end
     end
   end
 
@@ -47,9 +51,6 @@ Platform::Application.routes.draw do
   scope :module => "rasocomp" do
     resources :companies do
       resources :users do
-        member do
-          put 'activate'
-        end
         resources :time_offs
       end
       resources :bills

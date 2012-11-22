@@ -17,7 +17,7 @@
       <h5>Welcome to Raso</h5>
       <p>This is you company login page</p>
 		<hr />		
-			<%= form_for(:user_session, url: company_user_sessions_path) do |f| %>
+			<%= form_for(:user_session, url: public_company_user_sessions_path) do |f| %>
 			  
 			  <%= f.label :email %>
 			  <%= f.text_field :email, :required => true %>
