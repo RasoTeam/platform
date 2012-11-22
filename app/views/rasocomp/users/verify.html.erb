@@ -1,14 +1,22 @@
-<p>Verify Account</p>
-<%= form_for [@company, @user], :url => activate_company_user_path(@company, @user) do |f| %>
-  <% @user.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<div class="row">
+	<div class="twelve columns">
+		<div id="signup">
+			<h3> Verify User </h3>
+			<hr/>
+			<%= form_for [@company, @user], :url => activate_company_user_path(@company, @user) do |f| %>
+			  <% @user.errors.full_messages.each do |error| %>
+			    <li><%= error %></li>
+			  <% end %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+			  <span class=" radius label">Password</span>
+			  <%= f.password_field :password %>
 
-  <%= f.submit %>
-<% end %>
+			  <span class=" radius label">Confirm Password</span>
+			  <%= f.password_field :password_confirmation %>
+
+			  <p style="text-align: center"><%= f.submit 'Comfirm Account', :class => "button" %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

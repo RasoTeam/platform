@@ -1,0 +1,2 @@
+module Frontoffice::FrontofficeHelper
+end

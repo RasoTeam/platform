@@ -10,7 +10,7 @@ Platform::Application.routes.draw do
 
 #companies
   get '/companies/:company_id/users/verify', :to => 'rasocomp/users#verify'
-  get '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard'
+  get '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard', as: 'user_dashboard'
   
   match '/companies/:company_id/signin', to:'rasocomp/user_sessions#new', as: 'company_signin'
   match '/companies/:company_id/signout', to:'rasocomp/user_sessions#destroy', as: 'company_signout'
@@ -20,11 +20,12 @@ Platform::Application.routes.draw do
 #static_pages
   match '/dashboard', :to => 'rasocomp/dashboard#start'
   
-  match '/aboutus' => 'staticpages#aboutus'
-  match '/ideas' => 'staticpages#ideas'
-  match '/contacts' => 'staticpages#contacts'
+  #match '/aboutus' => 'staticpages#aboutus'
+  #match '/ideas' => 'staticpages#ideas'
+  #match '/contacts' => 'staticpages#contacts'
 
-  root :to => 'rasocomp/dashboard#start'
+  #root :to => 'rasocomp/dashboard#start'
+  root :to => 'frontoffice/frontoffice#index'
 
   scope :module => "backoffice" do
     resources :super_users
@@ -43,4 +44,10 @@ Platform::Application.routes.draw do
       resources :user_sessions, only: [:new, :create, :destroy]
     end
   end
+
+    get '/homefront' , :to => 'frontoffice/frontoffice#index'
+    get '/aboutus' , :to => 'frontoffice/frontoffice#aboutus'
+    get '/idea' , :to => 'frontoffice/frontoffice#idea'
+    get '/contacts' , :to => 'frontoffice/frontoffice#contacts'
+    get '/signup', :to => 'frontoffice/frontoffice#new'
 end

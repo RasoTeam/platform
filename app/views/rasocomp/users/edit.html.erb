@@ -1,23 +1,68 @@
-<h1> Edit user for Company <%= params[:company_id] %> </h1>
+<div class="row">
+  <div class="three columns push-nine">
 
-<%= form_for [@company, @user] do |f| %>
-  <% @user.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-  <% end %>
+      <div class=" twelve columns row collapse">
+        <div class="eight mobile-four columns">
+          <input type="text" />
+        </div>
+        <div class="four mobile-one columns">
+          <a class="button expand postfix">Search</a>
+        </div>
+      </div>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+      <div class="twelve columns" style="padding-bottom:20px">
+        <a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <div class="twelve columns" style="padding-bottom:20px">
+        <div class="panel callout radius">
+            <h5>Formações</h5>
+            <p>Texto aqui</p>
+          </div>
+        </div>
+      <div class="twelve columns" style="padding-bottom:20px">
+        <div class="panel">
+            <h5>Calendário</h5>
+            <p>Texto aqui</p>
+          </div>
+        </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
 
-  <%= f.label :time_off_days %>
-  <%= f.text_field :time_off_days %>
-  
-  <%= f.submit %>
-<% end %>
+</div> 
+  <!-- Cena Grande -->
+  <div class="nine columns pull-three">
+
+        <h3> Edit User Profile </h3>
+        <hr/>
+          <%= form_for [@company, @user] do |f| %>
+
+            <span class=" radius label">User Name</span>
+            <%= f.text_field :name %>
+
+          <span class="radius label">User Email</span>
+            <%= f.text_field :email %>
+
+          <span class=" radius label">Password</span>
+            <%= f.password_field :password %>
+
+          <span class=" radius label">Comfirm Password</span>
+            <%= f.password_field :password_confirmation %>
+        
+            <p style="text-align: center"><%= f.submit 'Save!', :class => "button" %></p>
+
+            
+            <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
+            <hr/>
+            <% end %>
+            <% @user.errors.full_messages.each do |msg| %>
+              <p><%= msg %></p>
+            <% end %>
+          <% end %>
+
+
+
+
+  </div>
+</div>
+
+

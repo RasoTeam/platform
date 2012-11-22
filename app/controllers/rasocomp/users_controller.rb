@@ -1,6 +1,6 @@
 class Rasocomp::UsersController < Rasocomp::ApplicationController
-  #before_filter :super_user_or_manager_or_root, :only => [:new, :create]
-  #before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
+  before_filter :super_user_or_manager_or_root, :only => [:new, :create, :index]
+  before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
   #before_filter :super_user_or_manager, :only => [:index]
 
   def show
@@ -9,7 +9,8 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   end
 
   def index
-    @users = Company.find( params[:company_id]).users
+    @company = Company.find(params[:company_id])
+    @users = @company.users
   end
 
   def edit
@@ -21,7 +22,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
     if @user.update_attributes( params[:user])
-      redirect_to company_path @company.id
+      redirect_to user_dashboard_path @company.id, @user
     else
       render 'edit'
     end

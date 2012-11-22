@@ -8,6 +8,9 @@ en:
   successful_update: "Successfully updted"
   account_activated: "Your account has been successfuly activated"
   invalid_verification: "Invalid Verification"
+  manager: "Manager"
+  cooperator: "Cooperator"
+  ROOT: "Root"
 
   activerecord:
     attributes:

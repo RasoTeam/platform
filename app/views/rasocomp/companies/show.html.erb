@@ -1,4 +1,69 @@
-<h1><%= @company.name %></h1>
+<div class="row">
+
+	<!-- Left Column -->
+	<div>
+		<div class="row">
+			<div class="twelve columns">
+				<!-- Header Content -->
+				<div class="row">
+					<div class="four columns">
+						<%= image_tag ('logo_sogrape.jpg') %><br>
+					</div>
+		          	
+		          	<div class="eight columns">
+		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
+		            	<div class="panel details">
+		              		<h4 class="hide-for-small"><%= @company.name %>
+		              			<span class="secondary label radius"><a href="/editcomp">Edit</a></span>
+		              			<hr/>
+		              		</h4>
+		            		<h5>Details</h5>
+			            	<p><span class="label radius">Company Name</span> <%= @company.name %></p>
+			            	<p><span class="label radius">NIF</span> <%= @company.nif %></p>
+			            	<p><span class="label radius">SLUG</span> <a href="#"> <%= @company.tag+".rasohr.com" %></a></p>
+			            	<p><span class="label radius">Employees</span> <%= @company.users.length-1 %></p>
+		            	</div>
+					</div>
+		        </div>
+		        <!-- End Header Content -->
+		    	<!-- Table Content -->
+				<div class="row">
+					<div class="twelve columns">
+					    <table class="twelve">
+							  <thead>
+							    <tr>
+									<th>Cod</th>
+									<th>Issued Date</th>
+									<th>Payment Date</th>
+									<th>Ammount</th>
+									<th>State</th>
+									<th>Actions</th>
+								</tr>
+							    </tr>
+							  </thead>
+							  <tbody>
+								<% @bills.each do |bill| %>
+									<tr>
+										<td><%= bill.id %></td>
+										<td><%= bill.created_at %></td>
+										<td><%= bill.payment_date %></td>
+										<td><%= bill.value %></td>
+										<td><%= bill.state %></td>
+										<td>Action</td>
+									</tr>
+								<% end %>
+							  </tbody>
+						</table>
+						<!-- End Table Content -->
+					</div>
+		  		</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
 <% if !user_signed_in? @company.tag %>
 	<%= link_to "Sign In on Company", company_signin_path(params[:id]) %>
 	<br/>
@@ -6,42 +71,7 @@
 <% else %>
 	<%= current_user( @company.tag).name %> |
 	<%= link_to "Sign Out on Company", company_signout_path(params[:id]), method: "delete" %>
-	<% if current_user( @company.tag).role == 0 %>
-		DEUS PRESENTE !
-		<%= link_to "Add User", new_company_user_path( params[:id]) %>
-        <% end %>
-<br>
 <br>
 <% end %>
-<label>Details</label>
-
-<p>Company Name <%= @company.name %></p>
-<p>Nif <%= @company.nif %></p>
-<p>Slug <%= @company.tag+".rasohr.com" %></p>
-<p>Employees <%= @company.users.length-1 %></p>
-
-<table>
-	<tbody>
-		<tr>
-			<th>Cod</th>
-			<th>Issued Date</th>
-			<th>Payment Date</th>
-			<th>Ammount</th>
-			<th>State</th>
-			<th>Actions</th>
-		</tr>
-
-		<% @bills.each do |bill| %>
-			<tr>
-				<td><%= bill.id %></td>
-				<td><%= bill.created_at %></td>
-				<td><%= bill.payment_date %></td>
-				<td><%= bill.value %></td>
-				<td><%= bill.state %></td>
-				<td>Action</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
 
 <%= render :partial => 'name_list' if super_user_signed_in? %>

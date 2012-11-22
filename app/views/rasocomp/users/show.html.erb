@@ -1,6 +1,14 @@
-<h1> User show for user <%= @user.name %> </h1>
-<p> <%= @user.id %> </p>
-<p> <%= @user.name %> </p>
-<p> <%= @user.email %> </p>
-<p> <%= @user.role %> </p>
-<p> <%= @user.state %> </p>
+
+<div class="row">
+	<div class="twelve columns">
+		<h3> User Profile </h3>
+		<hr/>
+		<p><span class=" radius label">User ID</span><span> <%= @user.id %></span></p>
+		<p><span class=" radius label">User Name</span><span> <%= @user.name %></span></p>
+		<p><span class="radius label">User Email</span><span> <%= @user.email %></span></p>
+		<p><span class=" radius label">User Role</span><span> <%= @user.role %></span></p>
+		<div style:"text-alig">
+			<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
+		</div>
+	</div>
+</div>
