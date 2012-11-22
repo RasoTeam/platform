@@ -51,12 +51,11 @@
           <a class="active" href="rasoemp/jobs">Jobs</a>
         </li>
         <li class="divider"></li>
-        <li><a href="rasoemp/employees">Employees</a></li>
+        <li><%= link_to "Employees", company_users_path(@company) %></li>
         <li class="divider"></li>
-        <li><a href="rasoemp/company">Company</a></li>
+        <li><%= link_to "Company", company_path(@company) %></li>
         <li class="divider"></li>
       </ul>
-
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="divider"></li>
