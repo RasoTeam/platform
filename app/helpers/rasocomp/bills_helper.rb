@@ -1,2 +1,2 @@
-module BillsHelper
+module Rasocomp::BillsHelper
 end

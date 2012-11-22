@@ -1,4 +1,4 @@
-module UserSessionsHelper
+module Public::UserSessionsHelper
   @@x = "fdlsakb123kfjdaFSADyshfdyKJDHAkuyre"
 
   def make_cookie(val, tag)
