@@ -18,8 +18,8 @@
               <td><%= offer.candidates.count %></td>
               <td><% if offer.active %><%= 'Active'  %><% else %><%= 'Inactive' %><% end %></td>
               <td>
-                   <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer) %>
-                 | <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?' %></td>
+                   <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
+                   <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %></td>
             </tr>
         <% end %>
       </table>
