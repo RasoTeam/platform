@@ -4,12 +4,15 @@ gem "friendly_id", "~> 4.0.1"
 gem 'rails', '3.2.8'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '~> 3.0'
-gem 'annotate', '2.5.0'
 gem "mail", "2.4.4"
 gem 'validates_timeliness', '~> 3.0'
+<<<<<<< HEAD
 gem 'hpricot'
 gem 'colorbox-rails'
 gem 'event-calendar', :require => 'event_calendar'
+=======
+gem 'jquery-rails'
+>>>>>>> Initial testing commit, adds simple test and gems
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -19,7 +22,14 @@ group :production do
 end
 
 group :development, :test do
-   gem 'sqlite3'
+	gem 'sqlite3'
+	gem 'rspec-rails'
+	gem 'guard-rspec'
+	gem 'guard-spork'
+	gem 'spork'
+end
+group :development do
+	gem 'annotate', '~>2.5'
 end
 
 # Gems used only for assets and not required
@@ -35,7 +45,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :test do
+	gem 'capybara'
+	gem 'rb-inotify'
+	gem 'libnotify'
+	gem 'factory_girl_rails'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
