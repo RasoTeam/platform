@@ -1,19 +1,35 @@
-<%= form_for @company do |f| %>
-  <%= @company.tag %><br>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :tag %>
-  <%= f.text_field :tag %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :logo_url %>
-  <%= f.text_field :logo_url %>
-  <%= f.label :nif %>
-  <%= f.text_field :nif %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.submit %>
-  <% @company.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="twelve columns">
+      <h1>Edit Company</h1>
+      <hr/>
+        <%= form_for @company do |f| %>
+          <span class=" radius label">Company Name</span>
+          <%= f.text_field :name %>
+          
+          <span class=" radius label">Slug</span>
+          <%= f.text_field :tag %>
+
+          <span class=" radius label">Email</span>
+          <%= f.email_field :email %>
+
+          <span class=" radius label">Logo Url</span>
+          <%= f.text_field :logo_url %>
+
+          <span class=" radius label">NIF</span>
+          <%= f.text_field :nif %>
+
+          <span class=" radius label">Adress</span>
+          <%= f.text_field :address %>
+
+          <p style="text-align: center"><%= f.submit "Edit", :class=>"button" %></p>
+          
+          <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
+            <hr/>
+            <% end %>
+
+          <% @company.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        <% end %>
+  </div>
+</div>

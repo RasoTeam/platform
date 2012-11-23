@@ -3,7 +3,7 @@
   <div class="twelve columns">
       <h1>All the Job Offers</h1>
       <hr/>
-      <table>
+      <table class="twelve">
         <tr>
           <th>Job Offer</th>
           <th>Date</th>
@@ -24,6 +24,6 @@
         <% end %>
       </table>
 
-      <%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %>
+      <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
     </div>
   </div>

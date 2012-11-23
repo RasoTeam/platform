@@ -1,26 +1,31 @@
-<h1><%= @company.name %> - <%= @offer.job_name %></h1>
+<div class="row">
+  <div class="twelve columns">
+      <h1><%= @company.name %> - <%= @offer.job_name %></h1>
+      <hr/>
+        <table class="twelve">
+          <tr>
+            <td><b>Job Name</b></td>
+            <td><%= @offer.job_name %></td>
+          </tr>
+          <tr>
+            <td><b>Description</b></td>
+            <td><%= @offer.description %></td>
+          </tr>
+          <tr>
+            <td><b>Education/Professional History</b></td>
+            <td><%= @offer.required_education %></td>
+          </tr>
+          <tr>
+            <td><b>Required Skills</b></td>
+            <td><%= @offer.skills %></td>
+          </tr>
+          <tr>
+            <td><b>Terms</b></td>
+            <td><%= @offer.conditions %></td>
+          </tr>
+        </table>
 
-<table>
-  <tr>
-    <td><b>Job Name</b></td>
-    <td><%= @offer.job_name %></td>
-  </tr>
-  <tr>
-    <td><b>Description</b></td>
-    <td><%= @offer.description %></td>
-  </tr>
-  <tr>
-    <td><b>Education/Professional History</b></td>
-    <td><%= @offer.required_education %></td>
-  </tr>
-  <tr>
-    <td><b>Required Skills</b></td>
-    <td><%= @offer.skills %></td>
-  </tr>
-  <tr>
-    <td><b>Terms</b></td>
-    <td><%= @offer.conditions %></td>
-  </tr>
-</table>
 
-<%= link_to 'Back to Job Offers' , company_job_offers_path %>
+        <p style="text-align: center"><%= link_to 'Back to Job Offers' , company_job_offers_path, :class=>"button" %></p>
+      </div>
+    </div>

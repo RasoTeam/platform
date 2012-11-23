@@ -1,26 +1,29 @@
-<h1>Edit Job Offer - <%= @offer.job_name  %></h1>
+<div class="row">
+  <div class="twelve columns">
+      <h1>Edit Job Offer - <%= @offer.job_name  %></h1>
+      <hr/>
 
-<%= form_for [@company ,@offer] do |f| %>
-    <% @offer.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
+        <%= form_for [@company ,@offer] do |f| %>
+            <% @offer.errors.full_messages.each do |msg| %>
+                <p><%= msg %></p>
+            <% end %>
 
-    <%= f.label :job_name , 'Job Name' %>
-    <%= f.text_field :job_name %>
+            <span class=" radius label">Job Name</span>
+            <%= f.text_field :job_name %>
 
-    <%= f.label :description , 'Description' %>
-    <%= f.text_area :description %>
+            <span class=" radius label">Description</span>
+            <%= f.text_area :description %>
 
-    <%= f.label :required_education , 'Education/Professional History'%>
-    <%= f.text_area :required_education %>
+            <span class=" radius label">Education/Professional History</span>
+            <%= f.text_area :required_education %>
 
-    <%= f.label :skills , 'Skills' %>
-    <%= f.text_area :skills %>
+            <span class=" radius label">Skills</span>          
+            <%= f.text_area :skills %>
 
-    <%= f.label :conditions , 'Terms' %>
-    <%= f.text_area :conditions %>
-    </br>
+            <span class=" radius label">Terms</span>  
+            <%= f.text_area :conditions %>
+            </br>
 
-    <%= f.submit 'Update the Job Offer!'  %>
+             <p style="text-align: center"><%= f.submit 'Update the Job Offer!', :class=>"button" %></p>
 
 <% end %>

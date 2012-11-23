@@ -34,11 +34,7 @@
     <ul>
       <!-- Title Area -->
       <li class="name">
-        <h1>
-          <a href="/">
-            Company
-          </a>
-        </h1>
+          <%= link_to  @company.name, company_path(@company, @user) %>
       </li>
     </ul>
 
