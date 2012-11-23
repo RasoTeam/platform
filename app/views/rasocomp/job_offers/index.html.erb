@@ -10,12 +10,11 @@
   </tr>
   <% @offers.each do |offer| %>
       <tr>
-        <td><%= link_to offer.job_name , '#' %></td>
+        <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
         <td><%= offer.created_at %></td>
         <td><%= offer.candidates.count %></td>
         <td><% if offer.active %><%= 'Active'  %><% else %><%= 'Inactive' %><% end %></td>
-        <td><%= link_to 'Show Offer' , company_job_offer_path(@company,offer) %>
-           | <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer) %>
+        <td><%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer) %>
            | <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?' %></td>
       </tr>
   <% end %>
