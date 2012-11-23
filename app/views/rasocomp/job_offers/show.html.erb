@@ -24,8 +24,31 @@
             <td><%= @offer.conditions %></td>
           </tr>
         </table>
+</br>
 
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>E-mail</th>
+    <th>Nationality</th>
+    <th>Telephone</th>
+    <th>Resume</th>
+    <th>Status</th>
+  </tr>
+  <% @candidates.each do |candidate| %>
+    <tr>
+      <td><%= candidate.name %></td>
+      <td><%= candidate.email %></td>
+      <td><%= candidate.nationality %></td>
+      <td><%= candidate.phone %></td>
+      <td><%= link_to 'Load' , '#'%></td>
+      <td>Awaiting Interview</td>
+    </tr>
+  <% end %>
+</table>
 
-        <p style="text-align: center"><%= link_to 'Back to Job Offers' , company_job_offers_path, :class=>"button" %></p>
-      </div>
-    </div>
+    <%= link_to 'Post Offer on Facebook' , '#' %>  ||
+    <p style="text-align: center"><%= link_to 'Back to Job Offers' , company_job_offers_path, :class=>"button" %></p>
+  </div>
+</div>
+

@@ -1,39 +1,9 @@
 class Rasocomp::JobOffersController < Rasocomp::ApplicationController
 
-  def appliances
-    @offers = JobOffer.all
-    @company = Company.find(params[:company_id])
-  end
-
-  def showapply
-    @offer = JobOffer.find(params[:id])
-    @company = @offer.company
-  end
-
-  def formapply
-    @offer = JobOffer.find(params[:id])
-    @company = @offer.company
-    @candidate = Candidate.new
-    @candidate.job_offer_id = @offer.id
-  end
-
-  def createapply
-    @candidate = Candidate.create(params[:candidate])
-    @candidate.job_offer_id = params[:id]
-
-    if @candidate.save
-      flash[:succes] = "You applied successfully for the job."
-      redirect_to apply_index_path(params[:company_id])
-    else
-      flash[:error] = "Something went wrong, try again."
-      redirect_to apply_index_path(params[:company_id])
-    end
-  end
-
   #Listar todas as ofertas de trabalho de uma empresa
   def index
-    @offers = JobOffer.all
-    @company = Company.find(params[:company_id])#bug de mostrar todas
+    @company = Company.find(params[:company_id])
+    @offers = @company.job_offers
   end
 
   #Preparar para criar uma nova oferta de trabalho
@@ -50,7 +20,8 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
     @offer.active = true
 
     if @offer.save
-      redirect_to company_job_offer_path(@company,@offer)
+      flash[:success] = 'New Job Offer Created'
+      redirect_to company_job_offers_path
     else
       flash[:error] = 'Could not save!'
       render new_company_job_offer_path(@company)
@@ -61,6 +32,7 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
   def show
     @offer = JobOffer.find(params[:id])
     @company = @offer.company
+    @candidates = @offer.candidates
   end
 
   #Editar uma oferta de trabalho
@@ -78,18 +50,16 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
       redirect_to company_job_offer_path(@company , @offer)
     else
       flash[:error] = 'Failed updating'
-      render company_job_offers_path #bug de mudar de company
+      render company_job_offers_path(@company)
     end
 
   end
 
   def destroy
+    JobOffer.find(params[:id]).destroy
+    flash[:success] = 'Job Offer Deleted'
 
-  end
-
-  def manage_offer
-    @offer = JobOffer.find(params[:id])
-
+    redirect_to company_job_offers_path
   end
 
 end

@@ -1,4 +1,4 @@
-<h1>Appliance fo <%= @company.name %> - <%= @offer.job_name %> </h1>
+<h1>Appliance fo <%= @company.name %> - <%= @offer.job_name %> - <%= @candidate.job_offer_id %> - </h1>
 
 <table>
   <tr>
@@ -23,7 +23,7 @@
   </tr>
 </table>
 
-<%= form_for @candidate , :url => { :action => "create" } do |f| %>
+<%= form_for @candidate , :url => create_apply_path do |f| %>
     <% @candidate.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>
@@ -44,6 +44,6 @@
     <%= f.text_field :email %>
     </br>
 
-    <%= f.submit 'Create the Job Offer!'  %>
+    <%= f.submit 'Apply for the Job!'  %>
 
 <% end %>
