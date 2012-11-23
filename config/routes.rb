@@ -27,6 +27,7 @@ Platform::Application.routes.draw do
 
 
 #root
+  match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
   root :to => 'public/frontoffice#index'
 
 #resources
