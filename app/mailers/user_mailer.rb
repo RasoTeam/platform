@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def verification_email(user)
     @user = user
-    mail( :to => user.email, :subject => "RASO SPAM")
+    mail( :to => user.email, :subject => "Account Confirmation")
   end
 end
