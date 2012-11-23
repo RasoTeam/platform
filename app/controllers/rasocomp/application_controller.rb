@@ -7,6 +7,9 @@ private
       id = params[:company_id]
       id ||= params[:id]
       comp = Company.find(id)
-      redirect_to company_signin_path(comp), flash[:alert] = t(:no_permission_to_access) unless user_signed_in?(comp.tag)
+      unless user_signed_in?(comp.tag)
+      	flash[:alert] = t(:no_permission_to_access) 
+     	redirect_to company_signin_path(comp)
+     end
     end
 end
