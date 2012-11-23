@@ -1,8 +1,19 @@
 <div class="row">
+	<div class="twelve columns">
+		<ul class="breadcrumbs">
+			<li><a href="#">Home</a></li>
+	  		<li><a href="#">Companies</a></li>
+	  		<li class="current"><a href="#"><%= @company.name %></a></li>
+		</ul>
+	</div>
+</div>
 
-	<!-- Left Column -->
-	<div>
+<div class="row">
+	
+	<!-- Right Column -->
+	<div class="nine columns push-three details_company">
 		<div class="row">
+					<div class="row">
 			<div class="twelve columns">
 				<!-- Header Content -->
 				<div class="row">
@@ -59,19 +70,43 @@
 		  		</div>
 			</div>
 		</div>
+		</div>
 	</div>
-
+	<!-- End Right Column -->
+	<!-- Left Column -->
+	<div class="three columns pull-nine">
+		<div class="row collapse">
+  			<div class="eight mobile-three columns">
+    			<input type="text" />
+  			</div>
+  			<div class="four mobile-one columns">
+    			<a class="button expand postfix">Search</a>
+  			</div>
+		</div>
+      	<table class="twelve">
+		  <thead>
+		    <tr>
+		      	<th>
+		      		Companies 
+			      	<span class="label radius">A-Z</span>
+			      	<span class="secondary label radius">Z-A</span>
+				</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+			<%= render :partial => 'name_list' if super_user_signed_in? %>
+		  </tbody>
+		</table>
+		<ul class="pagination">
+		  <li class="arrow unavailable"><a href="">&laquo;</a></li>
+		  <li class="current"><a href="">1</a></li>
+		  <li><a href="">2</a></li>
+		  <li class="unavailable"><a href="">&hellip;</a></li>
+		  <li><a href="">12</a></li>
+		  <li><a href="">13</a></li>
+		  <li class="arrow"><a href="">&raquo;</a></li>
+		</ul>
+    </div>
+    <!-- End Left Column -->
 </div>
 
-
-<% if !user_signed_in? @company.tag %>
-	<%= link_to "Sign In on Company", company_signin_path(params[:id]) %>
-	<br/>
-	<br/>
-<% else %>
-	<%= current_user( @company.tag).name %> |
-	<%= link_to "Sign Out on Company", company_signout_path(params[:id]), method: "delete" %>
-<br>
-<% end %>
-
-<%= render :partial => 'name_list' if super_user_signed_in? %>

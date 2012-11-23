@@ -10,9 +10,6 @@
 
 <div class="row">
 	<div class="twelve columns">
-
-	<h2>Companies</h2>
-	
 	<div class="row">
 		<div class="four columns">
 			<dl class="tabs pill">
@@ -29,8 +26,8 @@
 			<dl class="sub-nav">
 		  		<dt>Filter:</dt>
 		  		<dd class="active"><a href="#">All</a></dd>
-		  		<dd><a href="#">Ok</a></dd>
-		  		<dd><a href="#">Delayed</a></dd>
+		  		<dd><a href="#">Active</a></dd>
+		  		<dd><a href="#">Block</a></dd>
 			</dl>
 		</div>
 		<div class="four columns">
@@ -63,8 +60,18 @@
 					<td><%= link_to company.name, backoffice_company_path(company) %></td>
 					<td><%= link_to company.tag+".rasohr.com", company.tag+".rasohr.com" %></td>
 					<td><%= company.nif %></td>
-					<td><% if company.state == 0 %> <span style="color:green;">Active</span> <% else %> <span style="color:red;">Blocked</span> <%end%> </td>
-					<td>Edit|Block|Remove</td>
+					<td>
+						<% if company.state == 0 %>
+							<span style="color:green;">Active</span>
+						<% else %>
+						<span style="color:red;">Blocked</span>
+						<%end%> 
+					</td>
+					<td> 
+						<%= link_to 'Edit', :class=>"radius label" %> 
+						<%= link_to 'Block', :class=>"alert radius label" %> 
+						<%= link_to 'Remove', :class=>"radius label" %>
+					</td>
 				</tr>
 			<% end %>
 		</tbody>
