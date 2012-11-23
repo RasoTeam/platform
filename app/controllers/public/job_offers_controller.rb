@@ -1,8 +1,8 @@
 class Public::JobOffersController < Public::ApplicationController
 
   def index
-    @offers = JobOffer.all
     @company = Company.find(params[:company_id])
+    @offers = @company.job_offers
   end
 
   def show

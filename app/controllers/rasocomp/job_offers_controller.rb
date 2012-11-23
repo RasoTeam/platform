@@ -2,8 +2,8 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
 
   #Listar todas as ofertas de trabalho de uma empresa
   def index
-    @offers = JobOffer.all
-    @company = Company.find(params[:company_id])#bug de mostrar todas
+    @company = Company.find(params[:company_id])
+    @offers = @company.job_offers
   end
 
   #Preparar para criar uma nova oferta de trabalho
@@ -50,7 +50,7 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
       redirect_to company_job_offer_path(@company , @offer)
     else
       flash[:error] = 'Failed updating'
-      render company_job_offers_path #bug de mudar de company
+      render company_job_offers_path(@company)
     end
 
   end
