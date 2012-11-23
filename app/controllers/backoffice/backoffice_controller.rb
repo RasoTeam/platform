@@ -1,4 +1,4 @@
-class Backoffice::BackofficeController < Backoffice::AdminController#aqui talvez seja ApplicationController
+class Backoffice::BackofficeController < Backoffice::ApplicationController
 	def index
 	end
 end
