@@ -1,10 +1,21 @@
-<h1> Super User Login </h1>
-<%= form_for(:super_user_session, url: public_super_user_sessions_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email, :required => true %>
+<div class="row">
+	<div class="twelve columns">
+		<div id="signup">
+			<div class="panel">
+		      <h1>Raso Admin</h1>
+		      <p>This is you company login page</p>
+				<hr />		
+					<%= form_for(:super_user_session, url: public_super_user_sessions_path) do |f| %>
+					  <%= f.label :email %>
+					  <%= f.text_field :email, :required => true %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, :required => true %>
+					  <%= f.label :password %>
+					  <%= f.password_field :password, :required => true %>
 
-  <%= f.submit "Sign in" %>
-<% end %>
+					  <p style="text-align: center"><%= f.submit 'Sign In', :class => "button" %></p>
+
+					<% end %>
+		    </div>
+		</div>
+	</div>
+</div>

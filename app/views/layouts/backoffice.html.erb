@@ -32,12 +32,9 @@
       <!-- Title Area -->
       <li class="name">
         <h1>
-          <a href="/">
-            Raso Admin
-          </a>
+          <%= link_to "Raso Admin" , backoffice_stats_path %>
         </h1>
       </li>
-      <li class="toggle-nav"><a href="#"></a></li>
     </ul>
 
     <section>
@@ -45,17 +42,17 @@
       <ul class="left">
         <li class="divider"></li>
         <li>
-          <a class="active" href="/companies">Companies</a>
+          <%= link_to "Companies", backoffice_companies_path %>
         </li>
         <li class="divider"></li>
-        <li><a href="/invoices">Invoices</a></li>
+        <li><%= link_to "Invoices" , backoffice_bills_path %></li>
         <li class="divider"></li>
       </ul>
 
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="divider"></li>
-        <li><a href="#">Logout</a></li>
+                <li><%= link_to "Logout", super_user_signout_path(@company) %></li>
       </ul>
     </section>
   </nav>
