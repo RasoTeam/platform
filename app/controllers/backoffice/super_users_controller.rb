@@ -79,6 +79,9 @@ class Backoffice::SuperUsersController < Backoffice::ApplicationController
 
 	private
 		def super_user_self
-			redirect_to backoffice_super_user_path(current_super_user), notice: t(:no_permission_to_access) unless current_super_user.id == Integer(params[:id])
+			unless current_super_user.id == Integer(params[:id])
+				flash[:alert] = t(:no_permission_to_access) 
+				redirect_to backoffice_super_user_path(current_super_user)
+			end
 		end
 end
