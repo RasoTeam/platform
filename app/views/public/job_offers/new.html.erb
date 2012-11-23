@@ -1,49 +1,57 @@
-<h1>Appliance fo <%= @company.name %> - <%= @offer.job_name %> - <%= @candidate.job_offer_id %> - </h1>
+<div class="row">
+<div class="twelve">
 
-<table>
-  <tr>
-    <td><b>Job Name</b></td>
-    <td><%= @offer.job_name %></td>
-  </tr>
-  <tr>
-    <td><b>Description</b></td>
-    <td><%= @offer.description %></td>
-  </tr>
-  <tr>
-    <td><b>Education/Professional History</b></td>
-    <td><%= @offer.required_education %></td>
-  </tr>
-  <tr>
-    <td><b>Required Skills</b></td>
-    <td><%= @offer.skills %></td>
-  </tr>
-  <tr>
-    <td><b>Terms</b></td>
-    <td><%= @offer.conditions %></td>
-  </tr>
-</table>
 
-<%= form_for @candidate , :url => create_apply_path do |f| %>
-    <% @candidate.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
+    <h1>Appliance to <%= @company.name %></h1>
+    <h3><%= @offer.job_name %></h3>
+    <hr/>
+    <table class="twelve">
+      <tr>
+        <td><b>Job Name</b></td>
+        <td><%= @offer.job_name %></td>
+      </tr>
+      <tr>
+        <td><b>Description</b></td>
+        <td><%= @offer.description %></td>
+      </tr>
+      <tr>
+        <td><b>Education/Professional History</b></td>
+        <td><%= @offer.required_education %></td>
+      </tr>
+      <tr>
+        <td><b>Required Skills</b></td>
+        <td><%= @offer.skills %></td>
+      </tr>
+      <tr>
+        <td><b>Terms</b></td>
+        <td><%= @offer.conditions %></td>
+      </tr>
+    </table>
+
+    <%= form_for @candidate , :url => create_apply_path do |f| %>
+        <% @candidate.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+        <% end %>
+
+        <span class=" radius label">Name</span>
+        <%= f.text_field :name %>
+
+        <span class=" radius label">Lacation</span>
+        <%= f.text_field :location %>
+
+        <span class=" radius label">Nacionality</span>
+        <%= f.text_field :nationality %>
+
+        <span class=" radius label">Phone</span>
+        <%= f.text_field :phone %>
+
+        <span class=" radius label">Email</span>
+        <%= f.text_field :email %>
+        </br>
+
+        <p style="text-align: center"><%= f.submit 'Apply for the Job!' , :class=>"button" %></p>
+
     <% end %>
 
-    <%= f.label :name , 'Name' %>
-    <%= f.text_field :name %>
-
-    <%= f.label :location , 'Location' %>
-    <%= f.text_field :location %>
-
-    <%= f.label :nationality , 'Nationality'%>
-    <%= f.text_field :nationality %>
-
-    <%= f.label :phone , 'Phone' %>
-    <%= f.text_field :phone %>
-
-    <%= f.label :email , 'Email' %>
-    <%= f.text_field :email %>
-    </br>
-
-    <%= f.submit 'Apply for the Job!'  %>
-
-<% end %>
+  </div>
+</div>

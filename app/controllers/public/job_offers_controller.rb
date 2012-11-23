@@ -22,10 +22,10 @@ class Public::JobOffersController < Public::ApplicationController
     @candidate.job_offer_id = params[:id]
 
     if @candidate.save
-      flash[:succes] = "You applied successfully for the job."
+      flash[:success] = "You applied successfully for the job."
       redirect_to public_company_job_offers_path(params[:company_id])
     else
-      flash[:error] = "Something went wrong, try again."
+      flash[:alert] = "Something went wrong, try again."
       redirect_to public_company_job_offers_path(params[:company_id])
     end
   end
