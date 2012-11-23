@@ -16,8 +16,13 @@
 	<div class="row">
 		<div class="four columns">
 			<dl class="tabs pill">
-  				<dd class="active"><a href="#pillTab1">A-Z</a></dd>
-  				<dd><a href="#pillTab2">Z-A</a></dd>
+				<% if params[:order] == "DESC" %>
+					<dd><%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"})) %> </dd>
+					<dd class="active"><%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%> </dd>
+				<% else %>
+					<dd class="active"><%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"})) %> </dd>
+					<dd><%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%> </dd>
+				<% end %>
 			</dl>
 		</div>
 		<div class="four columns">
@@ -41,17 +46,6 @@
 		</div>
 		</div>
 	</div>
-
-	<dl class="tabs pill">
-		<% if params[:order] == "ASC" %>
-			<dd class="active"><%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"})) %> </dd>
-			<dd><%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%> </dd>
-		<% else %>
-			<dd><%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"})) %> </dd>
-			<dd class="active"><%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%> </dd>
-		<% end %>
-	</dl>
-
 	<br/>
 	<table class="twelve">
 		<thead>
