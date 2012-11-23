@@ -4,6 +4,6 @@ class Backoffice::ApplicationController < ApplicationController
 
   private
 	def super_user_authentication
-		redirect_to super_user_signin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+		redirect_to super_user_signin_path, flash[:alert] = t(:no_permission_to_access) unless super_user_signed_in?
 	end
 end
