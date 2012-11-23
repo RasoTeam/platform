@@ -1,7 +1,7 @@
 class Rasocomp::UsersController < Rasocomp::ApplicationController
-  #before_filter :super_user_or_manager_or_root, :only => [:new, :create, :index]
-  #before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
-  #before_filter :super_user_or_manager, :only => [:index]
+  before_filter :manager_or_root, :only => [:new, :create]
+  before_filter :manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
+  before_filter :manager, :only => [:index]
 
   def show
     @company = Company.find(params[:company_id])
@@ -57,20 +57,29 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   end
 
   private
-    def super_user_or_manager_or_root
+    def manager_or_root
       comp = Company.find(params[:company_id])
-      redirect_to company_signin_path(comp), notice: t(:no_permission_to_access) unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag) || super_user_signed_in?
+      unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag)
+        flash[:alert] = t(:no_permission_to_access) 
+        redirect_to company_signin_path(comp)
+      end
     end
 
   private
-    def super_user_or_manager_or_user_self
+    def manager_or_user_self
       comp = Company.find(params[:company_id])
-      redirect_to company_signin_path(comp), notice: t(:no_permission_to_access) unless manager_signed_in?(comp.tag) || super_user_signed_in? || (user_signed_in?(comp.tag) && current_user(comp.tag).id == Integer(params[:id]))
+      unless manager_signed_in?(comp.tag) || (user_signed_in?(comp.tag) && current_user(comp.tag).id == Integer(params[:id]))
+        flash[:alert] = t(:no_permission_to_access) 
+        redirect_to company_signin_path(comp)
+      end
     end
 
   private
-    def super_user_or_manager
+    def manager
       comp = Company.find(params[:company_id])
-      redirect_to company_signin_path(comp), notice: t(:no_permission_to_access) unless manager_signed_in?(comp.tag) || super_user_signed_in?
+      unless manager_signed_in?(comp.tag)
+        flash[:alert] = t(:no_permission_to_access) 
+        redirect_to company_signin_path(comp)
+      end
     end
 end

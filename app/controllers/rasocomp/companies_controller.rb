@@ -1,5 +1,5 @@
 class Rasocomp::CompaniesController < Rasocomp::ApplicationController
-  before_filter :manager_or_root, :only => [:show, :edit, :update]
+  before_filter :manager_or_root, :only => [:edit, :update]
 
   def show
     @companies = Company.search(nil, params[:order]).paginate(:page => params[:page], :per_page => 10)
@@ -22,13 +22,11 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
   end
 
   private
-    def super_user_or_manager_or_root
-      @comp = Company.find(params[:id])
-      redirect_to company_signin_path(@comp), notice: t(:no_permission_to_access) unless manager_signed_in?(@comp.tag) || root_signed_in?(@comp.tag) || super_user_signed_in?
-    end
-
-  private
-    def super_user_only
-      redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
+    def manager_or_root
+      comp = Company.find(params[:id])
+      unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag)
+        flash[:alert] = t(:no_permission_to_access) 
+        redirect_to company_signin_path(comp)
+      end
     end
 end
