@@ -1,6 +1,5 @@
 class Backoffice::SuperUsersController < Backoffice::ApplicationController
-	#before_filter :super_user_only, :only => [:index, :show, :new, :create, :home]
-	#before_filter :super_user_self, :only => [:edit, :update, :destroy]
+	before_filter :super_user_self, :only => [:edit, :update, :destroy]
 	
 	def index
 		@super_users = SuperUser.all
@@ -79,12 +78,7 @@ class Backoffice::SuperUsersController < Backoffice::ApplicationController
 	end
 
 	private
-		def super_user_only
-			redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
-		end
-
-	private
 		def super_user_self
-			redirect_to root_path, notice: t(:no_permission_to_access) unless super_user_signed_in? && current_super_user.id == Integer(params[:id])
+			redirect_to backoffice_super_user_path(current_super_user), notice: t(:no_permission_to_access) unless current_super_user.id == Integer(params[:id])
 		end
 end

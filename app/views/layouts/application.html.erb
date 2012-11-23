@@ -67,6 +67,9 @@
 		</div>
 	</div>
 
+		<% flash.each do |key, value| %>
+		<%= content_tag(:div, value, class:"row alert-box #{key}") %>
+		<% end %>
 	  <%= yield %>
 
 	  <!-- Footer -->
