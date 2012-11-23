@@ -34,7 +34,7 @@
     <ul>
       <!-- Title Area -->
       <li class="name">
-          <%= link_to  @company.name, company_path(@company, @user) %>
+          <%= link_to  @company.name, user_dashboard_path(@company.id, current_user(@company.tag)) %>
       </li>
     </ul>
 
