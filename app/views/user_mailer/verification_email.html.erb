@@ -8,7 +8,7 @@
     <p>You have been invited to rasohr.com,      your username is: <%= @user.email %>.<br/>    </p>
     <p>      
       To confirm your email click 
-      <%= link_to "here", email_verify_url(@user.company_id, @user.remember_token) %>
+      <%= link_to "here", email_verify_url(@user.company_id, token: @user.remember_token) %>
       here.</a>
     </p>
     <p>Thanks for joining and have a great day!</p>
