@@ -26,7 +26,7 @@ class Public::JobOffersController < Public::ApplicationController
       redirect_to public_company_job_offers_path(params[:company_id])
     else
       flash[:alert] = "Something went wrong, try again."
-      redirect_to public_company_job_offers_path(params[:company_id])
+      redirect_to new_apply_path(params[:company_id])
     end
   end
 
