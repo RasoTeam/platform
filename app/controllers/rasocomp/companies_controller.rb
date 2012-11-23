@@ -1,5 +1,5 @@
 class Rasocomp::CompaniesController < Rasocomp::ApplicationController
-  #before_filter :manager_or_root, :only => [:show, :edit, :update]
+  before_filter :manager_or_root, :only => [:show, :edit, :update]
 
   def show
     @companies = Company.search(nil, params[:order]).paginate(:page => params[:page], :per_page => 10)
