@@ -11,7 +11,7 @@ gem 'validates_timeliness', '~> 3.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :production
+group :production do
    gem 'pg'
 end
 
