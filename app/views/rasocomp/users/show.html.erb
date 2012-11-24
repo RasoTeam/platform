@@ -38,7 +38,7 @@
 		<p><span class=" radius label">User ID</span><span> <%= @user.id %></span></p>
 		<p><span class=" radius label">User Name</span><span> <%= @user.name %></span></p>
 		<p><span class="radius label">User Email</span><span> <%= @user.email %></span></p>
-		<p><span class=" radius label">User Role</span><span> <%= @user.role %></span></p>
+		<p><span class=" radius label">User Role</span><span> <%= ROLE.invert[@user.role] %></span></p>
 		<div style:"text-alig">
 			<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
 		</div>
