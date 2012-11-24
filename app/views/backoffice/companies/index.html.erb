@@ -68,9 +68,9 @@
 						<%end%> 
 					</td>
 					<td> 
-						<%= link_to 'Edit', :class=>"radius label" %> 
-						<%= link_to 'Block', :class=>"alert radius label" %> 
-						<%= link_to 'Remove', :class=>"radius label" %>
+						<%= link_to "Edit", edit_backoffice_company_path(company), :class=>"secondary radius label" %>
+						<%= link_to 'Block', :class=>"alert label radius" %>
+						<%= link_to 'Remove', :class=>"secondary radius label" %>
 					</td>
 				</tr>
 			<% end %>

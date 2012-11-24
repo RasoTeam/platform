@@ -25,7 +25,7 @@
 		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
 		            	<div class="panel details">
 		              		<h4 class="hide-for-small"><%= @company.name %>
-		              			<span class="secondary label radius"><a href="/editcomp">Edit</a></span>
+		              			<%= link_to "Edit", edit_backoffice_company_path(@company), :class=>"radius label" %>
 		              			<hr/>
 		              		</h4>
 		            		<h5>Details</h5>
@@ -108,7 +108,7 @@
 			<%= will_paginate @companies %>
 
 		<!--	<%= render :partial => 'name_list' if super_user_signed_in? %> -->
-		
+
 		  </tbody>
 		</table>
 		<ul class="pagination">
