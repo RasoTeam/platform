@@ -17,8 +17,8 @@
 			<div class="twelve columns">
 				<!-- Header Content -->
 				<div class="row">
-					<div class="four columns">
-						<%= image_tag ('logo_sogrape.jpg') %><br>
+					<div class="four columns" style="padding-bottom:20px">
+						<a href="#" class="th"><img src="http://placehold.it/250x250" alt="Foto da empresa"></a>
 					</div>
 		          	
 		          	<div class="eight columns">
@@ -83,18 +83,32 @@
     			<a class="button expand postfix">Search</a>
   			</div>
 		</div>
-      	<table class="twelve">
-		  <thead>
-		    <tr>
-		      	<th>
-		      		Companies 
-			      	<span class="label radius">A-Z</span>
-			      	<span class="secondary label radius">Z-A</span>
-				</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-			<%= render :partial => 'name_list' if super_user_signed_in? %>
+			<table class="twelve">
+				<thead>
+				    <tr>
+				      	<th>
+				      		Companies 
+					      	<span class="secondary radius label">
+					      		<%= link_to "A-Z", backoffice_company_path(@company, params.merge({order: "ASC"})) %>
+					      	</span>
+					      	<span class="secondary radius label">
+					      		<%= link_to "Z-A", backoffice_company_path(@company, params.merge({order: "DESC"})) %>
+					      	</span>
+						</th>
+				    </tr>
+				  </thead>
+				<tbody>
+					<% @companies.each do |company| %>
+						<tr>
+							<td><%= link_to company.name, backoffice_company_path(company) %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= will_paginate @companies %>
+
+		<!--	<%= render :partial => 'name_list' if super_user_signed_in? %> -->
+		
 		  </tbody>
 		</table>
 		<ul class="pagination">
@@ -109,4 +123,3 @@
     </div>
     <!-- End Left Column -->
 </div>
-
