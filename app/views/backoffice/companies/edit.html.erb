@@ -2,7 +2,7 @@
   <div class="twelve columns">
       <h1>Edit Company</h1>
       <hr/>
-        <%= form_for @company do |f| %>
+        <%= form_for @company, :url => backoffice_company_path(@company) do |f| %>
           <span class=" radius label">Company Name</span>
           <%= f.text_field :name %>
           
@@ -20,8 +20,7 @@
 
           <span class=" radius label">Adress</span>
           <%= f.text_field :address %>
-
-          <h3> Erro: Manda para o /company/id em vez de backoffice/company/id</h3>
+          
           <p style="text-align: center"><%= f.submit "Edit", :class=>"button" %></p>
           
           <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
