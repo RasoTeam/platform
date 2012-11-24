@@ -1,4 +1,4 @@
-class TimeOffsController < ApplicationController
+class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
 
   def index
     @company = Company.find( params[:company_id])
