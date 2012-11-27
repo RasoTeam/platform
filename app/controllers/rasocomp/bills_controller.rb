@@ -19,3 +19,4 @@ class Rasocomp::BillsController < Rasocomp::ApplicationController
       end
     end
 end
+
