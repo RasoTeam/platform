@@ -1,31 +1,34 @@
-
 <div class="row">
   <div class="twelve columns">
-      <h1>New Job Offer</h1>
-      <hr/>
-        <%= form_for [@company, @offer] do |f| %>
-            <% @offer.errors.full_messages.each do |msg| %>
-                <p><%= msg %></p>
+    <div id="signup">
+      <div class="panel">
+          <h1>New Job Offer</h1>
+          <hr/>
+            <%= form_for [@company, @offer] do |f| %>
+                <% @offer.errors.full_messages.each do |msg| %>
+                    <p><%= msg %></p>
+                <% end %>
+
+                <span class=" radius label">Job Name</span>
+                <%= f.text_field :job_name, :class=>"input_space" %>
+
+                <span class=" radius label">Description</span>
+                <%= f.text_area :description, :class=>"input_space" %>
+
+                <span class=" radius label">Education/Professional History</span>
+                <%= f.text_area :required_education, :class=>"input_space" %>
+
+                <span class=" radius label">Skills</span>          
+                <%= f.text_area :skills, :class=>"input_space" %>
+
+                <span class=" radius label">Terms</span>  
+                <%= f.text_area :conditions, :class=>"input_space" %>
+                </br>
+
+                <p style="text-align: center"><%= f.submit 'Create the Job Offer!', :class=>"button" %></p>
+
             <% end %>
-
-            <span class=" radius label">Job Name</span>
-            <%= f.text_field :job_name %>
-
-            <span class=" radius label">Description</span>
-            <%= f.text_area :description %>
-
-            <span class=" radius label">Education/Professional History</span>
-            <%= f.text_area :required_education %>
-
-            <span class=" radius label">Skills</span>          
-            <%= f.text_area :skills %>
-
-            <span class=" radius label">Terms</span>  
-            <%= f.text_area :conditions %>
-            </br>
-
-            <p style="text-align: center"><%= f.submit 'Create the Job Offer!', :class=>"button" %></p>
-
-        <% end %>
+            </div>
+        </div>
     </div>
 </div>
