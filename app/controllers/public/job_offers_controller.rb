@@ -1,4 +1,5 @@
 class Public::JobOffersController < Public::ApplicationController
+  layout "nolayout"
 
   def index
     @company = Company.find(params[:company_id])
