@@ -1,6 +1,10 @@
 class Public::UserSessionsController < Public::ApplicationController
   layout "nolayout"
   def new
+    company = Company.find(params[:company_id])
+    if user_signed_in?(company.tag)
+      redirect_to user_dashboard_path(company,current_user(company.tag))
+    end
   end
 
   def create
