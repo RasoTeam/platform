@@ -1,8 +1,11 @@
 <div class="row">
   <div class="twelve columns">
-      <h1>Edit Job Offer - <%= @offer.job_name  %></h1>
-      <hr/>
-
+    <div id="signup">
+      <div class="panel">
+        <h1>Edit Job Offer</h1>  
+        <h4><%= @offer.job_name  %></h4>
+        <hr />    
+        
         <%= form_for [@company ,@offer] do |f| %>
             <% @offer.errors.full_messages.each do |msg| %>
                 <p><%= msg %></p>
@@ -26,4 +29,8 @@
 
              <p style="text-align: center"><%= f.submit 'Update the Job Offer!', :class=>"button" %></p>
 
-<% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
