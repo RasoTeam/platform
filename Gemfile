@@ -14,9 +14,10 @@ gem 'event-calendar', :require => 'event_calendar'
 
 group :production do
  gem 'pg'
+ gem 'thin'
 end
 
-group :development do
+group :development, :test do
    gem 'sqlite3'
 end
 
