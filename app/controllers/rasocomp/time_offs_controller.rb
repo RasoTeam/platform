@@ -9,7 +9,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
   def manage
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
-    @timeoffs = TimeOff.all
+    @timeoffs = @company.time_offs
   end
 
   def approve
@@ -66,7 +66,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     @timeoff.state = 0
     @timeoff.credits = @user.time_off_days
     @timeoff.color = '#B8B8B8'
-    #@timeoff.name = "TIMEOFF:" + @user.name + ":" + @timeoff.category.to_s + ":" + @timeoff.description
+    @timeoff.name = "TIMEOFF:" + @user.name + ":" + @timeoff.category.to_s + ":" + @timeoff.description
     if @timeoff.save
       @user.time_off_days -= @timeoff.days
       @user.save!(:validate => false)
