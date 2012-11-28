@@ -33,31 +33,9 @@
 		    	<!-- Table Content -->
 				<div class="row">
 					<div class="twelve columns">
-					    <table class="twelve">
-							  <thead>
-							    <tr>
-									<th>Cod</th>
-									<th>Issued Date</th>
-									<th>Payment Date</th>
-									<th>Ammount</th>
-									<th>State</th>
-									<th>Actions</th>
-								</tr>
-							    </tr>
-							  </thead>
-							  <tbody>
-								<% @bills.each do |bill| %>
-									<tr>
-										<td><%= bill.id %></td>
-										<td><%= bill.created_at %></td>
-										<td><%= bill.payment_date %></td>
-										<td><%= bill.value %></td>
-										<td><%= bill.state %></td>
-										<td>Action</td>
-									</tr>
-								<% end %>
-							  </tbody>
-						</table>
+					    <% if @bills.any? && manager_signed_in?(@company.tag) %>
+					    	<% render :partial => "bills/list" %>
+					    <% end %>
 						<!-- End Table Content -->
 					</div>
 		  		</div>
