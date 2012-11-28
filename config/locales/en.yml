@@ -13,6 +13,8 @@ en:
   invalid_verification: "Invalid Verification"
   manager: "Manager"
   cooperator: "Cooperator"
+  job_offers: "Job Offers"
+  new: "New"
   ROOT: "Root"
 
   activerecord:
