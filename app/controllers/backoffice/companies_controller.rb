@@ -28,7 +28,7 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
     #state 0-> Active 1->Block 2->Deleted
     @company = Company.find( params[:id])
     @company.state=1
-    if @company.update_attributes(params[ :company])
+    if @company.update
       flash[:success]= t(:blocked_successful)
     else
       flash[:alert]= t(:error)
@@ -42,7 +42,7 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
     #state 0-> Active 1->Block 2->Deleted
     @company = Company.find( params[:id])
     @company.state=2
-    if @company.update_attributes(params[ :company])
+    if @company.update
       flash[:success]= t(:deleted_successful)
     else
       flash[:alert]= t(:error)
