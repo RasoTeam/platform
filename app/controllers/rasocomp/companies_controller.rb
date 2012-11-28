@@ -20,13 +20,4 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
       render 'edit'
     end
   end
-
-  private
-    def manager_or_root
-      comp = Company.find(params[:id])
-      unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag)
-        flash[:alert] = t(:no_permission_to_access) 
-        redirect_to company_signin_path(comp)
-      end
-    end
 end
