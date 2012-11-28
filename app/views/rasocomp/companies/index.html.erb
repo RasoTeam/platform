@@ -1,8 +1,0 @@
-<h1>Companies</h1>
-
-<%= form_tag companies_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-
-<%= render :partial => 'list' %>

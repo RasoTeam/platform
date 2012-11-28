@@ -1,0 +1,12 @@
+APROVE TIME OFF
+
+<%= form_for [@company, @user, @timeoff] do |f| %>
+  <%= f.label :start_date %><br>
+  <%= @timeoff.start_date %>
+  <%= f.label :end_date %><br>
+  <%= @timeoff.end_date %>
+  <br>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Confirm") %>
+<% end %>

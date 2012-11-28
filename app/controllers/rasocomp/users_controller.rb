@@ -1,7 +1,7 @@
 class Rasocomp::UsersController < Rasocomp::ApplicationController
-  before_filter :super_user_or_manager_or_root, :only => [:new, :create]
-  before_filter :super_user_or_manager_or_user_self, :only => [:show, :edit, :update, :dashboard]
-  before_filter :super_user_or_manager, :only => [:index]
+  before_filter :manager_or_root, :only => [:new, :create, :index]
+  before_filter :manager_or_user_self, :only => [:show, :edit, :update]
+  before_filter :user_self_not_root, :only => [:dashboard]
 
   def show
     @company = Company.find(params[:company_id])
@@ -9,7 +9,9 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   end
 
   def index
-    @users = Company.find( params[:company_id]).users
+    @company = Company.find(params[:company_id])
+    @users = @company.users
+    @users.delete_if {|key, value| key.role == 0 }
   end
 
   def edit
@@ -21,38 +23,9 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
     if @user.update_attributes( params[:user])
-      redirect_to company_path @company.id
+      redirect_to company_user_path @company.id, @user
     else
       render 'edit'
-    end
-  end
-
-  def activate
-    @company = Company.find( params[:company_id])
-    @user = @company.users.find( params[:id])
-    if @user.state == -1
-      @user.state = 1
-    end
-    if @user.update_attributes( params[:user])
-      flash[:success] = t(:account_activated)
-      redirect_to company_path @company.id
-    else
-      render 'verify'
-    end
-  end
-
-  def verify
-    if !params[:token] || !params[:company_id]
-      flash[:error] = t(:invalid_verification)
-      redirect_to root_path
-    else
-      @company = Company.find(params[:company_id])
-      @user = @company.users.find_by_remember_token(params[:token])
-
-      if @user.nil? || @user.state != -1
-        flash[:error] = t(:invalid_verification)
-        #redirect_to root_path
-      end
     end
   end
 
@@ -83,22 +56,4 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
   end
-
-  private
-    def super_user_or_manager_or_root
-      comp = Company.find(params[:company_id])
-      redirect_to company_signin_path(comp), notice: t(:no_permission_to_access) unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag) || super_user_signed_in?
-    end
-
-  private
-    def super_user_or_manager_or_user_self
-      comp = Company.find(params[:company_id])
-      redirect_to company_signin_path(comp), notice: t(:no_permission_to_access) unless manager_signed_in?(comp.tag) || super_user_signed_in? || (user_signed_in?(comp.tag) && current_user(comp.tag).id == Integer(params[:id]))
-    end
-
-  private
-    def super_user_or_manager
-      comp = Company.find(params[:company_id])
-      redirect_to company_signin_path(comp), notice: t(:no_permission_to_access) unless manager_signed_in?(comp.tag) || super_user_signed_in?
-    end
 end

@@ -1,0 +1,99 @@
+<div class="row">
+	<div class="twelve columns">
+		<ul class="breadcrumbs">
+			<li><%= link_to "Home" , backoffice_stats_path %></li>
+	  		<li class="current"><a href="#">Companies</a></li>
+		</ul>
+	</div>
+</div>
+<!-- Main Grid Section -->
+
+<div class="row">
+	<div class="twelve columns">
+	<div class="row">
+		<div class="four columns">
+			<dl class="tabs pill">
+				<% if params[:order] == "DESC" %>
+					<dd><%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"})) %> </dd>
+					<dd class="active"><%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%> </dd>
+				<% else %>
+					<dd class="active"><%= link_to "A-Z", backoffice_companies_path(params.merge({order: "ASC"})) %> </dd>
+					<dd><%= link_to "Z-A", backoffice_companies_path(params.merge({order: "DESC"})  )%> </dd>
+				<% end %>
+			</dl>
+		</div>
+		<div class="four columns">
+			<dl class="sub-nav">
+		  		<dt>Filter:</dt>
+		  		<dd class="active"><a href="#">All</a></dd>
+		  		<dd><a href="#">Active</a></dd>
+		  		<dd><a href="#">Block</a></dd>
+			</dl>
+		</div>
+		<div class="four columns">
+			<div class="row collapse">
+			<%= form_tag backoffice_companies_path, :method => 'get' do %>
+  			<div class="eight mobile-three columns">
+    				<%= text_field_tag :search, params[:search] %>
+  			</div>
+  			<div class="four mobile-one columns">
+   				 	<%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+  			</div>
+  			<% end %>
+		</div>
+		</div>
+	</div>
+	<br/>
+	<table class="twelve">
+		<thead>
+		    <tr>
+		      <th>Name</th>
+		      <th>SLUG</th>
+		      <th>NIF</th>
+		      <th>Status</th>
+		      <th>Actions</th>
+		    </tr>
+		</thead>
+		<tbody>
+			<% @companies.each do |company| %>
+				<tr>
+					<td><%= link_to company.name, backoffice_company_path(company) %></td>
+					<td><%= link_to company.tag+".rasohr.com", company.tag+".rasohr.com" %></td>
+					<td><%= company.nif %></td>
+					<td>
+						<% if company.state == 0 %>
+							<span style="color:green;">Active</span>
+						<% else (if company.state == 1 %>
+						<span style="color:red;">Blocked</span>
+						<% else %>
+						<span style="color:red;">Deleted</span>
+						<%end)%>
+						<%end%> 
+					</td>
+					<td> 
+						<%= link_to "Edit", edit_backoffice_company_path(company), :class=>"secondary radius label" %>
+						<%= link_to 'Block', "companies#block", :method=>:get, :class=>"label radius" %>
+						<%= link_to 'Remove', "companies#destroy",:method=>:get,:class=>"alert radius label" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= will_paginate @companies %>
+		
+		<ul class="pagination">
+		  <li class="arrow unavailable"><a href="">&laquo;</a></li>
+		  <li class="current"><a href="">1</a></li>
+		  <li><a href="">2</a></li>
+		  <li><a href="">3</a></li>
+		  <li><a href="">4</a></li>
+		  <li class="unavailable"><a href="">&hellip;</a></li>
+		  <li><a href="">12</a></li>
+		  <li><a href="">13</a></li>
+		  <li class="arrow"><a href="">&raquo;</a></li>
+		</ul>
+	</div>
+</div>
+
+
+

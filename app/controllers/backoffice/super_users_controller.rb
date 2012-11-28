@@ -1,5 +1,4 @@
-class Backoffice::SuperUsersController < ApplicationController
-	before_filter :super_user_only, :only => [:index, :show, :new, :create, :home]
+class Backoffice::SuperUsersController < Backoffice::ApplicationController
 	before_filter :super_user_self, :only => [:edit, :update, :destroy]
 	
 	def index
@@ -24,7 +23,7 @@ class Backoffice::SuperUsersController < ApplicationController
 			params[:super_user].delete(:current_password)		
 		
 			if @super_user.update_attributes(params[:super_user])
-				redirect_to super_users_path
+				redirect_to backoffice_super_user_path(@super_user)
 			else
 				render 'edit'
 			end
@@ -38,7 +37,7 @@ class Backoffice::SuperUsersController < ApplicationController
 	def create
 		@super_user = SuperUser.new(params[:super_user])
 		if @super_user.save
-			redirect_to super_user_path(@super_user)
+			redirect_to backoffice_super_user_path(@super_user)
 		else
 			render 'new'
 		end
@@ -47,13 +46,13 @@ class Backoffice::SuperUsersController < ApplicationController
 	def destroy
 		@super_user = SuperUser.find(params[:id])
 		if @super_user.destroy
-			redirect_to super_users_path
+			redirect_to root_path
 		else
-			redirect_back_or_to super_users_path
+			redirect_to backoffice_super_user_path(@super_user)
 		end
 	end
 
-	def home
+	def stats
 		if params[:year] != nil
 			year = Integer(params[:year])
 			final_year = year + 1
@@ -79,12 +78,10 @@ class Backoffice::SuperUsersController < ApplicationController
 	end
 
 	private
-		def super_user_only
-			redirect_to supersignin_path, notice: t(:no_permission_to_access) unless super_user_signed_in?
-		end
-
-	private
 		def super_user_self
-			redirect_to root_path, notice: t(:no_permission_to_access) unless super_user_signed_in? && current_super_user.id == Integer(params[:id])
+			unless current_super_user.id == Integer(params[:id])
+				flash[:alert] = t(:no_permission_to_access) 
+				redirect_to backoffice_super_user_path(current_super_user)
+			end
 		end
 end

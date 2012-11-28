@@ -1,0 +1,26 @@
+<h1>Appliance</h1>
+
+<%= form_for [@company,@offer,@candidate] , :url => { :action => "createapply" } do |f| %>
+    <% @candidate.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+
+    <%= f.label :name , 'Name' %>
+    <%= f.text_field :name %>
+
+    <%= f.label :location , 'Location' %>
+    <%= f.text_field :location %>
+
+    <%= f.label :nationality , 'Nationality'%>
+    <%= f.text_field :nationality %>
+
+    <%= f.label :phone , 'Phone' %>
+    <%= f.text_field :phone %>
+
+    <%= f.label :email , 'Terms' %>
+    <%= f.text_area :email %>
+    </br>
+
+    <%= f.submit 'Create the Job Offer!' , apply_create_path(@candidate)  %>
+
+<% end %>

@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="twelve columns">
+      <h1>Edit Company</h1>
+      <hr/>
+        <%= form_for @company, :url => backoffice_company_path(@company) do |f| %>
+          <span class=" radius label">Company Name</span>
+          <%= f.text_field :name %>
+          
+          <span class=" radius label">Slug</span>
+          <%= f.text_field :tag %>
+
+          <span class=" radius label">Logo Url</span>
+          <%= f.text_field :logo_url %>
+
+          <span class=" radius label">NIF</span>
+          <%= f.text_field :nif %>
+
+          <span class=" radius label">Adress</span>
+          <%= f.text_field :address %>
+          
+          <p style="text-align: center"><%= f.submit "Edit", :class=>"button" %></p>
+          
+          <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
+            <hr/>
+            <% end %>
+
+          <% @company.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        <% end %>
+  </div>
+</div>

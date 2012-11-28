@@ -22,17 +22,39 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.integer  "company_id"
   end
 
+  create_table "candidates", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "nationality"
+    t.integer  "phone"
+    t.string   "email"
+    t.string   "file_path"
+    t.integer  "job_offer_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.string   "logo_url"
-    t.string   "email"
     t.string   "address"
     t.string   "nif"
     t.integer  "state"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "tag"
-    t.string   "password_digest"
+  end
+
+  create_table "job_offers", :force => true do |t|
+    t.string   "job_name"
+    t.text     "description"
+    t.text     "required_education"
+    t.text     "skills"
+    t.boolean  "active"
+    t.text     "conditions"
+    t.integer  "company_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -60,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.integer  "state"
     t.text     "description"
     t.integer  "days"
+<<<<<<< HEAD
     t.date     "start_at"
     t.date     "end_at"
     t.datetime "created_at",  :null => false
@@ -67,6 +90,12 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.string   "name"
     t.string   "color"
     t.integer  "company_id"
+=======
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+>>>>>>> f577caef8b26370169c5c7330934f90ac883fdf8
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,16 @@
+<% @bills.each do |bill| %>
+  <p> 
+    ID: <%= bill.id %>;
+    <% if !bill.company.nil? %>
+     Company: <%= link_to bill.company.name, backoffice_company_path(bill.company_id) %>; 
+    <%else%>
+      Unknown_Company; 
+    <% end %>
+    Created: <%= bill.created_at %>; 
+    Payment Date: <%= bill.payment_date %>; 
+    Value: <%= bill.value %>; 
+    State: <%= bill.state %>; 
+    Link: <%= link_to "View", backoffice_company_bill_path(bill.company_id, bill) %>
+  </p>
+<% end %>
+<%= will_paginate @bills %>

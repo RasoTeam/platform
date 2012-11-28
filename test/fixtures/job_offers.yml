@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  job_name: MyString
+  description: MyText
+  required_positions: MyText
+  skills: MyText
+  active: false
+  conditions: MyText
+
+two:
+  job_name: MyString
+  description: MyText
+  required_positions: MyText
+  skills: MyText
+  active: false
+  conditions: MyText
