@@ -45,14 +45,16 @@
     <section>
       <!-- Left Nav Section -->
       <ul class="left">
-        <% if current_user(@company.tag).role > ROOT %>
+        <% if current_user(@company.tag).role == ROLE[:manager] %>
         <li class="divider"></li>
         <li>
           <%= link_to "Job Offers", company_job_offers_path(@company) %>
         </li>
         <% end %>
+        <% if current_user(@company.tag).role <= ROLE[:manager] %>
         <li class="divider"></li>
         <li><%= link_to "Employees", company_users_path(@company) %></li>
+        <% end %>
         <li class="divider"></li>
         <li><%= link_to "Company", company_path(@company) %></li>
         <li class="divider"></li>
