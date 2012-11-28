@@ -14,6 +14,7 @@ class Public::CompaniesController < Public::ApplicationController
     @company.name = params[:new_company][:name]
     @company.slug = params[:new_company][:slug]
     @company.state = 0;
+    @user = User.new
     if @company.save
       @user = @company.users.build
       @user.email = params[:new_company][:email]
@@ -25,6 +26,7 @@ class Public::CompaniesController < Public::ApplicationController
         UserMailer.verification_email(@user).deliver
         redirect_to company_signin_path @company.id
       else
+        @company.destroy
         render 'new'
       end
     else
