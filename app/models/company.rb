@@ -2,6 +2,7 @@
 #
 # Table name: companies
 #
+<<<<<<< HEAD
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  logo_url   :string(255)
@@ -12,6 +13,19 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug        :string(255)
+=======
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  logo_url        :string(255)
+#  email           :string(255)
+#  address         :string(255)
+#  nif             :string(255)
+#  state           :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  tag             :string(255)
+#  password_digest :string(255)
+>>>>>>> add frontoffice tests
 #
 
 class Company < ActiveRecord::Base 

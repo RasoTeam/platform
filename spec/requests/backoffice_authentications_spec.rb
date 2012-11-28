@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "BackofficeAuthentications" do
-  
+
   subject { page }
 
   describe "signin page" do
@@ -161,5 +161,6 @@ describe "BackofficeAuthentications" do
     #     specify { response.should redirect_to(root_path) }
     #   end
     # end
+
   end
 end
