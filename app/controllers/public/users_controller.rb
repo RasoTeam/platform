@@ -15,14 +15,14 @@ class Public::UsersController < Public::ApplicationController
 
   def verify
     if !params[:token] || !params[:company_id]
-      flash[:error] = t(:invalid_verification)
+      flash[:alert] = t(:invalid_verification)
       redirect_to root_path
     else
       @company = Company.find(params[:company_id])
       @user = @company.users.find_by_remember_token(params[:token])
 
       if @user.nil? || @user.state != -1
-        flash[:error] = t(:invalid_verification)
+        flash[:alert] = t(:invalid_verification)
         redirect_to root_path
       end
     end

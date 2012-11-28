@@ -14,6 +14,7 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
   end
 
   def update
+
     @company = Company.find( params[:id])
     if @company.update_attributes(params[ :company])
       flash[:success]= t(:successful_update)
@@ -22,4 +23,35 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
       render 'edit'
     end
   end
+
+  def block
+    #state 0-> Active 1->Block 2->Deleted
+    @company = Company.find( params[:id])
+    @company.state=1
+    if @company.update
+      flash[:success]= t(:blocked_successful)
+    else
+      flash[:alert]= t(:error)
+    end
+    redirect_to backoffice_companies_path
+
+  end
+
+
+  def destroy
+    #state 0-> Active 1->Block 2->Deleted
+    @company = Company.find( params[:id])
+    @company.state=2
+    if @company.update
+      flash[:success]= t(:deleted_successful)
+    else
+      flash[:alert]= t(:error)
+    end
+    redirect_to backoffice_companies_path
+
+  end
+
+
+
+
 end
