@@ -6,7 +6,7 @@
       <p>Please fill in the form with your company information</p>
         <hr />    
         
-        <%= form_for @company, :url => public_companies_path do |f| %>
+        <%= form_for :new_company, :url => public_companies_path do |f| %>
           
           <% @company.errors.full_messages.each do |msg| %>
               <p><%= msg %></p>

@@ -9,12 +9,14 @@ class Public::CompaniesController < Public::ApplicationController
   end
 
   def create
-    @company = Company.new( params[:company])
+    @company = Company.new
+    @company.name = params[:new_company][:name]
+    @company.tag = params[:new_company][:tag]
     @company.state = 0;
     if @company.save
       user = @company.users.build
+      user.email = params[:new_company][:email]
       user.name = 'root'
-      user.email = @company.email
       user.state = -1
       user.role = 0
       user.password_digest = 0
