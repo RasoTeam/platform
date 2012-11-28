@@ -11,19 +11,19 @@
                 <p><%= msg %></p>
             <% end %>
 
-            <span class=" radius label">Job Name</span>
+            <%= f.label :job_name , :class => "radius label"%>
             <%= f.text_field :job_name %>
 
-            <span class=" radius label">Description</span>
+            <%= f.label :description , :class => "radius label"%>
             <%= f.text_area :description %>
 
-            <span class=" radius label">Education/Professional History</span>
+            <%= f.label :required_education , :class => "radius label"%>
             <%= f.text_area :required_education %>
-
-            <span class=" radius label">Skills</span>          
+          
+            <%= f.label :skills , :class => "radius label"%>
             <%= f.text_area :skills %>
 
-            <span class=" radius label">Terms</span>  
+            <%= f.label :conditions , :class => "radius label"%>
             <%= f.text_area :conditions %>
             </br>
 
