@@ -5,7 +5,7 @@ describe "CompaniesPages" do
 	subject { page }
 
   describe "companies page" do
-  	before { visit companies_path }
+  	before { visit backoffice_companies_path }
 
     it "should have the content 'Companies'" do
     	page.should have_content('Companies')
