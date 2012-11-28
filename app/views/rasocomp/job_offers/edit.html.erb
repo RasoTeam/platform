@@ -1,5 +1,14 @@
 <div class="row">
   <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.tag)) %></li>
+      <li><%= link_to "Job Offers", company_job_offers_path(@company) %></li>
+      <li class="current"><a href="#"><%= @offer.job_name %></a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
     <div id="signup">
       <div class="panel">
         <h1>Edit Job Offer</h1>  

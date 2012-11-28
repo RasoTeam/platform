@@ -1,8 +1,10 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><a href="#">Home</a></li>
-        <li class="current"><a href="#">Job Offers</a></li>
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.tag)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:job_offers) %></a>
+        </li>
     </ul>
   </div>
 </div>
