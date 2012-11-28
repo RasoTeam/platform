@@ -27,6 +27,7 @@ Platform::Application.routes.draw do
 
 
 #root
+  match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
   #match '/' => 'public/companies#signin', :constraints => {:subdomain => /.+/}
   root :to => 'public/frontoffice#index'
 
@@ -65,6 +66,5 @@ Platform::Application.routes.draw do
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
     end
   end
-  match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
 
 end
