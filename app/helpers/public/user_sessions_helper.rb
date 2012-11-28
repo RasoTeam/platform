@@ -1,16 +1,16 @@
 module Public::UserSessionsHelper
   @@x = "fdlsakb123kfjdaFSADyshfdyKJDHAkuyre"
 
-  def make_cookie(val, tag)
-    cookies.permanent[ @@x+tag] = val
+  def make_cookie(val, slug)
+    cookies.permanent[ @@x+slug] = val
   end
 
-  def read_cookie( tag)
-    return cookies[ @@x+tag]
+  def read_cookie( slug)
+    return cookies[ @@x+slug]
   end
 
-  def sign_in_user(user, tag)
-    cookies.permanent[ @@x+tag] = user.remember_token
+  def sign_in_user(user, slug)
+    cookies.permanent[ @@x+slug] = user.remember_token
     self.current_user = user
   end
 
@@ -18,25 +18,25 @@ module Public::UserSessionsHelper
     @current_user = user
   end
 
-  def current_user(tag)
-    @current_user = User.find_by_remember_token(cookies[@@x+tag])
+  def current_user(slug)
+    @current_user = User.find_by_remember_token(cookies[@@x+slug])
   end
 
-  def user_signed_in?(tag)
-    !current_user(tag).nil?
+  def user_signed_in?(slug)
+    !current_user(slug).nil?
   end
 
-  def user_sign_out(tag)
+  def user_sign_out(slug)
     self.current_user = nil
-    cookies.delete(@@x+tag)
+    cookies.delete(@@x+slug)
   end
 
-  def manager_signed_in?(tag)
-    user_signed_in?(tag) && current_user(tag).role == ROLE[:manager]
+  def manager_signed_in?(slug)
+    user_signed_in?(slug) && current_user(slug).role == ROLE[:manager]
   end
 
-  def root_signed_in?(tag)
-    user_signed_in?(tag) && current_user(tag).role == ROOT
+  def root_signed_in?(slug)
+    user_signed_in?(slug) && current_user(slug).role == ROOT
   end
 
 end

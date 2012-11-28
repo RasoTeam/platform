@@ -14,7 +14,11 @@
 #  tag        :string(255)
 #
 
-class Company < ActiveRecord::Base
+class Company < ActiveRecord::Base 
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
+
   attr_accessible :address, :logo_url, :name, :nif, :state, :tag
   has_many :bills
   has_many :users

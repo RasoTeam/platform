@@ -16,7 +16,7 @@
 		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
 		            	<div class="panel details">
 		              		<h4 class="hide-for-small"><%= @company.name %>
-		              			<% if current_user(@company.tag).role <= ROLE[:manager] %>
+		              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
 		              				<span class="secondary label radius"><%= link_to "Edit", edit_company_path(@company) %></span>
 		              			<% end %>
 		              			<hr/>
@@ -24,7 +24,7 @@
 		            		<h5>Details</h5>
 			            	<p><span class="label radius">Company Name</span> <%= @company.name %></p>
 			            	<p><span class="label radius">NIF</span> <%= @company.nif %></p>
-			            	<p><span class="label radius">SLUG</span> <a href="#"> <%= @company.tag+".rasohr.com" %></a></p>
+			            	<p><span class="label radius">SLUG</span> <a href="#"> <%= @company.slug+".rasohr.com" %></a></p>
 			            	<p><span class="label radius">Employees</span> <%= @company.users.length-1 %></p>
 		            	</div>
 					</div>
@@ -68,12 +68,12 @@
 </div>
 
 
-<% if !user_signed_in? @company.tag %>
+<% if !user_signed_in? @company.slug %>
 	<%= link_to "Sign In on Company", company_signin_path(params[:id]) %>
 	<br/>
 	<br/>
 <% else %>
-	<%= current_user( @company.tag).name %> |
+	<%= current_user( @company.slug).name %> |
 	<%= link_to "Sign Out on Company", company_signout_path(params[:id]), method: "delete" %>
 <br>
 <% end %>
