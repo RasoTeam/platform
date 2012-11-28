@@ -1,5 +1,8 @@
 class Public::SuperUserSessionsController < Public::ApplicationController
   def new
+    if super_user_signed_in?
+      redirect_to backoffice_super_user_path(current_super_user)
+    end
   end
 
   def create

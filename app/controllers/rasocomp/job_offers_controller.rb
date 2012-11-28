@@ -1,5 +1,5 @@
 class Rasocomp::JobOffersController < Rasocomp::ApplicationController
-  before_filter :manager_or_root
+  before_filter :manager
 
   #Listar todas as ofertas de trabalho de uma empresa
   def index
@@ -64,9 +64,9 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
   end
 
   private
-    def manager_or_root
+    def manager
       comp = Company.find(params[:company_id])
-      unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag)
+      unless manager_signed_in?(comp.tag)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
       end

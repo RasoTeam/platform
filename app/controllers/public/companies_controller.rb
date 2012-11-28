@@ -1,6 +1,7 @@
 class Public::CompaniesController < Public::ApplicationController
   def show
     @company = Company.find_by_tag(request.subdomain)
+    redirect_to company_signin_path(@company)
   end
 
   def new
