@@ -12,7 +12,7 @@ gem 'validates_timeliness', '~> 3.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-# gem 'pg'
+ gem 'pg'
 end
 
 group :development do
