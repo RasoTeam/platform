@@ -1,3 +1,13 @@
 // Place all the styles related to the Companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tableJobs tr td:nth-child(1) 
+{
+	text-align: right;
+}
+
+.details_company1
+{
+	border-right: 1px solid #DDD;
+}
