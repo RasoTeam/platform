@@ -1,6 +1,6 @@
 class Public::CompaniesController < Public::ApplicationController
   def show
-    @company = Company.find_by_tag(request.subdomain)
+    @company = Company.find_by_slug(request.subdomain)
     redirect_to company_signin_path(@company)
   end
 
@@ -11,7 +11,7 @@ class Public::CompaniesController < Public::ApplicationController
   def create
     @company = Company.new
     @company.name = params[:new_company][:name]
-    @company.tag = params[:new_company][:tag]
+    @company.slug = params[:new_company][:slug]
     @company.state = 0;
     if @company.save
       user = @company.users.build

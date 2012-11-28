@@ -32,7 +32,7 @@
       <tbody>
         <% @offers.each do |offer| %>
           <tr>
-            <td><%= offer.job_name %></td>
+            <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
             <td><%= offer.created_at %></td>
             <td><% if offer.active %><%= 'Open'  %><% else %><%= 'Closed' %> <% end %></td>
             <td><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
