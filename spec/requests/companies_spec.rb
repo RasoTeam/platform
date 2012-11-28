@@ -8,7 +8,7 @@ describe "CompaniesPages" do
   	before { visit backoffice_companies_path }
 
     it "should have the content 'Companies'" do
-    	page.should have_content('Companies')
+    	page.should have_content('Company')
     end
 
     it { should have_selector('h1', text: 'Companies') }
