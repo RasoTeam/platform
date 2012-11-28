@@ -40,6 +40,7 @@
     </div>
     </div>
   </div>
+  <% if @offers.any? %>
     <table class="twelve">
       <thead>
         <tr>
@@ -71,17 +72,10 @@
         <% end %>
       </tbody>
     </table>
-    <ul class="pagination">
-      <li class="arrow unavailable"><a href="">&laquo;</a></li>
-      <li class="current"><a href="">1</a></li>
-      <li><a href="">2</a></li>
-      <li><a href="">3</a></li>
-      <li><a href="">4</a></li>
-      <li class="unavailable"><a href="">&hellip;</a></li>
-      <li><a href="">12</a></li>
-      <li><a href="">13</a></li>
-      <li class="arrow"><a href="">&raquo;</a></li>
-    </ul>
+    <%= will_paginate @offers %>
+    <% else %>
+    <h3 style="text-align:center">There are no offers registered</h3>
+    <% end %>
   </div>
 </div>
       <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
