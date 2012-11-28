@@ -6,6 +6,8 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '~> 3.0'
 gem 'annotate', '2.5.0'
 gem "mail", "2.4.4"
+gem 'validates_timeliness', '~> 3.0'
+gem 'event-calendar', :require => 'event_calendar'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119150032) do
+ActiveRecord::Schema.define(:version => 20121128115814) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20121119150032) do
     t.string   "password_digest"
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "super_users", :force => true do |t|
     t.string   "email"
     t.string   "name"
@@ -46,6 +54,20 @@ ActiveRecord::Schema.define(:version => 20121119150032) do
 
   add_index "super_users", ["remember_token"], :name => "index_super_users_on_remember_token"
 
+  create_table "time_offs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "category"
+    t.integer  "state"
+    t.text     "description"
+    t.integer  "days"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "name"
+    t.string   "color"
+  end
+
   create_table "users", :force => true do |t|
     t.integer  "company_id"
     t.string   "email"
@@ -56,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20121119150032) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "time_off_days"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

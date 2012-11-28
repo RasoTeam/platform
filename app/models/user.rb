@@ -14,9 +14,10 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :password, :password_confirmation
+  attr_accessible :company_id, :email, :name, :time_off_days, :password, :password_confirmation
   has_secure_password
   belongs_to :company
+  has_many :time_offs
 
   before_save :create_remember_token
 
