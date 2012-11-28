@@ -1,12 +1,15 @@
 <div class="row">
-	<div class="twelve columns">
-
+		<div class="nine columns">
 			<h3>Company employees</h3>
-	</div>
+		</div>
+		<div class="three columns">
+			<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %>
+		</div>
 </div>
 
 <div class="row">
-	<div class="nine columns">
+
+	<div class="twelve columns">
 		<!-- Listagem -->
 		<div class="panel">
 			<div class="row">
@@ -62,11 +65,19 @@
 				</div>
 			</div>	
 		</div>
-			<!-- Fim Listagem -->
+			<!-- Fim Lisslugem -->
 	</div>
+<<<<<<< HEAD
 	<div class="three columns">
-		<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"panel callout radius" %>
+		<div class="panel callout radius">
+		    <h5>Add User</h5>
+			<% if (current_user( @company.slug).role == ROOT || current_user( @company.slug).role == ROLE[:manager])  %>
+				<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"button" %>
+        	<% end %>
+		</div>
 	</div>
+=======
+>>>>>>> a643c7c8053488c62f8f29a34c1be2a9f9f2035e
 </div>
 <br/>
 

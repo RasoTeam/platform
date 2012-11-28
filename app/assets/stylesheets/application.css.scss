@@ -66,9 +66,14 @@
 	margin: 0 auto;
 }
 
-.input_space
+form 
 {
-	margin-top: 7px;
+	textarea.input_space
+	{
+		height: 100px;
+	}
+	textarea.input_space, input.input_space
+	{
+		margin-top: 7px;
+	}
 }
-
-
