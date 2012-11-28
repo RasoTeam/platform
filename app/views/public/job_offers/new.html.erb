@@ -1,57 +1,130 @@
 <div class="row">
-<div class="twelve">
+  <div class="twelve columns">
+    <h3>Appliance to <%= @company.name %></h3>
+    <div class="panel">
+      <div class="row">
+        <div class="twelve columns">
+          
+            <table class="twelve tableJobs">
+            <tbody>
+              <tr>
+                <td><span class="label radius">Job Offer</span></td>
+                <td><%= @offer.job_name %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Required Education</span></td>
+                <td><%= @offer.required_education %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Skills</span></td>
+                <td><%= @offer.skills %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Description</span></td>
+                <td><%= @offer.description %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Conditions</span></td>
+                <td><%= @offer.conditions %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="twelve columns">
+          <dl class="tabs">
+            <dd class="active"><a href="#simple1">Apply Via CV</a></dd>
+            <dd><a href="#simple2">Apply Via Linked-In</a></dd>
+          </dl>
 
-    <h1>Appliance to <%= @company.name %></h1>
-    <h3><%= @offer.job_name %></h3>
-    <hr/>
-    <table class="twelve">
-      <tr>
-        <td><b>Job Name</b></td>
-        <td><%= @offer.job_name %></td>
-      </tr>
-      <tr>
-        <td><b>Description</b></td>
-        <td><%= @offer.description %></td>
-      </tr>
-      <tr>
-        <td><b>Education/Professional History</b></td>
-        <td><%= @offer.required_education %></td>
-      </tr>
-      <tr>
-        <td><b>Required Skills</b></td>
-        <td><%= @offer.skills %></td>
-      </tr>
-      <tr>
-        <td><b>Terms</b></td>
-        <td><%= @offer.conditions %></td>
-      </tr>
-    </table>
-
-    <%= form_for @candidate , :url => create_apply_path do |f| %>
-        <% @candidate.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-
-        <span class=" radius label">Name</span>
-        <%= f.text_field :name %>
-
-        <span class=" radius label">Lacation</span>
-        <%= f.text_field :location %>
-
-        <span class=" radius label">Nationality</span>
-        <%= f.text_field :nationality %>
-
-        <span class=" radius label">Phone</span>
-        <%= f.text_field :phone %>
-
-        <span class=" radius label">Email</span>
-        <%= f.text_field :email %>
-        </br>
-
-        <p style="text-align: center"><%= f.submit 'Apply for the Job!' , :class=>"button" %></p>
-
-    <% end %>
-
+          <ul class="tabs-content">
+            <li class="active" id="simple1Tab">
+                <%= form_for @candidate , :url => create_apply_path do |f| %>
+                  <% @candidate.errors.full_messages.each do |msg| %>
+                  <p><%= msg %></p>
+                  <% end %>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                        <%=f.label :name, :class=>"right inline"%>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :name, :class=>"eight" %>
+                    </div>
+                  </div> 
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :email, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :email, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :nationality, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :nationality, :class=>"eight" %>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="two mobile-one columns">
+                    <%=f.label :location, :class=>"right inline" %>
+                  </div>
+                  <div class="ten mobile-three columns">
+                    <%= f.text_field :location, :class=>"eight" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="two mobile-one columns">
+                    <%=f.label :phone, :class=>"right inline" %>
+                  </div>
+                  <div class="ten mobile-three columns">
+                   <%= f.text_field :phone, :class=>"eight" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="two mobile-one columns">
+                    <label class="right inline">CV.:</label>
+                  </div>
+                  <div class="ten mobile-three columns">
+                    <div class="row collapse">
+                        <div class="six mobile-three columns">
+                          <input type="text" />
+                        </div>
+                        <div class="two mobile-one columns">
+                          <a class="button expand postfix">Browse</a>
+                        </div>
+                        <div class="four columns">
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="two mobile-one columns">
+                    
+                  </div>
+                  <div class="ten mobile-three columns">
+                    <%= f.submit 'Apply for the Job!' , :class=>"radius button" %>
+                  </div>
+                </div>
+                <% end %>
+            </li>
+            <li id="simple2Tab">
+              <div style="text-align: center;">
+                <a class="radius button" href="#">Apply Via Linked In</a>
+              </div>
+            </li>           
+          </ul>
+        </div>
+        
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+

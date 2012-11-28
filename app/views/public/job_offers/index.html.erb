@@ -1,23 +1,56 @@
 <div class="row">
-    <div class="twelve">
-    <h1>Job Offers from <%= @company.name %></h1>
-    <hr/>
-    <table class="twelve">
-      <tr>
-        <th>Job Offer</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-      <% @offers.each do |offer| %>
+  <div class="twelve columns">
+    <h2>Job Offers from <%= @company.name %></h2>
+  
+  <div class="row">
+    <div class="eight columns">
+      <dl class="tabs pill">
+          <dd class="active"><a href="#pillTab1">A-Z</a></dd>
+          <dd><a href="#pillTab2">Z-A</a></dd>
+      </dl>
+    </div>
+    <div class="four columns">
+      <div class="row collapse">
+        <div class="eight mobile-three columns">
+          <input type="text" />
+        </div>
+        <div class="four mobile-one columns">
+          <a class="button expand postfix">Search</a>
+        </div>
+    </div>
+    </div>
+  </div>
+    <table class="twelve publicJobsTable">
+      <thead>
+        <tr>
+          <th>Job Offer</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offers.each do |offer| %>
           <tr>
-            <td><%= offer.job_name %></td>
+            <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
             <td><%= offer.created_at %></td>
             <td><% if offer.active %><%= 'Open'  %><% else %><%= 'Closed' %> <% end %></td>
-            <td><%= link_to 'Apply for this Job' , new_apply_path(@company,offer) %></td>
-
+            <td><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
           </tr>
       <% end %>
+      </tbody>
     </table>
+    <ul class="pagination">
+      <li class="arrow unavailable"><a href="">&laquo;</a></li>
+      <li class="current"><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+      <li><a href="">4</a></li>
+      <li class="unavailable"><a href="">&hellip;</a></li>
+      <li><a href="">12</a></li>
+      <li><a href="">13</a></li>
+      <li class="arrow"><a href="">&raquo;</a></li>
+    </ul>
+  </div>
   </div>
 </div>
