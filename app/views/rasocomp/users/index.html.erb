@@ -75,12 +75,7 @@
 			<!-- Fim Listagem -->
 	</div>
 	<div class="three columns">
-		<div class="panel callout radius">
-		    <h5>Add User</h5>
-			<% if (current_user( @company.tag).role == ROOT || current_user( @company.tag).role == ROLE[:manager])  %>
-				<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"button" %>
-        	<% end %>
-		</div>
+		<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"panel callout radius" %>
 	</div>
 </div>
 <br/>

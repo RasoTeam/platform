@@ -10,6 +10,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @users = @company.users
+    @users.delete_if {|key, value| key.role == 0 }
   end
 
   def edit
