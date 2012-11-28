@@ -5,6 +5,7 @@ class TimeOff < ActiveRecord::Base
   has_event_calendar
 
 
+  #before_validation :fix_date
   before_validation :set_days
 
   validates :user_id, :presence => true
