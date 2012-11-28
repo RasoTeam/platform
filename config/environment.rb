@@ -8,7 +8,7 @@ Platform::Application.initialize!
 #config.action_mailer.raise_delivery_errors = true
 ActionMailer::Base.smtp_settings = {
   :address => "smtp.gmail.com",
-  :port => 587,
+  :port => 25,
   :domain => "gmail.com",
   :user_name => "jonhdeliver@gmail.com",
   :password => "Q1e3t5u7",
