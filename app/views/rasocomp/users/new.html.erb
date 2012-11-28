@@ -1,23 +1,28 @@
 
+
 <div class="row">
   <div class="twelve columns">
-    <h2> Add new User</h2>
-    <hr/>
-<%= form_for [@company, @user] do |f| %>
-  <% @user.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-  <% end %>
+    <div class="signup">
+      <div class="panel">
+        <h2> Add new User</h2>
+        <hr/>
+        <%= form_for [@company, @user] do |f| %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
 
-  <p class=" radius label">Name</p>
-  <%= f.text_field :name %>
+          <p class=" radius label">Name</p>
+          <%= f.text_field :name %>
 
-  <p class=" radius label">Email</p>
- <%= f.email_field :email %>
+          <p class=" radius label">Email</p>
+         <%= f.email_field :email %>
 
-  <p class=" radius label">Role</p>
-  <%= f.select :role, ROLE %>
-  
-  <p style="text-align: center"><%= f.submit :class => "button" %></p>
-<% end %>
-</div>
+          <p class=" radius label">Role</p>
+          <%= f.select :role, ROLE, :class=>"custom dropdown" %>
+          
+          <p style="text-align: center"><%= f.submit :class => "button" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
