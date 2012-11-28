@@ -38,6 +38,7 @@ class Company < ActiveRecord::Base
             :format => { :with => VALID_slug_REGEX }, :uniqueness => { :case_sensitive => false }
 
   #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
+  #scope :users_paginate, lambda { self.users.paginate(:page => params[:page], :per_page => 4) }
 
   def self.search(search,order)
     order ||= ""

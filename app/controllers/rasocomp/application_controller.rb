@@ -14,7 +14,9 @@ private
     end
 
     def manager_or_root
-      comp = Company.find(params[:company_id])
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
       unless manager_signed_in?(comp.slug) || root_signed_in?(comp.slug)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
@@ -22,7 +24,9 @@ private
     end
 
     def manager_or_user_self
-      comp = Company.find(params[:company_id])
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
       unless manager_signed_in?(comp.slug) || (user_signed_in?(comp.slug) && current_user(comp.slug).id == Integer(params[:id]) && current_user(comp.slug).role != ROOT)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
@@ -31,7 +35,9 @@ private
 
 
     def manager
-      comp = Company.find(params[:company_id])
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
       unless manager_signed_in?(comp.slug)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
