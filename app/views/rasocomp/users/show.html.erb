@@ -1,6 +1,30 @@
-
 <div class="row">
-  <div class="three columns push-nine">
+  <div class="nine columns">
+    <div class="row">
+      <div class="twelve columns">
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+            <li class="current"><a href="#"><%= @user.name %> Profile</a></li>
+        </ul>
+      </div>
+    </div>
+      <div class="panel">
+        <h3>User Profile </h3>
+        <hr/>
+        <p><span class=" radius label">User ID</span><span> <%= @user.id %></span></p>
+        <p><span class=" radius label">User Name</span><span> <%= @user.name %></span></p>
+        <p><span class="radius label">User Email</span><span> <%= @user.email %></span></p>
+        <p><span class=" radius label">User Role</span><span> <%= ROLE.invert[@user.role] %></span></p>
+        <div style:"text-alig">
+          <%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
+        </div>
+      </div>
+  </div>
+
+
+
+
+  <div class="three columns">
 
       <div class=" twelve columns row collapse">
         <div class="eight mobile-four columns">
@@ -28,19 +52,6 @@
           </div>
         </div>
 
-
-</div> 
-  <!-- Cena Grande -->
-  <div class="nine columns pull-three">
-
-        <h3>User Profile </h3>
-        <hr/>
-		<p><span class=" radius label">User ID</span><span> <%= @user.id %></span></p>
-		<p><span class=" radius label">User Name</span><span> <%= @user.name %></span></p>
-		<p><span class="radius label">User Email</span><span> <%= @user.email %></span></p>
-		<p><span class=" radius label">User Role</span><span> <%= ROLE.invert[@user.role] %></span></p>
-		<div style:"text-alig">
-			<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
-		</div>
-  </div>
 </div>
+</div> 
+
