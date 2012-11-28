@@ -12,7 +12,7 @@ class Rasocomp::BillsController < Rasocomp::ApplicationController
 
   private
     def manager_or_root
-      comp = Company.find(params[:id])
+      comp = Company.find(params[:company_id])
       unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
