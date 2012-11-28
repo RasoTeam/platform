@@ -5,8 +5,8 @@
 
 <% @timeoffs.each do |t| %>
   Timeoff id: <%= t.id %>;
-  Start: <%= t.start_date %>;
-  End: <%= t.end_date %>;
+  Start: <%= t.start_at %>;
+  End: <%= t.end_at %>;
   Days: <%= t.days %>;
   Type: <%= t.category %>;
   State: <%= t.state %>;

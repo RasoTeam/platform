@@ -1,6 +1,8 @@
 Platform::Application.routes.draw do
 
 
+  match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
   match '/backoffice/bills', to: 'backoffice/bills#show_all'
@@ -60,7 +62,15 @@ Platform::Application.routes.draw do
   scope :module => "rasocomp" do
     resources :companies do
       resources :users do
-        resources :time_offs
+        resources :time_offs do
+          collection do
+            get :manage
+          end
+          member do
+            put :approve
+            put :disapprove
+          end
+        end
       end
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]

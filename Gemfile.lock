@@ -49,6 +49,7 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     erubis (2.7.0)
+    event-calendar (2.3.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     friendly_id (4.0.9)
@@ -136,6 +137,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   coffee-rails (~> 3.2.1)
   compass-rails
+  event-calendar
   friendly_id (~> 4.0.1)
   jquery-rails
   mail (= 2.4.4)
