@@ -1,7 +1,7 @@
-XPTO
 <div class="row">
   <div class="twelve columns">
     <h3>Appliance to <%= @company.name %></h3>
+    <h3><%= @offer.job_name %></h3>
     <div class="panel">
       <div class="row">
         <div class="twelve columns">
@@ -38,6 +38,7 @@ XPTO
           <dl class="tabs">
             <dd class="active"><a href="#simple1">Apply Via CV</a></dd>
             <dd><a href="#simple2">Apply Via Linked-In</a></dd>
+            <dd><a href="#simple3">Apply Via XML</a></dd>
           </dl>
 
           <ul class="tabs-content">
@@ -114,10 +115,149 @@ XPTO
                 <% end %>
             </li>
             <li id="simple2Tab">
-              <div style="text-align: center;">
-                <a class="radius button" href="#">Apply Via Linked In</a>
-              </div>
-            </li>           
+                <%= form_for @candidate , :url => create_apply_path do |f| %>
+                  <% @candidate.errors.full_messages.each do |msg| %>
+                      <p><%= msg %></p>
+                  <% end %>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :name, :class=>"right inline"%>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :name, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :email, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :email, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :nationality, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :nationality, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :location, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :location, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :phone, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :phone, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <label class="right inline">CV.:</label>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <div class="row collapse">
+                        <div class="six mobile-three columns">
+                          <input type="text" />
+                        </div>
+                        <div class="two mobile-one columns">
+                          <a class="button expand postfix">Browse</a>
+                        </div>
+                        <div class="four columns">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.submit 'Apply Via Linked In!' , :class=>"radius button" %>
+                    </div>
+                  </div>
+              <% end %>
+            </li>
+            <li id="simple3Tab">
+              <%= form_for @candidate , :url => create_apply_path do |f| %>
+                  <% @candidate.errors.full_messages.each do |msg| %>
+                      <p><%= msg %></p>
+                  <% end %>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :name, :class=>"right inline"%>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :name, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :email, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :email, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :nationality, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :nationality, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :location, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :location, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :phone, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :phone, :class=>"eight" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <label class="right inline">CV.:</label>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <div class="row collapse">
+                        <div class="six mobile-three columns">
+                          <input type="text" />
+                        </div>
+                        <div class="two mobile-one columns">
+                          <a class="button expand postfix">Browse</a>
+                        </div>
+                        <div class="four columns">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.submit 'Apply via XML!' , :class=>"radius button" %>
+                    </div>
+                  </div>
+              <% end %>
+            </li>
           </ul>
         </div>
         
@@ -125,7 +265,3 @@ XPTO
     </div>
   </div>
 </div>
-
-
-
-
