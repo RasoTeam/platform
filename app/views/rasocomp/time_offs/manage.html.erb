@@ -1,12 +1,15 @@
 GESTOR<br>
 LISTAR TODOS TIMEOFFS DE TODOS PARA GERIR<br>
 <%= @user.name %><br><br>
+<h1>STATE 0: PENDING 1: APPROVED 2: DISAPPROVED </h1>
+<br><br>
 <% @timeoffs.each do |t| %>
   USER ID:<%= t.user_id%><br>
   TIMEOFF ID:<%= t.id %><br>
   TIMEOFF STATE:<%= t.state %><br>
   <br>
-  <%= link_to "disapprove", [ @company, @user, t], :method => :put, :data => { :confirm => 'Confirmation Box'} %>
+  <%= link_to "NOT OK", disapprove_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
+  | <%= link_to "OK", approve_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
   <br>
   <hr>
 <% end %>
