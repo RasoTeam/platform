@@ -1,6 +1,6 @@
 class TimeOff < ActiveRecord::Base
   attr_accessor :credits
-  attr_accessible :days, :description, :end_at, :start_at, :state, :category, :user_id, :credits, :name
+  attr_accessible :days, :description, :end_at, :start_at, :state, :category, :company_id, :user_id, :credits, :name
   belongs_to :user
   has_event_calendar
 

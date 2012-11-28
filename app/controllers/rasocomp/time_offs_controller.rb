@@ -3,14 +3,13 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
   def index
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
-
     @timeoffs = @user.time_offs #TimeOff.find_by_user_id( params[:user_id])
   end
 
   def manage
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
-    @timeoffs = TimeOff.all
+    @timeoffs = @company.time_offs
   end
 
   def approve
@@ -48,7 +47,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
   end
 
   def show
-    @timeoffs = TimeOff.find( params[:id])
+    @timeoff = TimeOff.find( params[:id])
   end
 
   def new
@@ -63,6 +62,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
     @timeoff = @user.time_offs.build( params[:time_off])
+    @timeoff.company_id = @company.id
     @timeoff.state = 0
     @timeoff.credits = @user.time_off_days
     @timeoff.color = '#B8B8B8'
