@@ -63,14 +63,17 @@
 					<td>
 						<% if company.state == 0 %>
 							<span style="color:green;">Active</span>
+						<% else (if company.state == 1 %>
+						<span style="color:orange;">Blocked</span>
 						<% else %>
-						<span style="color:red;">Blocked</span>
+						<span style="color:red;">Deleted</span>
+						<%end)%>
 						<%end%> 
 					</td>
 					<td> 
 						<%= link_to "Edit", edit_backoffice_company_path(company), :class=>"secondary radius label" %>
-						<%= link_to 'Block', :class=>"alert label radius" %>
-						<%= link_to 'Remove', :class=>"secondary radius label" %>
+						<%= link_to 'Block', backoffice_company_path(company), :action=>"backoffice/companies#block", :class=>"label radius" %>
+						<%= link_to 'Remove', backoffice_company_path(company), :action=>"backoffice/companies#destroy",:class=>"alert radius label" %>
 					</td>
 				</tr>
 			<% end %>
