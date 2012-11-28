@@ -14,7 +14,6 @@ gem 'event-calendar', :require => 'event_calendar'
 
 group :production do
  gem 'pg'
- gem 'thin'
 end
 
 group :development, :test do
