@@ -58,11 +58,7 @@
 			  	<h4> Time Offs </h4>
 				<div class="button-bar">
 					<ul class="button-group">
-						<li><a href="#" class="button">Book Holidays</a></li>
-					</ul>
-
-					<ul class="button-group">
-					    <li><a href="#" class="button">Call In Sick</a></li>
+						<li><%= link_to "Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
 					</ul>
 				</div>
 			  </li>
