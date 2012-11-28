@@ -1,3 +1,16 @@
 // Place all the styles related to the job_offers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.edit_job_offer 
+{
+	textarea
+	{
+		height: 100px;
+	}
+
+	textarea, input
+	{
+		margin-top: 7px;
+	}
+}
