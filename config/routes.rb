@@ -1,32 +1,5 @@
 Platform::Application.routes.draw do
 
-  match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-
-#super_users
-  match '/supersignin', to:'backoffice/super_user_sessions#new'
-  match '/supersignout', to:'backoffice/super_user_sessions#destroy'
-  match '/home', :to => 'backoffice/super_users#home'
-
-#companies
-  get '/companies/:company_id/users/verify', :to => 'rasocomp/users#verify'
-  get '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard'
-  
-  match '/companies/:company_id/signin', to:'rasocomp/user_sessions#new', as: 'company_signin'
-  match '/companies/:company_id/signout', to:'rasocomp/user_sessions#destroy', as: 'company_signout'
-#bills
-  match '/bills', to: 'rasocomp/bills#show_all'
-
-#static_pages
-  match '/dashboard', :to => 'rasocomp/dashboard#start'
-  
-  match '/aboutus' => 'staticpages#aboutus'
-  match '/ideas' => 'staticpages#ideas'
-  match '/contacts' => 'staticpages#contacts'
-
-  root :to => 'rasocomp/dashboard#start'
-
-  scope :module => "backoffice" do
-    resources :super_users
 
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
@@ -54,13 +27,15 @@ Platform::Application.routes.draw do
 
 
 #root
-  match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
+  #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
   #match '/' => 'public/companies#signin', :constraints => {:subdomain => /.+/}
   root :to => 'public/frontoffice#index'
 
 #resources
   namespace "public" do
     resources :super_user_sessions, only: [:new, :create, :destroy]
+
+
   #root :to => 'rasocomp/dashboard#start'
     resources :companies do
       resources :job_offers , :only => [:index ,:show ]
@@ -68,15 +43,6 @@ Platform::Application.routes.draw do
       resources :users do
         member do
           put 'activate'
-        end
-	resources :time_offs do
-          collection do
-            get :manage
-          end
-          member do
-            put :approve
-	    put :disapprove
-          end
         end
       end
     end

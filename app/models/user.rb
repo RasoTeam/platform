@@ -17,9 +17,10 @@ class User < ActiveRecord::Base
   attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :password, :password_confirmation
   has_secure_password
   belongs_to :company
+  has_many :foos
   has_many :time_offs
 
-  before_save :create_remember_token
+  before_create :create_remember_token
 
   validates :name, :presence => true, :length => { :maximum => 20}
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128151718) do
+ActiveRecord::Schema.define(:version => 20121128163709) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.string   "tag"
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "foos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "field"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "job_offers", :force => true do |t|
     t.string   "job_name"
     t.text     "description"
@@ -55,14 +70,6 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.integer  "company_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-  end
-
-  create_table "events", :force => true do |t|
-    t.string   "name"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "super_users", :force => true do |t|
@@ -82,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.integer  "state"
     t.text     "description"
     t.integer  "days"
-<<<<<<< HEAD
     t.date     "start_at"
     t.date     "end_at"
     t.datetime "created_at",  :null => false
@@ -90,12 +96,6 @@ ActiveRecord::Schema.define(:version => 20121128151718) do
     t.string   "name"
     t.string   "color"
     t.integer  "company_id"
-=======
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
->>>>>>> f577caef8b26370169c5c7330934f90ac883fdf8
   end
 
   create_table "users", :force => true do |t|
