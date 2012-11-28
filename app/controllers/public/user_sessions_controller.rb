@@ -11,7 +11,7 @@ class Public::UserSessionsController < Public::ApplicationController
     company = Company.find(params[:company_id])
     user = company.users.find_by_email(params[:user_session][:email].downcase)
     #use some base64 for company ?
-    if user && user.authenticate(params[:user_session][:password])
+    if user && user.state != -1 && user.authenticate(params[:user_session][:password])
       sign_in_user(user, company.tag)
       redirect_to user_dashboard_path company, user
     else

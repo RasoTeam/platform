@@ -63,13 +63,4 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
     redirect_to company_job_offers_path
   end
 
-  private
-    def manager
-      comp = Company.find(params[:company_id])
-      unless manager_signed_in?(comp.tag)
-        flash[:alert] = t(:no_permission_to_access) 
-        redirect_to company_signin_path(comp)
-      end
-    end
-
 end

@@ -1,29 +1,87 @@
 <div class="row">
   <div class="twelve columns">
-      <h1>All the Job Offers</h1>
-      <hr/>
-      <table class="twelve">
+    <ul class="breadcrumbs">
+      <li><a href="#">Home</a></li>
+        <li class="current"><a href="#">Job Offers</a></li>
+    </ul>
+  </div>
+</div>
+<!-- Main Grid Section -->
+
+<div class="row">
+  <div class="twelve columns">
+
+  <h2>Job Offers</h2>
+  
+  <div class="row">
+    <div class="four columns">
+      <dl class="tabs pill">
+          <dd class="active"><a href="#pillTab1">A-Z</a></dd>
+          <dd><a href="#pillTab2">Z-A</a></dd>
+      </dl>
+    </div>
+    <div class="four columns">
+      <dl class="sub-nav">
+          <dt>Filter:</dt>
+          <dd class="active"><a href="#">All</a></dd>
+          <dd><a href="#">Open</a></dd>
+          <dd><a href="#">Selection</a></dd>
+          <dd><a href="#">Closed</a></dd>
+      </dl>
+    </div>
+    <div class="four columns">
+      <div class="row collapse">
+        <div class="eight mobile-three columns">
+          <input type="text" />
+        </div>
+        <div class="four mobile-one columns">
+          <a class="button expand postfix">Search</a>
+        </div>
+    </div>
+    </div>
+  </div>
+    <table class="twelve">
+      <thead>
         <tr>
           <th>Job Offer</th>
           <th>Date</th>
+          <!-- <th>Openings</th> -->
           <th>Candidates</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
+      </thead>
+      <tbody>
         <% @offers.each do |offer| %>
             <tr>
               <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
               <td><%= offer.created_at %></td>
               <td><%= offer.candidates.count %></td>
-              <td><% if offer.active %><%= 'Active'  %><% else %><%= 'Inactive' %><% end %></td>
+              <td>
+                <% if offer.active %>
+                <span style="color:green;"><%= 'Active'  %></span>
+                <% else %>
+                <span style="color:red;"><%= 'Inactive' %></span>
+                <% end %>
+              </td>
               <td>
                    <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
                    <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %></td>
             </tr>
         <% end %>
-      </table>
-
-
-      <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
-    </div>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="arrow unavailable"><a href="">&laquo;</a></li>
+      <li class="current"><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+      <li><a href="">4</a></li>
+      <li class="unavailable"><a href="">&hellip;</a></li>
+      <li><a href="">12</a></li>
+      <li><a href="">13</a></li>
+      <li class="arrow"><a href="">&raquo;</a></li>
+    </ul>
   </div>
+</div>
+      <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
