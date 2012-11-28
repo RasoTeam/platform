@@ -62,6 +62,16 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="divider"></li>
+        <li style="line-height: 20px; padding: 15px;">
+          <%  curUser=current_user(@company.slug) %>
+          <span><%=  curUser.name %></span><br/>
+          <span class="secondary radius label"><%  if curUser.role == 0%>
+          ROOT
+          <%else%>
+          <%= ROLE.invert[current_user(@company.slug).role]%>
+          <%end%></span>
+        </li>
+        <li class="divider"></li>
         <li><%= link_to "Logout", company_signout_path(@company) %></li>
       </ul>
     </section>
