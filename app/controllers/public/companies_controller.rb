@@ -20,9 +20,12 @@ class Public::CompaniesController < Public::ApplicationController
       user.state = -1
       user.role = 0
       user.password_digest = 0
-      user.save
-      UserMailer.verification_email(user).deliver
-      redirect_to company_signin_path @company.id
+      if user.save
+        UserMailer.verification_email(user).deliver
+        redirect_to company_signin_path @company.id
+      else
+        render 'new'
+      end
     else
       render 'new'
     end
