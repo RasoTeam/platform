@@ -6,6 +6,7 @@ class Public::CompaniesController < Public::ApplicationController
 
   def new
     @company = Company.new
+    @user = @company.users.build
   end
 
   def create
@@ -13,16 +14,21 @@ class Public::CompaniesController < Public::ApplicationController
     @company.name = params[:new_company][:name]
     @company.slug = params[:new_company][:slug]
     @company.state = 0;
+    @user = User.new
     if @company.save
-      user = @company.users.build
-      user.email = params[:new_company][:email]
-      user.name = 'root'
-      user.state = -1
-      user.role = 0
-      user.password_digest = 0
-      user.save
-      UserMailer.verification_email(user).deliver
-      redirect_to company_signin_path @company.id
+      @user = @company.users.build
+      @user.email = params[:new_company][:email]
+      @user.name = 'root'
+      @user.state = -1
+      @user.role = 0
+      @user.password_digest = 0
+      if @user.save
+        UserMailer.verification_email(@user).deliver
+        redirect_to company_signin_path @company.id
+      else
+        @company.destroy
+        render 'new'
+      end
     else
       render 'new'
     end
