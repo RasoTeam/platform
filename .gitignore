@@ -16,3 +16,7 @@
 /tmp
 .DS_STORE
 .idea
+
+# Ignore gemfile (causing merge problems beucase of windows/linux gems)
+Gemfile
+Gemfile.lock
