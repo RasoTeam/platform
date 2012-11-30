@@ -15,3 +15,10 @@
 //= require foundation
 //= require_tree .
 //= require colorbox-rails
+
+$(function() {
+  $("#time_off_start_at").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+$(function() {
+  $("#time_off_end_at").datepicker({ dateFormat: 'dd-mm-yy' });
+});

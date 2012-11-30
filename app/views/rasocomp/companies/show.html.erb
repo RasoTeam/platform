@@ -11,12 +11,11 @@
 							<a href="#" class="th"><img src="http://placehold.it/300x300" alt="Foto da empresa"></a>
 						</div>
 					</div>
-		          	
 		          	<div class="eight columns">
 		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
 		            	<div class="panel details">
 		              		<h4 class="hide-for-small"><%= @company.name %>
-		              			<% if current_user(@company.tag).role <= ROLE[:manager] %>
+		              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
 		              				<span class="secondary label radius"><%= link_to "Edit", edit_company_path(@company) %></span>
 		              			<% end %>
 		              			<hr/>
@@ -24,7 +23,7 @@
 		            		<h5>Details</h5>
 			            	<p><span class="label radius">Company Name</span> <%= @company.name %></p>
 			            	<p><span class="label radius">NIF</span> <%= @company.nif %></p>
-			            	<p><span class="label radius">SLUG</span> <a href="#"> <%= @company.tag+".rasohr.com" %></a></p>
+			            	<p><span class="label radius">SLUG</span> <%= link_to "rasohr.com/companies/"+@company.slug, company_path(@company.slug) %></p>
 			            	<p><span class="label radius">Employees</span> <%= @company.users.length-1 %></p>
 		            	</div>
 					</div>
@@ -33,31 +32,9 @@
 		    	<!-- Table Content -->
 				<div class="row">
 					<div class="twelve columns">
-					    <table class="twelve">
-							  <thead>
-							    <tr>
-									<th>Cod</th>
-									<th>Issued Date</th>
-									<th>Payment Date</th>
-									<th>Ammount</th>
-									<th>State</th>
-									<th>Actions</th>
-								</tr>
-							    </tr>
-							  </thead>
-							  <tbody>
-								<% @bills.each do |bill| %>
-									<tr>
-										<td><%= bill.id %></td>
-										<td><%= bill.created_at %></td>
-										<td><%= bill.payment_date %></td>
-										<td><%= bill.value %></td>
-										<td><%= bill.state %></td>
-										<td>Action</td>
-									</tr>
-								<% end %>
-							  </tbody>
-						</table>
+					    <% if @bills.any? && manager_signed_in?(@company.tag) %>
+					    	<% render :partial => "bills/list" %>
+					    <% end %>
 						<!-- End Table Content -->
 					</div>
 		  		</div>
@@ -66,5 +43,4 @@
 	</div>
 
 </div>
-
 <!-- <%= link_to "Manage Job Offers" , company_job_offers_path(params[:id]) %> -->

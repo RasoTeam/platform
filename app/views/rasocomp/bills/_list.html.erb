@@ -1,16 +1,26 @@
-<% @bills.each do |bill| %>
-  <p> 
-    ID: <%= bill.id %>;
-    <% if !bill.company.nil? %>
-     Company: <%= link_to bill.company.name, company_path(bill.company_id) %>; 
-    <%else%>
-      Unknown_Company; 
-    <% end %>
-    Created: <%= bill.created_at %>; 
-    Payment Date: <%= bill.payment_date %>; 
-    Value: <%= bill.value %>; 
-    State: <%= bill.state %>; 
-    Link: <%= link_to "View", company_bill_path(bill.company_id, bill) %>
-  </p>
-<% end %>
+<table class="twelve">
+  <thead>
+    <tr>
+    <th>Cod</th>
+    <th>Issued Date</th>
+    <th>Payment Date</th>
+    <th>Ammount</th>
+    <th>State</th>
+    <th>Actions</th>
+  </tr>
+    </tr>
+  </thead>
+  <tbody>
+  <% @bills.each do |bill| %>
+    <tr>
+      <td><%= bill.id %></td>
+      <td><%= bill.created_at %></td>
+      <td><%= bill.payment_date %></td>
+      <td><%= bill.value %></td>
+      <td><%= bill.state %></td>
+      <td>Action</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <%= will_paginate @bills %>

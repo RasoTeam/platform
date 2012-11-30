@@ -3,11 +3,11 @@ TIME OFF
   <% @timeoff.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end %>
-  <%= f.select :category, [["CANCRO", 1],["DORMIR", 2]] %>
-  <%= f.label :start_date %>
-  <%= f.date_select :start_date %>
-  <%= f.label :end_date %>
-  <%= f.date_select :end_date %>
+  <%= f.select :category, [["TIPO 1", 1],["TIPO 2", 2]] %>
+  <%= f.label :start_at %>
+  <%= f.text_field :start_at %>
+  <%= f.label :end_at %>
+  <%= f.text_field :end_at %>
   <%= f.label :description %>
   <%= f.text_field :description %>
   <%= f.submit %>

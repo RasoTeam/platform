@@ -7,23 +7,27 @@ private
       id = params[:company_id]
       id ||= params[:id]
       comp = Company.find(id)
-      unless user_signed_in?(comp.tag)
+      unless user_signed_in?(comp.slug)
       	flash[:alert] = t(:no_permission_to_access)
      	  redirect_to company_signin_path(comp)
      end
     end
 
     def manager_or_root
-      comp = Company.find(params[:company_id])
-      unless manager_signed_in?(comp.tag) || root_signed_in?(comp.tag)
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
+      unless manager_signed_in?(comp.slug) || root_signed_in?(comp.slug)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
       end
     end
 
     def manager_or_user_self
-      comp = Company.find(params[:company_id])
-      unless manager_signed_in?(comp.tag) || (user_signed_in?(comp.tag) && current_user(comp.tag).id == Integer(params[:id]) && current_user(comp.tag).role != ROOT)
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
+      unless manager_signed_in?(comp.slug) || (user_signed_in?(comp.slug) && current_user(comp.slug).id == Integer(params[:id]) && current_user(comp.slug).role != ROOT)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
       end
@@ -31,8 +35,10 @@ private
 
 
     def manager
-      comp = Company.find(params[:company_id])
-      unless manager_signed_in?(comp.tag)
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
+      unless manager_signed_in?(comp.slug)
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_signin_path(comp)
       end
@@ -40,7 +46,7 @@ private
 
     def user_self
       comp = Company.find(params[:company_id])
-      unless user_signed_in?(comp.tag) && current_user(comp.tag).id == Integer(params[:id])
+      unless user_signed_in?(comp.slug) && current_user(comp.slug).id == Integer(params[:id])
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_path(comp)
       end
@@ -48,7 +54,7 @@ private
 
     def user_self_not_root
       comp = Company.find(params[:company_id])
-      unless user_signed_in?(comp.tag) && current_user(comp.tag).id == Integer(params[:id]) && current_user(comp.tag).role != ROOT
+      unless user_signed_in?(comp.slug) && current_user(comp.slug).id == Integer(params[:id]) && current_user(comp.slug).role != ROOT
         flash[:alert] = t(:no_permission_to_access) 
         redirect_to company_path(comp)
       end

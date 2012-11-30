@@ -21,7 +21,7 @@ Platform::Application.configure do
   config.assets.digest = true
 
   #sets the url 
-  config.action_mailer.default_url_options = { :host => 'rasohr.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'rasohr.com' }
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH

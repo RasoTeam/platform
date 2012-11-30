@@ -31,7 +31,7 @@
 		            		<h5>Details</h5>
 			            	<p><span class="label radius">Company Name</span> <%= @company.name %></p>
 			            	<p><span class="label radius">NIF</span> <%= @company.nif %></p>
-			            	<p><span class="label radius">SLUG</span> <a href="#"> <%= @company.tag+".rasohr.com" %></a></p>
+			            	<p><span class="label radius">SLUG</span> <a href="#"> <%= "rasohr.com/companies/"+@company.slug %></a></p>
 			            	<p><span class="label radius">Employees</span> <%= @company.users.length-1 %></p>
 		            	</div>
 					</div>
@@ -40,31 +40,9 @@
 		    	<!-- Table Content -->
 				<div class="row">
 					<div class="twelve columns">
-					    <table class="twelve">
-							  <thead>
-							    <tr>
-									<th>Cod</th>
-									<th>Issued Date</th>
-									<th>Payment Date</th>
-									<th>Ammount</th>
-									<th>State</th>
-									<th>Actions</th>
-								</tr>
-							    </tr>
-							  </thead>
-							  <tbody>
-								<% @bills.each do |bill| %>
-									<tr>
-										<td><%= bill.id %></td>
-										<td><%= bill.created_at %></td>
-										<td><%= bill.payment_date %></td>
-										<td><%= bill.value %></td>
-										<td><%= bill.state %></td>
-										<td>Action</td>
-									</tr>
-								<% end %>
-							  </tbody>
-						</table>
+					    <% if @bills.any? && manager_signed_in?(@company.tag) %>
+					    	<% render :partial => "bills/list" %>
+					    <% end %>
 						<!-- End Table Content -->
 					</div>
 		  		</div>

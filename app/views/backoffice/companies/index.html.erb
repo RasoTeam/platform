@@ -58,7 +58,7 @@
 			<% @companies.each do |company| %>
 				<tr>
 					<td><%= link_to company.name, backoffice_company_path(company) %></td>
-					<td><%= link_to company.tag+".rasohr.com", company.tag+".rasohr.com" %></td>
+					<td><%= link_to "rasohr.com/companies/"+company.slug, backoffice_company_path(company.slug) %></td>
 					<td><%= company.nif %></td>
 					<td>
 						<% if company.state == 0 %>

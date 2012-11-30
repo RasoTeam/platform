@@ -31,21 +31,22 @@
 </div> 
   <!-- Cena Grande -->
   <div class="nine columns pull-three">
-
+    <div class="signup">
+      <div class="panel">
         <h3> Edit User Profile </h3>
         <hr/>
           <%= form_for [@company, @user] do |f| %>
 
-            <span class=" radius label">User Name</span>
+            <%= f.label :name, :class=>"radius label"%>
             <%= f.text_field :name %>
 
-          <span class="radius label">User Email</span>
+            <%= f.label :email, :class=>"radius label"%>
             <%= f.text_field :email %>
 
-          <span class=" radius label">Password</span>
+            <%= f.label :password, :class=>"radius label"%>
             <%= f.password_field :password %>
 
-          <span class=" radius label">Comfirm Password</span>
+            <%= f.label :password_confirmation, :class=>"radius label"%>
             <%= f.password_field :password_confirmation %>
         
             <p style="text-align: center"><%= f.submit 'Save!', :class => "button" %></p>
@@ -58,10 +59,8 @@
               <p><%= msg %></p>
             <% end %>
           <% end %>
-
-
-
-
+        </div>
+      </div>
   </div>
 </div>
 

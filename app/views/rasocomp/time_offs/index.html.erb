@@ -1,18 +1,37 @@
-<h1> Time Offs </h1>
-<br/>
-<h1>CREDITS <%= @user.time_off_days %></h1><br>
-<%= link_to 'click here avoit work', new_company_user_time_off_path( @company, @user) %><br>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:timeoffs) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
 
-<% @timeoffs.each do |t| %>
-  Timeoff id: <%= t.id %>;
-  Start: <%= t.start_date %>;
-  End: <%= t.end_date %>;
-  Days: <%= t.days %>;
-  Type: <%= t.category %>;
-  State: <%= t.state %>;
-  Desc: <%= t.description %>;
-  <%= link_to "cancel", [@company, @user, t], :method => :delete, :data => { :confirm => 'Confirmation Box'} %>
-  <br/>
-<% end %>
-<br/>
-<br/>
+<div class="row">
+  	<div class="eight columns">
+		<h2>Time Offs</h2>
+  	</div>
+  	<div class="four columns">
+		<p class="radius label">Remaining days</p> <%= @user.time_off_days %>
+  	</div>
+  	<div class="twelve columns">
+		<%= link_to 'click here avoit work', new_company_user_time_off_path( @company, @user) %><br>
+
+		<% @timeoffs.each do |t| %>
+		  Timeoff id: <%= t.id %>;
+		  Start: <%= t.start_at %>;
+		  End: <%= t.end_at %>;
+		  Days: <%= t.days %>;
+		  Type: <%= t.category %>;
+		  State: <%= t.state %>;
+		  Desc: <%= t.description %>;
+		  <%= link_to "cancel", [@company, @user, t], :method => :delete, :data => { :confirm => 'Confirmation Box'} %>
+		  <br/>
+		<% end %>
+		<br/>
+		<br/>
+  	</div>
+
+</div>

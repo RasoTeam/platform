@@ -3,7 +3,7 @@ class Public::JobOffersController < Public::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @offers = @company.job_offers
+    @offers = @company.job_offers.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

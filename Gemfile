@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem "friendly_id", "~> 4.0.1"
 gem 'rails', '3.2.8'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '~> 3.0'
@@ -9,15 +9,16 @@ gem "mail", "2.4.4"
 gem 'validates_timeliness', '~> 3.0'
 gem 'hpricot'
 gem 'colorbox-rails'
+gem 'event-calendar', :require => 'event_calendar'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-# gem 'pg'
+ gem 'pg'
 end
 
-group :development do
+group :development, :test do
    gem 'sqlite3'
 end
 

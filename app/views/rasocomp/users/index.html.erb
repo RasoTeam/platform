@@ -1,6 +1,16 @@
 <div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+    	<li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:employees) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
 		<div class="nine columns">
-			<h3>Company employees</h3>
+			<h3>Employees</h3>
 		</div>
 		<div class="three columns">
 			<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %>
@@ -8,6 +18,7 @@
 </div>
 
 <div class="row">
+
 	<div class="twelve columns">
 		<!-- Listagem -->
 		<div class="panel">
@@ -20,7 +31,7 @@
 								<th>Name</th>
 								<th>E-Mail</th>
 								<th>Role</th>
-								<th>Profile</th>
+								<!-- <th>Profile</th> -->
 								<!--<th>Status</th>-->
 							</tr>
 						</thead>
@@ -28,11 +39,11 @@
 							<% @users.each do |u| %>
 								<tr>
 							    	<td><%= u.id %></td>
-							      	<td><%= u.name %></td>
+							      	<td><%= link_to u.name, company_user_path(u.company_id, u) %></td>
 							      	<td><%= u.email %></td>
 							 
 							      	<td><%= t(ROLE.invert[u.role]) %></td>
-							      	<td><%= link_to "Profile", company_user_path(u.company_id, u) %> </td>
+							      	<!-- <td><%= link_to "Profile", company_user_path(u.company_id, u) %> </td> -->
 
 							      	<!-- <td>
 							      		<form class="custom" style="margin:0;"><label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span></label></form>
@@ -50,17 +61,7 @@
 			</div>
 			<div class="row">
 				<div class="eight columns">
-					<ul class="pagination">
-						<li class="arrow unavailable"><a href="">&laquo;</a></li>
-						<li class="current"><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">4</a></li>
-						<li class="unavailable"><a href="">&hellip;</a></li>
-						<li><a href="">12</a></li>
-						<li><a href="">13</a></li>
-						<li class="arrow"><a href="">&raquo;</a></li>
-					</ul>
+					<%= will_paginate @users %>
 				</div>
 				<div class="four columns">
 					<div class="row collapse">
@@ -74,10 +75,6 @@
 				</div>
 			</div>	
 		</div>
-			<!-- Fim Listagem -->
+			<!-- Fim Lisslugem -->
 	</div>
 </div>
-<br/>
-
-<br/>
-<br/>

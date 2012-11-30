@@ -52,8 +52,10 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     erubis (2.7.0)
+    event-calendar (2.3.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    friendly_id (4.0.9)
     fssm (0.2.9)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -141,6 +143,8 @@ DEPENDENCIES
   colorbox-rails
   compass-rails
   hpricot
+  event-calendar
+  friendly_id (~> 4.0.1)
   jquery-rails
   mail (= 2.4.4)
   rails (= 3.2.8)

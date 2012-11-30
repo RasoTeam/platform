@@ -1,21 +1,23 @@
 class TimeOff < ActiveRecord::Base
   attr_accessor :credits
-  attr_accessible :days, :description, :end_date, :start_date, :state, :category, :user_id, :credits
+  attr_accessible :days, :description, :end_at, :start_at, :state, :category, :company_id, :user_id, :credits, :name
   belongs_to :user
+  has_event_calendar
 
 
+  #before_validation :fix_date
   before_validation :set_days
 
   validates :user_id, :presence => true
 
-  validates :end_date, :presence => true,
+  validates :end_at, :presence => true,
                        :timeliness => { :after => lambda { :start_date },
-                                        :after_message => ':end_date > :start_date',
+                                        :after_message => ':end_at > :start_at',
                                         :type => :date}
 
-  validates :start_date, :presence => true,
+  validates :start_at, :presence => true,
                          :timeliness => { :after => lambda { Date.current }, 
-                                          :after_message => ':start_date > today',
+                                          :after_message => ':start_at > today',
                                           :type => :date}
 
   validates :category, :presence => true, 
@@ -37,7 +39,7 @@ class TimeOff < ActiveRecord::Base
                                          :greater_than_or_equal_to => :days } 
 
   def days_diff
-    (self.end_date - self.start_date).to_i
+    (self.end_at - self.start_at).to_i
   end
 
   private

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :time_offs
 
-  before_save :create_remember_token
+  before_create :create_remember_token
 
   validates :name, :presence => true, :length => { :maximum => 20}
 

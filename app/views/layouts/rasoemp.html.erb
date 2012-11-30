@@ -34,8 +34,8 @@
     <ul>
       <!-- Title Area -->
       <li class="name">
-        <% if current_user(@company.tag).role > ROOT %>
-          <%= link_to  @company.name, user_dashboard_path(@company.id, current_user(@company.tag)) %>
+        <% if current_user(@company.slug).role > ROOT %>
+          <%= link_to  @company.name, user_dashboard_path(@company.id, current_user(@company.slug)) %>
         <% else %>
           <a><%= @company.name %></a>
         <% end %>
@@ -45,13 +45,13 @@
     <section>
       <!-- Left Nav Section -->
       <ul class="left">
-        <% if current_user(@company.tag).role == ROLE[:manager] %>
+        <% if current_user(@company.slug).role == ROLE[:manager] %>
         <li class="divider"></li>
         <li>
           <%= link_to "Job Offers", company_job_offers_path(@company) %>
         </li>
         <% end %>
-        <% if current_user(@company.tag).role <= ROLE[:manager] %>
+        <% if current_user(@company.slug).role <= ROLE[:manager] %>
         <li class="divider"></li>
         <li><%= link_to "Employees", company_users_path(@company) %></li>
         <% end %>
@@ -61,6 +61,16 @@
       </ul>
       <!-- Right Nav Section -->
       <ul class="right">
+        <li class="divider"></li>
+        <li  class="name" style="line-height: 20px; padding: 15px;">
+          <%  curUser=current_user(@company.slug) %>
+          <span><%=  curUser.name %></span><br/>
+          <span class="secondary radius label"><%  if curUser.role == 0%>
+          ROOT
+          <%else%>
+          <%= ROLE.invert[current_user(@company.slug).role]%>
+          <%end%></span>
+        </li>
         <li class="divider"></li>
         <li><%= link_to "Logout", company_signout_path(@company) %></li>
       </ul>

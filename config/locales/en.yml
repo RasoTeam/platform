@@ -2,17 +2,23 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  account_activated: "Your account has been successfuly activated"
+  blocked_successful: "Successfully blocked"
+  cooperator: "Cooperator"
+  deleted_successful: "Successfully deleted"
+  employees: "Employees"
+  error: "Operation Failed"
   hello: "Hello world"
+  job_offers: "Job Offers"
+  manager: "Manager"
+  name: "Name"
+  new: "New"
   no_permission_to_access: "No permission to access (isto está no config/locales)"
   invalid_login: "Wrong username or password! (config/locales)"
-  successful_update: "Successfully updted"
-  blocked_successful: "Successfully blocked"
-  deleted_successful: "Successfully deleted"
-  error: "Operation Failed"
-  account_activated: "Your account has been successfuly activated"
   invalid_verification: "Invalid Verification"
-  manager: "Manager"
-  cooperator: "Cooperator"
+  profile: "Profile"
+  successful_update: "Successfully updted"
+  timeoffs: "Time Offs"
   ROOT: "Root"
 
   activerecord:

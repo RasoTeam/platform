@@ -6,8 +6,7 @@ class Backoffice::UsersController < Backoffice::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @users = @company.users
-    @users.delete_if {|key, value| key.role == 0 }
+    @users = @company.users.where("role > 0").paginate(:page => params[:page], :per_page => 5)
   end
 
   def edit

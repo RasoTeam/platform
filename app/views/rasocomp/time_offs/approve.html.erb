@@ -6,7 +6,7 @@ APROVE TIME OFF
   <%= f.label :end_date %><br>
   <%= @timeoff.end_date %>
   <br>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Confirm") %>
+  <%= label_slug(:q, "Search for:") %>
+  <%= text_field_slug(:q) %>
+  <%= submit_slug("Confirm") %>
 <% end %>
