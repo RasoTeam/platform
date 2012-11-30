@@ -1,5 +1,6 @@
 Platform::Application.routes.draw do
 
+resources :feedbacks
 
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
@@ -24,6 +25,7 @@ Platform::Application.routes.draw do
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'
+  post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
 
 
 #root

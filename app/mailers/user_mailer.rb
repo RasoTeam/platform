@@ -5,4 +5,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail( :to => user.email, :subject => "Account Confirmation")
   end
+
+  def feedback_mail_notifier(feedback)
+    @feedback = feedback
+    mail(:to => feedback.email, :subject => "Raso-LeanHR Feedback", :content_type => "text/html")
+  end
 end

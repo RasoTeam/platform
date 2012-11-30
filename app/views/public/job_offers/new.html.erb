@@ -32,6 +32,8 @@
           </table>
         </div>
       </div>
+      
+      <p id="alert"><%= alert %></p>
 
       <div class="row">
         <div class="twelve columns">
@@ -44,8 +46,15 @@
           <ul class="tabs-content">
             <li class="active" id="simple1Tab">
                 <%= form_for @candidate , :url => create_apply_path do |f| %>
-                  <% @candidate.errors.full_messages.each do |msg| %>
-                  <p><%= msg %></p>
+                  <% if @candidate.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+                      <ul>
+                        <% @candidate.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
                   <% end %>
                   <div class="row">
                     <div class="two mobile-one columns">
@@ -116,8 +125,15 @@
             </li>
             <li id="simple2Tab">
                 <%= form_for @candidate , :url => create_apply_path do |f| %>
-                  <% @candidate.errors.full_messages.each do |msg| %>
-                      <p><%= msg %></p>
+                  <% if @candidate.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+                      <ul>
+                        <% @candidate.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
                   <% end %>
                   <div class="row">
                     <div class="two mobile-one columns">
@@ -187,9 +203,17 @@
               <% end %>
             </li>
             <li id="simple3Tab">
-              <%= form_for @candidate , :url => create_apply_path do |f| %>
-                  <% @candidate.errors.full_messages.each do |msg| %>
-                      <p><%= msg %></p>
+              <%= form_for @candidate , :url => create_apply_xml_path, :html => {:multipart => true} do |f| %>
+                  <% if @candidate.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@candidate.errors.count, "erro") %> estão a impedir o envio da candidatura:</h2>
+
+                      <ul>
+                      <% @candidate.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                      <% end %>
+                      </ul>
+                    </div>
                   <% end %>
                   <div class="row">
                     <div class="two mobile-one columns">
@@ -233,19 +257,10 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <label class="right inline">CV.:</label>
+                      <label class="right inline">XML(europass format):</label>
                     </div>
                     <div class="ten mobile-three columns">
-                      <div class="row collapse">
-                        <div class="six mobile-three columns">
-                          <input type="text" />
-                        </div>
-                        <div class="two mobile-one columns">
-                          <a class="button expand postfix">Browse</a>
-                        </div>
-                        <div class="four columns">
-                        </div>
-                      </div>
+                      <%= f.file_field "file", :name=>"file" %>
                     </div>
                   </div>
                   <div class="row">

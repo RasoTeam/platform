@@ -5,12 +5,6 @@ class Candidate < ActiveRecord::Base
   belongs_to :job_offer
 
   #Validadações para o Candidato
-  validates :name , :presence => true
-
-  validates :email , :presence => true
-
-  validates :nationality , :presence => true
-
-  validates :location , :presence => true
+  validates_presence_of :email, :location, :name, :nationality, :phone
 
 end
