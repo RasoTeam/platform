@@ -40,9 +40,18 @@ ActiveRecord::Schema.define(:version => 20121129203820) do
     t.string   "address"
     t.string   "nif"
     t.integer  "state"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "slug"
+    t.string   "password_digest"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "slug"
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -84,10 +93,13 @@ ActiveRecord::Schema.define(:version => 20121129203820) do
     t.integer  "state"
     t.text     "description"
     t.integer  "days"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.date     "start_at"
+    t.date     "end_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "name"
+    t.string   "color"
+    t.integer  "company_id"
   end
 
   create_table "users", :force => true do |t|

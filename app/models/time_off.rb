@@ -8,10 +8,13 @@
 #  state       :integer
 #  description :text
 #  days        :integer
-#  start_date  :date
-#  end_date    :date
+#  start_at    :date
+#  end_at      :date
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  name        :string(255)
+#  color       :string(255)
+#  company_id  :integer
 #
 
 class TimeOff < ActiveRecord::Base

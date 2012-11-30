@@ -8,6 +8,9 @@ To FIX
 	
 	Permissoes:
 	-Quando super user tenta editar outro super user, ser redireccionado para a sua show page e nao  a signin page
+	
+	Paths:
+	-Corrigir o path de ediçao dos super users (undefined method `super_user_path') 
 
 
 TO DO
