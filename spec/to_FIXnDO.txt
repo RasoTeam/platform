@@ -1,0 +1,16 @@
+To FIX
+	Erros ortográficos:
+	-"Comfirmar" em vez de Confirmar (nao me lembro onde)
+	
+	Problemas de estilo:
+	-Adicionar novo utilizador na empresa (campos muito grandes)
+	-Modificar titulos das páginas para estilo "RasoHR | titulo_local"
+	
+	Permissoes:
+	-Quando super user tenta editar outro super user, ser redireccionado para a sua show page e nao  a signin page
+
+
+TO DO
+Super User não consegue ver users de cada empresa
+Diminuir o tempo de vida do cookie do Super User
+

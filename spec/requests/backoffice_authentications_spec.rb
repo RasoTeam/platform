@@ -145,7 +145,7 @@ describe "BackofficeAuthentications" do
 
       describe "visiting super_users#edit page" do
         before { put backoffice_super_user_path(wrong_admin) }
-        specify { response.should redirect_to(super_user_signin_path) }
+        specify { response.should redirect_to(backoffice_super_user_path(admin)) }
       end
     end
 
@@ -161,6 +161,5 @@ describe "BackofficeAuthentications" do
     #     specify { response.should redirect_to(root_path) }
     #   end
     # end
-
   end
 end
