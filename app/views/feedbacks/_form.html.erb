@@ -1,8 +1,8 @@
-<div class="feedback" >
+<div class="feedback" align="center">
     <%= form_for(@feedback) do |f| %>
       <% if @feedback.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@feedback.errors.count, "erro") %> estão a impedir o envio do feedback:</h2>
+          <h2><%= pluralize(@feedback.errors.count, "Error") %>:</h2>
 
           <ul>
           <% @feedback.errors.full_messages.each do |msg| %>
@@ -11,22 +11,22 @@
           </ul>
         </div>
       <% end %>
-        <table align="center">
+        <table style="width:100%">
             <tr>
-                <td align="right"><%= f.label :nome, "Nome:" %></td>
+                <td align="right"><%= f.label :nome, "Name:" %></td>
                 <td><%= f.text_field :nome, :size=>30 %></td>
             </tr>
             <tr>
-                <td align="right"><%= f.label :email, "E-mail:" %></td>
+                <td align="right"><%= f.label :email, "E-Mail:" %></td>
                 <td><%= f.text_field :email, :size=>30 %></td>
             </tr>
             <tr>
-                <td align="right"><%= f.label :tipo, "Tipo:" %></td>
+                <td align="right"><%= f.label :tipo, "Type:" %></td>
                 <!-- hack para "feedback[tipo]", ele estava a assumir apenas "tipo" -->
-                <td><%= select_tag("feedback[tipo]", options_for_select(["Erro","Aspecto","Funcionalidade","Outro"],"Erro")) %></td>
+                <td><%= select_tag("feedback[tipo]", options_for_select(["Error","Aspect","Funcionality","Other"],"Error")) %></td>
             </tr>
             <tr>
-                <td align="right" style="vertical-align:top"><%= f.label :texto, "Descrição:" %></td>
+                <td align="right" style="vertical-align:top"><%= f.label :texto, "Description:" %></td>
                 <td><%= f.text_area :texto, :rows=>"10", :cols=>"40", :style=>"width:97%;" %></td>
             </tr>
             <tr>
@@ -34,9 +34,20 @@
                     <%= f.text_field :url, :type=>"hidden" %>
                 </td>
                 <td align="right">
-                    <%= f.submit "Submeter", :id=>"commit" %>
+                    <%= f.submit "Submit", :id=>"commit" %><%= image_tag("loader.gif", :border => 0, :id => 'loader')%>
                 </td>
             </tr>
         </table>
     <% end %>
 </div>
+
+<script>
+    $(document).ready(function (){
+
+        $("#loader").hide();
+
+        $("#commit").click(function () {
+            $("#loader").show();
+        });
+    });
+</script>
