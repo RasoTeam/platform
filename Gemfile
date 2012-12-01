@@ -11,6 +11,10 @@ gem 'hpricot'
 gem 'colorbox-rails'
 gem 'event-calendar', :require => 'event_calendar'
 
+#Gems para acesso ao LinkedIn
+gem 'linkedin'
+gem 'oauth'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

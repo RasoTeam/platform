@@ -1,6 +1,25 @@
 class Public::JobOffersController < Public::ApplicationController
   layout "nolayout"
 
+  #Chaves da API do LinkedIn para esta aplicação
+  @@api_key =  'gdpw09c8khsp'
+  @@api_secret = 'GjOzGtusFpJ2e9as'
+  @@user_token = '1b7ef419-844d-4c26-8807-aa9f5fa39d96'
+  @@user_secret = '00d5f1bf-5d30-45c8-b6cf-e9ce33822a51'
+
+  @@pin = nil
+  @@accesssecret = nil
+  @@accesstoken = nil
+
+  #Hash de configuração usada pela gem oauth e/ou linkedin
+  @@configuration =   { :site => 'https://api.linkedin.com',
+                        :authorize_path => '/uas/oauth/authenticate',
+                        :request_token_path => '/uas/oauth/requestToken?scope=r_fullprofile',
+                        :access_token_path => '/uas/oauth/accessToken',
+                        :callback_url => 'http://localhost:3000/linkedin_callback' }
+
+  ######################################################################################################################
+
   def index
     @company = Company.find(params[:company_id])
     @offers = @company.job_offers.paginate(:page => params[:page], :per_page => 10)
@@ -22,14 +41,22 @@ class Public::JobOffersController < Public::ApplicationController
     @candidate = Candidate.new(params[:candidate])
     @candidate.job_offer_id = params[:id]
 
-    if @candidate.save
-      flash[:success] = "You applied successfully for the job."
-      redirect_to public_company_job_offers_path(params[:company_id])
-    else
-      flash[:alert] = "Something went wrong, try again."
-      redirect_to new_apply_path(params[:company_id])
+    if params[:cv_type] == 'linkedin'     #Se for um post para linkedin
+      #começa o processo de autenticação no linkedin
+      generate_linkedin_oauth_url @candidate
     end
+    #if @candidate.save
+      #flash[:success] = "You applied successfully for the job."
+      #redirect_to public_company_job_offers_path(params[:company_id])
+    #else
+      #flash[:alert] = "Something went wrong, try again."
+      #redirect_to new_apply_path(params[:company_id])
+    #end
   end
+
+  ######################################################################################################################
+  # FUNÇÕES NECESSÁRIAS
+  ######################################################################################################################
 
   def create_xml
     @candidate = Candidate.new(params[:candidate])
@@ -132,6 +159,69 @@ class Public::JobOffersController < Public::ApplicationController
     File.open('app/assets/candidaturas/'+id+'.html','w') do |file|
       file.write(fileHTML)
     end
+  end
+
+
+  ### LINKEDIN
+
+  def generate_linkedin_oauth_url(candidate)
+    client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
+
+    #MUITO IMPORTANTE - esta linha define para onde é esperado de volta a resposta ao request por parte do linkedin
+    request_token = client.request_token(:oauth_callback => "#{linkedin_oauth_url}")
+
+    #grava na session os parametros dos tokens do utilizador
+    session[:rtoken] = request_token.token
+    session[:rsecret] = request_token.secret
+
+    #prega o candidate actual na session para não se perder com o reencaminhamento
+    session[:candidate] = candidate
+
+    #envia o utilizador para o url de autorizaçao do linkedin
+    redirect_to request_token.authorize_url
+
+  end
+
+  def oauth_account
+    #Cria um cliente Linkedin com as credenciais actuais
+    client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
+
+    #vai buscar o código enviado pelo linkedin
+    @@pin = params[:oauth_verifier]
+
+    #busca as variáveis potencialmente necessárias
+    @candidate = session[:candidate]
+    @job_offer = JobOffer.find(params[:id])
+    @company = Company.find(params[:company_id])
+
+    if @@pin
+      #trata das autorizações
+      @@accesstoken, @@accesssecret = client.authorize_from_request(session[:rtoken], session[:rsecret], @@pin)
+    end
+
+    #encaminha para o mostrador de perfil obtido
+    redirect_to linkedin_profile_path @company,@job_offer,@candidate
+  end
+
+  #Mostra o perfil
+  def linkedin_profile
+    @candidate = session[:candidate]
+    @profile = get_full_profile
+  end
+
+  def get_full_profile
+    #Novo cliente
+    client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
+    #Autorização
+    client.authorize_from_access(@@accesstoken,@@accesssecret)
+
+    #SACA O PERFIL!!!
+    profile = client.profile(:fields => [:specialties , :skills])
+    #Transforma-o em algo útil
+    full_profile = profile.to_hash
+
+    #Devolve
+    return full_profile
   end
 
 end
