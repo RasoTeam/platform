@@ -50,10 +50,11 @@ class Public::JobOffersController < Public::ApplicationController
         file_data = params[:file]
         xml_contents = file_data.read
         readXMLfile2html(xml_contents,@candidate.id.to_s)
+
+        flash[:success] = "You applied successfully for the job."
+        redirect_to public_company_job_offers_path(params[:company_id])
       end
 
-      flash[:success] = "You applied successfully for the job."
-      redirect_to public_company_job_offers_path(params[:company_id])
     else
       #format.html { render action: "new" }
       #format.json { render json: @candidate.errors, status: :unprocessable_entity }
