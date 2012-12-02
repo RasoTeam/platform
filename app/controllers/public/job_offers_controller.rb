@@ -204,12 +204,11 @@ class Public::JobOffersController < Public::ApplicationController
     client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
     #Autorização
     client.authorize_from_access(@@accesstoken,@@accesssecret)
-
     #SACA O PERFIL!!!
-    profile = client.profile(:fields => [:specialties , :skills])
+    profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil
     full_profile = profile.to_hash
-
+    puts full_profile
     #Devolve
     return full_profile
   end
