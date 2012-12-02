@@ -218,6 +218,7 @@
                   <div class="row">
                     <div class="two mobile-one columns">
                       <%=f.label :name, :class=>"right inline"%>
+                      <%=hidden_field_tag 'cv_type' , 'xml'%>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :name, :class=>"eight" %>
