@@ -34,6 +34,8 @@ resources :feedbacks
         :to =>'public/job_offers#oauth_account' , :as => 'linkedin_oauth'
   match '/public/companies/:company_id/job_offers/:id/linkedin_profile' ,
         :to => 'public/job_offers#linkedin_profile' , :as => 'linkedin_profile'
+  get  '/public/companies/:company_id/job_offers/:id/profile_saved' ,
+        :to => 'public/job_offers#save_linkedin_profile' , :as => 'save_linkedin_profile'
 
 
 
