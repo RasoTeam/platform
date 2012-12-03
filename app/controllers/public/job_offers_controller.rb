@@ -41,40 +41,31 @@ class Public::JobOffersController < Public::ApplicationController
     @candidate = Candidate.new(params[:candidate])
     @candidate.job_offer_id = params[:id]
 
-    if params[:cv_type] == 'linkedin'     #Se for um post para linkedin
-      #começa o processo de autenticação no linkedin
-      generate_linkedin_oauth_url @candidate
+    if @candidate.save
+      
+      if params[:cv_type] == 'linkedin'     #Se for um post para linkedin
+        #começa o processo de autenticação no linkedin
+        generate_linkedin_oauth_url @candidate
+      elsif params[:cv_type] == 'xml'     #Se for um post para xml
+        file_data = params[:file]
+        xml_contents = file_data.read
+        readXMLfile2html(xml_contents,@candidate.id.to_s)
+
+        flash[:success] = "You applied successfully for the job."
+        redirect_to public_company_job_offers_path(params[:company_id])
+      end
+
+    else
+      #format.html { render action: "new" }
+      #format.json { render json: @candidate.errors, status: :unprocessable_entity }
+      flash[:alert] = "Something went wrong, try again."
+      redirect_to new_apply_path(params[:company_id])
     end
-    #if @candidate.save
-      #flash[:success] = "You applied successfully for the job."
-      #redirect_to public_company_job_offers_path(params[:company_id])
-    #else
-      #flash[:alert] = "Something went wrong, try again."
-      #redirect_to new_apply_path(params[:company_id])
-    #end
   end
 
   ######################################################################################################################
   # FUNÇÕES NECESSÁRIAS
   ######################################################################################################################
-
-  def create_xml
-    @candidate = Candidate.new(params[:candidate])
-    @candidate.job_offer_id = params[:id]
-
-    if @candidate.save
-        
-      file_data = params[:file]
-      xml_contents = file_data.read
-
-      readXMLfile2html(xml_contents,@candidate.id.to_s)
-      flash[:success] = "You applied successfully for the job."
-      redirect_to public_company_job_offers_path(params[:company_id])
-    else
-      flash[:alert] = "Something went wrong, try again."
-      redirect_to new_apply_path(params[:company_id])
-    end
-  end
 
   def readXMLfile2html(xmlf,id)
     doc = Hpricot::XML(xmlf)
