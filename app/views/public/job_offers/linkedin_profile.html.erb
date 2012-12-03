@@ -96,3 +96,8 @@
     </tr>
   <% end %>
 </table>
+
+<%= form_tag :use_route => save_linkedin_profile_path do %>
+    <%= submit_tag 'Accept this Profile.'  %>
+    <%= submit_tag 'Cancel' %>
+<% end %>
