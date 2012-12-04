@@ -111,7 +111,7 @@ describe "BackofficeAuthentications" do
 
             it "should render the default (profile) page" do
               page.should have_selector('title', text: 'RasoHR | Backoffice')
-              page.should have_selector('h2', text: 'Welcome to RASO Backoffice')
+              page.should have_selector('h1', text: 'Welcome to RASO Backoffice')
             end
           end
         end

@@ -1,10 +1,22 @@
 To FIX
 	Erros ortográficos:
 	-"Comfirmar" em vez de Confirmar (nao me lembro onde)
+	-Admin:	| "Adress"  em vez de "address" na pagina de ediçao de uma empresa
+			| "Ammount" em vez de "amount" na pagina dos Invoices	
 	
 	Problemas de estilo:
 	-Adicionar novo utilizador na empresa (campos muito grandes)
 	-Modificar titulos das páginas para estilo "RasoHR | titulo_local"
+	-Admin so se consegue apagar a ele próprio mas link de apagar outro admin aparece! (embora nao apague ao clicar)
+	-Para um Admin dentro das Empresas:
+		.a paginaçao aparece sempre, mesmo com apenas 1 ou 2 empresas (numeros nao funcionam)
+		.links da barra de navegação ul class="breadcrumbs" não funcionam
+(model company)	.ao editar o nif de uma empresa nao existe qq validação
+(model company)	.morada da empresa nao aparece, não sei se existe verificaçao do campo ao editar
+		.ações de bloquear/remover não fazem nada, empresa continua sempre ativa
+		.filtros de all/active/block não fazem nada
+	-Para um Admn, pagina dos Invoices está inacabada/indefinida
+	
 	
 	Permissoes:
 	-Quando super user tenta editar outro super user, ser redireccionado para a sua show page e nao  a signin page
@@ -14,6 +26,7 @@ To FIX
 
 
 TO DO
+Isto não era suposto estar tudo em Português? 
 Super User não consegue ver users de cada empresa
 Diminuir o tempo de vida do cookie do Super User
 
