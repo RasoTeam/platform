@@ -44,10 +44,13 @@ class Public::JobOffersController < Public::ApplicationController
     if @candidate.valid?
       
       if params[:cv_type] == 'linkedin'     #Se for um post para linkedin
+
         #começa o processo de autenticação no linkedin
         generate_linkedin_oauth_url @candidate
+
       elsif params[:cv_type] == 'xml'     #Se for um post para xml
-        @candidate.save
+
+        @candidate.save #Save aqui para não entrar em conflito com o processo de linkedin
         file_data = params[:file]
         xml_contents = file_data.read
         readXMLfile2html(xml_contents,@candidate.id.to_s)
@@ -63,14 +66,27 @@ class Public::JobOffersController < Public::ApplicationController
   end
 
 
+  #Esta acção guarda efectivamente um CV carregado através do LinkedIn
   def save_linkedin_profile
+    #Obter variáveis guardadas na session
     @candidate = session[:candidate]
     @profile = session[:profile]
 
     if @candidate.save
-      redirect_to public_company_job_offers_path('1')
+
+      #Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
+      @candidate.file_path = save_linkedin_to_html(@profile,@candidate)
+      #Save novamente faz update
+      @candidate.save
+      #Limpa as variáveis de sessão
+      session[:candidate] = nil
+      session[:profile] = nil
+
+      flash[:success] = "Profile successfully saved."
+      redirect_to public_company_job_offers_path(params[:company_id])
     else
       flash[:alert] = "Could not save, please retry."
+      redirect_to public_company_job_offers_path(params[:company_id])
     end
   end
 
@@ -227,6 +243,7 @@ class Public::JobOffersController < Public::ApplicationController
     return full_profile
   end
 
+  #Grava o ficheiro com o HTML retirado do perfil do LinkedIn
   def save_linkedin_to_html(profile,candidate)
     fileHTML = "<div>"
 
@@ -235,73 +252,58 @@ class Public::JobOffersController < Public::ApplicationController
 
     profile["positions"]["all"].each do |pos|
       fileHTML += "<table>"
-
       fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-
-      fileHTML += pos.start_date
-
+      fileHTML += pos.start_date["year"].to_s
       fileHTML += "</td></tr>"
-
       fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
-
-      fileHTML += pos.end_date
-
+      if(pos.is_current) #Caso seja o empre actual
+        fileHTML += "Current"
+      else
+        fileHTML += pos.end_date["year"].to_s
+      end
       fileHTML += "</td></tr>"
-
-      fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+(we).at('position/label').innerHTML+"</td></tr>"
-
-
-      fileHTML += "<tr><td align='right'><b>Activities:</b></td><td>"+(we).at('activities').innerHTML+"</td></tr>"
-
-
-      fileHTML += "<tr><td align='right'><b>Employer:</b></td><td>"+(we).at('employer/name').innerHTML+"</td></tr>"
-
+      fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos.title+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos.company["name"]+"</td></tr>"
       fileHTML += "</table><hr>"
     end
 
     #Habilitações
     fileHTML += "<h1>Education</h1>"
 
-    (doc/:"europass:learnerinfo"/:educationlist/:education).each do |edu|
+    profile["educations"]["all"].each do |edu|
       fileHTML += "<table>"
-      if !(edu).at('period/from').innerHTML.blank?
-        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-        if !(edu).at('period/from/month').blank?
-          fileHTML += (edu).at('period/from/month').innerHTML.split("--")[1]+" - "
-        end
-        if !(edu).at('period/from/year').blank?
-          fileHTML += (edu).at('period/from/year').innerHTML
-        end
-        fileHTML += "</td></tr>"
-      end
-      if !(edu).at('period/to').innerHTML.blank?
-        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-        if !(edu).at('period/to/month').blank?
-          fileHTML += (edu).at('period/to/month').innerHTML.split("--")[1]+" - "
-        end
-        if !(edu).at('period/to/year').blank?
-          fileHTML += (edu).at('period/to/year').innerHTML
-        end
-        fileHTML += "</td></tr>"
-      end
-      if !(edu).at('title').blank?
-        fileHTML += "<tr><td align='right'><b>Title:</b></td><td>"+(edu).at('title').innerHTML+"</td></tr>"
-      end
-      if !(edu).at('skills').blank?
-        fileHTML += "<tr><td align='right'><b>Skills:</b></td><td>"+(edu).at('skills').innerHTML+"</td></tr>"
-      end
-      if !(edu).at('organisation/name').blank?
-        fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+(edu).at('organisation/name').innerHTML+"</td></tr>"
-      end
+      fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+      fileHTML += edu.start_date["year"].to_s
+      fileHTML += "</td></tr>"
+      fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
+      fileHTML += edu.end_date["year"].to_s
+      fileHTML += "</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu.degree+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu.field_of_study+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu.school_name+"</td></tr>"
+      fileHTML += "</table><hr>"
+    end
+
+    #Habilidades/Conhecimentos
+    fileHTML += "<h1>Skills</h1>"
+
+    profile["skills"]["all"].each do |skill|
+      fileHTML += "<table>"
+      fileHTML += "<tr><td align='right'><b>Name:</b></td><td>"
+      fileHTML += skill["skill"].name
+      fileHTML += "</td></tr>"
       fileHTML += "</table><hr>"
     end
 
     fileHTML += "</div>"
 
-    File.open('app/assets/candidaturas/'+id+'.html','w') do |file|
+    #Open faz open ou create, nice :)
+    File.open('app/assets/candidaturas/'+"#{candidate.id}"+'.html','w') do |file|
       file.write(fileHTML)
     end
 
+    #Retorna onde foi guardado. Provavelmente deveria fazer um teste antes
+    return  'app/assets/candidaturas/'+"#{candidate.id}"+'.html'
   end
 
 end
