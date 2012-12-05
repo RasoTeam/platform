@@ -4,11 +4,13 @@
 en:
   account_activated: "Your account has been successfuly activated"
   active: "Active"
+  blocked: "Blocked"
   blocked_successful: "Successfully blocked"
   company: "Company"
   cooperator: "Cooperator"
   closed: "Closed"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
+  deleted: "Deleted"
   deleted_successful: "Successfully deleted"
   edit_company: "Edit Company"
   email: "E-Mail"
