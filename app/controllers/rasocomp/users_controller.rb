@@ -26,7 +26,12 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
       flash[:alert] = t(:current_password_not_valid)
       render 'edit'
     else
-      if @user.update_attributes( params[:user])
+      @user.name = params[:name]
+      if params[:new_password].blank? && params[:new_password_confirmation].blank?
+        @user.password = params[:new_password]
+        @user.password_confirmation = params[:new_password_confirmation]
+      end
+      if @user.save
         redirect_to company_user_path @company.id, @user
       else
         render 'edit'
