@@ -55,5 +55,9 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   def dashboard
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
+    @contract = @user.contracts.order("end_date DESC").first
+    if !@contract.nil? 
+      @contracts = @user.contracts.order("end_date DESC").where("id != ?", @contract.id)
+    end
   end
 end

@@ -27,3 +27,9 @@ $(function() {
 $(function() {
   $("#course_end_at").datepicker({ dateFormat: 'dd-mm-yy' });
 });
+$(function() {
+  $("#contract_start_date").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+$(function() {
+  $("#contract_end_date").datepicker({ dateFormat: 'dd-mm-yy' });
+});
