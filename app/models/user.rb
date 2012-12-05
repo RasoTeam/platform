@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_secure_password
   belongs_to :company
   has_many :time_offs
+  has_many :contracts
 
   before_create :create_remember_token
 
