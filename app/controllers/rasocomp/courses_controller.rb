@@ -5,7 +5,18 @@ class Rasocomp::CoursesController < ApplicationController
     @trainings = @company.trainings.find( params[:training_id])
     @courses = @trainings.courses
   end
-
+  
+  def activate
+    @company = Company.find( params[:company_id])
+    @training = @company.trainings.find( params[:training_id])
+    course = Course.find( params[:id])
+    if course.state == 0
+      course.update_attribute :state, 1
+    end
+    
+    redirect_to company_trainings_path( params[:company_id])
+  end
+  
   def new
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
@@ -22,5 +33,11 @@ class Rasocomp::CoursesController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def destroy
+    course = Course.find( params[:id])
+    course.destroy
+    redirect_to company_trainings_path( params[:company_id])
   end
 end

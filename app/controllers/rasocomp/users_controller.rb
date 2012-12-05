@@ -42,6 +42,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     params[:user].delete(:role)
     @user = @company.users.build( params[:user])
     @user.role = Integer role
+    @user.time_off_days = 0
     @user.state = -1
     @user.password_digest = 0
     if @user.save
