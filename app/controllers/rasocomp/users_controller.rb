@@ -19,6 +19,11 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user = @company.users.find( params[:id])
   end
 
+  def add_credits_to_all
+    @company = Company.find( params[:company_id] )
+    @user = @company.users
+  end
+  
   def update
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
