@@ -8,6 +8,7 @@ en:
   company: "Company"
   cooperator: "Cooperator"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
+  current_password_not_valid: "The current password is not valid"
   deleted_successful: "Successfully deleted"
   edit_company: "Edit Company"
   email: "E-Mail"
