@@ -40,16 +40,18 @@
             <%= f.label :name, :class=>"radius label"%>
             <%= f.text_field :name %>
 
-            <%= f.label :email, :class=>"radius label"%>
-            <%= f.text_field :email %>
+            <%= f.label :current_password, :class=>"radius label"%>
+            <%= f.password_field :current_password %>
 
-            <%= f.label :password, :class=>"radius label"%>
-            <%= f.password_field :password %>
+            <%= f.label :new_password, :class=>"radius label"%>
+            <%= f.password_field :new_password %>
 
-            <%= f.label :password_confirmation, :class=>"radius label"%>
-            <%= f.password_field :password_confirmation %>
+            <%= f.label :new_password_confirmation, :class=>"radius label"%>
+            <%= f.password_field :new_password_confirmation %>
         
-            <p style="text-align: center"><%= f.submit 'Save!', :class => "button" %></p>
+            <p style="text-align: center">
+              <%= f.submit 'Save!', :class => "button" %>
+            </p>
 
             
             <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
