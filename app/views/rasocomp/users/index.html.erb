@@ -18,9 +18,7 @@
 </div>
 
 <div class="row">
-
 	<div class="twelve columns">
-		<!-- Listagem -->
 		<div class="panel">
 			<div class="row">
 				<div class="twelve columns">
@@ -74,7 +72,7 @@
 			</div>
 			<div class="row">
 				<div class="eight columns">
-					<%= will_paginate @users %>
+					<%= will_paginate @users, :previous_label=>"&laquo", :next_label=>"&raquo", :inner_window=>"4", :outer_window=>"4" %>
 				</div>
 
 				<div class="four columns">
