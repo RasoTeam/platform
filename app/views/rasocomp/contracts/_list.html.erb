@@ -1,0 +1,20 @@
+<table >
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @contracts.each do |contract| %>
+    <tr>
+      <td><%= contract.job_title %></td>
+      <td><%= contract.start_date %></td>
+      <td><%= contract.end_date %></td>
+      <td><%= contract.value %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
