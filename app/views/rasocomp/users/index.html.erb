@@ -27,7 +27,6 @@
 					<table class="twelve tableJobs">
 						<thead>
 							<tr>
-								<th>Cod.</th>
 								<th>Name</th>
 								<th>E-Mail</th>
 								<th>Role</th>
@@ -38,7 +37,6 @@
 						<tbody>
 							<% @users.each do |u| %>
 								<tr>
-							    	<td><%= u.id %></td>
 							    	<% if current_user(@company.slug).role == ROLE[:manager] %>
 							      		<td><%= link_to u.name, company_user_path(u.company_id, u) %></td>
 							      	<% else %>
