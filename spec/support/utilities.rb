@@ -14,3 +14,10 @@ Rspec::Matchers.define :have_error_message do |message|
 		page.should have_selector('div.row.alert-box.error', text: message)
 	end
 end
+
+Rspec::Matchers.define :have_alert_message do |message|
+        match do |page|
+                page.should have_selector('div.alert-box.alert', text: message)
+        end
+end
+

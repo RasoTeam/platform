@@ -11,7 +11,7 @@ describe "BackofficeAuthentications" do
   	it { should have_selector('title', text: 'RasoHR | Admin sign in') }
   	it { should have_button('Sign In') }
   	it { should_not have_content('company login page') }
-  	it { should_not have_selector('div.row.alert-box.error') }
+        it { should_not have_selector('div.row.alert-box.error') }
   end
 
   describe "sign in" do
