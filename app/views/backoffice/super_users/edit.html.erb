@@ -1,6 +1,6 @@
 <h1>Edit a Super User</h1>
-
-<%= form_for(@super_user) do |f| %>
+ 
+<%= form_for @super_user, :url => backoffice_super_user_path do |f| %>
   <ul>
     <% @super_user.errors.full_messages.each do |error| %>
       <li><%= error %></li>
