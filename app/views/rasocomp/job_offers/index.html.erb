@@ -37,7 +37,7 @@
         </dl>
       </div>
       <div class="four columns">
-        
+        <%= link_to "See Public Page", public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
       </div>
     </div>
 
@@ -65,9 +65,9 @@
                       <td style="text-align:center"><%= offer.candidates.count %></td>
                       <td style="text-align:center" >
                         <% if offer.active %>
-                        <span style="color:green;"><%= 'Active'  %></span>
+                        <span style="color:green;"><%= t(:active)  %></span>
                         <% else %>
-                        <span style="color:red;"><%= 'Inactive' %></span>
+                        <span style="color:red;"><%=  t(:inactive) %></span>
                         <% end %>
                       </td>
                       <td style="text-align:center">

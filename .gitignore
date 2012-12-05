@@ -16,3 +16,7 @@
 /tmp
 .DS_STORE
 .idea
+
+db/schema.rb
+
+db/schema.rb

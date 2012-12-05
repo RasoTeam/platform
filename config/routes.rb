@@ -73,6 +73,7 @@ resources :feedbacks
   scope :module => "rasocomp" do
     resources :companies do
       resources :users do
+        resources :contracts
         resources :time_offs do
           collection do
             get :manage
