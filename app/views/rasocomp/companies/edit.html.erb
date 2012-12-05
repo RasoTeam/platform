@@ -1,5 +1,18 @@
 <div class="row">
   <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:company), company_path(@company) %></li>
+        <li class="current">
+          <a href="#"><%= t(:edit_company) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
       <h1>Edit Company</h1>
       <hr/>
         <%= form_for @company do |f| %>
@@ -15,7 +28,7 @@
           <span class=" radius label">NIF</span>
           <%= f.text_field :nif %>
 
-          <span class=" radius label">Adress</span>
+          <span class=" radius label">Address</span>
           <%= f.text_field :address %>
 
           <p style="text-align: center"><%= f.submit "Edit", :class=>"button" %></p>
@@ -28,5 +41,7 @@
             <p><%= msg %></p>
           <% end %>
         <% end %>
+      </div>
+    </div>
   </div>
 </div>

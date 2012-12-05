@@ -9,10 +9,10 @@
         <%= form_for :new_company, :url => public_companies_path do |f| %>
           
             <% @company.errors.full_messages.each do |msg| %>
-              <p><%= msg %></p>
+              <div class="alert-box alert"><%= msg %></div>
             <% end %>
             <% @user.errors.full_messages.each do |msg| %>
-              <p><%= msg %></p>
+              <div class="alert-box alert"><%= msg %></div>
             <% end %>
 
             <label>Complete Company name</label>
