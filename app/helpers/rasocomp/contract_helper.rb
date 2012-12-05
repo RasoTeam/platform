@@ -1,2 +1,0 @@
-module Rasocomp::ContractHelper
-end
