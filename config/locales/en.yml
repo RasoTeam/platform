@@ -3,6 +3,7 @@
 
 en:
   account_activated: "Your account has been successfuly activated"
+  active: "Active"
   blocked_successful: "Successfully blocked"
   company: "Company"
   cooperator: "Cooperator"
@@ -16,12 +17,15 @@ en:
   name: "Name"
   new: "New"
   no_permission_to_access: "No permission to access"
+  inactive: "Inactive"
   invalid_login: "Wrong username or password!"
   invalid_verification: "Invalid Verification"
   profile: "Profile"
   successful_update: "Successfully updted"
   timeoffs: "Time Offs"
+  unchecked: "Unchecked"
   ROOT: "Root"
+
 
   activerecord:
     attributes:

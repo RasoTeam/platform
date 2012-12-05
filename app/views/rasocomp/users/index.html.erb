@@ -24,14 +24,13 @@
 		<div class="panel">
 			<div class="row">
 				<div class="twelve columns">
-					<table class="twelve tableJobs">
+					<table class="twelve">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>E-Mail</th>
-								<th>Role</th>
-								<!-- <th>Profile</th> -->
-								<!--<th>Status</th>-->
+								<th style="text-align: center">Name</th>
+								<th style="text-align: center">E-Mail</th>
+								<th style="text-align: center">Role</th>
+								<th style="text-align: center">Status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,10 +41,22 @@
 							      	<% else %>
 							      		<td><%= u.name %></td>
 							      	<% end %>
-							      	<td><%= u.email %></td>
+							      	<td style="text-align: center;"><%= u.email %></td>
 							 
-							      	<td><%= t(ROLE.invert[u.role]) %></td>
-							      	<!-- <td><%= link_to "Profile", company_user_path(u.company_id, u) %> </td> -->
+							      	<td style="text-align: center;"><%= t(ROLE.invert[u.role]) %></td>
+
+							    	<% if u.state == STATE[:unchecked] %>
+							      		<td style="color:red; text-align: center"><%= t(:unchecked)  %></td>
+							      	<% else ( 
+							      		if u.state == STATE[:inactive] %>
+							      			<td style="color:orange; text-align: center"><%= t(:inactive)  %></td>
+							      		<%else( 
+							      			if u.state == STATE[:active]%>
+							      				<td style="color:green; text-align: center"><%= t(:active)  %></td>
+							      			<%end)%>
+							      		<%end)%>
+							      	<% end %>
+
 
 							      	<!-- <td>
 							      		<form class="custom" style="margin:0;"><label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span></label></form>
