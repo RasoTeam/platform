@@ -2,10 +2,7 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
-        <li class="current">
-          <a href="#"><%= t(:employees) %></a>
-        </li>
+      <li class="current"><%= link_to @company.name , '' %></li>
     </ul>
   </div>
 </div>
