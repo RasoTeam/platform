@@ -49,6 +49,9 @@
 				<div class="button-bar">
 					<ul class="button-group">
 						<li><%= link_to "Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
+						<% if current_user(@company.slug).role == ROLE[:manager] %>
+							<li><%= link_to "Manage", manage_company_user_time_offs_path(@company, @user), :class=>"button" %></li>
+						<%end%>
 					</ul>
 				</div>
 			  </li>
