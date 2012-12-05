@@ -40,7 +40,8 @@
         <%= link_to "See Public Page", public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
       </div>
     </div>
-
+  </div>
+</div>
 <div class="row">
   <div class="twelve columns">
     <div class="panel">
@@ -72,10 +73,11 @@
                       </td>
                       <td style="text-align:center">
                            <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
+                           <% @urlredirect = "#{company_job_offers_url(@company)}" %>
                            <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
                            <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
                             <a onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
-                                "<%=offer.description %>", "<%= @urlaux%>");return false;'
+                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;'
                             style="width:26px;height:26px;"
                             src=".../facebook2.png">Share</a>
                             <img  />
@@ -115,6 +117,7 @@
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="twelve columns">
     <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
@@ -126,9 +129,9 @@
 <script>
         FB.init({appId: "302887353149276", status: true, cookie: true});
 
-        function postToFeed(companyid, offerid, nome, desc, link) {
+        function postToFeed(companyid, offerid, nome, desc, link, red_u) {
 
-            var red_uri = 'http://localhost:3000/';
+            var red_uri = red_u;
             var l = link;
             var pic = 'http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png';
             var n = nome;

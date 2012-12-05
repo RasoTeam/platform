@@ -22,6 +22,7 @@ en:
   employees: "Employees"
   error: "Operation Failed"
   hello: "Hello world"
+  holidays: "Holidays"
   job_offers: "Job Offers"
   manager: "Manager"
   name: "Name"
@@ -35,6 +36,7 @@ en:
   profile: "Profile"
   role: "Role"
   save: "Save!"
+  sick: "Sick"
   start_day: "Start Day"
   state: "State"
   successful_update: "Successfully updted"
@@ -43,6 +45,7 @@ en:
   users: "Users"
   unchecked: "Unchecked"
   ROOT: "Root"
+
 
   activerecord:
     attributes:

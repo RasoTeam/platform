@@ -1,0 +1,28 @@
+<h1>Candidate Profile</h1>
+<table>
+  <tr>
+    <td>Name</td>
+    <td><%= @candidate.name %></td>
+  </tr>
+  <tr>
+    <td>E-mail</td>
+    <td><%= @candidate.email %></td>
+  </tr>
+  <tr>
+    <td>Nationality</td>
+    <td><%= @candidate.nationality %></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td><%= @candidate.location %></td>
+  </tr>
+  <tr>
+    <td>Phone Number</td>
+    <td><%= @candidate.phone %></td>
+  </tr>
+</table>
+
+<%= @file_text %>
+
+<%= link_to 'Save profile' , save_xml_profile_path, :class=>"radius button tiny" %>
+<%= link_to 'Cancel' , cancel_profile_path, :class=>"radius button tiny" %>

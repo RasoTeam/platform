@@ -27,7 +27,7 @@ resources :feedbacks
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'
-  post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
+  #post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
 
   #linkedin links
   match '/public/companies/:company_id/job_offers/:id/oauth_account' ,
@@ -37,7 +37,20 @@ resources :feedbacks
   get  '/public/companies/:company_id/job_offers/:id/profile_saved' ,
         :to => 'public/job_offers#save_linkedin_profile' , :as => 'save_linkedin_profile'
 
+  #xml links
+  match '/public/companies/:company_id/job_offers/:id/xml_profile',
+        :to => 'public/job_offers#xml_profile' , :as => 'xml_profile'
+  match  '/public/companies/:company_id/job_offers/:id/save_xml_profile' ,
+        :to => 'public/job_offers#save_xml_profile' , :as => 'save_xml_profile'
 
+  #pdf links
+  match '/public/companies/:company_id/job_offers/:id/pdf_profile',
+        :to => 'public/job_offers#pdf_profile' , :as => 'pdf_profile'
+  match  '/public/companies/:company_id/job_offers/:id/save_pdf_profile' ,
+        :to => 'public/job_offers#save_pdf_profile' , :as => 'save_pdf_profile'
+
+  match  '/public/companies/:company_id/job_offers/:id/cancel_profile' ,
+        :to => 'public/job_offers#cancel_profile' , :as => 'cancel_profile'
 
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
