@@ -1,0 +1,18 @@
+<h1> Edit Contract</h1>
+<%= form_for [@company, @user, @contract] do |f| %>
+  <% @contract.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+  
+  <%= f.label :job_title %>
+  <%= f.text_field :job_title %>
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+  <%= f.label :value %>
+  <%= f.number_field :value %>
+  <br/>
+  <%= f.submit %>
+
+<% end %>

@@ -71,8 +71,20 @@
                         <% end %>
                       </td>
                       <td style="text-align:center">
+                           <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
                            <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
                            <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
+                            <a onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                                "<%=offer.description %>", "<%= @urlaux%>");return false;'
+                            style="width:26px;height:26px;"
+                            src=".../facebook2.png">Share</a>
+                            <img  />
+                            <a href="https://twitter.com/share" class="twitter-share-button"
+                                data-via="RasoHR"
+                                data-text="Job Offer: <%= offer.job_name %>"
+                                data-url= "<%= @urlaux %>"
+                                data-lang="en"
+                                data-count="none">Tweet</a>
                       </td>
                     </tr>
                 <% end %>
@@ -108,3 +120,49 @@
     <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
   </div>
 </div>
+
+<script src='https://connect.facebook.net/en_US/all.js'></script>
+
+<script>
+        FB.init({appId: "302887353149276", status: true, cookie: true});
+
+        function postToFeed(companyid, offerid, nome, desc, link) {
+
+            var red_uri = 'http://localhost:3000/';
+            var l = link;
+            var pic = 'http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png';
+            var n = nome;
+            var c = 'Job description:';
+            var d = desc;
+
+            // calling the API ...
+            var obj = {
+                method: 'feed',
+                redirect_uri: red_uri,
+                link: l,
+                picture: pic,
+                name: n,
+                caption: c,
+                description: d
+            };
+
+            function callback(response) {
+                document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+            }
+
+            FB.ui(obj, callback);
+        }
+</script>
+
+<script>
+        !function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src="https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }
+                (document,"script","twitter-wjs");
+</script>

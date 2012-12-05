@@ -62,11 +62,11 @@
 					<td><%= company.nif %></td>
 					<td>
 						<% if company.state == 0 %>
-							<span style="color:green;"><%= t(:active) %></span>
+							<span style="color:green;"> <%= t(:active)%> </span>
 						<% else (if company.state == 1 %>
-						<span style="color:red;">Blocked</span>
+						<span style="color:red;"><%= t(:blocked)%></span>
 						<% else %>
-						<span style="color:red;">Deleted</span>
+						<span style="color:red;"><%= t(:deleted)%></span>
 						<%end)%>
 						<%end%> 
 					</td>
