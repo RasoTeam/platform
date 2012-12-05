@@ -112,6 +112,25 @@ body:before
 	  right: 10px;
 	  left: auto;
 	}
+
+	ul
+	{
+		li
+		{
+			padding: 0;
+			a
+			{
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+#background_grey
+{
+	background-color: #E7E7E7; 
+	z-index: -2;
+	position: relative;
 }
 
 ul.nav_raso
@@ -164,6 +183,25 @@ ul#helper_menu
 		{
 			color: white;
 		}
+	}
+}
+
+.frontpage
+{
+	h1
+	{
+		font-size: 65px;
+		color: #494949;
+	}
+
+	h2
+	{
+
+	}
+
+	p
+	{
+		font-size: 20px;
 	}
 }
 
