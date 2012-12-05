@@ -1,0 +1,11 @@
+<h1>TRAININGS#NEW</h1>
+<%= form_for [@company, @training] do |f| %>
+  <% @training.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :desc %>
+  <%= f.text_field :desc %>
+  <%= f.submit %>
+<% end %>
