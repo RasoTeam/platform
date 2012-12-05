@@ -1,3 +1,4 @@
+<div id="background_grey">
 <div class="row">
 	<div class="twelve columns">
 
@@ -19,7 +20,7 @@
 				<div style="width: 70%; margin: 0 auto;">
 					<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
 				</div>
-				<%= link_to "Register Here!", new_public_company_path, :class=>"large radius button" %>
+				<%= link_to "Register Here!", new_public_company_path, {:class=>"large radius button", :style=>"z-index: 3;"} %>
 			</div>
 			
 		</div>
@@ -114,24 +115,15 @@
 
 				<h4>Get In Touch!</h4><hr/>
 
-				<a href="#">
-					<div class="panel radius callout" style="text-align: center">
-						<strong><%= nav_link "Contacts", contacts_path %></strong>
-					</div>
-				</a>
+				<strong>
+					<%= nav_link "Contacts", contacts_path, {:class=>"large radius button", :style=>"width:100%; margin-bottom: 10px;"} %>
+				</strong>
 
-				<a href="#">
-					<div class="panel radius callout" style="text-align: center">
-						<strong>
-						<%= link_to 'Feedback', new_feedback_path(:url=>request.path), :class=>'lightview', :"data-lightview-title"=>'Feedback', :"data-lightview-options"=>"width: 650, height: 450, skin:'dark'" %>
-						</strong>
-					</div>
-				</a>
-
+				<strong>				
+					<%= link_to 'Feedback', new_feedback_path(:url=>request.path), :class=>'lightview large radius button', :"data-lightview-title"=>'Feedback', :"data-lightview-options"=>"width: 650, height: 450, skin:'dark'", :style=>"width: 100%;" %>
+				</strong>
 			</div>
-
 			<!-- End Content -->
-
 		</div>
 	</div>
 </div>

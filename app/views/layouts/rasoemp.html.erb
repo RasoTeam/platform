@@ -1,4 +1,5 @@
-<!DOCTYPE html xmlns:fb="https://www.facebook.com/2008/fbml">
+<!DOCTYPE html>
+<!-- xmlns:fb="https://www.facebook.com/2008/fbml" -->
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
@@ -62,9 +63,9 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="divider"></li>
-        <li  class="name" style="line-height: 20px; padding: 15px;">
+        <li  class="name" style="line-height: 20px; padding: 15px; text-align: center">
           <%  curUser=current_user(@company.slug) %>
-          <span><%=  curUser.name %></span><br/>
+          <span style="color:white"><%=  curUser.name %></span><br/>
           <span class="secondary radius label"><%  if curUser.role == 0%>
           ROOT
           <%else%>

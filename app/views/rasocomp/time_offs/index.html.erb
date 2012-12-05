@@ -23,37 +23,33 @@
   </div>
   	<div class="twelve columns">
   		<div class="panel">
-			<% @timeoffs.each do |t| %>
-				<div class="right" style="padding-bottom: 10px">
-				<%= link_to "cancel", [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => 'Confirmation Box'} %>
-				</div>
-				<div>
-			  		<table class="twelve">
-			  			<thead>
-			  			</thead>
-			          <tbody>
+			<div>
+		  		<table class="twelve">
+		  			<thead>
+		  				<th><%= t(:start_day) %></th>
+		  				<th><%= t(:days) %></th>
+		  				<th><%= t(:type) %></th>
+		  				<th><%= t(:end_day) %></th>
+		  				<th><%= t(:state) %></th>
+		  				<th><%= t(:description) %></th>
+		  				<th><%= t(:actions) %></th>
+		  			</thead>
+		          <tbody>
+		          	<% @timeoffs.each do |t| %>
 			            <tr>
-
-			              <td style="text-align: right"><span class="label radius"><%= t(:start_day) %></span></td>
 			              <td><%= t.start_at %></td>
-			              <td style="text-align: right"><span class="label radius"><%= t(:days) %></span></td>
 			              <td><%= t.days %></td>
-			              <td style="text-align: right"><span class="label radius"><%= t(:type) %></span></td>
 			              <td><%= t.category %></td>
-			            </tr>
-			            <tr>
-			              <td style="text-align: right"><span class="label radius"><%= t(:end_day) %></span></td>
 			              <td><%= t.end_at %></td>
-			              <td style="text-align: right"><span class="label radius"><%= t(:state) %></span></td>
 			              <td><%= t.state %></td>
-			              <td style="text-align: right"><span class="label radius"><%= t(:description) %></span></td>
 			              <td><%= t.description %></td>
+			              <td><%= link_to "cancel", [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => 'Confirmation Box'} %></td>
 			            </tr>
-			          </tbody>
-			        </table>
-				</div>
-		    <% end %>
-	</div>
-  	</div>
+		        	<% end %>
 
+		          </tbody>
+		        </table>
+			</div>
+		</div>
+  	</div>
 </div>

@@ -1,11 +1,12 @@
 class Rasocomp::UsersController < Rasocomp::ApplicationController
   before_filter :manager_or_root, :only => [:new, :create, :index]
-  before_filter :manager_or_user_self, :only => [:show, :edit, :update]
-  before_filter :user_self_not_root, :only => [:dashboard]
+  before_filter :user_self_not_root, :only => [:dashboard, :edit, :update]
+  before_filter :manager, :only => [:show]
 
   def show
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
+    @contracts = @user.contracts
   end
 
   def index
@@ -19,6 +20,11 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user = @company.users.find( params[:id])
   end
 
+  def add_credits_to_all
+    @company = Company.find( params[:company_id] )
+    @user = @company.users
+  end
+  
   def update
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
@@ -82,5 +88,9 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   def dashboard
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
+    @contract = @user.contracts.order("end_date DESC").first
+    if !@contract.nil? 
+      @contracts = @user.contracts.order("end_date DESC").where("id != ?", @contract.id)
+    end
   end
 end
