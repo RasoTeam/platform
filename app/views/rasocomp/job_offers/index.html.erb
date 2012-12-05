@@ -72,7 +72,7 @@
                       </td>
                       <td style="text-align:center">
                            <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
-                           <%= @urlredirect = "#{company_job_offers_url(@company)}" %>
+                           <% @urlredirect = "#{company_job_offers_url(@company)}" %>
                            <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
                            <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
                             <a onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
