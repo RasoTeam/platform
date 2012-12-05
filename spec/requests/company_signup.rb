@@ -18,7 +18,7 @@ describe "CompaniesSignup" do
     describe "with valid information" do
       before do
         fill_in "new_company_name", with: "Test Company Inc"
-        fill_in "new_company_tag", with: "tci"
+        fill_in "new_company_slug", with: "tci"
         fill_in "new_company_email", with: "andrefelix53+4@gmail.com"
       end
 
