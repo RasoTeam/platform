@@ -22,7 +22,8 @@ class Public::JobOffersController < Public::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @offers = @company.job_offers.paginate(:page => params[:page], :per_page => 10)
+    #Usa a função search por causa da pesquisa por palavras chave e ordenação -> ver Modelo JobOffer
+    @offers = @company.job_offers.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
