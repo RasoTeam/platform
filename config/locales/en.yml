@@ -5,6 +5,7 @@ en:
   account_activated: "Your account has been successfuly activated"
   blocked_successful: "Successfully blocked"
   cooperator: "Cooperator"
+  company_account_created: "The account for your company was successfuly created. Please confirm email before login."
   deleted_successful: "Successfully deleted"
   employees: "Employees"
   error: "Operation Failed"
