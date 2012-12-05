@@ -12,6 +12,9 @@ resources :feedbacks
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
   get '/companies/:company_id/users/:user_id/time_offs/:id/approve', :to => 'rasocomp/time_offs#approve'
 
+  get '/companies/:company_id/users/:id/edit_password', :to => 'rasocomp/users#edit_password', :as => 'edit_password_company_user'
+  post '/companies/:company_id/users/:id/update_password', :to => 'rasocomp/users#update_password', :as => 'update_password_company_user'
+
   match '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard', as: 'user_dashboard'
 
 #public

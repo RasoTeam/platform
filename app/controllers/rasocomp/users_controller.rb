@@ -22,21 +22,37 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   def update
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
-    if !@user.authenticate(params[:current_password])
-      flash[:alert] = t(:current_password_not_valid)
-      render 'edit'
+    params[:user].delete(:password)
+    params[:user].delete(:password_confirmation)
+    if @user.update_attributes(params[:user])
+      flash[:success] = t(:successful_update)
+      redirect_to company_user_path @company, @user
     else
-      @user.name = params[:name]
-      if params[:new_password].blank? && params[:new_password_confirmation].blank?
-        @user.password = params[:new_password]
-        @user.password_confirmation = params[:new_password_confirmation]
-      end
-      if @user.save
-        redirect_to company_user_path @company.id, @user
-      else
-        render 'edit'
-      end
+      render 'edit'
     end
+  end
+
+  def edit_password
+    @company = Company.find( params[:company_id] )
+    @user = @company.users.find( params[:id])
+  end
+
+  def update_password
+    @company = Company.find( params[:company_id] )
+    @user = @company.users.find( params[:id])
+    if @user.authenticate(params[:change_password][:current_password])
+      @user.password = params[:change_password][:new_password]
+      @user.password_confirmation = params[:change_password][:new_password_confirmation]
+      if @user.save
+        flash[:success] = t(:password_updated)
+        redirect_to company_user_path @company, @user
+      else
+        render 'edit_password'
+      end
+    else
+      flash.now[:alert] = t(:current_password_not_valid)
+      render 'edit_password'
+    end   
   end
 
   def new
