@@ -18,36 +18,43 @@
 </div>
 
 <div class="row">
-
 	<div class="twelve columns">
-		<!-- Listagem -->
 		<div class="panel">
 			<div class="row">
 				<div class="twelve columns">
-					<table class="twelve tableJobs">
+					<table class="twelve">
 						<thead>
 							<tr>
-								<th>Cod.</th>
-								<th>Name</th>
-								<th>E-Mail</th>
-								<th>Role</th>
-								<!-- <th>Profile</th> -->
-								<!--<th>Status</th>-->
+								<th style="text-align: center">Name</th>
+								<th style="text-align: center">E-Mail</th>
+								<th style="text-align: center">Role</th>
+								<th style="text-align: center">Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							<% @users.each do |u| %>
 								<tr>
-							    	<td><%= u.id %></td>
 							    	<% if current_user(@company.slug).role == ROLE[:manager] %>
 							      		<td><%= link_to u.name, company_user_path(u.company_id, u) %></td>
 							      	<% else %>
 							      		<td><%= u.name %></td>
 							      	<% end %>
-							      	<td><%= u.email %></td>
+							      	<td style="text-align: center;"><%= u.email %></td>
 							 
-							      	<td><%= t(ROLE.invert[u.role]) %></td>
-							      	<!-- <td><%= link_to "Profile", company_user_path(u.company_id, u) %> </td> -->
+							      	<td style="text-align: center;"><%= t(ROLE.invert[u.role]) %></td>
+
+							    	<% if u.state == STATE[:unchecked] %>
+							      		<td style="color:red; text-align: center"><%= t(:unchecked)  %></td>
+							      	<% else ( 
+							      		if u.state == STATE[:inactive] %>
+							      			<td style="color:orange; text-align: center"><%= t(:inactive)  %></td>
+							      		<%else( 
+							      			if u.state == STATE[:active]%>
+							      				<td style="color:green; text-align: center"><%= t(:active)  %></td>
+							      			<%end)%>
+							      		<%end)%>
+							      	<% end %>
+
 
 							      	<!-- <td>
 							      		<form class="custom" style="margin:0;"><label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span></label></form>
@@ -65,18 +72,23 @@
 			</div>
 			<div class="row">
 				<div class="eight columns">
-					<%= will_paginate @users %>
+					<%= will_paginate @users, :previous_label=>"&laquo", :next_label=>"&raquo", :inner_window=>"4", :outer_window=>"4" %>
 				</div>
+
 				<div class="four columns">
 					<div class="row collapse">
-				  		<div class="eight mobile-four columns">
-				    		<input type="text" />
-				  		</div>
-				  		<div class="four mobile-one columns">
-				    		<a class="button expand postfix">Search</a>
-				  		</div>
+						<%= form_tag company_users_path, :method => 'get' do %>
+			  			<div class="eight mobile-three columns">
+			    				<%= text_field_tag :search, params[:search] %>
+			  			</div>
+			  			<div class="four mobile-one columns">
+			   				 	<%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+			  			</div>
+						<% end %>
 					</div>
 				</div>
+
+
 			</div>	
 		</div>
 			<!-- Fim Lisslugem -->

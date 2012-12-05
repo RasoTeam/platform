@@ -13,78 +13,94 @@
 <div class="row">
   <div class="twelve columns">
 
-  <h2>Job Offers</h2>
-  
-  <div class="row">
-    <div class="four columns">
-      <dl class="tabs pill">
-        <% if params[:order] == "DESC" %>
-            <dd><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
-            <dd class="active"><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
-        <% else %>
-            <dd class="active"><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
-            <dd><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
-        <% end %>
-      </dl>
+    <h2>Job Offers</h2>
+    
+    <div class="row">
+      <div class="four columns">
+        <dl class="tabs pill">
+          <% if params[:order] == "DESC" %>
+              <dd><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
+              <dd class="active"><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
+          <% else %>
+              <dd class="active"><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
+              <dd><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
+          <% end %>
+        </dl>
+      </div>
+      <div class="four columns">
+        <dl class="sub-nav">
+            <dt>Filter:</dt>
+            <dd class="active"><a href="#">All</a></dd>
+            <dd><a href="#">Open</a></dd>
+            <dd><a href="#">Selection</a></dd>
+            <dd><a href="#">Closed</a></dd>
+        </dl>
+      </div>
+      <div class="four columns">
+        <%= link_to "See Public Page", public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
+      </div>
     </div>
-    <div class="four columns">
-      <dl class="sub-nav">
-          <dt>Filter:</dt>
-          <dd class="active"><a href="#">All</a></dd>
-          <dd><a href="#">Open</a></dd>
-          <dd><a href="#">Selection</a></dd>
-          <dd><a href="#">Closed</a></dd>
-      </dl>
-    </div>
-    <div class="four columns">
-      <div class="row collapse">
-        <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
-            <div class="eight mobile-three columns">
-              <%= text_field_tag :search, params[:search] %>
-            </div>
-            <div class="four mobile-one columns">
-              <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
-            </div>
-        <% end %>
-    </div>
-    </div>
-  </div>
-  <% if @offers.any? %>
-    <table class="twelve">
-      <thead>
-        <tr>
-          <th>Job Offer</th>
-          <th>Date</th>
-          <!-- <th>Openings</th> -->
-          <th>Candidates</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offers.each do |offer| %>
-            <tr>
-              <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
-              <td><%= offer.created_at %></td>
-              <td><%= offer.candidates.count %></td>
-              <td>
-                <% if offer.active %>
-                <span style="color:green;"><%= 'Active'  %></span>
-                <% else %>
-                <span style="color:red;"><%= 'Inactive' %></span>
+
+<div class="row">
+  <div class="twelve columns">
+    <div class="panel">
+      <div class="row">
+        <div class="twelve columns">
+          <% if @offers.any? %>
+            <table class="twelve">
+              <thead>
+                <tr>
+                  <th style="text-align:center">Job Offer</th>
+                  <th style="text-align:center" >Date</th>
+                  <th style="text-align:center">Candidates</th>
+                  <th style="text-align:center">Status</th>
+                  <th style="text-align:center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @offers.each do |offer| %>
+                    <tr>
+                      <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
+                      <td style="text-align:center"><%= offer.created_at %></td>
+                      <td style="text-align:center"><%= offer.candidates.count %></td>
+                      <td style="text-align:center" >
+                        <% if offer.active %>
+                        <span style="color:green;"><%= t(:active)  %></span>
+                        <% else %>
+                        <span style="color:red;"><%=  t(:inactive) %></span>
+                        <% end %>
+                      </td>
+                      <td style="text-align:center">
+                           <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
+                           <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
+                      </td>
+                    </tr>
                 <% end %>
-              </td>
-              <td>
-                   <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
-                   <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %></td>
-            </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @offers %>
-    <% else %>
-    <h3 style="text-align:center">There are no offers registered</h3>
-    <% end %>
+              </tbody>
+            </table>
+            <%= will_paginate @offers %>
+            <% else %>
+            <h3 style="text-align:center">There are no offers registered</h3>
+            <% end %>
+          </div>
+        </div>
+      <div class="row">
+        <div class="eight columns">
+        </div>
+        <div class="four columns">
+          <div class="row collapse">
+            <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
+                <div class="eight mobile-three columns">
+                  <%= text_field_tag :search, params[:search] %>
+                </div>
+                <div class="four mobile-one columns">
+                  <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="row">

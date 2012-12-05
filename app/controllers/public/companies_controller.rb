@@ -24,6 +24,7 @@ class Public::CompaniesController < Public::ApplicationController
       @user.password_digest = 0
       if @user.save
         UserMailer.verification_email(@user).deliver
+        flash[:success] = t(:company_account_created)
         redirect_to company_signin_path @company.id
       else
         @company.destroy

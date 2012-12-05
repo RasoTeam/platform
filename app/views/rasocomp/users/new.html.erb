@@ -1,25 +1,34 @@
-
-
 <div class="row">
   <div class="twelve columns">
-    <div class="signup">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li class="current">
+          <a href="#"><%= t(:new_employee) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
       <div class="panel">
-        <h2> Add new User</h2>
+        <h2><%= t(:new_employee) %></h2>
         <hr/>
         <%= form_for [@company, @user] do |f| %>
           <% @user.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
+            <div class="alert-box alert"><%= msg %></div>
           <% end %>
 
-          <p class=" radius label">Name</p>
-          <%= f.text_field :name %>
+          <span class=" radius label"><%= t(:name) %></span>
+          <%= f.text_field :name, :class=>"input_space" %>
 
-          <p class=" radius label">Email</p>
-         <%= f.email_field :email %>
+          <span class=" radius label"><%= t(:email) %></span>
+          <%= f.email_field :email, :class=>"input_space" %>
 
-          <p class=" radius label">Role</p>
-          <%= f.select :role, ROLE, :class=>"custom dropdown" %>
-          
+          <span class=" radius label"><%= t(:role) %></span>
+          <%= f.select :role, ROLE, {}, {:class=>"select"} %>
+
           <p style="text-align: center"><%= f.submit :class => "button" %></p>
         <% end %>
       </div>

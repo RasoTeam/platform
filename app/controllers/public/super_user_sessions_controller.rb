@@ -11,7 +11,7 @@ class Public::SuperUserSessionsController < Public::ApplicationController
       sign_in_super_user super_user
       redirect_to backoffice_stats_path
     else
-      flash.now[:error] = t(:invalid_login)
+      flash.now[:alert] = t(:invalid_login)
       render 'new'
     end
   end

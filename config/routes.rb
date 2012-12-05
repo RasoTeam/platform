@@ -76,6 +76,7 @@ resources :feedbacks
         resources :courses
       end
       resources :users do
+        resources :contracts
         resources :time_offs do
           collection do
             get :manage

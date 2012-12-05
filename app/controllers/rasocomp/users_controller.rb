@@ -10,7 +10,8 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @users = @company.users.where("role > 0").paginate(:page => params[:page], :per_page => 5)
+    @users = @company.users.search(params[:search]).paginate(:page => params[:page], :per_page => 5)
+    #where("role > 0").paginate(:page => params[:page], :per_page => 5)
   end
 
   def edit
