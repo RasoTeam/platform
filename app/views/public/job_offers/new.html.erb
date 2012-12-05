@@ -7,7 +7,6 @@
   </div>
 </div>
 
-
 <div class="row">
   <div class="twelve columns">
     <h3>Appliance to <%= @company.name %></h3>
@@ -187,7 +186,7 @@
               <% end %>
             </li>
             <li id="simple3Tab">
-              <%= form_for @candidate , :url => create_apply_xml_path, :html => {:multipart => true} do |f| %>
+              <%= form_for @candidate , :url => create_apply_path, :html => {:multipart => true} do |f| %>
                   <% if @candidate.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@candidate.errors.count, "erro") %> estão a impedir o envio da candidatura:</h2>
