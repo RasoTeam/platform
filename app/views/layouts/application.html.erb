@@ -16,13 +16,13 @@
 		
 		<title><%= content_for?(:title) ? yield(:title) : "RasoHR" %></title>
 		<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
-		<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+
 		<!-- Included CSS Files -->
 		<%= stylesheet_link_tag    "application" %>
  
 		<!-- Included JS Files  -->
 		<%= javascript_include_tag "application" %>
-
+		<%= yield :javascript_includes %>
 		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,600' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
@@ -34,8 +34,9 @@
 		
 		<% if !(request.path.include? "feedbacks") %>
 		
-		<div class="row" style="width:100%; padding-bottom: 35px;">
-			<div class="twelve columns" style="padding: 0;">
+		
+			<div class="row" style="width:100%; padding-bottom: 35px;">
+			<div class="twelve columns" style="padding: 0; z-index: 10;">
 				<!-- Navigation -->
 				<nav class="top-bar contain-to-grid">
 					<div id="topo">
@@ -44,11 +45,15 @@
 							<%= link_to image_tag('logo.png'), '/'%>
 						</div>
 
-						<!-- <ul class="right">
-							<li><%= link_to "register company", new_public_company_path %></li>
-						</ul> -->
+						<ul class="right">
+							<li><%= nav_link "about us", aboutus_path %></li>
+							<li><%= nav_link "our idea", idea_path %></li>
+							<li><%= nav_link "contacts", contacts_path %></li>
+							<li><a href="http://rasoblog.herokuapp.com/" target="_blank">blog</a></li>
+							<!-- <li><%= link_to "register company", new_public_company_path %></li> -->
+						</ul>
 
-						<ul id="helper_menu"
+						<!-- <ul id="helper_menu"
 							class="right nav_raso" 
 							style="padding-top: 110px; 
 								   padding-right: 30px;">
@@ -64,15 +69,17 @@
 							<li>
 								<a href="#">blog</a>
 							</li>
-							<li id="register_company">
+							<!-- <li id="register_company">
 								<%= link_to "register", new_public_company_path %>
-							</li>
-						</ul>
+							</li> 
+						</ul> -->
 					</div>
 		  		</nav>
 		  		<!-- End Navigation -->
 			</div>
-		</div>
+			</div>
+		
+
 		<% end %>
 
 		<% flash.each do |key, value| %>
@@ -88,8 +95,6 @@
 		<div class="twelve columns" style="padding: 0;">
 			<hr/>
 			<div class="row">
-
-				<%= link_to 'FeedBack', new_feedback_path(:url=>request.path), :class=>'lightview', :"data-lightview-title"=>'Feedback', :"data-lightview-options"=>"width: 650, height: 450, skin:'dark'" %>
 
 				<div class="six columns" style="width: 70%;">
 					<p>Copyright &copy; 2012 Raso. Todos os direitos reservados. Desenvolvido por Raso Team.</p>

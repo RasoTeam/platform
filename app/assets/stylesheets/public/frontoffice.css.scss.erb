@@ -74,44 +74,67 @@ body:before
 	  padding: 1.5em 1.5em;
 	  line-height: 1.5;
 	  float: left; 
+	  -webkit-box-shadow: 0 2px 10px rgba(0,0,0, 0.7);   // sombra
+	  -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+	  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 	}
 
 
-	.sombra_img:before, .sombra_img:after 
+	// .sombra_img:before, .sombra_img:after 
+	// {
+	// 	content: "";        // necessario para iniciar
+	//   	z-index: -1;        // coloca sombra "por baixo"
+	//   	position: absolute; // absolute face ao pai
+	//   	bottom: 15px;
+	//   	left: 10px;
+	//   	width: 50%; 
+	//   	top: 80%;
+	//   	max-width:300px;
+	//   	background: rgba(0, 0, 0, 0.7); 
+
+	//   	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);   // sombra
+	//   	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	//   	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	// }
+	// .sombra_img:before
+	// {  	
+	//   	-webkit-transform: rotate(-3deg); // Rotacao da sombra (lado esquerdo)
+	//   	-moz-transform: rotate(-3deg);   
+	//   	-o-transform: rotate(-3deg);
+	//   	-ms-transform: rotate(-3deg);
+	//   	transform: rotate(-3deg);
+	// }
+
+	// .sombra_img:after 
+	// {
+	//   -webkit-transform: rotate(3deg); // Rotacao da sombra (lado direito)
+	//   -moz-transform: rotate(3deg);
+	//   -o-transform: rotate(3deg);
+	//   -ms-transform: rotate(3deg);
+	//   transform: rotate(3deg);
+	//   right: 10px;
+	//   left: auto;
+	// }
+
+	ul
 	{
-		content: "";        // necessario para iniciar
-	  	z-index: -1;        // coloca sombra "por baixo"
-	  	position: absolute; // absolute face ao pai
-	  	bottom: 15px;
-	  	left: 10px;
-	  	width: 50%; 
-	  	top: 80%;
-	  	max-width:300px;
-	  	background: rgba(0, 0, 0, 0.7); 
+		li
+		{
+			padding: 0;
+			a
+			{
+				font-size: 18px;
+			}
+		}
+	}
+}
 
-	  	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);   // sombra
-	  	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
-	  	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
-	}
-	.sombra_img:before
-	{  	
-	  	-webkit-transform: rotate(-3deg); // Rotacao da sombra (lado esquerdo)
-	  	-moz-transform: rotate(-3deg);   
-	  	-o-transform: rotate(-3deg);
-	  	-ms-transform: rotate(-3deg);
-	  	transform: rotate(-3deg);
-	}
-
-	.sombra_img:after 
-	{
-	  -webkit-transform: rotate(3deg); // Rotacao da sombra (lado direito)
-	  -moz-transform: rotate(3deg);
-	  -o-transform: rotate(3deg);
-	  -ms-transform: rotate(3deg);
-	  transform: rotate(3deg);
-	  right: 10px;
-	  left: auto;
-	}
+#background_grey
+{
+	background-color: #E7E7E7; 
+	position: relative;
+	padding-top: 120px;
+	margin-top: -120px;
 }
 
 ul.nav_raso
@@ -164,6 +187,25 @@ ul#helper_menu
 		{
 			color: white;
 		}
+	}
+}
+
+.frontpage
+{
+	h1
+	{
+		font-size: 65px;
+		color: #494949;
+	}
+
+	h2
+	{
+
+	}
+
+	p
+	{
+		font-size: 20px;
 	}
 }
 
@@ -381,7 +423,8 @@ ul#helper_menu
 {
 	width: 100%;
 	margin-top: 20px;
-	background: url('back.png') repeat;
+	// background: url('back.png') repeat;
+	background: url(<%=asset_path "back.png"%>) repeat;
 	
 	hr
 	{
@@ -406,37 +449,43 @@ ul#helper_menu
 
 	a#facebook
 	{
-		background: url('social/48x48/facebook_raso.png');
+		// background: url('social/48x48/facebook_raso.png');
+		background: url(<%=asset_path "social/48x48/facebook_raso.png"%>);
 		width: 48px;
 		height: 48px;
 	}
 
 	a#facebook:hover
 	{
-		background: url('social/48x48/facebook.png');
+		// background: url('social/48x48/facebook.png');
+		background: url(<%=asset_path "social/48x48/facebook.png"%>);
 	}
 
 	a#twitter
 	{
-		background: url('social/48x48/twitter_raso.png');
+		// background: url('social/48x48/twitter_raso.png');
+		background: url(<%=asset_path "social/48x48/twitter_raso.png"%>);
 		width: 48px;
 		height: 48px;
 	}
 
 	a#twitter:hover
 	{
-		background: url('social/48x48/twitter.png');
+		// background: url('social/48x48/twitter.png');
+		background: url(<%=asset_path "social/48x48/twitter.png"%>);
 	}	
 
 	a#youtube
 	{
-		background: url('social/48x48/youtube_raso.png');
+		// background: url('social/48x48/youtube_raso.png');
+		background: url(<%=asset_path "social/48x48/youtube_raso.png"%>);
 		width: 48px;
 		height: 48px;
 	}
 
 	a#youtube:hover
 	{
-		background: url('social/48x48/youtube.png');
+		// background: url('social/48x48/youtube.png');
+		background: url(<%=asset_path "social/48x48/youtube.png"%>);
 	}
 }
