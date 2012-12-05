@@ -1,3 +1,15 @@
+<div style="height: 50px"> </div>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:employees) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
 <div class="row">
   <div class="twelve columns">
     <h2>Job Offers from <%= @company.name %></h2>
@@ -14,8 +26,8 @@
         <% end %>
       </dl>
     </div>
+
     <div class="four columns">
-      <div class="row collapse">
         <div class="row collapse">
           <%= form_tag public_company_job_offers_path(@company), :method => 'get' do %>
               <div class="eight mobile-three columns">
@@ -27,28 +39,29 @@
           <% end %>
         </div>
     </div>
-  </div>
-    <table class="twelve publicJobsTable">
-      <thead>
-        <tr>
-          <th>Job Offer</th>
-          <th>Date</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offers.each do |offer| %>
+    <div class="twelve columns">
+      <table class="twelve publicJobsTable">
+        <thead>
           <tr>
-            <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
-            <td><%= offer.created_at %></td>
-            <td><% if offer.active %><%= 'Open'  %><% else %><%= 'Closed' %> <% end %></td>
-            <td><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
+            <th>Job Offer</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @offers %>
+        </thead>
+        <tbody>
+          <% @offers.each do |offer| %>
+            <tr>
+              <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
+              <td><%= offer.created_at %></td>
+              <td><% if offer.active %><%= 'Open'  %><% else %><%= 'Closed' %> <% end %></td>
+              <td><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @offers %>
+    </div>
   </div>
   </div>
 </div>

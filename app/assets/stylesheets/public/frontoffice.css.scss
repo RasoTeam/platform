@@ -29,6 +29,32 @@ body:before
   	box-shadow:         0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+#register_company
+{
+	
+	a
+	{
+		background-color: #FE9937;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		color: white;
+	}
+
+	a:hover
+	{
+		background-color: #2BA6CB;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+}
+
+#register_company:hover
+{
+		style: none;
+}
+
 #topo
 {
 	width: 1000px; 
