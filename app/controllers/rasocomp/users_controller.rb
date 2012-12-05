@@ -10,7 +10,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @users = @company.users.search(params[:search]).paginate(:page => params[:page], :per_page => 5)
+    @users = @company.users.search(params[:search]).paginate(:page => params[:page], :per_page => 4)
     #where("role > 0").paginate(:page => params[:page], :per_page => 5)
   end
 
@@ -19,13 +19,28 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user = @company.users.find( params[:id])
   end
 
+  def add_credits_to_all
+    @company = Company.find( params[:company_id] )
+    @user = @company.users
+  end
+  
   def update
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
-    if @user.update_attributes( params[:user])
-      redirect_to company_user_path @company.id, @user
-    else
+    if !@user.authenticate(params[:current_password])
+      flash[:alert] = t(:current_password_not_valid)
       render 'edit'
+    else
+      @user.name = params[:name]
+      if params[:new_password].blank? && params[:new_password_confirmation].blank?
+        @user.password = params[:new_password]
+        @user.password_confirmation = params[:new_password_confirmation]
+      end
+      if @user.save
+        redirect_to company_user_path @company.id, @user
+      else
+        render 'edit'
+      end
     end
   end
 
@@ -42,6 +57,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     params[:user].delete(:role)
     @user = @company.users.build( params[:user])
     @user.role = Integer role
+    @user.time_off_days = 0
     @user.state = -1
     @user.password_digest = 0
     if @user.save

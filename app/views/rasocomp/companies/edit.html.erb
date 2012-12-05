@@ -31,7 +31,7 @@
           <span class=" radius label">Address</span>
           <%= f.text_field :address %>
 
-          <p style="text-align: center"><%= f.submit "Edit", :class=>"button" %></p>
+          <p style="text-align: center"><%= f.submit t(:save), :class=>"button" %></p>
           
           <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
             <hr/>

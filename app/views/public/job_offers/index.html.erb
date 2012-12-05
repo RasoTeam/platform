@@ -1,11 +1,7 @@
-<div style="height: 50px"> </div>
 <div class="row">
-  <div class="twelve columns">
+  <div class="twelve columns" style="margin-top: 50px">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
-        <li class="current">
-          <a href="#"><%= t(:employees) %></a>
-        </li>
+      <li class="current"><%= link_to @company.name , '' %></li>
     </ul>
   </div>
 </div>
@@ -43,19 +39,22 @@
       <table class="twelve publicJobsTable">
         <thead>
           <tr>
-            <th>Job Offer</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th style="text-align:center">Job Offer</th>
+            <th style="text-align:center">Date</th>
+            <th style="text-align:center">Status</th>
+            <th style="text-align:center">Actions</th>
           </tr>
         </thead>
         <tbody>
           <% @offers.each do |offer| %>
             <tr>
               <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
-              <td><%= offer.created_at %></td>
-              <td><% if offer.active %><%= 'Open'  %><% else %><%= 'Closed' %> <% end %></td>
-              <td><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
+              <td style="text-align:center"><%= offer.created_at %></td>
+              <td style="text-align:center"><% if offer.active %>
+                  <span style="color:green;"><%= t(:active)%></span>
+                  <% else %>
+                  <span style="color:red;"><%=  t(:closed) %></span><% end %></td>
+              <td style="text-align:center"><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
             </tr>
         <% end %>
         </tbody>

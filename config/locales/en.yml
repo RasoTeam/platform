@@ -4,12 +4,20 @@
 en:
   account_activated: "Your account has been successfuly activated"
   active: "Active"
+  actions: "Actions"
+  blocked: "Blocked"
   blocked_successful: "Successfully blocked"
   company: "Company"
   cooperator: "Cooperator"
+  closed: "Closed"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
+  current_password_not_valid: "The current password is not valid"
+  days: "Days"
+  deleted: "Deleted"
   deleted_successful: "Successfully deleted"
+  description: "Description"
   edit_company: "Edit Company"
+  end_day: "End Day"
   email: "E-Mail"
   employees: "Employees"
   error: "Operation Failed"
@@ -26,12 +34,15 @@ en:
   invalid_verification: "Invalid Verification"
   profile: "Profile"
   role: "Role"
+  save: "Save!"
+  start_day: "Start Day"
+  state: "State"
   successful_update: "Successfully updted"
   timeoffs: "Time Offs"
+  type: "Type"
   users: "Users"
   unchecked: "Unchecked"
   ROOT: "Root"
-
 
   activerecord:
     attributes:
