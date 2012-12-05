@@ -46,6 +46,14 @@ class User < ActiveRecord::Base
     self.state != -1
   end
 
+  def self.search(search)
+    if search
+      where('name LIKE ? OR email LIKE ?', '%'+search+'%', '%'+search+'%').where("role > 0").order("name ")
+    else
+      where("role > 0").order("name ")
+    end
+  end
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

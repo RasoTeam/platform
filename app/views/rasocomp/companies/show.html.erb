@@ -1,46 +1,83 @@
 <div class="row">
-
-	<!-- Left Column -->
-	<div>
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+    	<li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:company) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<!-- Header Content -->
+		<div class="row">
+			<div class="four columns">
+				<div class="twelve columns" style="padding-bottom:20px">
+					<!-- <a href="#" class="th"> -->
+					<img src="<%=@company.logo_url %>" alt="Foto da empresa" class="company_image">
+					<!-- </a> -->
+				</div>
+			</div>
+          	<div class="eight columns">
+            	<!-- <h3 class="show-for-small"><%= @company.name %></h3><hr/> -->
+            	<div class="panel details">
+              		<h4 class="hide-for-small"><%= @company.name %>
+              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
+              				<span class="secondary label radius"><%= link_to "Edit", edit_company_path(@company) %></span>
+              			<% end %>
+              		</h4>
+              		<hr/>
+              		<table class="twelve tableJobs">
+  						<tbody>
+    						<tr>
+	            	<!-- <p><span class="label radius">Company Name</span> <%= @company.name %></p> -->
+				            		<td>
+				            			<span class="label radius">NIF</span>
+				            		</td>
+				            		<td> 
+				            			<%= @company.nif %>
+				            		</td>
+				            </tr>
+				            <tr>
+				            	<td>
+				            		<span class="label radius">Address</span>
+				            	</td>
+				            	<td> 
+				            		<%= @company.address %>
+				            	</td>
+				            </tr>
+            				<tr>
+            					<td>
+            						<span class="label radius">WWW</span> 
+            					</td>
+            					<td>
+            						<%= link_to "rasohr.com/companies/"+@company.slug, company_path(@company.slug) %>
+            					</td>
+            				</tr>
+            				<tr>
+            					<td>
+            						<span class="label radius">Employees</span> 
+            					</td> 
+            					<td> 
+            						<%= @company.users.length-1 %>
+            					</td>
+            				</tr>
+	            		</tbody>
+	            	</table>
+            	</div>
+			</div>
+        </div>
+        <!-- End Header Content -->
+    	<!-- Table Content -->
 		<div class="row">
 			<div class="twelve columns">
-				<!-- Header Content -->
-				<div class="row">
-					<div class="four columns">
-						<div class="twelve columns" style="padding-bottom:20px">
-							<a href="#" class="th"><img src="http://placehold.it/300x300" alt="Foto da empresa"></a>
-						</div>
-					</div>
-		          	<div class="eight columns">
-		            	<h3 class="show-for-small"><%= @company.name %><hr/></h3>
-		            	<div class="panel details">
-		              		<h4 class="hide-for-small"><%= @company.name %>
-		              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
-		              				<span class="secondary label radius"><%= link_to "Edit", edit_company_path(@company) %></span>
-		              			<% end %>
-		              			<hr/>
-		              		</h4>
-		            		<h5>Details</h5>
-			            	<p><span class="label radius">Company Name</span> <%= @company.name %></p>
-			            	<p><span class="label radius">NIF</span> <%= @company.nif %></p>
-			            	<p><span class="label radius">SLUG</span> <%= link_to "rasohr.com/companies/"+@company.slug, company_path(@company.slug) %></p>
-			            	<p><span class="label radius">Employees</span> <%= @company.users.length-1 %></p>
-		            	</div>
-					</div>
-		        </div>
-		        <!-- End Header Content -->
-		    	<!-- Table Content -->
-				<div class="row">
-					<div class="twelve columns">
-					    <% if @bills.any? && manager_signed_in?(@company.tag) %>
-					    	<% render :partial => "bills/list" %>
-					    <% end %>
-						<!-- End Table Content -->
-					</div>
-		  		</div>
+			    <% if @bills.any? && manager_signed_in?(@company.tag) %>
+			    	<% render :partial => "bills/list" %>
+			    <% end %>
+				<!-- End Table Content -->
 			</div>
-		</div>
+  		</div>
 	</div>
-
 </div>
 <!-- <%= link_to "Manage Job Offers" , company_job_offers_path(params[:id]) %> -->

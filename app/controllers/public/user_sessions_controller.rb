@@ -1,9 +1,9 @@
 class Public::UserSessionsController < Public::ApplicationController
   layout "nolayout"
   def new
-    company = Company.find(params[:company_id])
-    if user_signed_in?(company.slug)
-      redirect_to user_dashboard_path(company,current_user(company.slug))
+    @company = Company.find(params[:company_id])
+    if user_signed_in?(@company.slug)
+      redirect_to user_dashboard_path(@company,current_user(@company.slug))
     end
   end
 

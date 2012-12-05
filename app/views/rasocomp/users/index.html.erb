@@ -39,7 +39,11 @@
 							<% @users.each do |u| %>
 								<tr>
 							    	<td><%= u.id %></td>
-							      	<td><%= link_to u.name, company_user_path(u.company_id, u) %></td>
+							    	<% if current_user(@company.slug).role == ROLE[:manager] %>
+							      		<td><%= link_to u.name, company_user_path(u.company_id, u) %></td>
+							      	<% else %>
+							      		<td><%= u.name %></td>
+							      	<% end %>
 							      	<td><%= u.email %></td>
 							 
 							      	<td><%= t(ROLE.invert[u.role]) %></td>
@@ -63,16 +67,21 @@
 				<div class="eight columns">
 					<%= will_paginate @users %>
 				</div>
+
 				<div class="four columns">
 					<div class="row collapse">
-				  		<div class="eight mobile-four columns">
-				    		<input type="text" />
-				  		</div>
-				  		<div class="four mobile-one columns">
-				    		<a class="button expand postfix">Search</a>
-				  		</div>
+						<%= form_tag company_users_path, :method => 'get' do %>
+			  			<div class="eight mobile-three columns">
+			    				<%= text_field_tag :search, params[:search] %>
+			  			</div>
+			  			<div class="four mobile-one columns">
+			   				 	<%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+			  			</div>
+						<% end %>
 					</div>
 				</div>
+
+
 			</div>	
 		</div>
 			<!-- Fim Lisslugem -->

@@ -13,7 +13,15 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
 
   def update
     @company = Company.find( params[:id])
-    if @company.update_attributes(params[ :company])
+
+    new_attributes = Company.new(params[:company])
+    if new_attributes.valid? && new_attributes.slug != @company.slug
+      user = current_user @company.slug
+      user_sign_out @company.slug
+      sign_in_user user, new_attributes.slug
+    end
+
+    if @company.update_attributes(params[ :company])      
       flash[:success]= t(:successful_update)
       redirect_to company_path @company.id
     else

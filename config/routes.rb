@@ -29,6 +29,15 @@ resources :feedbacks
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
 
+  #linkedin links
+  match '/public/companies/:company_id/job_offers/:id/oauth_account' ,
+        :to =>'public/job_offers#oauth_account' , :as => 'linkedin_oauth'
+  match '/public/companies/:company_id/job_offers/:id/linkedin_profile' ,
+        :to => 'public/job_offers#linkedin_profile' , :as => 'linkedin_profile'
+  get  '/public/companies/:company_id/job_offers/:id/profile_saved' ,
+        :to => 'public/job_offers#save_linkedin_profile' , :as => 'save_linkedin_profile'
+
+
 
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}

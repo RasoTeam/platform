@@ -5,19 +5,27 @@
   <div class="row">
     <div class="eight columns">
       <dl class="tabs pill">
-          <dd class="active"><a href="#pillTab1">A-Z</a></dd>
-          <dd><a href="#pillTab2">Z-A</a></dd>
+        <% if params[:order] == "DESC" %>
+            <dd><%= link_to "A-Z", public_company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
+            <dd class="active"><%= link_to "Z-A", public_company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
+        <% else %>
+            <dd class="active"><%= link_to "A-Z", public_company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
+            <dd><%= link_to "Z-A", public_company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
+        <% end %>
       </dl>
     </div>
     <div class="four columns">
       <div class="row collapse">
-        <div class="eight mobile-three columns">
-          <input type="text" />
+        <div class="row collapse">
+          <%= form_tag public_company_job_offers_path(@company), :method => 'get' do %>
+              <div class="eight mobile-three columns">
+                <%= text_field_tag :search, params[:search] %>
+              </div>
+              <div class="four mobile-one columns">
+                <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+              </div>
+          <% end %>
         </div>
-        <div class="four mobile-one columns">
-          <a class="button expand postfix">Search</a>
-        </div>
-    </div>
     </div>
   </div>
     <table class="twelve publicJobsTable">

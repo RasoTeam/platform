@@ -4,7 +4,8 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
   #Listar todas as ofertas de trabalho de uma empresa
   def index
     @company = Company.find(params[:company_id])
-    @offers = @company.job_offers.paginate(:page => params[:page], :per_page => 5)
+    #Usa a função search por causa da pesquisa por palavras chave e ordenação -> ver Modelo JobOffer
+    @offers = @company.job_offers.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 5)
   end
 
   #Preparar para criar uma nova oferta de trabalho

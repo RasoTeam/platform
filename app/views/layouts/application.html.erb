@@ -69,12 +69,12 @@
 		  		<!-- End Navigation -->
 			</div>
 		</div>
+		<% end %>
 
 		<% flash.each do |key, value| %>
 		<%= content_tag(:div, value, class:"row alert-box #{key}") %>
 		<% end %>
 
-		<% end %>
 	  <%= yield %>
 
 	  <!-- Footer -->
@@ -85,9 +85,7 @@
 			<hr/>
 			<div class="row">
 
-				<% if !(request.path.include? "feedbacks") %>
-	              <%= link_to 'FeedBack', new_feedback_path(:url=>request.path), :data=> { :colorbox => true, :colorbox_height => '500px', :colorbox_width => '500px', :colorbox_iframe => true}, :title=>"FeedBack" %>
-	            <% end %>
+				<%= link_to 'FeedBack', new_feedback_path(:url=>request.path), :class=>'lightview', :"data-lightview-title"=>'Feedback', :"data-lightview-options"=>"width: 650, height: 450, skin:'dark'" %>
 
 				<div class="six columns" style="width: 70%;">
 					<p>Copyright &copy; 2012 Raso. Todos os direitos reservados. Desenvolvido por Raso Team.</p>
@@ -110,10 +108,11 @@
 	<!-- End Footer -->
 	<!-- Included JS Files -->
 	<script src="../public/assets/templates.js"></script>
-		<script type="text/javascript">
-			$(window).load(function() {
-				$('#featured').orbit({ fluid: '2x1' });
-			});
-			</script>
-		</body>
-	</html>
+	<script type="text/javascript">
+		$(window).load(function() {
+			$('#featured').orbit({ fluid: '2x1' });
+		});
+	</script>
+
+	</body>
+</html>

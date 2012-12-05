@@ -23,7 +23,7 @@
   </tr>
 </table>
 
-<%= form_for @candidate , :url => { :action => "createapply" } do |f| %>
+<%= form_for @candidate , :url => { :action => "create_apply" } do |f| %>
     <% @candidate.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>

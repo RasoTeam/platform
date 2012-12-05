@@ -137,6 +137,7 @@
                   <div class="row">
                     <div class="two mobile-one columns">
                       <%=f.label :name, :class=>"right inline"%>
+                      <%=hidden_field_tag 'cv_type' , 'linkedin'%>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :name, :class=>"eight" %>
@@ -176,23 +177,6 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <label class="right inline">CV.:</label>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <div class="row collapse">
-                        <div class="six mobile-three columns">
-                          <input type="text" />
-                        </div>
-                        <div class="two mobile-one columns">
-                          <a class="button expand postfix">Browse</a>
-                        </div>
-                        <div class="four columns">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
 
                     </div>
                     <div class="ten mobile-three columns">
@@ -217,6 +201,7 @@
                   <div class="row">
                     <div class="two mobile-one columns">
                       <%=f.label :name, :class=>"right inline"%>
+                      <%=hidden_field_tag 'cv_type' , 'xml'%>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :name, :class=>"eight" %>

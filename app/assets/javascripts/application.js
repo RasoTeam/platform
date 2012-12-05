@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-//= require colorbox-rails
 
 $(function() {
   $("#time_off_start_at").datepicker({ dateFormat: 'dd-mm-yy' });
