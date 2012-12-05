@@ -6,6 +6,7 @@
 	<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="/favicon.ico" />
 		
 		<!-- Uncomment to make IE8 render like IE7 -->
 		<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
@@ -43,9 +44,9 @@
 							<%= link_to image_tag('logo.png'), '/'%>
 						</div>
 
-						<ul class="right">
+						<!-- <ul class="right">
 							<li><%= link_to "register company", new_public_company_path %></li>
-						</ul>
+						</ul> -->
 
 						<ul id="helper_menu"
 							class="right nav_raso" 
@@ -62,6 +63,9 @@
 							</li>
 							<li>
 								<a href="#">blog</a>
+							</li>
+							<li id="register_company">
+								<%= link_to "register company", new_public_company_path %>
 							</li>
 						</ul>
 					</div>
