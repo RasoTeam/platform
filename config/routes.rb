@@ -85,7 +85,15 @@ resources :feedbacks
 
   scope :module => "rasocomp" do
     resources :companies do
+      resources :trainings do
+        resources :courses do
+          member do
+            put :activate
+          end
+        end
+      end
       resources :users do
+        resources :contracts
         resources :time_offs do
           collection do
             get :manage

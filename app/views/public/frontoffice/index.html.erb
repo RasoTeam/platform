@@ -1,38 +1,36 @@
+<div id="background_grey">
 <div class="row">
 	<div class="twelve columns">
 
 		<!-- Desktop Slider -->
 
-		<div class="hide-for-small">
+		<!-- <div class="hide-for-small">
 			<div id="featured">
 				<%= image_tag ('slide/1.jpg')%>
 				<%= image_tag ('slide/2.jpg')%>
 				<%= image_tag ('slide/3.jpg')%>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- End Desktop Slider -->
-
-
-		<!-- Mobile Header -->
-
-
-		<div class="row">
-			<div class="mobile-four show-for-small"><br>
-				<img src="http://placehold.it/1000x600&amp;text=For_Small_Screens" alt="Small" />
+		<div class="row frontpage">
+			<div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
+				<h1>Forget Spreadsheets!</h1>
+				<h2>Improve your work</h2>
+				<div style="width: 70%; margin: 0 auto;">
+					<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+				</div>
+				<%= link_to "Register Here!", new_public_company_path, {:class=>"large radius button", :style=>"z-index: 3;"} %>
 			</div>
+			
 		</div>
-
-
-		<!-- End Mobile Header -->
-
 	</div>
-</div><br>
-
+</div>
+</div>
+<hr/>
 <div class="row">
-	<div class="twelve columns">
+	<div class="twelve columns" style="margin-top: 40px; ba">
 		<div class="row">
-
 			<!-- Thumbnails -->
 			<div class="three mobile-two columns boxes boxes-third">
 				<img src="http://placehold.it/250x250&amp;text=Thumbnail" alt="thumb" />
@@ -119,13 +117,15 @@
 
 				<a href="#">
 					<div class="panel radius callout" style="text-align: center">
-						<strong>Call To Action!</strong>
+						<strong><%= nav_link "Contacts", contacts_path %></strong>
 					</div>
 				</a>
 
 				<a href="#">
 					<div class="panel radius callout" style="text-align: center">
-						<strong>Call To Action!</strong>
+						<strong>
+						<%= link_to 'Feedback', new_feedback_path(:url=>request.path), :class=>'lightview', :"data-lightview-title"=>'Feedback', :"data-lightview-options"=>"width: 650, height: 450, skin:'dark'" %>
+						</strong>
 					</div>
 				</a>
 

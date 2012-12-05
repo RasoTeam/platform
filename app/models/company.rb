@@ -22,7 +22,7 @@ class Company < ActiveRecord::Base
   has_many :bills
   has_many :users
   has_many :time_offs
-
+  has_many :trainings
   has_many :job_offers
 
 
