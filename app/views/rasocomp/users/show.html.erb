@@ -41,9 +41,11 @@
         <span>No contracts found</span>
       <% end %>
 
-      <div class="three columns">
-        <%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
-      </div>
+      <% if current_user(@company.slug).role == ROLE[:manager] %>
+        <div class="three columns">
+          <%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
+        </div>
+      <% end %>
 
   </div>
 

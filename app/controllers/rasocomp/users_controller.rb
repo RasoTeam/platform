@@ -1,7 +1,8 @@
 class Rasocomp::UsersController < Rasocomp::ApplicationController
   before_filter :manager_or_root, :only => [:new, :create, :index]
-  before_filter :user_self_not_root, :only => [:dashboard, :edit, :update]
-  before_filter :manager, :only => [:show]
+  before_filter :user_self_not_root, :only => [:dashboard]
+  before_filter :manager_or_user_self, :only => [:show, :edit, :update]
+  before_filter :user_self, :only => [:edit_password, :update_password]
 
   def show
     @company = Company.find(params[:company_id])
