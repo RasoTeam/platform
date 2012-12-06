@@ -42,7 +42,7 @@
 				<div class="row">
 					<div class="twelve columns">
 					    <% if @bills.any? && manager_signed_in?(@company.tag) %>
-					    	<% render :partial => "bills/list" %>
+					    	<%= render :partial => "rasocomp/bills/list" %>
 					    <% end %>
 						<!-- End Table Content -->
 					</div>

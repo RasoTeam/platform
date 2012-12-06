@@ -13,82 +13,159 @@
 <div class="row">
   <div class="twelve columns">
 
-  <h2>Job Offers</h2>
-  
-  <div class="row">
-    <div class="four columns">
-      <dl class="tabs pill">
-        <% if params[:order] == "DESC" %>
-            <dd><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
-            <dd class="active"><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
-        <% else %>
-            <dd class="active"><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
-            <dd><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
-        <% end %>
-      </dl>
+    <h2>Job Offers</h2>
+    
+    <div class="row">
+      <div class="four columns">
+        <dl class="tabs pill">
+          <% if params[:order] == "DESC" %>
+              <dd><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
+              <dd class="active"><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
+          <% else %>
+              <dd class="active"><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
+              <dd><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
+          <% end %>
+        </dl>
+      </div>
+      <div class="four columns">
+        <dl class="sub-nav">
+            <dt>Filter:</dt>
+            <dd class="active"><a href="#">All</a></dd>
+            <dd><a href="#">Open</a></dd>
+            <dd><a href="#">Selection</a></dd>
+            <dd><a href="#">Closed</a></dd>
+        </dl>
+      </div>
+      <div class="four columns">
+        <%= link_to "See Public Page", public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
+      </div>
     </div>
-    <div class="four columns">
-      <dl class="sub-nav">
-          <dt>Filter:</dt>
-          <dd class="active"><a href="#">All</a></dd>
-          <dd><a href="#">Open</a></dd>
-          <dd><a href="#">Selection</a></dd>
-          <dd><a href="#">Closed</a></dd>
-      </dl>
-    </div>
-    <div class="four columns">
-      <div class="row collapse">
-        <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
-            <div class="eight mobile-three columns">
-              <%= text_field_tag :search, params[:search] %>
-            </div>
-            <div class="four mobile-one columns">
-              <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
-            </div>
-        <% end %>
-    </div>
-    </div>
-  </div>
-  <% if @offers.any? %>
-    <table class="twelve">
-      <thead>
-        <tr>
-          <th style="text-align:center">Job Offer</th>
-          <th style="text-align:center" >Date</th>
-          <th style="text-align:center">Candidates</th>
-          <th style="text-align:center">Status</th>
-          <th style="text-align:center">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offers.each do |offer| %>
-            <tr>
-              <td style="text-align:center" ><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
-              <td style="text-align:center"><%= offer.created_at %></td>
-              <td style="text-align:center"><%= offer.candidates.count %></td>
-              <td style="text-align:center" >
-                <% if offer.active %>
-                <span style="color:green;"><%= 'Active'  %></span>
-                <% else %>
-                <span style="color:red;"><%= 'Inactive' %></span>
-                <% end %>
-              </td>
-              <td style="text-align:center">
-                   <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
-                   <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
-              </td>
-            </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @offers %>
-    <% else %>
-    <h3 style="text-align:center">There are no offers registered</h3>
-    <% end %>
   </div>
 </div>
+<div class="row">
+  <div class="twelve columns">
+    <div class="panel">
+      <div class="row">
+        <div class="twelve columns">
+          <% if @offers.any? %>
+            <table class="twelve">
+              <thead>
+                <tr>
+                  <th style="text-align:center">Job Offer</th>
+                  <th style="text-align:center" >Date</th>
+                  <th style="text-align:center">Candidates</th>
+                  <th style="text-align:center">Status</th>
+                  <th style="text-align:center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @offers.each do |offer| %>
+                    <tr>
+                      <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
+                      <td style="text-align:center"><%= offer.created_at %></td>
+                      <td style="text-align:center"><%= offer.candidates.count %></td>
+                      <td style="text-align:center" >
+                        <% if offer.active %>
+                        <span style="color:green;"><%= t(:active)  %></span>
+                        <% else %>
+                        <span style="color:red;"><%=  t(:inactive) %></span>
+                        <% end %>
+                      </td>
+                      <td style="text-align:center">
+                           <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
+                           <% @urlredirect = "#{company_job_offers_url(@company)}" %>
+                           <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
+                           <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
+                            <a onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;'
+                            style="width:26px;height:26px;"
+                            src=".../facebook2.png">Share</a>
+                            <img  />
+                            <a href="https://twitter.com/share" class="twitter-share-button"
+                                data-via="RasoHR"
+                                data-text="Job Offer: <%= offer.job_name %>"
+                                data-url= "<%= @urlaux %>"
+                                data-lang="en"
+                                data-count="none">Tweet</a>
+                      </td>
+                    </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <%= will_paginate @offers %>
+            <% else %>
+            <h3 style="text-align:center">There are no offers registered</h3>
+            <% end %>
+          </div>
+        </div>
+      <div class="row">
+        <div class="eight columns">
+        </div>
+        <div class="four columns">
+          <div class="row collapse">
+            <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
+                <div class="eight mobile-three columns">
+                  <%= text_field_tag :search, params[:search] %>
+                </div>
+                <div class="four mobile-one columns">
+                  <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="twelve columns">
     <p style="text-align: center"><%= link_to "Create Job Offer" , new_company_job_offer_path(params[:company_id]), :class=>"button" %></p>
   </div>
 </div>
+
+<script src='https://connect.facebook.net/en_US/all.js'></script>
+
+<script>
+        FB.init({appId: "302887353149276", status: true, cookie: true});
+
+        function postToFeed(companyid, offerid, nome, desc, link, red_u) {
+
+            var red_uri = red_u;
+            var l = link;
+            var pic = 'http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png';
+            var n = nome;
+            var c = 'Job description:';
+            var d = desc;
+
+            // calling the API ...
+            var obj = {
+                method: 'feed',
+                redirect_uri: red_uri,
+                link: l,
+                picture: pic,
+                name: n,
+                caption: c,
+                description: d
+            };
+
+            function callback(response) {
+                document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+            }
+
+            FB.ui(obj, callback);
+        }
+</script>
+
+<script>
+        !function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src="https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }
+                (document,"script","twitter-wjs");
+</script>

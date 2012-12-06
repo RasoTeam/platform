@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  training_id: 1
+  company_id: 1
+  start_at: 2012-12-05
+  end_at: 2012-12-05
+  category: 1
+  state: 1
+  lecturer: MyString
+
+two:
+  training_id: 1
+  company_id: 1
+  start_at: 2012-12-05
+  end_at: 2012-12-05
+  category: 1
+  state: 1
+  lecturer: MyString

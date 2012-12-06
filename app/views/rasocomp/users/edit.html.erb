@@ -37,28 +37,21 @@
         <hr/>
           <%= form_for [@company, @user] do |f| %>
 
-            <%= f.label :name, :class=>"radius label"%>
-            <%= f.text_field :name %>
-
-            <%= f.label :email, :class=>"radius label"%>
-            <%= f.text_field :email %>
-
-            <%= f.label :password, :class=>"radius label"%>
-            <%= f.password_field :password %>
-
-            <%= f.label :password_confirmation, :class=>"radius label"%>
-            <%= f.password_field :password_confirmation %>
-        
-            <p style="text-align: center"><%= f.submit 'Save!', :class => "button" %></p>
-
-            
             <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
-            <hr/>
+              <hr/>
             <% end %>
             <% @user.errors.full_messages.each do |msg| %>
               <p><%= msg %></p>
             <% end %>
+
+            <%= f.label :name, :class=>"radius label"%>
+            <%= f.text_field :name %>
+        
+            <p style="text-align: center">
+              <%= f.submit 'Save!', :class => "button" %>
+            </p>
           <% end %>
+          <%= link_to t(:change_password), edit_password_company_user_path(@company,@user) %>
         </div>
       </div>
   </div>

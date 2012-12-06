@@ -1,14 +1,23 @@
-TIME OFF
-<%= form_for [@company, @user, @timeoff] do |f| %>
-  <% @timeoff.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-  <% end %>
-  <%= f.select :category, [["TIPO 1", 1],["TIPO 2", 2]] %>
-  <%= f.label :start_at %>
-  <%= f.text_field :start_at %>
-  <%= f.label :end_at %>
-  <%= f.text_field :end_at %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+        <h2>Book new time off</h2>
+        <hr/>
+        <%= form_for [@company, @user, @timeoff] do |f| %>
+          <% @timeoff.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          <%= f.select :category, TIMETYPE, {}, {:class=>"select"} %>
+          <%= f.label :start_at %>
+          <%= f.text_field :start_at %>
+          <%= f.label :end_at %>
+          <%= f.text_field :end_at %>
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+          <p style="text-align: center"><%= f.submit 'Submit!', :class=>"button" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

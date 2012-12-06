@@ -14,10 +14,11 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :password, :password_confirmation
+  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation
   has_secure_password
   belongs_to :company
   has_many :time_offs
+  has_many :contracts
 
   before_create :create_remember_token
 
@@ -29,9 +30,8 @@ class User < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
 
   validates :password,  :length => { :minimum => 6 },
-                        :if => :verified?
-  validates :password_confirmation, :presence => true,
-                                    :if => :verified?
+                        :if => :verified?, :on => :create, :on => :update_password
+
   validates :role, :numericality => { :only_integer => true, 
                                       :greater_than_or_equal_to => 0,
                                       :less_than_or_equal_to => 10 }

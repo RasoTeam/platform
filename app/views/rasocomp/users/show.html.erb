@@ -34,6 +34,17 @@
           <%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
         </div>
       </div>
+      
+      <h4>Contracts</h4>
+      <%= render :partial => "rasocomp/contracts/list" %>
+      <% if !@contracts.any? %>
+        <span>No contracts found</span>
+      <% end %>
+
+      <div class="three columns">
+        <%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
+      </div>
+
   </div>
 
 
