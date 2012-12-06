@@ -24,10 +24,10 @@
 			<% if t.state == TIMEOFF[:pending] %>
 				<td style="color:orange; text-align: center"><%= "Pending"  %></td>
 			<% else ( 
-				if t.state == STATE[:approved] %>
+				if t.state == TIMEOFF[:approved] %>
 					<td style="color:green; text-align: center"><%= "Approved"  %></td>
 				<%else( 
-					if t.state == STATE[:disapproved]%>
+					if t.state == TIMEOFF[:disapproved]%>
 						<td style="color:red; text-align: center"><%= "Disapproved"  %></td>
 					<%end)%>
 				<%end)%>
@@ -41,17 +41,5 @@
 	</tbody>
 	</table>
   </div>
-
-
-<% @timeoffs.each do |t| %>
-  USER ID:<%= t.user_id%><br>
-  TIMEOFF ID:<%= t.id %><br>
-  TIMEOFF STATE:<%= t.state %><br>
-  <br>
-  <%= link_to "NOT OK", disapprove_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-  | <%= link_to "OK", approve_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-  <br>
-  <hr>
-<% end %>
 </div>
 </div>
