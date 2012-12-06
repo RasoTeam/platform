@@ -46,11 +46,11 @@
       </tr>
       <tr>
         <td>Since</td>
-        <td><%= ed.start_date["year"] %></td>
+        <td><% if ed.start_date %><%= ed.start_date["year"] %><% else %><%= '--' %><% end %></td>
       </tr>
       <tr>
         <td>Until</td>
-        <td><%= ed.end_date["year"] %></td>
+        <td><% if ed.end_date %><%= ed.end_date["year"] %><% else %><%= '--' %><% end %></td>
       </tr>
   <% end %>
 </table>
@@ -98,7 +98,7 @@
 </table>
 
 <%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
-    <%= hidden_field_tag :profile , @profile %>
+    <%= hidden_field_tag :profile , @profile.to_param %>
     <%= submit_tag 'Valeu!' %>
 <% end %>
 
