@@ -8,13 +8,14 @@
           <% @timeoff.errors.full_messages.each do |msg| %>
             <p><%= msg %></p>
           <% end %>
+          <span class=" radius label"><%= t(:type) %></span>
           <%= f.select :category, TIMETYPE, {}, {:class=>"select"} %>
-          <%= f.label :start_at %>
-          <%= f.text_field :start_at %>
-          <%= f.label :end_at %>
-          <%= f.text_field :end_at %>
-          <%= f.label :description %>
-          <%= f.text_field :description %>
+          <span class=" radius label"><%= t(:start_day) %></span>
+          <%= f.text_field :start_at, :class=>"input_space" %>
+          <span class=" radius label"><%= t(:end_day) %></span>
+          <%= f.text_field :end_at, :class=>"input_space"  %>
+          <span class=" radius label"><%= t(:description) %></span>
+          <%= f.text_field :description, :class=>"input_space"  %>
           <p style="text-align: center"><%= f.submit 'Submit!', :class=>"button" %></p>
         <% end %>
       </div>
