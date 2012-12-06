@@ -2,6 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  accept:"Accept"
   account_activated: "Your account has been successfuly activated"
   active: "Active"
   actions: "Actions"
@@ -10,12 +11,14 @@ en:
   change_password: "Change Password"
   company: "Company"
   cooperator: "Cooperator"
+  cooperator_name: "Cooperator name"
   closed: "Closed"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
   current_password_not_valid: "The current password is not valid"
   days: "Days"
   deleted: "Deleted"
   deleted_successful: "Successfully deleted"
+  deny: "Deny"
   description: "Description"
   edit_company: "Edit Company"
   end_day: "End Day"

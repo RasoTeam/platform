@@ -64,13 +64,7 @@
                       <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
                       <td style="text-align:center"><%= offer.created_at %></td>
                       <td style="text-align:center"><%= offer.candidates.count %></td>
-                      <td style="text-align:center" >
-                        <% if offer.active %>
-                        <span style="color:green;"><%= t(:active)  %></span>
-                        <% else %>
-                        <span style="color:red;"><%=  t(:inactive) %></span>
-                        <% end %>
-                      </td>
+                      <td style="text-align:center" ><span style="color:green;"><%= offer.status  %></span></td>
                       <td style="text-align:center">
                            <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
                            <% @urlredirect = "#{company_job_offers_url(@company)}" %>
@@ -93,27 +87,27 @@
               </tbody>
             </table>
             <%= will_paginate @offers %>
-            <% else %>
-            <h3 style="text-align:center">There are no offers registered</h3>
-            <% end %>
-          </div>
-        </div>
-      <div class="row">
-        <div class="eight columns">
-        </div>
-        <div class="four columns">
-          <div class="row collapse">
-            <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
-                <div class="eight mobile-three columns">
-                  <%= text_field_tag :search, params[:search] %>
-                </div>
-                <div class="four mobile-one columns">
-                  <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+            <div class="row">
+              <div class="eight columns">
+              </div>
+              <div class="four columns">
+                <div class="row collapse">
+                  <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
+                    <div class="eight mobile-three columns">
+                      <%= text_field_tag :search, params[:search] %>
+                    </div>
+                    <div class="four mobile-one columns">
+                    <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
                 </div>
             <% end %>
           </div>
         </div>
       </div>
+            <% else %>
+            <h3 style="text-align:center">There are no offers registered</h3>
+            <% end %>
+          </div>
+        </div>
     </div>
   </div>
 </div>

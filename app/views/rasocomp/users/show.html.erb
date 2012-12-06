@@ -31,21 +31,26 @@
           </tbody>
         </table>
         <div style:"text-alig">
-          <%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
+          <p style="text-align: center"><%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"radius button" %></p>
         </div>
       </div>
       
-      <h4>Contracts</h4>
-      <%= render :partial => "rasocomp/contracts/list" %>
-      <% if !@contracts.any? %>
-        <span>No contracts found</span>
-      <% end %>
+      
+      <div class="panel">
+        <h4>Contracts</h4>
+        <hr/>
+        <% if !@contracts.any? %>
+          <h3 style="text-align:center">There are no contracts</h3>
+        <%else%>
+        <%= render :partial => "rasocomp/contracts/list" %>
+        <% end %>
 
-      <div class="three columns">
-        <%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
-      </div>
+        <% if current_user(@company.slug).role == ROLE[:manager] %>
+          <p style="text-align: center"><%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button" %></p>
+        <% end %>
 
-  </div>
+    </div>
+</div>
 
 
 

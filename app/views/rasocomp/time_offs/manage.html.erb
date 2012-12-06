@@ -1,21 +1,45 @@
 <div class="row">
 	<div class="twelve columns">
-
-
-GESTOR<br>
-LISTAR TODOS TIMEOFFS DE TODOS PARA GERIR<br>
-<%= @user.name %><br><br>
 <h1>STATE 0: PENDING 1: APPROVED 2: DISAPPROVED </h1>
 <br><br>
-<% @timeoffs.each do |t| %>
-  USER ID:<%= t.user_id%><br>
-  TIMEOFF ID:<%= t.id %><br>
-  TIMEOFF STATE:<%= t.state %><br>
-  <br>
-  <%= link_to "NOT OK", disapprove_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-  | <%= link_to "OK", approve_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-  <br>
-  <hr>
-<% end %>
+<div class="twelve columns">
+	<table class="twelve">
+		<thead>
+			<th>"Cooperator Name"</th>
+			<th>"Start Day"</th>
+			<th>"End Day"</th>
+			<th>"Description"</th>
+			<th><%= "Type" %></th>
+			<th><%= "State" %></th>
+			<th><%= "Actions" %></th>
+		</thead>
+	<tbody>
+		<% @timeoffs.each do |t| %>
+	    <tr>
+			<td><%= t.user_id %></td>
+			<td><%= t.start_at %></td>
+			<td><%= t.end_at %></td>
+			<td><%= t.description %></td>
+			<td><%= t.category %></td>
+			<% if t.state == TIMEOFF[:pending] %>
+				<td style="color:orange; text-align: center"><%= "Pending"  %></td>
+			<% else ( 
+				if t.state == TIMEOFF[:approved] %>
+					<td style="color:green; text-align: center"><%= "Approved"  %></td>
+				<%else( 
+					if t.state == TIMEOFF[:disapproved]%>
+						<td style="color:red; text-align: center"><%= "Disapproved"  %></td>
+					<%end)%>
+				<%end)%>
+			<% end %>
+			<td>
+				<%= link_to "Deny", disapprove_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put, :data => { :confirm => 'Confirmation Box'} %>
+				<%= link_to "Accept", approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put, :data => { :confirm => 'Confirmation Box'} %>
+			</td>
+	    </tr>
+	<% end %>
+	</tbody>
+	</table>
+  </div>
 </div>
 </div>
