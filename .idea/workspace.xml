@@ -2,457 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/candidaturas/35.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/candidaturas/36.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/team/team_lisboa.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/team/team_mascarenhas.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/rasocomp/contracts.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/rasocomp/courses.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/rasocomp/trainings.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/rasocomp/contracts.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/rasocomp/courses.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/rasocomp/trainings.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/contracts_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/courses_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/trainings_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/rasocomp/contracts_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/rasocomp/courses_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/rasocomp/trainings_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/contract.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/course.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/training.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/backoffice/companies/_bills.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/public/job_offers/pdf_profile.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/public/job_offers/xml_profile.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/companies/_bills.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/contracts/_list.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/contracts/edit.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/contracts/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/contracts/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/contracts/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/courses/_index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/courses/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/courses/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/trainings/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/trainings/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/edit_password.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121205105310_create_contracts.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121205111600_create_trainings.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121205113146_add_user_photo_to_users.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121205115251_create_courses.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121205160423_fix_course.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/contracts.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/courses.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/trainings.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/rasocomp/contracts_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/rasocomp/courses_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/rasocomp/trainings_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/contract_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/course_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/rasocomp/contracts_helper_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/rasocomp/courses_helper_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/rasocomp/trainings_helper_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/training_test.rb" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\assets\candidaturas\13.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\assets\candidaturas\14.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\assets\candidaturas\15.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\views\public\job_offers\show.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\db\migrate\20121128175916_create_events.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application-335a7f1600e23fe76fb2580229d3c85c.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application-335a7f1600e23fe76fb2580229d3c85c.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application-3b55da2ecfec37453adfd809016055ce.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application-3b55da2ecfec37453adfd809016055ce.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\application.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\back-a9d129ec441d3e0697116f16c2420431.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\back.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\bullets-0ef17726444fdafabfee9e0379b90b28.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\bullets.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\left-arrow-fe4637c7f3e149b7deae167d1c71893e.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\left-arrow-small-2dca068ec6187e6ec094ad0becc35b68.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\left-arrow-small.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\left-arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\loading-9289b2d5b67646e03036083f0803baa7.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\mask-black-42888274f4021233fbb6064ec8a80e27.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\mask-black.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\pause-black-73a6ba1fb98f0fdffc5f741bde3af970.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\pause-black.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\right-arrow-48d7705f1cd6396e9d7a7d286bfccf0c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\right-arrow-small-59b2e7a7cc2388465376e79d003b0f9d.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\right-arrow-small.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\right-arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\rotator-black-8f0ad2be2c48a61866dd278dddf8beaf.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\rotator-black.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\timer-black-42888274f4021233fbb6064ec8a80e27.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\foundation\orbit\timer-black.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\ico\48x48\facebook-6bd5e1f61747a2172ceef698fd70caa4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\ico\48x48\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\ico\48x48\twitter-56e4d9ea4f72e07cf476be037d1caf3e.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\ico\48x48\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\logo-a93807b32d218311cf0d6ebe49309d29.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\logo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\manifest.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile-164b6e367648e4ccf2d16f4c3e12862f.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile_bold-7666945b5e6d1fe986e8dec6e76b2d18.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile_bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile_bold_italic-07ea2561d938d6fd8f6074ca6d763201.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile_bold_italic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile_italic-8752e2877eb0929dd2958d1066c8a639.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\nobile_italic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\public\application-7270767b2a9e9fff880aa5de378ca791.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\public\application.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\public\application.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\rails-be8732dac73d845ac5b142c8fb5f9fb0.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\rails.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\1-9b9ce0206b9d89f30b12390f4b615091.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\2-0b6407223ffcec8e1a062c75898188ef.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\3-74736243ce9a2863b3a5a55639997604.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\slide-7dc4065b3f3aaecdf47a37636f008eb4.psd" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\slide\slide.psd" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\delicious-b995f456edfd0f7b87a4006e52066557.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\digg-40fd040b1524b243d9e7a242bff85a2e.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\facebook-f0a758fd9bacc04a760abb0ec682604f.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\flickr-61e69d78efc5522e8201ee73a08bfca2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\furl-89eea4dd5897c6e6ec2aa94173f824ca.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\reddit-776705d131071bac312f81642e9f2af1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\rss-e9a58003c240ec82a91566b594a5eff1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\stumbleupon-92572d61c61507c7f9782c0ade0e09fb.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\stumbleupon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\technorati-2c6bb92401e3e27ba4d93c4360c22c49.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\twitter-e4b1cb675b8a95e96a8fd6423c79e2c5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\yahoo-42b3dea640a1a0c0dc97c6c63a92001e.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\youtube-d58ab5fadf30c67f8590f66ec6e8fd84.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\128x128\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\delicious-dc370bf39d4590499dcad20fc0893130.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\digg-635126ae9600b0aefff77eb750250877.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\facebook-cb8bbb7cdfd5e76aaf564b8f3ef1617a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\flickr-cb231b61d119685431a01a463b50137b.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\furl-6abcccb57a537ba27de02cc26c1b3458.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\reddit-e3fdd1d26b7a51b0f6a1097e2a4aa13c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\rss-019dfe33b421edf04671696164048cd9.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\stumbleupon-6fb5ec74012db465d7b4d5b873d2b391.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\stumbleupon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\technorati-cd2c6bb4ed3e143c847656678858053c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\twitter-133bc798f30bd81ee55e7f1a9ff520ef.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\yahoo-a782c80bacc366fe2b84e1144b2b878c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\youtube-128e59b9f68c2a99a0e46182522ac6fa.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\16x16\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\delicious-9afaabe0fc2b1f16021355b590c7f0ac.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\digg-95f087dfd62abb06e51d752fab89e59e.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\facebook-c2ac0177670a5fb0ac0242cc19c7c0ea.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\flickr-6f4001358ce38edfe16a221598fe30dd.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\furl-f442bf91ec9e81717c0df7fc0a0df338.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\reddit-bd4bc34171fce60c54a01f71af8e8a80.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\rss-c02fb80cb014612171a998df2df64172.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\stumbleupon-28cb7203c2a6168f55310d44e34e24fb.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\stumbleupon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\technorati-31d67dbf020ac0cbe174e1acd0a4d33e.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\twitter-9bc865f395ca17e94efe8fab7d6c068a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\yahoo-2a260731d0d9ef3242a5ab2f0112f585.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\youtube-ee71caa982af63b4b052e2e20a4fe5fa.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\24x24\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\delicious-06e07753d755cf512a5711bcb9e035bf.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\digg-0a06d6fec313e8a7961e85b40e2bf2be.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\facebook-9d2e717a83bab238f392dbf7d76bc34c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\flickr-bb25d47d0de9879b9003a631d519ae39.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\furl-1cba739fcea012d313478982f490248d.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\reddit-6b994275c5b913268842209eeb997164.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\rss-6a48b47b4c8938ec52fcd1c0b0151edd.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\stumbleupon-41b27eb7f158efc2bd040277dce83b2a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\stumbleupon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\technorati-0e75fbf4c1f7a6faa37a114c226b7689.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\twitter-7b6d8d8c7569af3ce177291fd66d42a2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\yahoo-b13343ed9e20969b541442848188e436.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\youtube-68dc50d263d70446daec31ce50d0c424.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\32x32\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\Thumbs-789b97c403291938fbfb934b3d0ef05c.db" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\Thumbs.db" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\delicious-433b0d30fc42a8a8f4e3b53c357a6b5f.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\digg-1bb0da4a5f3ca51829568cfe72ca2b51.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\facebook-97e768e2bb005f1f7c7d90a38e5b3906.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\facebook_raso-6e184d1487b70ae9898dc72fcd1d0392.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\facebook_raso.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\flickr-c969cce8ae1d3f9b22f2f1bac6550ba0.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\furl-eae3ad40e607ebbc6317ce21c89101f0.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\reddit-7ebeb20619f06d56147b748ed70870b4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\rss-90e40f0c76e03538d2427c7846a93195.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\stumbleupon-8a70a8bca2319e56c2885dcbda764979.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\stumbleupon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\technorati-52e45353599e4a5be4c42ef61614e1f5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\twitter-b1fd592d248a56377b05edfd847fa331.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\twitter_raso-1faa47be7eb4cc174d3fdbe42d458625.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\twitter_raso.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\yahoo-d3eec36805ea31ba6fd1eba8e000b260.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\youtube-69680288b6a060a1676ad4648fe74019.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\youtube_raso-98e287f04e2a537df231a11aa0047ce6.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\48x48\youtube_raso.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\delicious-2ea8c729b4d9c0e76eb19b9d30649f68.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\digg-656c4059725745e77e99744fc5eb3922.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\facebook-12330a4a1655baa9c28ad41795c942b2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\flickr-47e782938b170afa206c6d5d6c3910f4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\furl-b18f85ab607b7215c7d5cd675c8c8610.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\reddit-66ec0b5426781bbba0a6512f6a2275d0.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\rss-9ff73681695a2acdf2c824160e6d76cf.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\stumbleupon-6f08db11b7e1b0e127040108581027b8.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\stumbleupon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\technorati-799bd41b27257ea033e9b00894cfc3d7.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\twitter-33fe879779545b4240903bc209c7b218.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\yahoo-e801b32f18eab4467b17eefaec459e7a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\youtube-ed59951c09cd5cf86e39be5a454819b3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social\64x64\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\blink_list-01e6241cc19cb624cfe0147c07aa8ddf.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\blink_list.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\delicious-067b03aa9cc3a648db4635b7e2da81a4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\design_float-20e22749de0e6463dc644407413fc4d5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\design_float.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\digg-672301e522dd383fe914dbc0bfd2be27.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\facebook_1-726d9c13a67a9ba1a06c6f619f67ad83.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\facebook_1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\facebook_2-d2e0d5f0c5ff02d0dbb3d5aac68f5536.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\facebook_2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\flickr-42975aae39c3d7bc39794e122917d4c2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\friendfees-beb073bc04c1ec86fe93d43c9430f360.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\friendfees.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\furl-104107d8edc6057b9faeaf954a0dcf01.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\google-bbfc0f3da047212d11fb447e617119ae.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\google.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\last_fm-4a477e1aa642e48af073d41549e46a4b.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\last_fm.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\linkedin-d75f05b6f3e0bc966fffcc2324ebe466.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\linkedin.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\mixx-6afe1ee6884f7af4313e82e88f70ac95.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\mixx.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\picasa-daa9ce92d696ff18e2907787584516d9.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\picasa.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\posterous-e8e5c6d16da3de9f90a38c9e3d217c45.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\posterous.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\rebbit-b502703a841d83577452f9dcdc763779.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\rebbit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\rss-02fbaf8d90f485966fb6ee3aaf155756.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\stumble_upon-842fce5efe0931ab02bcc5bf2b7eca78.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\stumble_upon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\technorati-9203bece12e332da3cca10885555c2e2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\tumblr-33e4c8f2741a6856b637e2d95624b968.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\tumblr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\twitter-39de46cff5c869a7285773957bf60f78.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\vimeo-ff9147a24884ffbe6d06b33e08a35f14.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\vimeo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\wordpress-82339f1426230691c97349f36b5a2f8f.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\wordpress.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\yahoo-3550d3c84cb660f9700df46295bebfd5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\youtube-78a6168ad2978c9aa98e1fb1516af988.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\48x48\youtube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\blink_list-342151cc8e6dae609db662dff4a6acf5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\blink_list.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\delicious-1e775af0573592b588223f93444b6052.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\design_float-17037e6a2be1a63a45d4423eafc83490.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\design_float.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\digg-22d7686d9c5a5357b02751e143c4d8d1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\digg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\facebook_1-0657699b76f4c072c9181dd0c835135a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\facebook_1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\facebook_2-ff18f1413b081555110a11fe2ba468cf.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\facebook_2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\flickr-a6e5740eb406912fe34f6c22c660c7a4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\flickr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\friendfees-d08f72f0bc9dff6a236608e5b3863055.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\friendfees.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\furl-4e1cc9b43015b24f0f6f77e3c9ca1524.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\furl.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\google-62804b890433f0668192089e6e9342b9.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\google.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\last_fm-4991d28ffa2758319cf8f92fe0188818.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\last_fm.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\linkedin-3bb58694da78a0d969910e47e4dae173.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\linkedin.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\mixx-ce9c4fbcf1b7a1f285a1d7928cfa2cf7.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\mixx.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\picasa-b23d0ffaf1696c8e9c1570ee875b69e1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\picasa.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\posterous-4afc594b970779f129f0d1b644978564.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\posterous.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\reddit-708a61a94385a530d37a77e94bf44b32.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\reddit.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\rss-6f98f980062e2c06fa1f9bb980d53deb.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\rss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\stumble_upon-7b4ba580e6b784e7b49a9d7483659568.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\stumble_upon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\technorati-4160f4e750e2c93a77f737d6f23f8683.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\technorati.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\tumblr-cc51aeecbe81ba1d880868b5cc9c55f9.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\tumblr.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\twitter-29cccad0cdea068a0cd32df5d9425c8b.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\vimeo-0e7223e5d84dafe96d4ee445f7f894af.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\vimeo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\wordpress-2354bc3e3452540e6669c845c0a226eb.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\wordpress.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\yahoo-b05a23cb4595dea584b915b74221ccc3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\yahoo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\you_tube-6c7eed5cc0d6a47a4b0a94dde04150d7.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\social_retro\60x60\you_tube.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\socialico-fad14ae61c0514fbcb6077b2e61d304e.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\socialico.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\project_manager-992fbbc2ef3639d8b879b20a85bd468f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\project_manager.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_andre-d193f4a87fda760939fbad5b2fd7c03c.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_andre.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_andreia-7fa0d026f85aef72c44d9b345c61ca44.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_andreia.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_carlos-8810d12ebf77fd378df247d16b0134e9.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_carlos.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_claudio-d2cd5ac54e4c568d454f7f3a4643596d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_claudio.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_cunha-f751d28c3239bb10cee14479e4925b40.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_cunha.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_dany-e027a59519c6a7b3dde46b489c6f4833.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_dany.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_diogo-adb0258edb0b60db6bc6e826d99a4513.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_diogo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_felix-dd66a0ce0dfab233589c0b154a0999fa.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_felix.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_filipe-873b964a1a9a533d5ce8794e965bce00.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_filipe.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_hugo-9726d0e3adc10b864861721a3e4494a9.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_hugo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_joao-d3a76ae74d98e20c2508f8b6a7a8c1ea.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_joao.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_nuno-f47e217c87155bab027685f9645bc36c.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_nuno.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_paulo-5eafc3dbeab5b4ed6f889ce676efc4a3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_paulo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_pedro-d36c8a52538f5ecf6794714432d6aaa7.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_pedro.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_ricardo-635350144b3933cd1b9ab63368285ea6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_ricardo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_samuel-9bd4810332a7ba45621bb946e36b8371.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_samuel.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_tiago-3f8816f37aadb27e5a40e0c7687a1ecf.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_tiago.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_vitor-a30fd9e9d16d41c146aa5bdb83e90394.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\team\team_vitor.jpg" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\assets\stylesheets\public\frontoffice.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/public/frontoffice.css.scss.erb" />
-      <change type="MOVED" beforePath="C:\Users\Carlos\RubymineProjects\platform\public\assets\public\application-7270767b2a9e9fff880aa5de378ca791.css" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/_add_credits_to_all.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/rasocomp/time_offs.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/rasocomp/time_offs.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/lightview/lightview.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/lightview/lightview.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/rasocomp/companies.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/rasocomp/companies.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/backoffice/companies_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/backoffice/companies_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/public/companies_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/public/companies_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/public/user_sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/public/user_sessions_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/rasocomp/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/company.rb" afterPath="$PROJECT_DIR$/app/models/company.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/backoffice/companies/index.html.erb" afterPath="$PROJECT_DIR$/app/views/backoffice/companies/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/backoffice/companies/show.html.erb" afterPath="$PROJECT_DIR$/app/views/backoffice/companies/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/backoffice/super_users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/backoffice/super_users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/nolayout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/nolayout.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/rasoemp.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/rasoemp.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/companies/new.html.erb" afterPath="$PROJECT_DIR$/app/views/public/companies/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/frontoffice/aboutus.html.erb" afterPath="$PROJECT_DIR$/app/views/public/frontoffice/aboutus.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" afterPath="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/job_offers/index.html.erb" afterPath="$PROJECT_DIR$/app/views/public/job_offers/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/job_offers/new.html.erb" afterPath="$PROJECT_DIR$/app/views/public/job_offers/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/companies/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/companies/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/companies/show.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/companies/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/time_offs/index.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/time_offs/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/time_offs/manage.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/time_offs/manage.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/time_offs/new.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/time_offs/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/users/dashboard.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/dashboard.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/users/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/users/index.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environment.rb" afterPath="$PROJECT_DIR$/config/environment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/constants.rb" afterPath="$PROJECT_DIR$/config/initializers/constants.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/en.yml" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -474,16 +25,16 @@
       <file leaf-file-name="job_offers_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="234" column="35" selection-start="8499" selection-end="8499" vertical-scroll-proportion="5.1663685">
+            <state line="61" column="34" selection-start="2142" selection-end="2142" vertical-scroll-proportion="-4.096847">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linkedin_profile.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="33" selection-start="1745" selection-end="1745" vertical-scroll-proportion="-31.615385">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -492,7 +43,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="67" selection-start="2988" selection-end="2988" vertical-scroll-proportion="0.0">
+            <state line="41" column="93" selection-start="2575" selection-end="2575" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -520,12 +71,12 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/app/views/public/job_offers/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb" />
         <option value="$PROJECT_DIR$/app/models/job_offer.rb" />
         <option value="$PROJECT_DIR$/app/views/public/job_offers/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" />
       </list>
     </option>
@@ -570,7 +121,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -586,34 +136,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -644,186 +166,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rasocomp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rasocomp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rasocomp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="job_offers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="job_offers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backoffice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -840,28 +182,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rasocomp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -884,90 +204,29 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backoffice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="candidaturas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="75" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="75" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="69" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="96" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="154" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="153" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../railslinked" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="80" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="829" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1060" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="154" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="163" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="949" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="820" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="151" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
@@ -977,11 +236,11 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="reference.settings.deploy.options" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
     <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
   </component>
-  <component name="RunManager" selected="Rails.Development: platform">
+  <component name="RunManager" selected="Rake.routes">
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="platform" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -1284,18 +543,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21666667" sideWeight="0.049657535" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23560606" sideWeight="0.80308217" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9503425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.91952056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1969178" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1359,6 +618,11 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/public/user_sessions.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/backoffice/bills_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -1381,12 +645,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/bill.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.15201466" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/bills_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/backoffice/companies/index.html.erb">
@@ -1396,7 +664,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="21" selection-start="884" selection-end="1283" vertical-scroll-proportion="0.57973737" />
+        <state line="26" column="21" selection-start="884" selection-end="1283" vertical-scroll-proportion="0.03269231">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb">
@@ -1406,36 +676,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/job_offer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="53" selection-start="763" selection-end="763" vertical-scroll-proportion="0.6601073" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/company.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="56" selection-start="1341" selection-end="1355" vertical-scroll-proportion="0.60465115" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="62" selection-start="440" selection-end="440" vertical-scroll-proportion="-0.6690519" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="67" selection-start="2988" selection-end="2988" vertical-scroll-proportion="0.0">
+        <state line="25" column="53" selection-start="763" selection-end="763" vertical-scroll-proportion="0.6601073">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/company.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="33" selection-start="1745" selection-end="1745" vertical-scroll-proportion="-31.615385">
+        <state line="44" column="56" selection-start="1341" selection-end="1355" vertical-scroll-proportion="0.60465115">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="105" selection-start="215" selection-end="311" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="93" selection-start="2575" selection-end="2575" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="35" selection-start="8499" selection-end="8499" vertical-scroll-proportion="5.1663685">
+        <state line="61" column="34" selection-start="2142" selection-end="2142" vertical-scroll-proportion="-4.096847">
           <folding />
         </state>
       </provider>
