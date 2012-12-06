@@ -1,8 +1,12 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
+# CUIDADO
+# COLEQUEM ESPAÇO ENTRE OS ":" E O QUE FICA EMTRE ""
+# POR EXEMPLO SE COLOCAREM accept:"Accept" SEM O ESPAÇO NADA DISTO FUNCIONA
+
 en:
-  accept:"Accept"
+  accept: "Accept"
   account_activated: "Your account has been successfuly activated"
   active: "Active"
   actions: "Actions"
