@@ -7,7 +7,7 @@ class CreateJobOffers < ActiveRecord::Migration
   # required_education = Requisitos de formação prévia, pode ser grau académico ou emprego prévio (exemplo: Master
   #                      Degree in Computer Science, First Certificate in English)
   # skills = Habilidades necessárias (exemplo: Java Programming, Cooking, Group Management)
-  # active = Flag que indica que a oferta ainda se encontra activa
+  # active = Flag que indica que a oferta ainda se encontra activa (MUDADO PARA status EM VERSÃO POSTERIOR)
   # conditions = Contrapartidas oferecidas pela empresa (exemplo: monthly salary = 5000€ , free mobile phone...)
 
 

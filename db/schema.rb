@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129203820) do
+ActiveRecord::Schema.define(:version => 20121206181952) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -45,12 +45,28 @@ ActiveRecord::Schema.define(:version => 20121129203820) do
     t.string   "slug"
   end
 
-  create_table "events", :force => true do |t|
-    t.string   "name"
-    t.datetime "start_at"
-    t.datetime "end_at"
+  create_table "contracts", :force => true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "job_title"
+    t.decimal  "value"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "courses", :force => true do |t|
+    t.integer  "training_id"
+    t.integer  "company_id"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.integer  "category"
+    t.integer  "state"
+    t.string   "lecturer"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "name"
+    t.string   "color"
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -68,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20121129203820) do
     t.text     "description"
     t.text     "required_education"
     t.text     "skills"
-    t.boolean  "active"
+    t.string   "status"
     t.text     "conditions"
     t.integer  "company_id"
     t.datetime "created_at",         :null => false
@@ -101,6 +117,14 @@ ActiveRecord::Schema.define(:version => 20121129203820) do
     t.integer  "company_id"
   end
 
+  create_table "trainings", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.integer  "company_id"
     t.string   "email"
@@ -112,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20121129203820) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.integer  "time_off_days"
+    t.string   "user_photo"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
