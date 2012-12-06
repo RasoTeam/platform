@@ -30,7 +30,7 @@ en:
   new: "New"
   new_employee: "New Employee"
   new_user: "New User"
-  no_permission_to_access: "No permission to access"
+  no_permission_to_access: "No permission to access. Please login first."
   inactive: "Inactive"
   invalid_login: "Wrong username or password!"
   invalid_verification: "Invalid Verification"
