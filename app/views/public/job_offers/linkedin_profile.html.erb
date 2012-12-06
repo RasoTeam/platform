@@ -97,5 +97,10 @@
   <% end %>
 </table>
 
-<%= link_to 'Save profile' , save_linkedin_profile_path %>
+<%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
+    <%= hidden_field_tag :profile , @profile %>
+    <%= submit_tag 'Valeu!' %>
+<% end %>
+
+
 <%= link_to 'Cancel' , new_apply_path(params[:company_id],params[:id]) %>

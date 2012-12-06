@@ -66,12 +66,23 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
+  #Mostra o perfil
+  def linkedin_profile
+    @candidate = session[:candidate]
+    @profile = get_full_profile
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    #guarda temporariamente na session
+    #session[:profile] = @profile
+  end
+
 
   #Esta acção guarda efectivamente um CV carregado através do LinkedIn
   def save_linkedin_profile
-    #Obter variáveis guardadas na session
     @candidate = session[:candidate]
-    @profile = session[:profile]
+    @profile = Hash.new(params[:profile]) #profile session[:profile]
+    puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+
+
 
     if @candidate.save
 
@@ -81,7 +92,7 @@ class Public::JobOffersController < Public::ApplicationController
       @candidate.save
       #Limpa as variáveis de sessão
       session[:candidate] = nil
-      session[:profile] = nil
+      #session[:profile] = nil
 
       flash[:success] = "Profile successfully saved."
       redirect_to public_company_job_offers_path(params[:company_id])
@@ -90,6 +101,7 @@ class Public::JobOffersController < Public::ApplicationController
       redirect_to public_company_job_offers_path(params[:company_id])
     end
   end
+
 
   ######################################################################################################################
   # FUNÇÕES NECESSÁRIAS
@@ -222,13 +234,6 @@ class Public::JobOffersController < Public::ApplicationController
     redirect_to linkedin_profile_path @company,@job_offer,@candidate
   end
 
-  #Mostra o perfil
-  def linkedin_profile
-    @candidate = session[:candidate]
-    @profile = get_full_profile
-    #guarda temporariamente na session
-    session[:profile] = @profile
-  end
 
   #Obtem e devolve o perfil do utilizador actual do linkedin.
   def get_full_profile
@@ -240,18 +245,25 @@ class Public::JobOffersController < Public::ApplicationController
     profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil
     full_profile = profile.to_hash
+    puts "FULL_PROFILE: " + full_profile.to_s
     #Devolve
     return full_profile
   end
 
   #Grava o ficheiro com o HTML retirado do perfil do LinkedIn
   def save_linkedin_to_html(profile,candidate)
+
+    #puts "PROFILE 2: " + profile
+
+
     fileHTML = "<div>"
 
     #Experiência Profissional
     fileHTML += "<h1>Work Experience</h1>"
 
-    profile["positions"]["all"].each do |pos|
+    puts "Hash: " + profile.to_s
+
+    profile[:positions][:all].each do |pos|
       fileHTML += "<table>"
       fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
       fileHTML += pos.start_date["year"].to_s
