@@ -103,12 +103,14 @@ class Public::JobOffersController < Public::ApplicationController
   def save_linkedin_profile
     #Obter variáveis guardadas na session
     @candidate = session[:candidate]
-    @profile = Rack::Utils.parse_nested_query(params[:profile]) #LinkedIn::session[:profile]
+    #@profile = Rack::Utils.parse_nested_query(params[:profile]) #LinkedIn::session[:profile]
+    #puts @profile
+
 
     if @candidate.save
 
       #Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
-      @candidate.file_path = save_linkedin_to_html(@profile,@candidate)
+      @candidate.file_path = save_linkedin_to_html(@candidate)
       #Save novamente faz update
       @candidate.save
       #Limpa as variáveis de sessão
@@ -340,16 +342,22 @@ class Public::JobOffersController < Public::ApplicationController
     profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil
     full_profile = profile.to_hash
-    puts full_profile
-    nicer =  full_profile.to_param
+    puts "TO HASH:" + full_profile.to_s
+    nicer =  full_profile.to_query
+    puts "TO PARAM: " + nicer
     newer = Rack::Utils.parse_nested_query(nicer)
-    puts newer
+    puts "PARSE : " + newer.to_s
     #Devolve
     return full_profile
   end
 
   #Grava o ficheiro com o HTML retirado do perfil do LinkedIn
-  def save_linkedin_to_html(profile,candidate)
+  def save_linkedin_to_html(candidate)
+
+    client = LinkedIn::Client.new(@@api_key,@@api_secret,@@configuration)
+    client.authorize_from_access(@@accesstoken,@@accesssecret)
+    profile = client.profile(:fields => [:positions ,:educations , :skills])
+
     fileHTML = "<div>"
 
     #Experiência Profissional
@@ -358,18 +366,18 @@ class Public::JobOffersController < Public::ApplicationController
     profile["positions"]["all"].each do |pos|
       fileHTML += "<table>"
       fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-      fileHTML += pos["start_date"]["year"].to_s
+      fileHTML += pos.start_date["year"].to_s
       fileHTML += "</td></tr>"
       fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
-      if(pos["is_current"] == "true") #Caso seja o empre actual
+      if(pos.is_current) #Caso seja o empre actual
         fileHTML += "Current"
       else
-        fileHTML += pos["end_date"]["year"].to_s
+        fileHTML += pos.end_date["year"].to_s
       end
       fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos["title"]+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos["company"]["name"]+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Industry:</b></td><td>"+pos["company"]["industry"]+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos.title+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos.company["name"]+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Industry:</b></td><td>"+pos.company["industry"]+"</td></tr>"
       fileHTML += "</table><hr>"
     end
 
@@ -380,23 +388,23 @@ class Public::JobOffersController < Public::ApplicationController
       fileHTML += "<table>"
       fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
       #Caso não haja data de inicio
-      if edu["start_date"]
-        fileHTML += edu["start_date"]["year"].to_s
+      if edu.start_date
+        fileHTML += edu.start_date["year"].to_s
       else
         fileHTML += '--'
       end
       fileHTML += "</td></tr>"
       fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
       #Caso não haja data de finalização
-      if edu["end_date"]
-        fileHTML += edu["end_date"]["year"].to_s
+      if edu.end_date
+        fileHTML += edu.end_date["year"].to_s
       else
         fileHTML += '--'
       end
       fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu["degree"]+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu["field_of_study"]+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu["school_name"]+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu.degree+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu.field_of_study+"</td></tr>"
+      fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu.school_name+"</td></tr>"
       fileHTML += "</table><hr>"
     end
 
@@ -406,7 +414,7 @@ class Public::JobOffersController < Public::ApplicationController
     profile["skills"]["all"].each do |skill|
       fileHTML += "<table>"
       fileHTML += "<tr><td align='right'><b>Name:</b></td><td>"
-      fileHTML += skill["skill"]["name"]
+      fileHTML += skill["skill"].name
       fileHTML += "</td></tr>"
       fileHTML += "</table><hr>"
     end

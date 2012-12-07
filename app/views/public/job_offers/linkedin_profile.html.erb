@@ -98,7 +98,7 @@
 </table>
 
 <%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
-    <%= hidden_field_tag :profile , @profile.to_param %>
+    <%= hidden_field_tag :profile , :yes %>
     <%= submit_tag 'Valeu!' %>
 <% end %>
 

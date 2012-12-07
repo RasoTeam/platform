@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/job_offer.rb" afterPath="$PROJECT_DIR$/app/models/job_offer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb" afterPath="$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb" />
     </list>
     <ignored path="platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,19 +22,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="job_offers_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="job_offers_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="357" column="25" selection-start="11994" selection-end="11994" vertical-scroll-proportion="0.0">
+            <state line="406" column="82" selection-start="13955" selection-end="13955" vertical-scroll-proportion="3.9713774">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="job_offers_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="job_offers_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="25" selection-start="768" selection-end="768" vertical-scroll-proportion="0.6386404">
+            <state line="13" column="42" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="linkedin_profile.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="25" selection-start="1464" selection-end="1473" vertical-scroll-proportion="1.7307693">
               <folding />
             </state>
           </provider>
@@ -88,13 +96,13 @@
         <option value="$PROJECT_DIR$/app/views/public/job_offers/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/public/job_offers/index.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121121141730_create_job_offers.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121206181952_change_column_active_to_status.rb" />
         <option value="$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/job_offer.rb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb" />
       </list>
     </option>
   </component>
@@ -305,6 +313,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="job_offers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -338,50 +372,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rasocomp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -836,16 +826,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/candidaturas/59.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/training.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121128182430_another_fix_time_off.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -878,13 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="52" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.46978557">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121206181952_change_column_active_to_status.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="66" selection-start="126" selection-end="126" vertical-scroll-proportion="0.063079774">
@@ -906,9 +879,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="357" column="25" selection-start="11994" selection-end="11994" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/job_offer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="36" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -922,16 +902,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/job_offer.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="36" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.0">
+        <state line="13" column="42" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/job_offers_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/public/job_offers/linkedin_profile.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="25" selection-start="768" selection-end="768" vertical-scroll-proportion="0.6386404">
+        <state line="69" column="25" selection-start="1464" selection-end="1473" vertical-scroll-proportion="1.7307693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/candidaturas/67.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/public/job_offers_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="406" column="82" selection-start="13955" selection-end="13955" vertical-scroll-proportion="3.9713774">
           <folding />
         </state>
       </provider>
