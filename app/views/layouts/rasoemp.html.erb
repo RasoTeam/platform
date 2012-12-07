@@ -51,6 +51,10 @@
         <li>
           <%= link_to "Job Offers", company_job_offers_path(@company) %>
         </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Time Offs Mangement", manage_company_user_time_offs_path(@company, @user) %>
+        </li>
         <% end %>
         <% if current_user(@company.slug).role <= ROLE[:manager] %>
         <li class="divider"></li>
