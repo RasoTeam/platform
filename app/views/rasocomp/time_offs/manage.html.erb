@@ -1,7 +1,7 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:home) , user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
         <li class="current">
           <a href="#"><%= t(:manage_time_offs) %></a>
         </li>
@@ -11,7 +11,7 @@
 
 <div class="row">
 	<div class="twelve columns">
-		<h2>Manage Time Offs</h2>
+		<h2><%= t(:manage_time_offs) %></h2>
 		<hr/>
 			<table class="twelve">
 				<thead>
@@ -33,7 +33,7 @@
 					<% if t.category == TIMETYPE[:holiday] %>
 						<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
 					<% else ( 
-						if t.state == TIMETYPE[:sick] %>
+						if t.category == TIMETYPE[:sick] %>
 							<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
 						<%end)%>
 					<% end %>
@@ -49,8 +49,8 @@
 						<%end)%>
 					<% end %>
 					<td style="text-align:center">
-						<%= link_to t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-						<%= link_to t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put, :data => { :confirm => 'Confirmation Box'} %>
+						<%= link_to t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put %>
+						<%= link_to t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put %>
 					</td>
 			    </tr>
 			<% end %>
