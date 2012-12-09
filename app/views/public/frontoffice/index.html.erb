@@ -15,12 +15,36 @@
 		<!-- End Desktop Slider -->
 		<div class="row frontpage">
 			<div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
+				<div id="featuredContent">
+					<div>
+						<h1>Tired of HR Work?</h1>
+						<h2>Improve your work</h2>
+						<div style="width: 70%; margin: 0 auto;">
+							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						</div>
+					</div>
+					<div>
+						<h1>Forget Spreadsheets!</h1>
+						<h2>Improve your work</h2>
+						<div style="width: 70%; margin: 0 auto;">
+							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						</div>
+					</div>
+					<div>
+						<h1>Use Raso HR!</h1>
+						<h2>Improve your work</h2>
+						<div style="width: 70%; margin: 0 auto;">
+							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						</div>
+					</div>
+				</div>
+				<!-- 
 				<h1>Forget Spreadsheets!</h1>
 				<h2>Improve your work</h2>
 				<div style="width: 70%; margin: 0 auto;">
 					<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
-				</div>
-				<%= link_to "Register Here!", new_public_company_path, {:class=>"large radius button", :style=>"z-index: 3;"} %>
+				</div> -->
+				<%= link_to "Try it Free!", new_public_company_path, {:class=>"large radius button", :style=>"z-index: 3;"} %>
 			</div>
 			
 		</div>
@@ -127,4 +151,10 @@
 		</div>
 	</div>
 </div>
+
+<script type='text/javascript'>
+   $(window).load(function() {
+       $('#featuredContent').orbit({ fluid: '16x4', advanceSpeed: 3000});
+   });
+</script>
 
