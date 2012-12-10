@@ -1,4 +1,5 @@
-<!DOCTYPE html xmlns:fb="https://www.facebook.com/2008/fbml">
+<!DOCTYPE html>
+<!-- xmlns:fb="https://www.facebook.com/2008/fbml" -->
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
@@ -48,23 +49,29 @@
         <% if current_user(@company.slug).role == ROLE[:manager] %>
         <li class="divider"></li>
         <li>
-          <%= link_to "Job Offers", company_job_offers_path(@company) %>
+          <%= link_to t(:job_offers), company_job_offers_path(@company) %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to t(:time_offs_management), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
         </li>
         <% end %>
         <% if current_user(@company.slug).role <= ROLE[:manager] %>
         <li class="divider"></li>
-        <li><%= link_to "Employees", company_users_path(@company) %></li>
+        <li><%= link_to t(:employees), company_users_path(@company) %></li>
         <% end %>
         <li class="divider"></li>
-        <li><%= link_to "Company", company_path(@company) %></li>
+        <li><%= link_to t(:company) , company_path(@company) %></li>
+        <li class="divider"></li>
+        <li><%= link_to t(:calendar), calendar_path(@company) %></li>
         <li class="divider"></li>
       </ul>
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="divider"></li>
-        <li  class="name" style="line-height: 20px; padding: 15px;">
+        <li  class="name" style="line-height: 20px; padding: 15px; text-align: center">
           <%  curUser=current_user(@company.slug) %>
-          <span><%=  curUser.name %></span><br/>
+          <span style="color:white"><%=  curUser.name %></span><br/>
           <span class="secondary radius label"><%  if curUser.role == 0%>
           ROOT
           <%else%>
@@ -72,7 +79,7 @@
           <%end%></span>
         </li>
         <li class="divider"></li>
-        <li><%= link_to "Logout", company_signout_path(@company) %></li>
+        <li><%= link_to t(:logout), company_signout_path(@company) %></li>
       </ul>
     </section>
   </nav>

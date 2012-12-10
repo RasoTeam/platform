@@ -30,9 +30,8 @@ class User < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
 
   validates :password,  :length => { :minimum => 6 },
-                        :if => :verified?
-  validates :password_confirmation, :presence => true,
-                                    :if => :verified?
+                        :if => :verified?, :on => :create, :on => :update_password
+
   validates :role, :numericality => { :only_integer => true, 
                                       :greater_than_or_equal_to => 0,
                                       :less_than_or_equal_to => 10 }

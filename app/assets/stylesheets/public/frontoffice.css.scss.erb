@@ -29,6 +29,11 @@ body:before
   	box-shadow:         0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+/* CSS */
+.orbit-wrapper .slider-nav span { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 400ms; -moz-transition: opacity 400ms; -o-transition: opacity 400ms; transition: opacity 400ms; }
+.orbit-wrapper:hover .slider-nav span { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; }
+
+
 #register_company
 {
 	
@@ -133,6 +138,8 @@ body:before
 {
 	background-color: #E7E7E7; 
 	position: relative;
+	padding-top: 120px;
+	margin-top: -120px;
 }
 
 ul.nav_raso
@@ -213,7 +220,7 @@ ul#helper_menu
 	overflow: hidden;
 	position: relative;
 	cursor: default;
-	background: #fff url(../images/bgimg.jpg) no-repeat center center;
+	background: #fff no-repeat center center;
 	text-align: center;
 
 	.mask, .content

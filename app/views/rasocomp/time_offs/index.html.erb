@@ -1,7 +1,7 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:home) , user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
         <li class="current">
           <a href="#"><%= t(:timeoffs) %></a>
         </li>
@@ -13,10 +13,10 @@
   <div class="twelve columns">
   	<div class="row">
 	  	<div class="ten columns">
-			<h2>Time Offs  <span class="radius label" style="margin-left: 10px">Remaining days</span> <span class="secondary radius label"><%= @user.time_off_days %></span></h2>
+			<h2><%= t(:timeoffs) %> <span class="radius label" style="margin-left: 10px"><%=t(:remaining_days)%></span> <span class="secondary radius label"><%= @user.time_off_days %></span></h2>
 	  	</div>
 	  	<div class="two columns" style="margin-top: 15px; text-align: right">
-			<%= link_to 'Book', new_company_user_time_off_path( @company, @user), :class=> "radius button" %><br>
+			<%= link_to t(:book), new_company_user_time_off_path( @company, @user), :class=> "radius button" %><br>
 
 	  	</div>
 	  </div>
@@ -26,24 +26,40 @@
 			<div>
 		  		<table class="twelve">
 		  			<thead>
-		  				<th><%= t(:start_day) %></th>
-		  				<th><%= t(:days) %></th>
-		  				<th><%= t(:type) %></th>
-		  				<th><%= t(:end_day) %></th>
-		  				<th><%= t(:state) %></th>
-		  				<th><%= t(:description) %></th>
-		  				<th><%= t(:actions) %></th>
+		  				<th style="text-align: center"><%= t(:start_day) %></th>
+						<th style="text-align: center"><%= t(:end_day) %></th>
+		  				<th style="text-align: center"><%= t(:days) %></th>
+		  				<th style="text-align: center"><%= t(:type) %></th>
+		  				<th style="text-align: center"><%= t(:state) %></th>
+		  				<th style="text-align: center"><%= t(:description) %></th>
+		  				<th style="text-align: center"><%= t(:actions) %></th>
 		  			</thead>
 		          <tbody>
 		          	<% @timeoffs.each do |t| %>
-			            <tr>
-			              <td><%= t.start_at %></td>
-			              <td><%= t.days %></td>
-			              <td><%= t.category %></td>
-			              <td><%= t.end_at %></td>
-			              <td><%= t.state %></td>
-			              <td><%= t.description %></td>
-			              <td><%= link_to "cancel", [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => 'Confirmation Box'} %></td>
+						<tr>
+							<td style="text-align: center"><%= t.start_at %></td>
+							<td style="text-align: center"><%= t.end_at %></td>
+							<td style="text-align: center"><%= t.days %></td>
+							<% if t.category == TIMETYPE[:holiday] %>
+							<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
+							<% else ( 
+							if t.state == TIMETYPE[:sick] %>
+								<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
+							<%end)%>
+							<% end %>
+							<% if t.state == TIMEOFF[:pending] %>
+								<td style="color:orange; text-align: center"><%= t(:pending)  %></td>
+							<% else ( 
+								if t.state == TIMEOFF[:approved] %>
+									<td style="color:green; text-align: center"><%= t(:approved)  %></td>
+								<%else( 
+									if t.state == TIMEOFF[:disapproved]%>
+										<td style="color:red; text-align: center"><%= t(:disapproved)  %></td>
+									<%end)%>
+								<%end)%>
+							<% end %>
+							<td><%= t.description %></td>
+							<td style="text-align: center"><%= link_to t(:cancel), [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => t(:cancel_message)} %></td>
 			            </tr>
 		        	<% end %>
 

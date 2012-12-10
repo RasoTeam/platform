@@ -50,10 +50,13 @@
             <tr>
               <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
               <td style="text-align:center"><%= offer.created_at %></td>
-              <td style="text-align:center"><% if offer.active %>
+              <td style="text-align:center">
+                <% if offer.status %>
                   <span style="color:green;"><%= t(:active)%></span>
                   <% else %>
-                  <span style="color:red;"><%=  t(:closed) %></span><% end %></td>
+                  <span style="color:red;"><%=  t(:closed) %></span>
+                  <% end %>
+                </td>
               <td style="text-align:center"><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
             </tr>
         <% end %>

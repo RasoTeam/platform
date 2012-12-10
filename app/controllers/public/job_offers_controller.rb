@@ -1,6 +1,8 @@
 class Public::JobOffersController < Public::ApplicationController
   layout "nolayout"
 
+  require 'rack/utils'
+
   #Chaves da API do LinkedIn para esta aplicação
   @@api_key =  'gdpw09c8khsp'
   @@api_secret = 'GjOzGtusFpJ2e9as'
@@ -51,13 +53,18 @@ class Public::JobOffersController < Public::ApplicationController
 
       elsif params[:cv_type] == 'xml'     #Se for um post para xml
 
-        @candidate.save #Save aqui para não entrar em conflito com o processo de linkedin
-        file_data = params[:file]
-        xml_contents = file_data.read
-        readXMLfile2html(xml_contents,@candidate.id.to_s)
+        session[:file] = params[:file].path
+        session[:candidate] = @candidate
 
-        flash[:success] = "You applied successfully for the job."
-        redirect_to public_company_job_offers_path(params[:company_id])
+        redirect_to xml_profile_path params[:company_id],params[:id]
+
+      else     #Se for um post para pdf
+
+        session[:file] = params[:file].path
+        #so para modificar algo...
+        session[:candidate] = @candidate
+
+        redirect_to pdf_profile_path params[:company_id],params[:id]
       end
 
     else
@@ -66,22 +73,45 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
+  def xml_profile
+    xml_contents = File.open(session[:file],'r')
+    session.delete(:file)
+
+    @file_text = readXMLfile2html(xml_contents)
+    session[:file_path] = 'app/assets/candidaturas/'+Time.now.to_i.to_s+'.html'
+    File.open(session[:file_path],'w') do |file|
+      file.write(@file_text)
+    end
+
+    @file_text = @file_text.html_safe
+    @candidate = session[:candidate]
+  end
+
+  def pdf_profile
+
+    session[:file_path] = 'public/'+Time.now.to_i.to_s+'.pdf'
+    File.open(session[:file_path],'w') do |file|
+      file.write(File.read(session[:file]))
+    end
+
+    @file_pdf = session[:file_path]
+    @candidate = session[:candidate]
+    session.delete(:file)
+  end
 
   #Esta acção guarda efectivamente um CV carregado através do LinkedIn
   def save_linkedin_profile
     #Obter variáveis guardadas na session
     @candidate = session[:candidate]
-    @profile = session[:profile]
 
     if @candidate.save
 
       #Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
-      @candidate.file_path = save_linkedin_to_html(@profile,@candidate)
+      @candidate.file_path = save_linkedin_to_html(@candidate)
       #Save novamente faz update
       @candidate.save
       #Limpa as variáveis de sessão
       session[:candidate] = nil
-      session[:profile] = nil
 
       flash[:success] = "Profile successfully saved."
       redirect_to public_company_job_offers_path(params[:company_id])
@@ -91,11 +121,81 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
+  #Esta acção guarda efectivamente um CV carregado através de XML
+  def save_xml_profile
+    #Obter variáveis guardadas na session
+    @candidate = session[:candidate]
+    session.delete(:candidate)
+
+
+    if @candidate.save
+
+      path = 'app/assets/candidaturas/'+@candidate.id.to_s+'.html'
+
+      #Open faz open ou create, nice :)
+      File.open(path,'w') do |file|
+        file.write(File.read(session[:file_path]))
+      end
+
+      File.delete(session[:file_path])
+      session.delete(:file_path)
+
+      #Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
+      @candidate.file_path = path
+      #Save novamente faz update
+      @candidate.save
+
+      flash[:success] = "Profile successfully saved."
+      redirect_to public_company_job_offers_path(params[:company_id])
+    else
+      flash[:alert] = "Could not save, please retry."
+      redirect_to public_company_job_offers_path(params[:company_id])
+    end
+  end
+
+  #Esta acção guarda efectivamente um CV carregado através de XML
+  def save_pdf_profile
+    #Obter variáveis guardadas na session
+    @candidate = session[:candidate]
+    session.delete(:candidate)
+
+    if @candidate.save
+
+      path = 'app/assets/candidaturas/'+@candidate.id.to_s+'.pdf'
+
+      #Open faz open ou create, nice :)
+      File.open(path,'w') do |file|
+        file.write(File.read(session[:file_path]))
+      end
+
+      File.delete(session[:file_path])
+      session.delete(:file_path)
+
+      #Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
+      @candidate.file_path = path
+      #Save novamente faz update
+      @candidate.save
+
+      flash[:success] = "Profile successfully saved."
+      redirect_to public_company_job_offers_path(params[:company_id])
+    else
+      flash[:alert] = "Could not save, please retry."
+      redirect_to public_company_job_offers_path(params[:company_id])
+    end
+  end
+
+  def cancel_profile
+    session.delete(:candidate)
+    File.delete(session[:file_path])
+    session.delete(:file_path)
+    redirect_to new_apply_path(params[:company_id],params[:id])
+  end
+
   ######################################################################################################################
   # FUNÇÕES NECESSÁRIAS
   ######################################################################################################################
 
-  def readXMLfile2html(xmlf,id)
+  def readXMLfile2html(xmlf)
     doc = Hpricot::XML(xmlf)
     fileHTML = "<div>"
 
@@ -133,7 +233,7 @@ class Public::JobOffersController < Public::ApplicationController
       if !(we).at('employer/name').blank?
         fileHTML += "<tr><td align='right'><b>Employer:</b></td><td>"+(we).at('employer/name').innerHTML+"</td></tr>"
       end
-      fileHTML += "</table><hr>"
+      fileHTML += "</table>"
     end
 
     #Habilitações
@@ -161,23 +261,21 @@ class Public::JobOffersController < Public::ApplicationController
         end
         fileHTML += "</td></tr>"
       end
-      if !(edu).at('title').blank? 
+      if !(edu).at('title').blank?
         fileHTML += "<tr><td align='right'><b>Title:</b></td><td>"+(edu).at('title').innerHTML+"</td></tr>"
       end
-      if !(edu).at('skills').blank? 
+      if !(edu).at('skills').blank?
         fileHTML += "<tr><td align='right'><b>Skills:</b></td><td>"+(edu).at('skills').innerHTML+"</td></tr>"
       end
-      if !(edu).at('organisation/name').blank? 
+      if !(edu).at('organisation/name').blank?
         fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+(edu).at('organisation/name').innerHTML+"</td></tr>"
       end
-      fileHTML += "</table><hr>"
+      fileHTML += "</table>"
     end
 
     fileHTML += "</div>"
 
-    File.open('app/assets/candidaturas/'+id+'.html','w') do |file|
-      file.write(fileHTML)
-    end
+    return fileHTML
   end
 
 
@@ -226,8 +324,6 @@ class Public::JobOffersController < Public::ApplicationController
   def linkedin_profile
     @candidate = session[:candidate]
     @profile = get_full_profile
-    #guarda temporariamente na session
-    session[:profile] = @profile
   end
 
   #Obtem e devolve o perfil do utilizador actual do linkedin.
@@ -238,62 +334,93 @@ class Public::JobOffersController < Public::ApplicationController
     client.authorize_from_access(@@accesstoken,@@accesssecret)
     #SACA O PERFIL!!!
     profile = client.profile(:fields => [:positions ,:educations , :skills])
-    #Transforma-o em algo útil
+    #Transforma-o em algo útil e fácil de iterar
     full_profile = profile.to_hash
     #Devolve
     return full_profile
   end
 
   #Grava o ficheiro com o HTML retirado do perfil do LinkedIn
-  def save_linkedin_to_html(profile,candidate)
+  def save_linkedin_to_html(candidate)
+
+    #Isto foi um workaround a enviar params, basicamente saca de novo o perfil.
+    client = LinkedIn::Client.new(@@api_key,@@api_secret,@@configuration)
+    client.authorize_from_access(@@accesstoken,@@accesssecret)
+    profile = client.profile(:fields => [:positions ,:educations , :skills])
+
+    #Inicio da criação do HTML necessário.
     fileHTML = "<div>"
 
     #Experiência Profissional
     fileHTML += "<h1>Work Experience</h1>"
 
-    profile["positions"]["all"].each do |pos|
-      fileHTML += "<table>"
-      fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-      fileHTML += pos.start_date["year"].to_s
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
-      if(pos.is_current) #Caso seja o empre actual
-        fileHTML += "Current"
-      else
-        fileHTML += pos.end_date["year"].to_s
+    if profile["positions"]["all"].nil?
+
+    else
+      profile["positions"]["all"].each do |pos|
+        fileHTML += "<table>"
+        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        fileHTML += pos.start_date["year"].to_s
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
+        if(pos.is_current) #Caso seja o empre actual
+          fileHTML += "Current"
+        else
+          fileHTML += pos.end_date["year"].to_s
+        end
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos.title+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos.company["name"]+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Industry:</b></td><td>"+pos.company["industry"]+"</td></tr>"
+        fileHTML += "</table><hr>"
       end
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos.title+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos.company["name"]+"</td></tr>"
-      fileHTML += "</table><hr>"
     end
+
 
     #Habilitações
     fileHTML += "<h1>Education</h1>"
 
-    profile["educations"]["all"].each do |edu|
-      fileHTML += "<table>"
-      fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-      fileHTML += edu.start_date["year"].to_s
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
-      fileHTML += edu.end_date["year"].to_s
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu.degree+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu.field_of_study+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu.school_name+"</td></tr>"
-      fileHTML += "</table><hr>"
+    if profile["educations"]["all"].nil?
+
+    else
+      profile["educations"]["all"].each do |edu|
+        fileHTML += "<table>"
+        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        #Caso não haja data de inicio
+        if edu.start_date
+          fileHTML += edu.start_date["year"].to_s
+        else
+          fileHTML += '--'
+        end
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
+        #Caso não haja data de finalização
+        if edu.end_date
+          fileHTML += edu.end_date["year"].to_s
+        else
+          fileHTML += '--'
+        end
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu.degree+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu.field_of_study+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu.school_name+"</td></tr>"
+        fileHTML += "</table><hr>"
+      end
     end
+
 
     #Habilidades/Conhecimentos
     fileHTML += "<h1>Skills</h1>"
 
-    profile["skills"]["all"].each do |skill|
-      fileHTML += "<table>"
-      fileHTML += "<tr><td align='right'><b>Name:</b></td><td>"
-      fileHTML += skill["skill"].name
-      fileHTML += "</td></tr>"
-      fileHTML += "</table><hr>"
+    if profile["skills"]["all"].nil?
+    else
+      profile["skills"]["all"].each do |skill|
+        fileHTML += "<table>"
+        fileHTML += "<tr><td align='right'><b>Name:</b></td><td>"
+        fileHTML += skill["skill"].name
+        fileHTML += "</td></tr>"
+        fileHTML += "</table><hr>"
+      end
     end
 
     fileHTML += "</div>"

@@ -34,9 +34,9 @@
 		
 		<% if !(request.path.include? "feedbacks") %>
 		
-		<div id="background_grey">
+		
 			<div class="row" style="width:100%; padding-bottom: 35px;">
-			<div class="twelve columns" style="padding: 0;">
+			<div class="twelve columns" style="padding: 0; z-index: 10;">
 				<!-- Navigation -->
 				<nav class="top-bar contain-to-grid">
 					<div id="topo">
@@ -69,7 +69,7 @@
 							<li>
 								<a href="#">blog</a>
 							</li>
-							<!-- <li id="register_company">
+							 <li id="register_company">
 								<%= link_to "register", new_public_company_path %>
 							</li> 
 						</ul> -->
