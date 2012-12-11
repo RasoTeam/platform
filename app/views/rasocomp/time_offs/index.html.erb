@@ -24,47 +24,50 @@
   	<div class="twelve columns">
   		<div class="panel">
 			<div>
-		  		<table class="twelve">
-		  			<thead>
-		  				<th style="text-align: center"><%= t(:start_day) %></th>
-						<th style="text-align: center"><%= t(:end_day) %></th>
-		  				<th style="text-align: center"><%= t(:days) %></th>
-		  				<th style="text-align: center"><%= t(:type) %></th>
-		  				<th style="text-align: center"><%= t(:state) %></th>
-		  				<th style="text-align: center"><%= t(:description) %></th>
-		  				<th style="text-align: center"><%= t(:actions) %></th>
-		  			</thead>
-		          <tbody>
-		          	<% @timeoffs.each do |t| %>
-						<tr>
-							<td style="text-align: center"><%= t.start_at %></td>
-							<td style="text-align: center"><%= t.end_at %></td>
-							<td style="text-align: center"><%= t.days %></td>
-							<% if t.category == TIMETYPE[:holiday] %>
-							<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
-							<% else ( 
-							if t.state == TIMETYPE[:sick] %>
-								<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
-							<%end)%>
-							<% end %>
-							<% if t.state == TIMEOFF[:pending] %>
-								<td style="color:orange; text-align: center"><%= t(:pending)  %></td>
-							<% else ( 
-								if t.state == TIMEOFF[:approved] %>
-									<td style="color:green; text-align: center"><%= t(:approved)  %></td>
-								<%else( 
-									if t.state == TIMEOFF[:disapproved]%>
-										<td style="color:red; text-align: center"><%= t(:disapproved)  %></td>
-									<%end)%>
+				<% if @timeoffs.any? %>
+			  		<table class="twelve">
+			  			<thead>
+			  				<th style="text-align: center"><%= t(:start_day) %></th>
+							<th style="text-align: center"><%= t(:end_day) %></th>
+			  				<th style="text-align: center"><%= t(:days) %></th>
+			  				<th style="text-align: center"><%= t(:type) %></th>
+			  				<th style="text-align: center"><%= t(:state) %></th>
+			  				<th style="text-align: center"><%= t(:description) %></th>
+			  				<th style="text-align: center"><%= t(:actions) %></th>
+			  			</thead>
+			          <tbody>
+			          	<% @timeoffs.each do |t| %>
+							<tr>
+								<td style="text-align: center"><%= t.start_at %></td>
+								<td style="text-align: center"><%= t.end_at %></td>
+								<td style="text-align: center"><%= t.days %></td>
+								<% if t.category == TIMETYPE[:holiday] %>
+								<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
+								<% else ( 
+								if t.state == TIMETYPE[:sick] %>
+									<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
 								<%end)%>
-							<% end %>
-							<td><%= t.description %></td>
-							<td style="text-align: center"><%= link_to t(:cancel), [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => t(:cancel_message)} %></td>
-			            </tr>
-		        	<% end %>
-
-		          </tbody>
-		        </table>
+								<% end %>
+								<% if t.state == TIMEOFF[:pending] %>
+									<td style="color:orange; text-align: center"><%= t(:pending)  %></td>
+								<% else ( 
+									if t.state == TIMEOFF[:approved] %>
+										<td style="color:green; text-align: center"><%= t(:approved)  %></td>
+									<%else( 
+										if t.state == TIMEOFF[:disapproved]%>
+											<td style="color:red; text-align: center"><%= t(:disapproved)  %></td>
+										<%end)%>
+									<%end)%>
+								<% end %>
+								<td><%= t.description %></td>
+								<td style="text-align: center"><%= link_to t(:cancel), [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => t(:cancel_message)} %></td>
+				            </tr>
+			        	<% end %>
+			          </tbody>
+			        </table>
+		        <% else %>
+            		<h3 style="text-align:center">There are no timeoffs registered</h3>
+		        <% end %>
 			</div>
 		</div>
   	</div>
