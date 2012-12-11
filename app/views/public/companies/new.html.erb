@@ -6,7 +6,7 @@
       <p>Please fill in the form with your company information</p>
         <hr />    
         
-        <%= form_for :new_company, :url => public_companies_path do |f| %>
+        <%= form_tag(public_companies_path) do %>
           
             <% @company.errors.full_messages.each do |msg| %>
               <div class="alert-box alert"><%= msg %></div>
@@ -15,24 +15,24 @@
               <div class="alert-box alert"><%= msg %></div>
             <% end %>
 
-            <label>Complete Company name</label>
+            <%= label :new_company, :name %> 
             <!-- <input type="text" placeholder="Company name" /> -->
-            <%= f.text_field :name %>
+            <%= text_field :new_company, :name %>
 
-            <label>Slug</label>
+            <%= label :new_company, :slug %>
             <div class="row collapse">
               <div class="six mobile-one columns">
                 <span class="prefix">rasohr.com/companies/</span>
               </div>
               <div class="six mobile-three columns">
-                <%= f.text_field :slug %>
+                <%= text_field :new_company, :slug %>
               </div>  
             </div>
-            <label>Email</label>
-            <%= f.text_field :email %>
+            <%= label :new_company, :email %>
+            <%= text_field :new_company, :email %>
             <!-- <input type="text" placeholder="Email" /> -->
           <hr />
-            <p style="text-align: center"><%= f.submit 'Get Started!', :class => "button" %></p>
+            <p style="text-align: center"><%= submit_tag 'Get Started!', :class => "button" %></p>
         <% end %>
       </div>
     </div>
