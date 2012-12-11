@@ -55,12 +55,14 @@
 	<!-- Left Column -->
 	<div class="three columns pull-nine">
 		<div class="row collapse">
-  			<div class="eight mobile-three columns">
-    			<input type="text" />
+			<%= form_tag backoffice_company_path(@company), :method => 'get' do %>
+  			<div class="seven mobile-three columns">
+    				<%= text_field_tag :search, params[:search] %>
   			</div>
-  			<div class="four mobile-one columns">
-    			<a class="button expand postfix">Search</a>
+  			<div class="five mobile-one columns">
+   				 	<%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
   			</div>
+			<% end %>
 		</div>
 			<table class="twelve">
 				<thead>
@@ -85,8 +87,6 @@
 				</tbody>
 			</table>
 			<%= will_paginate @companies %>
-
-		<!--	<%= render :partial => 'name_list' if super_user_signed_in? %> -->
 
 		  </tbody>
 		</table>

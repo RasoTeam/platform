@@ -1,7 +1,11 @@
 <table>
 	<tbody>
 		<tr>
-			<th>Companies <%= link_to "A-Z", backoffice_company_path(@company, params.merge({order: "ASC"})) %> <%= link_to "Z-A", backoffice_company_path(@company, params.merge({order: "DESC"})) %></th>
+			<th>
+					Companies 
+					<%= link_to "A-Z", backoffice_company_path(@company, params.merge({order: "ASC"})) %> 
+					<%= link_to "Z-A", backoffice_company_path(@company, params.merge({order: "DESC"})) %>
+			</th>
 		</tr>
 		<% @companies.each do |company| %>
 			<tr>
