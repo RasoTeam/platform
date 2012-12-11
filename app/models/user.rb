@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :time_offs
   has_many :contracts
+  has_many :periods
 
   before_create :create_remember_token
 
