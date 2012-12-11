@@ -1,7 +1,7 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
         <li class="current">
           <a href="#"><%= t(:job_offers) %></a>
         </li>
@@ -13,7 +13,7 @@
 <div class="row">
   <div class="twelve columns">
 
-    <h2>Job Offers <%= params[:search] %></h2>
+    <h2><%= t(:job_offers) %></h2>
     
     <div class="row">
       <div class="four columns">
@@ -87,11 +87,8 @@
                            <% @urlredirect = "#{company_job_offers_url(@company)}" %>
                            <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
                            <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
-                            <a onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
-                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;'
-                            style="width:26px;height:26px;"
-                            src=".../facebook2.png">Share</a>
-                            <img  />
+                          <img src="../../assets/share.png" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' />
                             <a href="https://twitter.com/share" class="twitter-share-button"
                                 data-via="RasoHR"
                                 data-text="Job Offer: <%= offer.job_name %>"
@@ -111,7 +108,7 @@
                 <div class="row collapse">
                   <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
                     <div class="eight mobile-three columns">
-                      <%= text_field_tag :search, params[:search] %>
+                      <%= text_field_tag :search %>
                     </div>
                     <div class="four mobile-one columns">
                     <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>

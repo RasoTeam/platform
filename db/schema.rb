@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20121206193615) do
     t.text     "description"
     t.text     "required_education"
     t.text     "skills"
-    t.boolean  "active"
+    t.string   "status"
     t.text     "conditions"
     t.integer  "company_id"
     t.datetime "created_at",         :null => false

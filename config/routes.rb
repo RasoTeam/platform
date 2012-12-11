@@ -83,7 +83,9 @@ resources :feedbacks
     resources :super_users
 
     resources :companies do
-      resources :users
+      resources :users do
+        resources :periods
+      end
       resources :bills
     end
   end

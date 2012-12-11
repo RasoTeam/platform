@@ -80,6 +80,12 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user.password_digest = 0
     if @user.save
       UserMailer.verification_email(@user).deliver
+      
+      period = @user.periods.build
+      period.start_date = Date.today
+      period.state = STATE[:unchecked]
+      period.save
+      
       redirect_to company_users_path
     else
       render 'new'

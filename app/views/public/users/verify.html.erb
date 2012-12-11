@@ -10,12 +10,12 @@
 			  <% end %>
 
 			  <span class=" radius label">Password</span>
-			  <%= f.password_field :password %>
+			  <%= f.password_field :password, :class=>"input_space" %>
 
 			  <span class=" radius label">Confirm Password</span>
-			  <%= f.password_field :password_confirmation %>
+			  <%= f.password_field :password_confirmation, :class=>"input_space" %>
 
-			  <p style="text-align: center"><%= f.submit 'Comfirm Account', :class => "button" %></p>
+			  <p style="text-align: center"><%= f.submit t(:confirm), :class => "button"%></p>
 			<% end %>
 		</div>
 	</div>

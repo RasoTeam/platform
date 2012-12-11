@@ -1,0 +1,19 @@
+<table class="twelve" >
+  <h2><%= User.find(params[:user_id]).name %></h2>
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @periods.each do |period| %>
+    <tr>
+      <td><%= period.start_date %></td>
+      <td><%= period.end_date %></td>
+      <td><%= period.state %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
