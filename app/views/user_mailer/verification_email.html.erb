@@ -5,7 +5,8 @@
   </head>
   <body>
     <% if @user.role == ROOT %>
-      <h1> Welcome to Raso </h1>
+      <h1> <%= @user.company.name %>, </h1>
+      <h2> Welcome to Raso </h2>
       <br/>
       <p>Thanks for signing up to RasoHR. We'll do everything we can to make sure it's a great experience your company.</p>
       <br/>
