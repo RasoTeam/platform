@@ -66,6 +66,7 @@ en:
   new_employee: "New Employee"
   new_user: "New User"
   new_time_off: "New Time Off"
+  new_super_user: "New Super User"
   no_education: "There are no education registered"
   no_education: "There are no positions registered"
   no_permission_to_access: "No permission to access. Please login first."
