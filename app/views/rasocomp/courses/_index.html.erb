@@ -1,0 +1,15 @@
+<h3>COURSES#INDEX | <%= courses.count %> </h3>
+		<% courses.each do |c| %>
+		  ID: <%= c.id %>;
+		  Lecturer: <%= c.lecturer %>;
+		  Start: <%= c.start_at %>;
+		  End: <%= c.end_at %>;
+		  Cate: <%= c.category %>;
+		  State: <%= c.state %>;
+		  <%= link_to 'activate', '#' %>
+		  | <%= link_to 'add user', '#' %>
+		  | <%= link_to 'remove', '#' %>
+		  | <%= link_to 'cancel', '#' %>
+		  | <%= link_to 'edit', '#' %><br>
+		  <br/>
+		<% end %>
