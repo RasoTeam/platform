@@ -1,0 +1,6 @@
+<h1>COURSES#EDIT</h1>
+<%= form_for [@company, @training, @course] do |f| %>
+<%= f.label :lecturer %>
+<%= f.text_field :lecturer %>
+<%= f.submit %>
+<% end %>

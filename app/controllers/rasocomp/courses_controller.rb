@@ -23,6 +23,12 @@ class Rasocomp::CoursesController < ApplicationController
     @course = @training.courses.build
   end
 
+  def edit
+    @company = Company.find( params[:company_id])
+    @training = Training.find( params[:training_id])
+    @course = Course.find( params[:id])
+  end
+
   def create
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
