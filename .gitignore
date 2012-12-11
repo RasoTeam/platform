@@ -19,3 +19,5 @@
 .idea
 
 db/schema.rb
+
+app/assets/candidaturas/
