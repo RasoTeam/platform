@@ -25,9 +25,27 @@
 		<div class="four columns">
 			<dl class="sub-nav">
 		  		<dt>Filter:</dt>
-		  		<dd class="active"><a href="#">All</a></dd>
-		  		<dd><a href="#">Active</a></dd>
-		  		<dd><a href="#">Block</a></dd>
+		  		
+		  		<% if params[:state].blank? 
+		  			x="active" 
+		  		else 
+		  			x="" 
+		  		end %>
+		  		<dd class=<%= x %> ><%= link_to t(:all), backoffice_companies_path(params.merge({state: ""})  )%></dd>
+		  		
+		  		<% if params[:state] == COMPANY_STATE[:active].to_s 
+		  			x="active"
+		  		else 
+		  			x=""  
+		  		end %>
+		  		<dd class=<%= x %> ><%= link_to t(:active), backoffice_companies_path(params.merge({state: COMPANY_STATE[:active]})  )%></dd>
+		  		
+		  		<% if params[:state] == COMPANY_STATE[:blocked].to_s 
+		  			x="active" 
+		  		else 
+		  			x=""  
+		  		end %>
+		  		<dd class=<%= x %> ><%= link_to t(:blocked), backoffice_companies_path(params.merge({state: COMPANY_STATE[:blocked]})  )%></dd>
 			</dl>
 		</div>
 		<div class="four columns">
@@ -61,19 +79,20 @@
 					<td><%= link_to "rasohr.com/companies/"+company.slug, backoffice_company_path(company.slug) %></td>
 					<td><%= company.nif %></td>
 					<td>
-						<% if company.state == 0 %>
+						<% if company.state == COMPANY_STATE[:active] %>
 							<span style="color:green;"> <%= t(:active)%> </span>
-						<% else (if company.state == 1 %>
-						<span style="color:red;"><%= t(:blocked)%></span>
-						<% else %>
-						<span style="color:red;"><%= t(:deleted)%></span>
+						<% else (if company.state == COMPANY_STATE[:blocked] %>
+							<span style="color:red;"><%= t(:blocked)%></span>
 						<%end)%>
 						<%end%> 
 					</td>
 					<td> 
 						<%= link_to "Edit", edit_backoffice_company_path(company), :class=>"secondary radius label" %>
-						<%= link_to 'Block', "companies#block", :method=>:get, :class=>"label radius" %>
-						<%= link_to 'Remove', "companies#destroy",:method=>:get,:class=>"alert radius label" %>
+						<% if company.state == COMPANY_STATE[:active] %>
+							<%= link_to t(:block), block_company_path(company), :method=>:put, :class=>"label radius" %>
+						<% else company.state == COMPANY_STATE[:blocked] %>
+							<%= link_to t(:activate), activate_company_path(company), :method=>:put, :class=>"label radius" %>
+						<% end %>
 					</td>
 				</tr>
 			<% end %>

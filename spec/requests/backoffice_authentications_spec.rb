@@ -25,18 +25,12 @@ describe "BackofficeAuthentications" do
   		end
 
   		it { should have_selector('title', text: 'RasoHR | Admin sign in') }
-  		it { should have_error_message('Wrong') }
-  #		it { should have_selector('div.row.alert-box.error', text: 'Wrong') }
+  		it { should have_alert_message('Wrong') }
   		it { should have_content('Raso Admin') }
 
    		describe "after visiting another page" do
   			before { click_link "about us" }
-  			it { should_not have_selector('div.row.alert-box.error') }
-  		end
-
-  		describe "__________DEBUGz_____________" do
-  			before { click_link "register company" }
-  			it { should have_content('registation process') }
+  			it { should_not have_alert_message('Wrong') }
   		end
   	end
   
@@ -46,11 +40,11 @@ describe "BackofficeAuthentications" do
 
 	  	it { should have_selector('title', text: 'RasoHR | Backoffice') }
 
-	  	it { should have_content('Backoffice') }
+	  	it { should have_content('Welcome to RASO Backoffice') }
 
-	    it { should have_link('SuperUsers',   href: backoffice_super_users_path) }
 	  	it { should have_link('Companies',  	href: backoffice_companies_path) }
 	    it { should have_link('Invoices', 		href: backoffice_bills_path) }
+      it { should have_link('Super Users',   href: backoffice_super_users_path) }
 	  	it { should have_link('Super User Sign Out', href: super_user_signout_path) }
 	      
 	  	it { should_not have_link('Sign in', href: super_user_signin_path) }
@@ -62,13 +56,11 @@ describe "BackofficeAuthentications" do
 	  	end
 
 	  	describe "followed by signout" do
-	  	#	before { click_link "Super User Sign Out" }
-	  	#	before { delete super_user_signout_path }
-	  		before { delete public_super_user_session_path }
-	  		# <%= link_to "Sign out", signout_path, method: "delete" %>
+	  		before { click_link "Super User Sign Out" }
+      # before { visit super_user_signout_path }
 
-
-	  		it { should have_link('register company') }
+	  		it { should have_content('Try it Free!') }
+        it { should have_content('Get In Touch!') }
 	    	it { should_not have_link('Companies',  href: backoffice_companies_path) }
 	    	it { should_not have_link('Invoices', 	href: backoffice_bills_path) }
 	  		it { should_not have_link('Super User Sign Out', href: super_user_signout_path) }
@@ -81,7 +73,7 @@ describe "BackofficeAuthentications" do
     describe "for non-signed-in admins" do
       let(:admin) { FactoryGirl.create(:super_user) }
 
-      it { should_not have_link('Rase Admin',  href: backoffice_stats_path) }
+      it { should_not have_link('Raso Admin',  href: backoffice_stats_path) }
       it { should_not have_link('Companies', href: backoffice_companies_path) }
       it { should_not have_link('Invoices', href: backoffice_bills_path) }
 
@@ -95,14 +87,14 @@ describe "BackofficeAuthentications" do
 
         describe "after signing in" do
 
+          #Page redirect?
           it "should render the desired protected page" do
             page.should have_selector('title', text: "Edit a Super User")
           end
 
           describe "when signing in again" do
             before do
-            	#FIX THE LOGOUT!
-              delete public_super_user_session_path
+              click_link "Super User Sign Out"
               visit super_user_signin_path
               fill_in "Email",    with: admin.email
               fill_in "Password", with: admin.password
@@ -121,8 +113,9 @@ describe "BackofficeAuthentications" do
 
         describe "visiting the edit page" do
           before { visit edit_backoffice_super_user_path(admin) }
-          it { should have_selector('title', text: 'RasoHR | Admin sign in') }
+         # it { should have_selector('title', text: 'RasoHR | Admin sign in') }
           it { should have_selector('h1', text: 'Raso Admin') }
+          it { should have_alert_message('No permission to access') }
         end
 
         describe "submitting to the update action" do
@@ -132,35 +125,28 @@ describe "BackofficeAuthentications" do
 
         describe "visiting the user index" do
           before { visit backoffice_super_users_path}
-          it { should have_selector('title', text: 'RasoHR | Admin sign in') }
+         # it { should have_selector('title', text: 'RasoHR | Admin sign in') }
           it { should have_selector('h1', text: 'Raso Admin') }
+          it { should have_alert_message('No permission to access') }
         end
       end
     end
 
-    describe "as a wrong user" do
+    describe "as a wrong admin" do
       let(:admin) { FactoryGirl.create(:super_user) }
       let(:wrong_admin) { FactoryGirl.create(:super_user, email: "wrong@example.com") }
       before { valid_admin_signin admin }
 
-      describe "visiting super_users#edit page" do
+      describe "visiting super_users#edit page of other admin" do
         before { put backoffice_super_user_path(wrong_admin) }
-        specify { response.should redirect_to(backoffice_super_user_path(admin)) }
+        specify { response.should redirect_to(super_user_signin_path) }
+      end
+
+      describe "submitting a DELETE request to the SuperUsers#destroy action" do
+        before { delete backoffice_super_user_path(wrong_admin) }
+        specify { response.should redirect_to(super_user_signin_path) }
       end
     end
-
-#EDIT FOR A COMPANY TO DELETE A SUPER USER?! xD
-    # describe "as non-admin user" do
-    #   let(:user) { FactoryGirl.create(:user) }
-    #   let(:non_admin) { FactoryGirl.create(:user) }
-
-    #   before { valid_signin non_admin }
-
-    #   describe "submitting a DELETE request to the Users#destroy action" do
-    #     before { delete user_path(user) }
-    #     specify { response.should redirect_to(root_path) }
-    #   end
-    # end
 
   end
 end

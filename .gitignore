@@ -18,3 +18,8 @@
 .DS_STORE
 .idea
 
+
+db/schema.rb
+
+app/assets/candidaturas/
+

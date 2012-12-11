@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206193615) do
+ActiveRecord::Schema.define(:version => 20121211145946) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -149,11 +149,11 @@ ActiveRecord::Schema.define(:version => 20121206193615) do
     t.integer  "role"
     t.string   "name"
     t.integer  "state"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "time_off_days"
+    t.integer  "time_off_days",   :default => 0
     t.string   "user_photo"
   end
 

@@ -3,6 +3,12 @@ class Public::UsersController < Public::ApplicationController
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
     if @user.state == -1
+      
+      period = @user.periods.build
+      period.start_date = Date.today
+      period.state = STATE[:active]
+      period.save
+
       @user.state = 1
     end
     if @user.update_attributes( params[:user])

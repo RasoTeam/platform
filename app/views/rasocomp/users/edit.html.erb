@@ -1,15 +1,6 @@
 <div class="row">
   <div class="three columns push-nine">
 
-      <div class=" twelve columns row collapse">
-        <div class="eight mobile-four columns">
-          <input type="text" />
-        </div>
-        <div class="four mobile-one columns">
-          <a class="button expand postfix">Search</a>
-        </div>
-      </div>
-
       <div class="twelve columns" style="padding-bottom:20px">
         <a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
       </div>
@@ -31,15 +22,30 @@
 </div> 
   <!-- Cena Grande -->
   <div class="nine columns pull-three">
+    <div class="row">
+      <div class="twelve columns">
+        <ul class="breadcrumbs">
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+          <li class="current">
+            <a><%= @user.name %></a>
+          </li>
+          <li class="current">
+            <a><%= t(:edit_user) %></a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="signup">
       <div class="panel">
           <div class="row">
           <div class="eight columns">
             <h3> Edit User Profile  </h3>
           </div>
-          <div class="four columns">
-            <%= link_to t(:change_password), edit_password_company_user_path(@company,@user), :class=>"radius button right add_user" %>
-          </div>
+          <% if current_user(@company.slug) == @user %>
+            <div class="four columns">
+              <%= link_to t(:change_password), edit_password_company_user_path(@company,@user), :class=>"radius button right add_user" %>
+            </div>
+          <% end %>
           <div class="twelve columns">
           <hr/>
 
