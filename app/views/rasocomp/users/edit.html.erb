@@ -37,9 +37,11 @@
           <div class="eight columns">
             <h3> Edit User Profile  </h3>
           </div>
-          <div class="four columns">
-            <%= link_to t(:change_password), edit_password_company_user_path(@company,@user), :class=>"radius button right add_user" %>
-          </div>
+          <% if current_user(@company.slug) == @user %>
+            <div class="four columns">
+              <%= link_to t(:change_password), edit_password_company_user_path(@company,@user), :class=>"radius button right add_user" %>
+            </div>
+          <% end %>
           <div class="twelve columns">
           <hr/>
 
