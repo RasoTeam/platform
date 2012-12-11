@@ -2,7 +2,7 @@
   <div class="twelve columns" style="margin-top: 50px">
     <ul class="breadcrumbs">
       <li><%= link_to @company.name , public_company_job_offers_path( @company) %></li>
-      <li class="current"><%= link_to @offer.job_name, '' %></li>
+      <li><%= link_to @offer.job_name, new_apply_path(params[:company_id],params[:id]) %></li>
       <li class="current"> <a><%= t(:linkedin_profile) %></a></li>
     </ul>
   </div>
@@ -43,7 +43,7 @@
 
         <table class="twelve tableJobs">
           <% if @profile["educations"]["all"].nil? %>
-          <h3 style="text-align:center"> <%= t(:no_education) %></h3>
+            <h3 style="text-align:center"> <%= t(:no_education) %></h3>
           <% else %>
               <% @profile["educations"]["all"].each do |ed| %>
                   <tr>
@@ -73,72 +73,59 @@
           <% end %>
         </table>
 
+        <h2><%= t(:positions) %></h2>
 
-        <table>
-          <tr>
-            <th colspan="2">Positions</th>
-            <th></th>
-          </tr>
+        <table class="twelve tableJobs">
           <% if @profile["positions"]["all"].nil?  %>
-              <tr>
-                <td colspan="2"><%= "None"  %></td>
-              </tr>
+            <h3 style="text-align:center"> <%= t(:no_positions) %></h3>
           <% else %>
               <% @profile["positions"]["all"].each do |pos| %>
                   <tr>
-                    <td colspan="2"><b>Details</b></td>
-                    <td></td>
+                    <td colspan="2", style="text-align:center"><b><%= t(:details) %></b></td>
                   </tr>
                   <tr>
-                    <td>Title</td>
+                    <td><p class="radius label"><%= t(:title) %></p></td>
                     <td><%= pos.title %></td>
                   </tr>
                   <tr>
-                    <td>Company</td>
+                    <td><p class="radius label"><%= t(:company) %></p></td>
                     <td><%= pos.company["name"] %></td>
                   </tr>
                   <tr>
-                    <td>Since</td>
+                    <td><p class="radius label"><%= t(:since) %></p></td>
                     <td><%= pos.start_date["year"] %></td>
                   </tr>
                   <tr>
-                    <td>Until</td>
-                    <td><% if pos.is_current%><%= 'Current'%><% else %><%= pos.end_date["year"]  %><% end %></td>
+                    <td><p class="radius label"><%= t(:until) %></p></td>
+                    <td><% if pos.is_current%><%= t(:current) %><% else %><%= pos.end_date["year"]  %><% end %></td>
                   </tr>
               <% end %>
           <% end %>
         </table>
 
-        <table>
-          <tr>
-            <th colspan="2">Skills</th>
-            <th></th>
-          </tr>
-          <% if @profile["skills"]["all"].nil? %>
-              <tr>
-                <td colspan="2"><%= "None" %></td>
-              </tr>
-          <% else %>
-              <% @profile["skills"]["all"].each do |skill| %>
-                  <tr>
-                    <td><b>Name</b></td>
-                    <td><%= skill["skill"].name %></td>
-                  </tr>
-              <% end %>
-          <% end%>
-        </table>
+        <h2><%= t(:skills) %></h2>
+
+        <div class="panel">
+        <% if @profile["skills"]["all"].nil? %>
+            <h3 style="text-align:center"> <%= t(:no_skills) %></h3>
+        <% else %>
+            <% @profile["skills"]["all"].each do |skill| %>
+                  <p style="margin-bottom: 3px; display: inline-block;", class="radius label"><%= skill["skill"].name %></p>
+            <% end %>
+        <% end%>
+        </div>
 
         <%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
             <%= hidden_field_tag :profile , :yes %>
-            <%= submit_tag 'Accept!' %>
+            <ul class="button-group radius", style="text-align: center;">
+              <li><%= submit_tag t(:accept), :class=>"button" %></li>
+              <li><%= link_to t(:cancel) , new_apply_path(params[:company_id],params[:id]) , :class=>"button"%></li>
+            </ul>
         <% end %>
-
-
-        <%= link_to 'Cancel' , new_apply_path(params[:company_id],params[:id]) %>
         </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </div>
 </div>
 
