@@ -25,7 +25,7 @@ class Company < ActiveRecord::Base
   #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
   #scope :users_paginate, lambda { self.users.paginate(:page => params[:page], :per_page => 4) }
 
-  def self.search(search,order,state)
+  def self.search(search,order,state=nil)
     order ||= ""
     if search
       companies = where('name LIKE ? OR slug LIKE ?', '%'+search+'%', '%'+search+'%').order("slug "+order)
