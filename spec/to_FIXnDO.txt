@@ -41,5 +41,3 @@ Isto não era suposto estar tudo em Português?
 Super User não consegue ver users de cada empresa
 Diminuir o tempo de vida do cookie do Super User
 
-http://localhost:3000/companies/raso/job_offers/2/edit -> editar oferta
-http://localhost:3000/companies/raso/edit -> editar raso
