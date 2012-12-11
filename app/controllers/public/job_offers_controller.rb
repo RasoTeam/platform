@@ -1,6 +1,8 @@
 class Public::JobOffersController < Public::ApplicationController
   layout "nolayout"
 
+  require 'rack/utils'
+
   #Chaves da API do LinkedIn para esta aplicação
   @@api_key =  'gdpw09c8khsp'
   @@api_secret = 'GjOzGtusFpJ2e9as'
@@ -101,17 +103,15 @@ class Public::JobOffersController < Public::ApplicationController
   def save_linkedin_profile
     #Obter variáveis guardadas na session
     @candidate = session[:candidate]
-    @profile = session[:profile]
 
     if @candidate.save
 
       #Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
-      @candidate.file_path = save_linkedin_to_html(@profile,@candidate)
+      @candidate.file_path = save_linkedin_to_html(@candidate)
       #Save novamente faz update
       @candidate.save
       #Limpa as variáveis de sessão
       session[:candidate] = nil
-      session[:profile] = nil
 
       flash[:success] = "Profile successfully saved."
       redirect_to public_company_job_offers_path(params[:company_id])
@@ -324,8 +324,6 @@ class Public::JobOffersController < Public::ApplicationController
   def linkedin_profile
     @candidate = session[:candidate]
     @profile = get_full_profile
-    #guarda temporariamente na session
-    session[:profile] = @profile
   end
 
   #Obtem e devolve o perfil do utilizador actual do linkedin.
@@ -336,62 +334,93 @@ class Public::JobOffersController < Public::ApplicationController
     client.authorize_from_access(@@accesstoken,@@accesssecret)
     #SACA O PERFIL!!!
     profile = client.profile(:fields => [:positions ,:educations , :skills])
-    #Transforma-o em algo útil
+    #Transforma-o em algo útil e fácil de iterar
     full_profile = profile.to_hash
     #Devolve
     return full_profile
   end
 
   #Grava o ficheiro com o HTML retirado do perfil do LinkedIn
-  def save_linkedin_to_html(profile,candidate)
+  def save_linkedin_to_html(candidate)
+
+    #Isto foi um workaround a enviar params, basicamente saca de novo o perfil.
+    client = LinkedIn::Client.new(@@api_key,@@api_secret,@@configuration)
+    client.authorize_from_access(@@accesstoken,@@accesssecret)
+    profile = client.profile(:fields => [:positions ,:educations , :skills])
+
+    #Inicio da criação do HTML necessário.
     fileHTML = "<div>"
 
     #Experiência Profissional
     fileHTML += "<h1>Work Experience</h1>"
 
-    profile["positions"]["all"].each do |pos|
-      fileHTML += "<table>"
-      fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-      fileHTML += pos.start_date["year"].to_s
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
-      if(pos.is_current) #Caso seja o empre actual
-        fileHTML += "Current"
-      else
-        fileHTML += pos.end_date["year"].to_s
+    if profile["positions"]["all"].nil?
+
+    else
+      profile["positions"]["all"].each do |pos|
+        fileHTML += "<table>"
+        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        fileHTML += pos.start_date["year"].to_s
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
+        if(pos.is_current) #Caso seja o empre actual
+          fileHTML += "Current"
+        else
+          fileHTML += pos.end_date["year"].to_s
+        end
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos.title+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos.company["name"]+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Industry:</b></td><td>"+pos.company["industry"]+"</td></tr>"
+        fileHTML += "</table><hr>"
       end
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+pos.title+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Company:</b></td><td>"+pos.company["name"]+"</td></tr>"
-      fileHTML += "</table><hr>"
     end
+
 
     #Habilitações
     fileHTML += "<h1>Education</h1>"
 
-    profile["educations"]["all"].each do |edu|
-      fileHTML += "<table>"
-      fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
-      fileHTML += edu.start_date["year"].to_s
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
-      fileHTML += edu.end_date["year"].to_s
-      fileHTML += "</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu.degree+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu.field_of_study+"</td></tr>"
-      fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu.school_name+"</td></tr>"
-      fileHTML += "</table><hr>"
+    if profile["educations"]["all"].nil?
+
+    else
+      profile["educations"]["all"].each do |edu|
+        fileHTML += "<table>"
+        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        #Caso não haja data de inicio
+        if edu.start_date
+          fileHTML += edu.start_date["year"].to_s
+        else
+          fileHTML += '--'
+        end
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
+        #Caso não haja data de finalização
+        if edu.end_date
+          fileHTML += edu.end_date["year"].to_s
+        else
+          fileHTML += '--'
+        end
+        fileHTML += "</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Degree:</b></td><td>"+edu.degree+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Field of Study:</b></td><td>"+edu.field_of_study+"</td></tr>"
+        fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+edu.school_name+"</td></tr>"
+        fileHTML += "</table><hr>"
+      end
     end
+
 
     #Habilidades/Conhecimentos
     fileHTML += "<h1>Skills</h1>"
 
-    profile["skills"]["all"].each do |skill|
-      fileHTML += "<table>"
-      fileHTML += "<tr><td align='right'><b>Name:</b></td><td>"
-      fileHTML += skill["skill"].name
-      fileHTML += "</td></tr>"
-      fileHTML += "</table><hr>"
+    if profile["skills"]["all"].nil?
+    else
+      profile["skills"]["all"].each do |skill|
+        fileHTML += "<table>"
+        fileHTML += "<tr><td align='right'><b>Name:</b></td><td>"
+        fileHTML += skill["skill"].name
+        fileHTML += "</td></tr>"
+        fileHTML += "</table><hr>"
+      end
     end
 
     fileHTML += "</div>"

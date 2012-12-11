@@ -49,15 +49,21 @@
         <% if current_user(@company.slug).role == ROLE[:manager] %>
         <li class="divider"></li>
         <li>
-          <%= link_to "Job Offers", company_job_offers_path(@company) %>
+          <%= link_to t(:job_offers), company_job_offers_path(@company) %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to t(:time_offs_management), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
         </li>
         <% end %>
         <% if current_user(@company.slug).role <= ROLE[:manager] %>
         <li class="divider"></li>
-        <li><%= link_to "Employees", company_users_path(@company) %></li>
+        <li><%= link_to t(:employees), company_users_path(@company) %></li>
         <% end %>
         <li class="divider"></li>
-        <li><%= link_to "Company", company_path(@company) %></li>
+        <li><%= link_to t(:company) , company_path(@company) %></li>
+        <li class="divider"></li>
+        <li><%= link_to t(:calendar), calendar_path(@company) %></li>
         <li class="divider"></li>
       </ul>
       <!-- Right Nav Section -->
@@ -73,7 +79,7 @@
           <%end%></span>
         </li>
         <li class="divider"></li>
-        <li><%= link_to "Logout", company_signout_path(@company) %></li>
+        <li><%= link_to t(:logout), company_signout_path(@company) %></li>
       </ul>
     </section>
   </nav>

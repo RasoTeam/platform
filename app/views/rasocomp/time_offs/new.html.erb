@@ -1,20 +1,33 @@
 <div class="row">
   <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home) , user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:timeoffs) , company_user_time_offs_path(@company, @user) %></li>
+        <li class="current">
+          <a href="#"><%= t(:new_time_off) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
     <div id="signup">
       <div class="panel">
-        <h2>Book new time off</h2>
+        <h2><%= t(:book_time_off) %></h2>
         <hr/>
         <%= form_for [@company, @user, @timeoff] do |f| %>
           <% @timeoff.errors.full_messages.each do |msg| %>
             <p><%= msg %></p>
           <% end %>
+          <span class=" radius label"><%= t(:type) %></span>
           <%= f.select :category, TIMETYPE, {}, {:class=>"select"} %>
-          <%= f.label :start_at %>
-          <%= f.text_field :start_at %>
-          <%= f.label :end_at %>
-          <%= f.text_field :end_at %>
-          <%= f.label :description %>
-          <%= f.text_field :description %>
+          <span class=" radius label"><%= t(:start_day) %></span>
+          <%= f.text_field :start_at, :class=>"input_space" %>
+          <span class=" radius label"><%= t(:end_day) %></span>
+          <%= f.text_field :end_at, :class=>"input_space"  %>
+          <span class=" radius label"><%= t(:description) %></span>
+          <%= f.text_field :description, :class=>"input_space"  %>
           <p style="text-align: center"><%= f.submit 'Submit!', :class=>"button" %></p>
         <% end %>
       </div>

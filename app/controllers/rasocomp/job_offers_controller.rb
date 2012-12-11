@@ -19,7 +19,7 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
     @company = Company.find(params[:company_id])
 
     @offer =@company.job_offers.build(params[:job_offer])
-    @offer.active = true
+    @offer.status = "Open"
 
     if @offer.save
       flash[:success] = 'New Job Offer Created'
