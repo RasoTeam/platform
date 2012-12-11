@@ -6,7 +6,7 @@ class Backoffice::UsersController < Backoffice::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @users = @company.users.where("role > 0").paginate(:page => params[:page], :per_page => 5)
+    @users = @company.users.where("role > 0").paginate(:page => params[:page], :per_page => 15)
   end
 
   def edit
