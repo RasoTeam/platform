@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(:version => 20121206193615) do
     t.string   "address"
     t.string   "nif"
     t.integer  "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "slug"
+    t.string   "password_digest"
   end
 
   create_table "contracts", :force => true do |t|
@@ -92,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20121206193615) do
     t.text     "description"
     t.text     "required_education"
     t.text     "skills"
-    t.boolean  "active"
+    t.string   "status"
     t.text     "conditions"
     t.integer  "company_id"
     t.datetime "created_at",         :null => false
