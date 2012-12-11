@@ -324,6 +324,8 @@ class Public::JobOffersController < Public::ApplicationController
   def linkedin_profile
     @candidate = session[:candidate]
     @profile = get_full_profile
+    @company = Company.find(params[:company_id])
+    @offer = JobOffer.find(params[:id])
   end
 
   #Obtem e devolve o perfil do utilizador actual do linkedin.

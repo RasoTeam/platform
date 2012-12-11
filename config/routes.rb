@@ -7,6 +7,8 @@ resources :feedbacks
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
   match '/backoffice/bills', to: 'backoffice/bills#show_all'
+  put 'backoffice/companies/:id/block', :to => 'backoffice/companies#block', :as => 'block_company'
+  put 'backoffice/companies/:id/activate', :to => 'backoffice/companies#activate', :as => 'activate_company'
 
 #rasocomp
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
@@ -83,7 +85,9 @@ resources :feedbacks
     resources :super_users
 
     resources :companies do
-      resources :users
+      resources :users do
+        resources :periods
+      end
       resources :bills
     end
   end

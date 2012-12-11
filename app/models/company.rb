@@ -35,17 +35,22 @@ class Company < ActiveRecord::Base
   validates :slug, :presence => true, 
             :length => { :maximum => 20, :minimum => 3 },
             :format => { :with => VALID_slug_REGEX }, :uniqueness => { :case_sensitive => false }
+  validates :address, :length => { :maximum => 100 }
 
   #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
   #scope :users_paginate, lambda { self.users.paginate(:page => params[:page], :per_page => 4) }
 
-  def self.search(search,order)
+  def self.search(search,order,state=nil)
     order ||= ""
     if search
-      where('name LIKE ? OR slug LIKE ?', '%'+search+'%', '%'+search+'%').order("slug "+order)
+      companies = where('name LIKE ? OR slug LIKE ?', '%'+search+'%', '%'+search+'%').order("slug "+order)
     else
-      order("slug "+order)
+      companies = order("slug "+order)
     end
+    if !state.blank?
+      companies = companies.where('state = ?', Integer(state))
+    end
+    return companies
   end
 
 end
