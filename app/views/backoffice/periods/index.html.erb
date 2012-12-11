@@ -1,5 +1,5 @@
 <table class="twelve" >
-  <h2><%= User.find(params[:user_id]).name %></h2>
+  <h2><%= User.find(params[:user_id]).name %> from <%= Company.find(params[:company_id]).name %></h2>
   <thead>
     <tr>
       <th>Start Date</th>
@@ -12,7 +12,7 @@
     <tr>
       <td><%= period.start_date %></td>
       <td><%= period.end_date %></td>
-      <td><%= period.state %></td>
+      <td><%= STATE.invert[period.state] %></td>
     </tr>
   <% end %>
   </tbody>
