@@ -14,15 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/public/assets/*
 .DS_STORE
 .idea
 
-<<<<<<< HEAD
-# Ignore gemfile (causing merge problems beucase of windows/linux gems)
-Gemfile
-=======
-db/schema.rb
-
-db/schema.rb
->>>>>>> master
-Gemfile.lock

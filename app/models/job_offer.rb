@@ -22,7 +22,7 @@ class JobOffer < ActiveRecord::Base
   #tem vários candidatos
   has_many :candidates
 
-  attr_accessible :active, :conditions, :description, :job_name, :required_education, :skills , :created_at
+  attr_accessible :status, :conditions, :description, :job_name, :required_education, :skills , :created_at
 
   #VALIDATIONS
   validates :job_name , :presence => true
@@ -33,6 +33,8 @@ class JobOffer < ActiveRecord::Base
 
   validates :conditions , :presence => true
 
+  validates_inclusion_of :status , :in => ["Open","Selection","Closed"]
+
 
   ##Utilitário para apresentar ordenadamente uma lista de job_offers - Credits to Tiago
   # search = string usada para pesquisar por nome da job_offer
@@ -40,8 +42,12 @@ class JobOffer < ActiveRecord::Base
   def self.search(search,order)
     order ||= ""
     if search #Se foi inserida uma string de pesquisa
-      where('job_name LIKE ? ', '%'+search+'%').order("job_name "+order)
-    else #se não apenas foi inserid um parâmetro de ordenação
+      if search == "Open" || search == "Selection" || search == "Closed"
+        where('status LIKE ? ', search).order("job_name "+order)
+      else
+        where('job_name LIKE ? ', '%'+search+'%').order("job_name "+order)
+      end
+    else #se não apenas foi inserido um parâmetro de ordenação
       order("job_name "+order)
     end
   end

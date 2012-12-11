@@ -6,9 +6,9 @@
 		  End: <%= c.end_at %>;
 		  Cate: <%= c.category %>;
 		  State: <%= c.state %>;
-		  <%= link_to 'activate', '#' %>
+		  <%= link_to 'activate', activate_company_training_course_path( @company, training, c), :method => :put %>
 		  | <%= link_to 'add user', '#' %>
-		  | <%= link_to 'remove', '#' %>
+		  | <%= link_to 'remove', [@company, training, c], :method => :delete %>
 		  | <%= link_to 'cancel', '#' %>
 		  | <%= link_to 'edit', '#' %><br>
 		  <br/>

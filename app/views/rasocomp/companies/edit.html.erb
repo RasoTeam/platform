@@ -17,21 +17,21 @@
       <hr/>
         <%= form_for @company do |f| %>
           <span class=" radius label">Company Name</span>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, :class=>"input_space" %>
           
           <span class=" radius label">WWW</span>
-          <%= f.text_field :slug %>
+          <%= f.text_field :slug, :class=>"input_space"  %>
 
           <span class=" radius label">Logo Url</span>
-          <%= f.text_field :logo_url %>
+          <%= f.text_field :logo_url, :class=>"input_space"  %>
 
           <span class=" radius label">NIF</span>
-          <%= f.text_field :nif %>
+          <%= f.text_field :nif, :class=>"input_space"  %>
 
           <span class=" radius label">Address</span>
-          <%= f.text_field :address %>
+          <%= f.text_field :address, :class=>"input_space"  %>
 
-          <p style="text-align: center"><%= f.submit "Edit", :class=>"button" %></p>
+          <p style="text-align: center"><%= f.submit t(:save), :class=>"button" %></p>
           
           <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
             <hr/>

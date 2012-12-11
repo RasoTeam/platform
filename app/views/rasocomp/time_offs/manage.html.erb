@@ -1,15 +1,60 @@
-GESTOR<br>
-LISTAR TODOS TIMEOFFS DE TODOS PARA GERIR<br>
-<%= @user.name %><br><br>
-<h1>STATE 0: PENDING 1: APPROVED 2: DISAPPROVED </h1>
-<br><br>
-<% @timeoffs.each do |t| %>
-  USER ID:<%= t.user_id%><br>
-  TIMEOFF ID:<%= t.id %><br>
-  TIMEOFF STATE:<%= t.state %><br>
-  <br>
-  <%= link_to "NOT OK", disapprove_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-  | <%= link_to "OK", approve_company_user_time_off_path( @company, @user, t), :method => :put, :data => { :confirm => 'Confirmation Box'} %>
-  <br>
-  <hr>
-<% end %>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home) , user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:manage_time_offs) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+	<div class="twelve columns">
+		<h2><%= t(:manage_time_offs) %></h2>
+		<hr/>
+			<table class="twelve">
+				<thead>
+					<th style="text-align:center"><%= t(:cooperator_name)%></th>
+					<th style="text-align:center"><%= t(:start_day)%></th>
+					<th style="text-align:center"><%= t(:end_day)%></th>
+					<th style="text-align:center"><%= t(:description)%></th>
+					<th style="text-align:center"><%= t(:type) %></th>
+					<th style="text-align:center"><%= t(:state) %></th>
+					<th style="text-align:center"><%= t(:actions) %></th>
+				</thead>
+			<tbody>
+				<% @timeoffs.each do |t| %>
+			    <tr>
+					<td><%= t.user_id %></td>
+					<td style="text-align:center"><%= t.start_at %></td>
+					<td style="text-align:center" ><%= t.end_at %></td>
+					<td style="text-align:center"><%= t.description %></td>
+					<% if t.category == TIMETYPE[:holiday] %>
+						<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
+					<% else ( 
+						if t.category == TIMETYPE[:sick] %>
+							<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
+						<%end)%>
+					<% end %>
+					<% if t.state == TIMEOFF[:pending] %>
+						<td style="color:orange; text-align: center"><%= t(:pending)  %></td>
+					<% else ( 
+						if t.state == TIMEOFF[:approved] %>
+							<td style="color:green; text-align: center"><%= t(:approved)  %></td>
+						<%else( 
+							if t.state == TIMEOFF[:disapproved]%>
+								<td style="color:red; text-align: center"><%= t(:disapproved)  %></td>
+							<%end)%>
+						<%end)%>
+					<% end %>
+					<td style="text-align:center">
+						<%= link_to t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put %>
+						<%= link_to t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put %>
+					</td>
+			    </tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

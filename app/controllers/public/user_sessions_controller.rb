@@ -23,7 +23,7 @@ class Public::UserSessionsController < Public::ApplicationController
   def destroy
     company = Company.find(params[:company_id])
     user_sign_out company.slug
-    redirect_to root_path
+    redirect_to company_signin_path company
   end
 
 

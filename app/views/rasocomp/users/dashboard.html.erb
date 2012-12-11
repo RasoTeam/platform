@@ -48,7 +48,7 @@
 			  	<h4> Time Offs </h4>
 				<div class="button-bar">
 					<ul class="button-group">
-						<li><%= link_to "Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
+						<li><%= link_to "Check & Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
 					</ul>
 				</div>
 			  </li>
@@ -80,11 +80,34 @@
 			  </li>
 			  <li id="contractTab">
 
-				<h3> Contract </h3>
-			  	<hr/>
-			  	<p><span class=" radius label">Job Title</span><span> Job Title</span></p>
-			  	<p><span class=" radius label">Begin Date</span><span> Date</span></p>
-			  	<p><span class=" radius label">End Date</span><span> Date</span></p>
+			  	<% if !@contract.nil? %>
+					<h3 class="hide-for-small"><%= @contract.job_title %>
+              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
+              				<span class="secondary label radius"><%= link_to "Edit", edit_company_user_contract_path(@company,@user,@contract) %></span>
+              			<% end %>
+              		</h3>
+				  	<hr/>
+				  	<p><span class=" radius label">Begin Date</span><span> <%= @contract.start_date %> </span></p>
+				  	<p><span class=" radius label">End Date</span><span> <%= @contract.end_date %> </span></p>
+				  	<p><span class=" radius label">Value</span><span> <%= @contract.value %> </span></p>
+
+				  	<br/>
+
+				  	<% if @contracts.any? %>
+				  		<h5> Previous Contracts </h5>
+				  		<%= render :partial => "rasocomp/contracts/list" %>
+				  	<% else %>
+				  		<h5> No previous contracts found</h5>
+				  	<% end %>
+				<% else %>
+					<h5> No contracts found</h5>
+				<% end %>
+
+				<% if current_user(@company.slug).role <= ROLE[:manager] %>
+					<div class="three columns">
+						<%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
+					</div>
+				<% end %>
 			  </li>
 			</ul>
 		</div>

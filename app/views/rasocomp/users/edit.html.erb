@@ -33,34 +33,36 @@
   <div class="nine columns pull-three">
     <div class="signup">
       <div class="panel">
-        <h3> Edit User Profile </h3>
-        <hr/>
-          <%= form_for [@company, @user] do |f| %>
+          <div class="row">
+          <div class="eight columns">
+            <h3> Edit User Profile  </h3>
+          </div>
+          <div class="four columns">
+            <%= link_to t(:change_password), edit_password_company_user_path(@company,@user), :class=>"radius button right add_user" %>
+          </div>
+          <div class="twelve columns">
+          <hr/>
 
-            <%= f.label :name, :class=>"radius label"%>
-            <%= f.text_field :name %>
+            <%= form_for [@company, @user] do |f| %>
 
-            <%= f.label :email, :class=>"radius label"%>
-            <%= f.text_field :email %>
+              <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
+                <hr/>
+              <% end %>
+              <% @user.errors.full_messages.each do |msg| %>
+                <p><%= msg %></p>
+              <% end %>
 
-            <%= f.label :password, :class=>"radius label"%>
-            <%= f.password_field :password %>
-
-            <%= f.label :password_confirmation, :class=>"radius label"%>
-            <%= f.password_field :password_confirmation %>
-        
-            <p style="text-align: center"><%= f.submit 'Save!', :class => "button" %></p>
-
-            
-            <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
-            <hr/>
+              <span class=" radius label"><%= t(:name) %></span>
+              <%= f.text_field :name, :class=>"input_space"  %>
+          
+              <p style="text-align: center">
+                <%= f.submit 'Save!', :class => "button" %>
+              </p>
             <% end %>
-            <% @user.errors.full_messages.each do |msg| %>
-              <p><%= msg %></p>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
 
