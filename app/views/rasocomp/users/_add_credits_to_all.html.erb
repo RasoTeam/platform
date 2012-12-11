@@ -1,0 +1,15 @@
+<% form_tag(create_ticket_path, :method=>'post', :multipart => true) do %>
+<p>   Subject:<br />
+
+<%= text_field_tag "subject" %> </p> <p>   Priority: <br />   
+
+<%= select_tag("priority", options_for_select([['Critical', '1'],['Important', '2'],['Standard','3']], '3')) %>
+
+</p> <p>   Describe your problem:<br />   
+
+<%= text_area_tag "description", "", :size=>"50x20" %> </p> <p>   Add an attachment:<br />   
+
+<%= file_field_tag "attachment" %> </p> <p>   
+
+<%= submit_tag 'Submit' %> </p>
+<% end %>

@@ -13,7 +13,7 @@
 <div class="row">
   <div class="twelve columns">
 
-    <h2>Job Offers</h2>
+    <h2>Job Offers <%= params[:search] %></h2>
     
     <div class="row">
       <div class="four columns">
@@ -30,10 +30,27 @@
       <div class="four columns">
         <dl class="sub-nav">
             <dt>Filter:</dt>
-            <dd class="active"><a href="#">All</a></dd>
-            <dd><a href="#">Open</a></dd>
-            <dd><a href="#">Selection</a></dd>
-            <dd><a href="#">Closed</a></dd>
+            <% if(params[:search].to_s != "Open" && params[:search].to_s != "Selection" && params[:search].to_s != "Closed") %>
+              <dd class="active"><%= link_to "All", company_job_offers_path(@company) %></dd>
+              <dd><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+            <% elsif(params[:search].to_s == "Open")%>
+              <dd><%= link_to "All", company_job_offers_path(@company) %></dd>
+              <dd class="active"><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+            <% elsif params[:search].to_s == "Selection" %>
+              <dd><%= link_to "All", company_job_offers_path(@company) %></dd>
+              <dd><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd class="active"><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+            <% elsif params[:search].to_s == "Closed" %>
+              <dd><%= link_to "All", company_job_offers_path(@company) %></dd>
+              <dd><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd class="active"><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+            <% end %>
         </dl>
       </div>
       <div class="four columns">

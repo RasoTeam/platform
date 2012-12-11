@@ -10,13 +10,19 @@ en:
   account_activated: "Your account has been successfuly activated"
   active: "Active"
   actions: "Actions"
+  approved: "Approved"
+  book: "Book"
+  book_time_off: "Book new time off"
   blocked: "Blocked"
   blocked_successful: "Successfully blocked"
+  calendar: "Calendar"
+  cancel: "Cancel"
   change_password: "Change Password"
   company: "Company"
   cooperator: "Cooperator"
   cooperator_name: "Cooperator name"
   closed: "Closed"
+  cancel_message: "Are you sure you want to cancel!"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
   current_password_not_valid: "The current password is not valid"
   days: "Days"
@@ -24,6 +30,7 @@ en:
   deleted_successful: "Successfully deleted"
   deny: "Deny"
   description: "Description"
+  disapproved: "Disapproved"
   edit_company: "Edit Company"
   end_day: "End Day"
   email: "E-Mail"
@@ -31,18 +38,24 @@ en:
   error: "Operation Failed"
   hello: "Hello world"
   holidays: "Holidays"
+  home: "Home"
   job_offers: "Job Offers"
+  logout: "Logout"
+  manage_time_offs: "Manage Time Offs"
   manager: "Manager"
   name: "Name"
   new: "New"
   new_employee: "New Employee"
   new_user: "New User"
+  new_time_off: "New Time Off"
   no_permission_to_access: "No permission to access. Please login first."
   inactive: "Inactive"
   invalid_login: "Wrong username or password!"
   invalid_verification: "Invalid Verification"
+  pending: "Pending"
   profile: "Profile"
   password_updated: "Password was updated successfuly"
+  remaining_days: "Remaining Days"
   role: "Role"
   save: "Save!"
   sick: "Sick"
@@ -50,10 +63,22 @@ en:
   state: "State"
   successful_update: "Successfully updted"
   timeoffs: "Time Offs"
+  time_offs_management: "Time Offs Management"
   type: "Type"
   users: "Users"
   unchecked: "Unchecked"
   ROOT: "Root"
+
+  date:
+    formats:
+      default: "%e/%m/%Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+
 
 
   activerecord:

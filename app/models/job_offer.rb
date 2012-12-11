@@ -17,7 +17,7 @@ class JobOffer < ActiveRecord::Base
 
   validates :conditions , :presence => true
 
-  validates_inclusion_of :status , :in => ["Open","Selected","Closed"]
+  validates_inclusion_of :status , :in => ["Open","Selection","Closed"]
 
 
   ##Utilitário para apresentar ordenadamente uma lista de job_offers - Credits to Tiago
@@ -26,8 +26,12 @@ class JobOffer < ActiveRecord::Base
   def self.search(search,order)
     order ||= ""
     if search #Se foi inserida uma string de pesquisa
-      where('job_name LIKE ? ', '%'+search+'%').order("job_name "+order)
-    else #se não apenas foi inserid um parâmetro de ordenação
+      if search == "Open" || search == "Selection" || search == "Closed"
+        where('status LIKE ? ', search).order("job_name "+order)
+      else
+        where('job_name LIKE ? ', '%'+search+'%').order("job_name "+order)
+      end
+    else #se não apenas foi inserido um parâmetro de ordenação
       order("job_name "+order)
     end
   end

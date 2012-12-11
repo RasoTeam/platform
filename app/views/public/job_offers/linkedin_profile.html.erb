@@ -27,60 +27,73 @@
     <th colspan="2">Education</th>
     <th></th>
   </tr>
-  <% @profile["educations"]["all"].each do |ed| %>
+  <% if @profile["educations"]["all"].nil? %>
       <tr>
-        <td colspan="2"><b>Details</b></td>
-        <td></td>
+        <td colspan="2"><%= "None" %></td>
       </tr>
-      <tr>
-        <td>School Name</td>
-        <td><%= ed.school_name %></td>
-      </tr>
-      <tr>
-        <td>Degree</td>
-        <td><%= ed.degree %></td>
-      </tr>
-      <tr>
-        <td>Field of Study</td>
-        <td><%= ed.field_of_study %></td>
-      </tr>
-      <tr>
-        <td>Since</td>
-        <td><% if ed.start_date %><%= ed.start_date["year"] %><% else %><%= '--' %><% end %></td>
-      </tr>
-      <tr>
-        <td>Until</td>
-        <td><% if ed.end_date %><%= ed.end_date["year"] %><% else %><%= '--' %><% end %></td>
-      </tr>
+  <% else %>
+      <% @profile["educations"]["all"].each do |ed| %>
+          <tr>
+            <td colspan="2"><b>Details</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>School Name</td>
+            <td><%= ed.school_name %></td>
+          </tr>
+          <tr>
+            <td>Degree</td>
+            <td><%= ed.degree %></td>
+          </tr>
+          <tr>
+            <td>Field of Study</td>
+            <td><%= ed.field_of_study %></td>
+          </tr>
+          <tr>
+            <td>Since</td>
+            <td><% if ed.start_date %><%= ed.start_date["year"] %><% else %><%= '--' %><% end %></td>
+          </tr>
+          <tr>
+            <td>Until</td>
+            <td><% if ed.end_date %><%= ed.end_date["year"] %><% else %><%= '--' %><% end %></td>
+          </tr>
+      <% end %>
   <% end %>
 </table>
+
 
 <table>
   <tr>
     <th colspan="2">Positions</th>
     <th></th>
   </tr>
-  <% @profile["positions"]["all"].each do |pos| %>
+  <% if @profile["positions"]["all"].nil?  %>
       <tr>
-        <td colspan="2"><b>Details</b></td>
-        <td></td>
+        <td colspan="2"><%= "None"  %></td>
       </tr>
-      <tr>
-        <td>Title</td>
-        <td><%= pos.title %></td>
-      </tr>
-      <tr>
-        <td>Company</td>
-        <td><%= pos.company["name"] %></td>
-      </tr>
-      <tr>
-        <td>Since</td>
-        <td><%= pos.start_date["year"] %></td>
-      </tr>
-      <tr>
-        <td>Until</td>
-        <td><% if pos.is_current%><%= 'Current'%><% else %><%= pos.end_date["year"]  %><% end %></td>
-      </tr>
+  <% else %>
+      <% @profile["positions"]["all"].each do |pos| %>
+          <tr>
+            <td colspan="2"><b>Details</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Title</td>
+            <td><%= pos.title %></td>
+          </tr>
+          <tr>
+            <td>Company</td>
+            <td><%= pos.company["name"] %></td>
+          </tr>
+          <tr>
+            <td>Since</td>
+            <td><%= pos.start_date["year"] %></td>
+          </tr>
+          <tr>
+            <td>Until</td>
+            <td><% if pos.is_current%><%= 'Current'%><% else %><%= pos.end_date["year"]  %><% end %></td>
+          </tr>
+      <% end %>
   <% end %>
 </table>
 
@@ -89,17 +102,23 @@
     <th colspan="2">Skills</th>
     <th></th>
   </tr>
-  <% @profile["skills"]["all"].each do |skill| %>
-    <tr>
-      <td><b>Name</b></td>
-      <td><%= skill["skill"].name %></td>
-    </tr>
-  <% end %>
+  <% if @profile["skills"]["all"].nil? %>
+      <tr>
+        <td colspan="2"><%= "None" %></td>
+      </tr>
+  <% else %>
+      <% @profile["skills"]["all"].each do |skill| %>
+          <tr>
+            <td><b>Name</b></td>
+            <td><%= skill["skill"].name %></td>
+          </tr>
+      <% end %>
+  <% end%>
 </table>
 
 <%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
-    <%= hidden_field_tag :profile , @profile.to_param %>
-    <%= submit_tag 'Valeu!' %>
+    <%= hidden_field_tag :profile , :yes %>
+    <%= submit_tag 'Accept!' %>
 <% end %>
 
 

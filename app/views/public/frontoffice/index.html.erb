@@ -15,12 +15,36 @@
 		<!-- End Desktop Slider -->
 		<div class="row frontpage">
 			<div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
+				<div id="featuredContent">
+					<div>
+						<h1>Tired of HR Work?</h1>
+						<h2>Improve your work</h2>
+						<div style="width: 70%; margin: 0 auto;">
+							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						</div>
+					</div>
+					<div>
+						<h1>Forget Spreadsheets!</h1>
+						<h2>Improve your work</h2>
+						<div style="width: 70%; margin: 0 auto;">
+							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						</div>
+					</div>
+					<div>
+						<h1>Use Raso HR!</h1>
+						<h2>Improve your work</h2>
+						<div style="width: 70%; margin: 0 auto;">
+							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						</div>
+					</div>
+				</div>
+				<!-- 
 				<h1>Forget Spreadsheets!</h1>
 				<h2>Improve your work</h2>
 				<div style="width: 70%; margin: 0 auto;">
 					<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
-				</div>
-				<%= link_to "Register Here!", new_public_company_path, {:class=>"large radius button", :style=>"z-index: 3;"} %>
+				</div> -->
+				<%= link_to "Try it Free!", new_public_company_path, {:class=>"large radius button", :style=>"z-index: 3;"} %>
 			</div>
 			
 		</div>
@@ -33,43 +57,43 @@
 		<div class="row">
 			<!-- Thumbnails -->
 			<div class="three mobile-two columns boxes boxes-third">
-				<img src="http://placehold.it/250x250&amp;text=Thumbnail" alt="thumb" />
+				<%= link_to image_tag('promo/circle.jpg'), :alt=>"thumb"%>
 				<div class="mask">
-					<h2>Forget spreadsheets</h2>
+					<h2>Simple as a circle!</h2>
 					<p>Lorem impsum, ipa doulos. Lorem impsum, ipa doulos. Lorem impsum.</p>
 					<a href="#" class="info">Read More</a>
 				</div>
-				<h6 class="panel">Forget spreadsheets</h6>
+				<h6 class="panel">Simple as a circle!</h6>
 			</div>
 
 			<div class="three mobile-two columns boxes boxes-third">
-				<img src="http://placehold.it/250x250&amp;text=Thumbnail" alt="thumb" />
+				<%= link_to image_tag('promo/money.jpg'), :alt=>"thumb"%>
 				<div class="mask">
-					<h2>Forget spreadsheets</h2>
+					<h2>Save More! Work less!</h2>
 					<p>Lorem impsum, ipa doulos. Lorem impsum, ipa doulos. Lorem impsum.</p>
 					<a href="#" class="info">Read More</a>
 				</div>
-				<h6 class="panel">Forget spreadsheets</h6>
+				<h6 class="panel">Save More! Work Less!</h6>
 			</div>
 
 			<div class="three mobile-two columns boxes boxes-third">
-				<img src="http://placehold.it/250x250&amp;text=Thumbnail" alt="thumb"/>
+				<%= link_to image_tag('promo/link.jpg'), :alt=>"thumb"%>
 				<div class="mask">
-					<h2>Forget spreadsheets</h2>
+					<h2>Interoperability is our bet!</h2>
 					<p>Lorem impsum, ipa doulos. Lorem impsum, ipa doulos. Lorem impsum.</p>
 					<a href="#" class="info">Read More</a>
 				</div>
-				<h6 class="panel">Forget spreadsheets</h6>
+				<h6 class="panel">Interoperability is our bet!</h6>
 			</div>
 
 			<div class="three mobile-two columns boxes boxes-third">
-				<img src="http://placehold.it/250x250&amp;text=Thumbnail" alt="thumb"/>
+				<%= link_to image_tag('promo/self.jpg'), :alt=>"thumb"%>
 				<div class="mask">
-					<h2>Forget spreadsheets</h2>
+					<h2>Let them do your work!</h2>
 					<p>Lorem impsum, ipa doulos. Lorem impsum, ipa doulos. Lorem impsum.</p>
 					<a href="#" class="info">Read More</a>
 				</div>
-				<h6 class="panel">Forget spreadsheets</h6>
+				<h6 class="panel">Let them do your work!</h6>
 			</div>
 			<!-- End Thumbnails -->
 		</div>
@@ -127,4 +151,10 @@
 		</div>
 	</div>
 </div>
+
+<script type='text/javascript'>
+   $(window).load(function() {
+       $('#featuredContent').orbit({ fluid: '16x4', advanceSpeed: 3000});
+   });
+</script>
 
