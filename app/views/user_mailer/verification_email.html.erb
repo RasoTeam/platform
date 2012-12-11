@@ -7,12 +7,14 @@
     <% if @user.role == ROOT %>
       <h1> Welcome to Raso </h1>
       <br/>
-      <p>Thanks for signing up to RasoHR. We'll do everything we can to make sure it's a great experience for you and your company.</p>
+      <p>Thanks for signing up to RasoHR. We'll do everything we can to make sure it's a great experience your company.</p>
       <br/>
       <p> 
         To validate your account please click 
         <%= link_to "here.", email_verify_url(@user.company_id, token: @user.remember_token) %>
       </p>
+      <br/>
+      <p> After validating your account you can login as admin with this email address. </p>
       <br/>
       <p> Looking forward to hear from you, </p>
       <p> Raso Team </p>
