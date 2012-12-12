@@ -1,4 +1,6 @@
 class Public::SuperUserSessionsController < Public::ApplicationController
+  layout "nolayout"
+  
   def new
     if super_user_signed_in?
       redirect_to backoffice_super_user_path(current_super_user)
@@ -18,6 +20,6 @@ class Public::SuperUserSessionsController < Public::ApplicationController
 
   def destroy
     super_user_sign_out
-    redirect_to root_path
+    redirect_to super_user_signin_path
   end
 end

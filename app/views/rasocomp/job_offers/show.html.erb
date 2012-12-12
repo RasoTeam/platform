@@ -58,7 +58,7 @@
     <div class="panel">
       <div class="row">
         <div class="twelve columns">
-          <table class="twelve tableJobs">
+          <table class="twelve">
             <thead>
               <tr>
                 <th>Nome</th>
@@ -70,7 +70,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
                 <% @candidates.each do |candidate| %>
                 <tr>
                   <td><%= candidate.name %></td>
@@ -81,7 +80,6 @@
                   <td>Awaiting Interview</td>
                 </tr>
               <% end %>
-                </tr>
             </tbody>
           </table>
         </div>

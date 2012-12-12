@@ -13,7 +13,11 @@ class Public::UserSessionsController < Public::ApplicationController
     #use some base64 for company ?
     if @user && @user.state != -1 && @user.authenticate(params[:user_session][:password])
       sign_in_user(@user, @company.slug)
-      redirect_to user_dashboard_path @company, @user
+      if @user.role == ROOT
+        redirect_to company_path @company
+      else
+        redirect_to user_dashboard_path @company, @user
+      end
     else
       flash.now[:alert] = t(:invalid_login)
       render 'new'

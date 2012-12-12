@@ -4,6 +4,11 @@ class Rasocomp::TrainingsController < ApplicationController
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings
   end
+  
+  def manage
+    @company = Company.find( params[:company_id])
+    @trainings = @company.trainings
+  end
 
   def new
     @company = Company.find( params[:company_id])

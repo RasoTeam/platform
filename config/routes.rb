@@ -9,6 +9,8 @@ resources :feedbacks
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
   match '/backoffice/bills', to: 'backoffice/bills#show_all'
+  put 'backoffice/companies/:id/block', :to => 'backoffice/companies#block', :as => 'block_company'
+  put 'backoffice/companies/:id/activate', :to => 'backoffice/companies#activate', :as => 'activate_company'
 
 #rasocomp
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
@@ -95,8 +97,12 @@ resources :feedbacks
   scope :module => "rasocomp" do
     resources :companies do
       resources :trainings do
+        collection do
+          get :manage
+        end
         resources :courses do
           member do
+            put :update_users
             put :activate
           end
         end

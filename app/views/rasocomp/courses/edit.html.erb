@@ -1,0 +1,13 @@
+<h1>COURSES#EDIT</h1>
+<%= form_for [@company, @training, @course] do |f| %>
+<%= f.label :lecturer %>
+<%= f.text_field :lecturer %>
+<%= f.submit %>
+<% end %>
+<%= @users_to_add %>
+<%= form_tag :controller => 'courses', :action => 'update_users' do %>
+  <%= hidden_field_tag '_method', 'put' %>
+  <%= label_tag "SOME LABEL" %> <br>
+  <%= select_tag "users", options_from_collection_for_select(@company.users, "id", "name"), :multiple => true%>
+  <%= submit_tag "Update"%>  
+<% end %>
