@@ -10,15 +10,16 @@ gem 'hpricot'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'jquery-rails'
 
+
 #Gems para acesso ao LinkedIn
 gem 'linkedin'
 gem 'oauth'
-
+	
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 group :development, :test do
@@ -45,12 +46,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+
 group :test do
 	gem 'capybara'
 	gem 'rb-inotify'
 	gem 'libnotify'
 	gem 'factory_girl_rails'
 end
+
+gem 'spreadsheet'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

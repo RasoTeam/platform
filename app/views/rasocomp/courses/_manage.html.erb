@@ -1,0 +1,16 @@
+<h3>COURSES#MANAGE | <%= courses.count %> </h3>
+		<% courses.each do |c| %>
+		  ID: <%= c.id %>;
+		  Lecturer: <%= c.lecturer %>;
+		  Start: <%= c.start_at %>;
+		  End: <%= c.end_at %>;
+		  Cate: <%= c.category %>;
+		  State: <%= c.state %>;
+		  Invited: <%= c.users.count %>;
+		  <%= link_to 'activate', activate_company_training_course_path( @company, training, c), :method => :put %>
+		  | <%= link_to 'add user', '#' %>
+		  | <%= link_to 'remove', [@company, training, c], :method => :delete %>
+		  | <%= link_to 'cancel', '#' %>
+		  | <%= link_to 'edit', edit_company_training_course_path( @company, training, c) %><br>
+		  <br/>
+		<% end %>

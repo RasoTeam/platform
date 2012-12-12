@@ -4,7 +4,7 @@
 <%= f.text_field :lecturer %>
 <%= f.submit %>
 <% end %>
-<%= @lol %>
+<%= @users_to_add %>
 <%= form_tag :controller => 'courses', :action => 'update_users' do %>
   <%= hidden_field_tag '_method', 'put' %>
   <%= label_tag "SOME LABEL" %> <br>

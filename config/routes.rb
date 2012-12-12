@@ -1,4 +1,6 @@
 Platform::Application.routes.draw do
+put  '/companies/:company_id/users/update_credits_to_all' ,
+          :to => 'rasocomp/users#update_credits_to_all' , :as => 'update_credits_to_all'
 
 resources :feedbacks
 
@@ -95,6 +97,9 @@ resources :feedbacks
   scope :module => "rasocomp" do
     resources :companies do
       resources :trainings do
+        collection do
+          get :manage
+        end
         resources :courses do
           member do
             put :update_users
@@ -117,6 +122,20 @@ resources :feedbacks
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
     end
+  end
+
+
+  #Import Controller Routes
+  resources :importsingle do
+      collection do
+        get :fst_step
+        post :snd_step
+        post :trd_step
+        post :default_confirmation_step
+        post :final_import_step
+        post :import_another
+        post :finalize
+      end
   end
 
 end

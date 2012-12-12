@@ -1,0 +1,58 @@
+
+<h2>  IMPORT </h2>
+<br />
+<h3>
+	MODEL: <%= "'"+session[:model_name]+"'" %> 
+</h3>
+<h3>
+	Excel Sheet: <%= "'"+session[:excel_sheet]+"'" %>
+</h3>
+<h3>
+	Excel Sheet DATA:
+</h3>
+			<table border="1">
+			<%
+				$i1 = 0
+				while $i1 < session[:sheet_data].count
+
+					line_data = session[:sheet_data][$i1]
+			%>
+					<tr />
+			<%
+					$j1 = 0
+					while $j1 < line_data.count 
+			%>
+						<td>
+						<%= (line_data[$j1]).to_s %>
+						</td>
+			<%
+					$j1 += 1
+					end
+			%>
+					</tr>
+			<%
+				$i1 += 1
+				end
+			%>
+			</table>
+
+	<h3>
+		(Confirmation Step)
+	</h3>
+
+<%= form_tag(:controller => "importsingle", :action => "final_import_step", :method => "post") do %>
+    <div><%= submit_tag 'Confirm' %></div>
+<% end -%>
+
+<!-- ERRORS -->
+<% if !session[:error].eql?("none") %>
+	<hr>
+		<h4>
+			<%= "ERROR: "+session[:error].to_s%>
+		<h4 />
+	<hr/>
+<% end %>
+
+<hr />
+
+<%= link_to 'Cancel', session[:model] %>
