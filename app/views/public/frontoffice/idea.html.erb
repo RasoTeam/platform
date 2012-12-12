@@ -10,7 +10,7 @@
     <div class="four columns">
       <div class="row frontpage">
         <div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
-          <div id="featuredContent2">
+          <div id="featuredContent">
             <div>
             <%= link_to image_tag('idea/part1/EMP1.png')%>
             </div>
@@ -35,7 +35,7 @@
     <div class="four columns">
       <div class="row frontpage">
         <div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
-          <div id="featuredContent">
+          <div id="featuredContent2">
             <div>
             <%= link_to image_tag('idea/part2/EMP1.png')%>
             </div>
@@ -69,7 +69,21 @@
       Don't waste more time filling a lot of forms!</p>
     </div>
     <div class="four columns">
-      <%= link_to image_tag('promo/link.jpg')%>
+      <div class="row frontpage">
+        <div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
+          <div id="featuredContent3">
+            <div>
+            <%= link_to image_tag('idea/part3/EMP1.png')%>
+            </div>
+            <div style="display: none;">
+            <%= link_to image_tag('idea/part3/EMP2.png')%>
+            </div>
+            <div style="display: none;">
+            <%= link_to image_tag('idea/part3/EMP3.png')%>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -123,22 +137,22 @@
 
 <script type='text/javascript'>
    $(window).load(function() {
-       $('#featuredContent').orbit({ fluid: '16x16', advanceSpeed: 3300});
+       $('#featuredContent').orbit({ fluid: '16x16', advanceSpeed: 3000});
    });
 </script>
 
 <script type='text/javascript'>
    $(window).load(function() {
-       $('#featuredContent2').orbit({ fluid: '16x16', advanceSpeed: 3200});
+       $('#featuredContent2').orbit({ fluid: '16x16', advanceSpeed: 3300});
    });
 </script>
 <script type='text/javascript'>
    $(window).load(function() {
-       $('#featuredContent3').orbit({ fluid: '16x16', advanceSpeed: 3100});
+       $('#featuredContent3').orbit({ fluid: '16x16', advanceSpeed: 3600});
    });
 </script>
 <script type='text/javascript'>
    $(window).load(function() {
-       $('#featuredContent4').orbit({ fluid: '16x16', advanceSpeed: 3000});
+       $('#featuredContent4').orbit({ fluid: '16x16', advanceSpeed: 3900});
    });
 </script>
