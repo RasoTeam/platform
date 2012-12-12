@@ -1,8 +1,18 @@
 <div class="row">
   <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
       <h1>Edit Company</h1>
       <hr/>
         <%= form_for @company, :url => backoffice_company_path(@company) do |f| %>
+
+          <% if @company.errors.any? %> 
+            <% @company.errors.full_messages.each do |msg| %>
+              <div class="alert-box alert"><%= msg %></div>
+            <% end %>
+            <hr/>
+          <% end %>
+
           <span class=" radius label">Company Name</span>
           <%= f.text_field :name %>
           
@@ -20,13 +30,8 @@
           
           <p style="text-align: center"><%= f.submit "Save", :class=>"button" %></p>
           
-          <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
-            <hr/>
-            <% end %>
-
-          <% @company.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-          <% end %>
         <% end %>
+      </div>
+    </div>
   </div>
 </div>
