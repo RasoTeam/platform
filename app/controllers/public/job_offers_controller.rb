@@ -74,6 +74,9 @@ class Public::JobOffersController < Public::ApplicationController
   end
 
   def xml_profile
+    @company = Company.find(params[:company_id])
+    @offer = JobOffer.find(params[:id])
+    
     xml_contents = File.open(session[:file],'r')
     session.delete(:file)
 
@@ -88,7 +91,9 @@ class Public::JobOffersController < Public::ApplicationController
   end
 
   def pdf_profile
-
+    @company = Company.find(params[:company_id])
+    @offer = JobOffer.find(params[:id])
+    
     session[:file_path] = 'public/'+Time.now.to_i.to_s+'.pdf'
     File.open(session[:file_path],'w') do |file|
       file.write(File.read(session[:file]))
@@ -197,15 +202,14 @@ class Public::JobOffersController < Public::ApplicationController
 
   def readXMLfile2html(xmlf)
     doc = Hpricot::XML(xmlf)
-    fileHTML = "<div>"
 
     #Experiência Profissional
-    fileHTML += "<h1>Work Experience</h1>"
+    fileHTML = "<h3>Work Experience</h3>"
 
     (doc/:"europass:learnerinfo"/:workexperiencelist/:workexperience).each do |we|
-      fileHTML += "<table>"
+      fileHTML += '<table class="twelve tableJobs">'
       if !(we).at('period/from').innerHTML.blank?
-        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        fileHTML += "<tr><td><p class=\"radius label\">From:</p></td><td>"
         if !(we).at('period/from/month').blank?
           fileHTML += (we).at('period/from/month').innerHTML.split("--")[1]+" - "
         end
@@ -215,7 +219,7 @@ class Public::JobOffersController < Public::ApplicationController
         fileHTML += "</td></tr>"
       end
       if !(we).at('period/to').innerHTML.blank?
-        fileHTML += "<tr><td align='right'><b>To:</b></td><td>"
+        fileHTML += "<tr><td><p class=\"radius label\">Until:</p></td><td>"
         if !(we).at('period/to/month').blank?
           fileHTML += (we).at('period/to/month').innerHTML.split("--")[1]+" - "
         end
@@ -225,24 +229,24 @@ class Public::JobOffersController < Public::ApplicationController
         fileHTML += "</td></tr>"
       end
       if !(we).at('position/label').blank?
-        fileHTML += "<tr><td align='right'><b>Position:</b></td><td>"+(we).at('position/label').innerHTML+"</td></tr>"
+        fileHTML += "<tr><td><p class=\"radius label\">Position:</p></td><td>"+(we).at('position/label').innerHTML+"</td></tr>"
       end
       if !(we).at('activities').blank?
-        fileHTML += "<tr><td align='right'><b>Activities:</b></td><td>"+(we).at('activities').innerHTML+"</td></tr>"
+        fileHTML += "<tr><td><p class=\"radius label\">Activities:</p></td><td>"+(we).at('activities').innerHTML+"</td></tr>"
       end
       if !(we).at('employer/name').blank?
-        fileHTML += "<tr><td align='right'><b>Employer:</b></td><td>"+(we).at('employer/name').innerHTML+"</td></tr>"
+        fileHTML += "<tr><td><p class=\"radius label\">Employer:</p></td><td>"+(we).at('employer/name').innerHTML+"</td></tr>"
       end
-      fileHTML += "</table>"
+      fileHTML += "</table><br/>"
     end
 
     #Habilitações
-    fileHTML += "<h1>Education</h1>"
+    fileHTML += "<h3>Education</h3>"
 
     (doc/:"europass:learnerinfo"/:educationlist/:education).each do |edu|
-      fileHTML += "<table>"
+      fileHTML += '<table class="twelve tableJobs">'
       if !(edu).at('period/from').innerHTML.blank?
-        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        fileHTML += "<tr><td align='right'><p class=\"radius label\">From:</p></td><td>"
         if !(edu).at('period/from/month').blank?
           fileHTML += (edu).at('period/from/month').innerHTML.split("--")[1]+" - "
         end
@@ -252,7 +256,7 @@ class Public::JobOffersController < Public::ApplicationController
         fileHTML += "</td></tr>"
       end
       if !(edu).at('period/to').innerHTML.blank?
-        fileHTML += "<tr><td align='right'><b>From:</b></td><td>"
+        fileHTML += "<tr><td align='right'><p class=\"radius label\">Until:</p></td><td>"
         if !(edu).at('period/to/month').blank?
           fileHTML += (edu).at('period/to/month').innerHTML.split("--")[1]+" - "
         end
@@ -262,18 +266,16 @@ class Public::JobOffersController < Public::ApplicationController
         fileHTML += "</td></tr>"
       end
       if !(edu).at('title').blank?
-        fileHTML += "<tr><td align='right'><b>Title:</b></td><td>"+(edu).at('title').innerHTML+"</td></tr>"
+        fileHTML += "<tr><td align='right'><p class=\"radius label\">Title:</p></td><td>"+(edu).at('title').innerHTML+"</td></tr>"
       end
       if !(edu).at('skills').blank?
-        fileHTML += "<tr><td align='right'><b>Skills:</b></td><td>"+(edu).at('skills').innerHTML+"</td></tr>"
+        fileHTML += "<tr><td align='right'><p class=\"radius label\">Skills:</p></td><td>"+(edu).at('skills').innerHTML+"</td></tr>"
       end
       if !(edu).at('organisation/name').blank?
-        fileHTML += "<tr><td align='right'><b>Organization:</b></td><td>"+(edu).at('organisation/name').innerHTML+"</td></tr>"
+        fileHTML += "<tr><td align='right'><p class=\"radius label\">Organization:</p></td><td>"+(edu).at('organisation/name').innerHTML+"</td></tr>"
       end
-      fileHTML += "</table>"
+      fileHTML += "</table><br/>"
     end
-
-    fileHTML += "</div>"
 
     return fileHTML
   end
@@ -338,6 +340,7 @@ class Public::JobOffersController < Public::ApplicationController
     profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil e fácil de iterar
     full_profile = profile.to_hash
+    puts full_profile
     #Devolve
     return full_profile
   end
@@ -414,7 +417,7 @@ class Public::JobOffersController < Public::ApplicationController
     #Habilidades/Conhecimentos
     fileHTML += "<h1>Skills</h1>"
 
-    if profile["skills"]["all"].nil?
+    if profile["skills"].nil?
     else
       profile["skills"]["all"].each do |skill|
         fileHTML += "<table>"

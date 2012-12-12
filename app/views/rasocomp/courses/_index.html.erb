@@ -7,7 +7,8 @@
 		  Cate: <%= c.category %>;
 		  State: <%= c.state %>;
 		  Invited: <%= c.users.count %>;
-		  <%= link_to 'enroll', '#' %>
-		  | <%= link_to 'unenroll', '#' %>
+          Enrolled: <%= enrolled %>;
+		  <%= link_to 'enroll', enroll_company_training_course_path( company.id, training.id, c.id), :method => :put %>
+		  | <%= link_to 'unenroll', unenroll_company_training_course_path( company.id, training.id, c.id) %>
 		  <br/>
 		<% end %>

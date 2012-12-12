@@ -87,9 +87,9 @@
 						<%end%> 
 					</td>
 					<td> 
-						<%= link_to "Edit", edit_backoffice_company_path(company), :class=>"secondary radius label" %>
+						<%= link_to t(:edit), edit_backoffice_company_path(company), :class=>"secondary radius label" %>
 						<% if company.state == COMPANY_STATE[:active] %>
-							<%= link_to t(:block), block_company_path(company), :method=>:put, :class=>"label radius" %>
+							<%= link_to t(:block), block_company_path(company), :method=>:put, :class=>"alert label radius" %>
 						<% else company.state == COMPANY_STATE[:blocked] %>
 							<%= link_to t(:activate), activate_company_path(company), :method=>:put, :class=>"label radius" %>
 						<% end %>

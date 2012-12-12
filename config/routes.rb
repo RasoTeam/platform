@@ -1,6 +1,4 @@
 Platform::Application.routes.draw do
-put  '/companies/:company_id/users/update_credits_to_all' ,
-          :to => 'rasocomp/users#update_credits_to_all' , :as => 'update_credits_to_all'
 
 resources :feedbacks
 
@@ -13,6 +11,9 @@ resources :feedbacks
   put 'backoffice/companies/:id/activate', :to => 'backoffice/companies#activate', :as => 'activate_company'
 
 #rasocomp
+  put  '/companies/:company_id/users/update_credits_to_all' ,
+          :to => 'rasocomp/users#update_credits_to_all' , :as => 'update_credits_to_all'
+          
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
   get '/companies/:company_id/users/:user_id/time_offs/:id/approve', :to => 'rasocomp/time_offs#approve'
 
@@ -104,6 +105,8 @@ resources :feedbacks
           member do
             put :update_users
             put :activate
+            put :enroll
+            put :unenroll
           end
         end
       end

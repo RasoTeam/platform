@@ -149,6 +149,12 @@ class ImportsingleController < ApplicationController
     				us.password_digest = 0
     				if us.save
       					UserMailer.verification_email(us).deliver
+
+      					period = us.periods.build
+      					period.start_date = Date.today
+      					period.state = STATE[:unchecked]
+      					period.save
+
       					imported_users[$j1] = name
       					$j1 += 1
       				end

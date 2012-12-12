@@ -7,7 +7,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
   def show
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
-    @contracts = @user.contracts
+    @contracts = @user.contracts.order("end_date DESC")
   end
 
   def index

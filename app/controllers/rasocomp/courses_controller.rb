@@ -3,7 +3,7 @@ class Rasocomp::CoursesController < ApplicationController
   def index
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings.find( params[:training_id])
-    @courses = @trainings.courses
+    #@courses = @trainings.courses
   end
   
   def activate
@@ -14,7 +14,7 @@ class Rasocomp::CoursesController < ApplicationController
       course.update_attribute :state, 1
     end
     
-    redirect_to company_trainings_path( params[:company_id])
+    redirect_to manage_company_trainings_path( params[:company_id])
   end
   
   def new
@@ -35,7 +35,7 @@ class Rasocomp::CoursesController < ApplicationController
     @course = Course.find( params[:id])
     if @course.update_attributes(params[:course])
       flash[:success] = t(:successful_update)
-      redirect_to company_trainings_path @company
+      redirect_to manage_company_trainings_path @company
     else
       render 'edit'
     end
@@ -48,10 +48,25 @@ class Rasocomp::CoursesController < ApplicationController
     @users_to_add = params[:users]
     @course.users.clear
     @test = "hi"
-    @users_to_add.each do |u_id|
-      @course.users << User.find( u_id)
+    if !@users_to_add.nil?
+      @users_to_add.each do |u_id|
+        @course.users << User.find( u_id)
+      end
     end
     render 'edit'
+  end
+  
+  def enroll
+    company = Company.find( params[:company_id])
+    current_user_id = current_user( company.slug).id
+    user = User.find( current_user_id)
+    course = Course.find( params[:id])
+    course.users << user
+    redirect_to company_trainings_path( company.slug)
+  end
+  
+  def unenroll
+    #redirect_to company_trainings_path( params[:company_id])
   end
   
   def create
@@ -60,7 +75,7 @@ class Rasocomp::CoursesController < ApplicationController
     @course = @training.courses.build( params[:course])
     @course.state = 0
     if @course.save
-      redirect_to company_trainings_path( params[:company_id])
+      redirect_to manage_company_trainings_path( params[:company_id])
     else
       render 'new'
     end
@@ -69,6 +84,6 @@ class Rasocomp::CoursesController < ApplicationController
   def destroy
     course = Course.find( params[:id])
     course.destroy
-    redirect_to company_trainings_path( params[:company_id])
+    redirect_to manage_company_trainings_path( params[:company_id])
   end
 end

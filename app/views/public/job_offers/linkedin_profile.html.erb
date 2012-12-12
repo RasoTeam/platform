@@ -11,8 +11,7 @@
 <div class="row">
   <div class="twelve columns">
     <h2><%= t(:linkedin_profile) %></h2>
-    <hr/>
-    
+
     <div class="row">
       <div class="twelve columns">
 
@@ -81,7 +80,7 @@
           <% else %>
               <% @profile["positions"]["all"].each do |pos| %>
                   <tr>
-                    <td colspan="2", style="text-align:center"><b><%= t(:details) %></b></td>
+                    <td colspan="2" style="text-align:center"><b><%= t(:details) %></b></td>
                   </tr>
                   <tr>
                     <td><p class="radius label"><%= t(:title) %></p></td>
@@ -106,7 +105,7 @@
         <h2><%= t(:skills) %></h2>
 
         <div class="panel">
-        <% if @profile["skills"]["all"].nil? %>
+        <% if @profile["skills"].nil? %>
             <h3 style="text-align:center"> <%= t(:no_skills) %></h3>
         <% else %>
             <% @profile["skills"]["all"].each do |skill| %>
@@ -117,7 +116,7 @@
 
         <%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
             <%= hidden_field_tag :profile , :yes %>
-            <ul class="button-group radius", style="text-align: center;">
+            <ul class="button-group radius" style="text-align: center;">
               <li><%= submit_tag t(:accept), :class=>"button" %></li>
               <li><%= link_to t(:cancel) , new_apply_path(params[:company_id],params[:id]) , :class=>"button"%></li>
             </ul>
