@@ -26,19 +26,14 @@
         <hr/>
         <p><%= t(:options_import)%></p>
 			<%= form_tag(:controller => "importsingle", :action => "default_confirmation_step", :method => "post") do %>
-		
-		    <%= radio_button_tag 'import_mode' , 'default' %>
-		    <%= label_tag t(:default) %>
+			    <%= radio_button_tag 'import_mode' , 'default' %>
+			    <%= label_tag t(:default) %>
 
-		    <%= radio_button_tag 'import_mode' , 'custom' %>
-		    <%= label_tag t(:custom) %>
-
-	   		<div style="text-align: center"><%= submit_tag t(:continue) , :class=>"radius button" %></div>
-		<% end -%>	
-
-
-
-      </div>
+			    <%= radio_button_tag 'import_mode' , 'custom' %>
+			    <%= label_tag t(:custom) %>
+		   		<div style="text-align: center"><%= submit_tag t(:continue) , :class=>"radius button" %></div>
+			<% end -%>	
+		</div>
     </div>
   </div>
 </div>

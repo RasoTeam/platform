@@ -59,8 +59,6 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			flash.now[:alert]= t(:no_sheet_selected)
 			render :_snd_step
 		else
-			session[:error] = "none"
-
 			session[:excel_sheet] = params[:sheet]
 			render :_trd_step
 		end
@@ -75,7 +73,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 		@company = Company.find(params[:company_id])
 
 		if params[:import_mode].nil?
-			session[:error] = "No import mode was choosen"
+			flash.now[:alert]= t(:no_import_mode)
 			render :_trd_step
 		else
 			session[:error] = "none"
