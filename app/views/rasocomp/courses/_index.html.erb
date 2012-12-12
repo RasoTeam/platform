@@ -10,6 +10,6 @@
 		  | <%= link_to 'add user', '#' %>
 		  | <%= link_to 'remove', [@company, training, c], :method => :delete %>
 		  | <%= link_to 'cancel', '#' %>
-		  | <%= link_to 'edit', '#' %><br>
+		  | <%= link_to 'edit', edit_company_training_course_path( @company, training, c) %><br>
 		  <br/>
 		<% end %>
