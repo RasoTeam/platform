@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require_tree .
 $(function() {
   $("#contract_start_date").datepicker({ dateFormat: 'dd-mm-yy' });
 });
-//= require_tree .
+
 $(function() {
   $("#contract_end_date").datepicker({ dateFormat: 'dd-mm-yy' });
 });
