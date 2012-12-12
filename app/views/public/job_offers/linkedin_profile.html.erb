@@ -81,7 +81,7 @@
           <% else %>
               <% @profile["positions"]["all"].each do |pos| %>
                   <tr>
-                    <td colspan="2", style="text-align:center"><b><%= t(:details) %></b></td>
+                    <td colspan="2" style="text-align:center"><b><%= t(:details) %></b></td>
                   </tr>
                   <tr>
                     <td><p class="radius label"><%= t(:title) %></p></td>
@@ -117,7 +117,7 @@
 
         <%= form_tag linkedin_profile_path(params[:company_id],params[:id]) do%>
             <%= hidden_field_tag :profile , :yes %>
-            <ul class="button-group radius", style="text-align: center;">
+            <ul class="button-group radius" style="text-align: center;">
               <li><%= submit_tag t(:accept), :class=>"button" %></li>
               <li><%= link_to t(:cancel) , new_apply_path(params[:company_id],params[:id]) , :class=>"button"%></li>
             </ul>
