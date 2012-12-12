@@ -24,7 +24,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			directory = "public/_temp_excel_files"
 		
 
-			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) || !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
+			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
 				session[:error] = "File not valid"
 				render :_fst_step
 			else
