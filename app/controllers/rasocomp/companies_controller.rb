@@ -15,8 +15,9 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
     @company = Company.find( params[:id])
 
     old = @company.slug
+    new_slug = params[:company][:name].parameterize
 
-    if @company.update_attributes(params[ :company])   
+    if @company.update_attributes(params[:company].merge({slug: new_slug})) 
 
       if @company.slug != old
         user = current_user old

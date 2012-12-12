@@ -6,7 +6,8 @@
 		  End: <%= c.end_at %>;
 		  Cate: <%= c.category %>;
 		  State: <%= c.state %>;
-		  Invited: <%= c.users.count %>;
+		  Invited: <%= c.course_signups.count %>;
+		  Enrolled: <%= c.course_signups.find( :all, :conditions => ['status = ?', 1]).count %>;
 		  <%= link_to 'activate', activate_company_training_course_path( @company, training, c), :method => :put %>
 		  | <%= link_to 'add user', '#' %>
 		  | <%= link_to 'remove', [@company, training, c], :method => :delete %>

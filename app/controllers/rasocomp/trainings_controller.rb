@@ -7,10 +7,16 @@ class Rasocomp::TrainingsController < ApplicationController
     @training_course = []
     @trainings.each do |t|
       training_courses = t.courses
-      @training_course << [ t, 
-                            training_courses.select { |c| c.category == 1 || (c.users.collect { |u| u.id}.include? @current_user_id) } , 
-                            true
-                          ]
+      courses_pair = []
+      training_courses.each do |c|
+        if c.category == 1 || (c.course_signups.collect { |u| u.user.id}.include? @current_user_id)
+          courses_pair << [ c, c.course_signups.find( :all, :conditions => ['user_id = ? AND status = ?', @current_user_id, 1]).any?]
+        end
+      end
+      
+      @training_course << [ t,
+                            courses_pair ]
+      #training_courses.select { |c| c.category == 1 || (c.course_signups.collect { |u| u.user.id}.include? @current_user_id) } , 
     end
   end
   
