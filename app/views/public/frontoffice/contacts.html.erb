@@ -42,12 +42,12 @@
       <h5>Map</h5>
 
       <!-- Clicking this placeholder fires the mapModal Reveal modal -->
-      <p>
+      <!-- <p> -->
         <a href="" data-reveal-id="mapModal">
           <div id="map_canvas" style="width:100%;"></div>
         </a><br />
-        <a href="" data-reveal-id="mapModal">View Map</a>
-      </p>
+        <a href="https://maps.google.pt/maps?hl=pt-PT&amp;ll=41.561671,-8.397288&amp;spn=0.002348,0.004823&amp;sll=37.221852,-18.827504&amp;sspn=10.227526,19.753418&amp;t=h&amp;hnear=Braga&amp;z=18" target="_blank">View Map</a>
+      <!-- </p> -->
 
       <p>
         Universidade do Minho<br />
@@ -60,18 +60,6 @@
   </div>
 
   <!-- End Main Content and Sidebar -->
-
-  <!-- Map Modal -->
-
-  <div class="reveal-modal" id="mapModal">
-    <h4>Where We Are</h4>
-    <p><div id="map_canvas" style="width:100%; height:100%"></div></p>
-
-    <!-- Any anchor with this class will close the modal. This also inherits certain styles, which can be overriden. -->
-    <a href="#" class="close-reveal-modal">&times;</a>
-  </div>
-<!-- End Modal -->
-
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIVr26-Mo-NuG98I7uiAu9fhpaRwJzM10&amp;sensor=false">
 </script>
@@ -90,5 +78,5 @@
       title: "RasoHR"
     });
 
-    marker.setMap(map);  
+    marker.setMap(map); 
 </script>

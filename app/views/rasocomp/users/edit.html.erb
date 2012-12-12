@@ -61,9 +61,15 @@
               <span class=" radius label"><%= t(:name) %></span>
               <%= f.text_field :name, :class=>"input_space"  %>
           
+              <% if current_user(@company.slug).role == ROLE[:manager] %>
+                <span class=" radius label"><%= t(:time_off_days) %></span>
+                <%= f.text_field :time_off_days, :class=>"input_space"  %>
+              <% end %>
+
               <p style="text-align: center">
                 <%= f.submit 'Save!', :class => "button" %>
               </p>
+
             <% end %>
           </div>
         </div>
