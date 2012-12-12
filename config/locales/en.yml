@@ -56,6 +56,8 @@ en:
   invalid_verification: "Invalid Verification"
   job_offers: "Job Offers"
   linkedin_profile: "LinkedIn Profile"
+  xml_profile: "XML Profile"
+  pdf_profile: "PDF Profile"
   location: "Location"
   logout: "Logout"
   manage_time_offs: "Manage Time Offs"
