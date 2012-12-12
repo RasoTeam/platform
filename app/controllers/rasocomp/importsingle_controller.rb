@@ -3,7 +3,6 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 	#The model to be imported
 	def fst_step
 		@company = Company.find(params[:company_id])
-		session[:error] = "none"
 		session[:companyid] = params[:companyid]
 		session[:model] = params[:model]
 		session[:model_name] = params[:model].split('/')[(params[:model].split('/').count)-1]
@@ -18,18 +17,14 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 	def snd_step
 		@company = Company.find(params[:company_id])
 		if(!params[:excel_file].nil?)
-			session[:error] = "none"
-
 			filename = params[:excel_file].original_filename
 			directory = "public/_temp_excel_files"
 		
 
-			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) || !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
-				session[:error] = "File not valid"
+			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
+				flash.now[:alert]= t(:file_not_valid)
 				render :_fst_step
 			else
-				session[:error] = "none"
-
 				session[:excel_file] = (Time.now.to_i).to_s+""+filename
 
 				#create the path
@@ -46,7 +41,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			end
 
 		else
-			session[:error] = "Choose a file"
+			flash.now[:alert]= t(:please_choose_file)
 			render :_fst_step
 		end
 

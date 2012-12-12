@@ -21,25 +21,9 @@
 	        <%= form_tag({:controller => "importsingle", :action => "snd_step"}, :multipart => true) do %>
 				<%= file_field_tag 'excel_file' %>
 			    <br />
-			    <div style="text-align: center"><%= submit_tag 'Continue', :class=>"radius button"%></div>
+			    <div style="text-align: center"><%= submit_tag 'Continue', :class=>"radius button", :style=>"margin-top: 5px" %></div>
 			<% end %>
       </div>
     </div>
   </div>
 </div>
-	
-
-
-
-<!-- ERRORS -->
-<% if !session[:error].eql?("none") %>
-	<hr>
-		<h4>
-			<%= "ERROR: "+session[:error].to_s%>
-		<h4 />
-	<hr/>
-<% end %>
-
-<hr />
-
-<%= link_to 'Cancel', session[:model] %>
