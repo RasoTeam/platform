@@ -7,6 +7,8 @@ FactoryGirl.define do
 	end
 
 	factory :company do
-		# Criar empresa
+		sequence(:name) { |n| "Company_#{n}" }
+		sequence(:slug) { |n| "slug#{n}" }
+		state 0
 	end
 end

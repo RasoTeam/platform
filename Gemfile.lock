@@ -118,8 +118,6 @@ GEM
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
     oauth (0.4.7)
-    pg (0.14.1)
-    pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -172,6 +170,7 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    ruby-ole (1.2.11.6)
     rubyzip (0.9.9)
     sass (3.2.3)
     sass-rails (3.2.5)
@@ -187,6 +186,8 @@ GEM
       rubyzip
     slop (3.3.3)
     spork (0.9.2)
+    spreadsheet (0.7.5)
+      ruby-ole (>= 1.0)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -237,12 +238,12 @@ DEPENDENCIES
   linkedin
   mail (= 2.4.4)
   oauth
-  pg
   rails (= 3.2.8)
   rb-inotify
   rspec-rails
   sass-rails (~> 3.2.3)
   spork
+  spreadsheet
   sqlite3
   uglifier (>= 1.0.3)
   validates_timeliness (~> 3.0)

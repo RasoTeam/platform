@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "import_logics", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "job_offers", :force => true do |t|
     t.string   "job_name"
     t.text     "description"
