@@ -415,7 +415,7 @@ class Public::JobOffersController < Public::ApplicationController
     #Habilidades/Conhecimentos
     fileHTML += "<h1>Skills</h1>"
 
-    if profile["skills"]["all"].nil?
+    if profile["skills"].nil?
     else
       profile["skills"]["all"].each do |skill|
         fileHTML += "<table>"

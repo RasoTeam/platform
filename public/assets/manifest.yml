@@ -21,7 +21,7 @@ idea/part2/EMP2.png: idea/part2/EMP2-a9b04a5910e520702e03ac9246307adf.png
 idea/part2/EMP3.png: idea/part2/EMP3-4ed1bde1c93995e62e367cc537d8611e.png
 idea/part3/EMP1.png: idea/part3/EMP1-1dd327a32960a35ed0f1bbf5bc410fb3.png
 idea/part3/EMP2.png: idea/part3/EMP2-6910b44ec2da4fe663d4008cd883350f.png
-idea/part3/EMP3.png: idea/part3/EMP3-fbbf3e837a5ba6c1969a653c63017ed5.png
+idea/part3/EMP3.png: idea/part3/EMP3-3500dd66c48e6650ec67bd7619fa1311.png
 idea/part4/EMP1.png: idea/part4/EMP1-1b421ff59c92babf6e59c9d897940914.png
 idea/part4/EMP2.png: idea/part4/EMP2-706e08cc8ef27af0b528337322257e21.png
 lightview/blank.gif: lightview/blank-99eeeddc62cb4b433bc2c891909ca6f5.gif
@@ -37,7 +37,7 @@ loader.gif: loader-439a76dd6a2495d3ff4d56f8c64bbd86.gif
 logo.png: logo-a93807b32d218311cf0d6ebe49309d29.png
 promo/EMP1.jpg: promo/EMP1-6e4401bccb578cb8ff5e614aea42ad5a.jpg
 promo/EMP2.jpg: promo/EMP2-b1a78a0cc73da8c6bbae30d1e1a483b1.jpg
-promo/EMP3.jpg: promo/EMP3-1976ae40e7529534bc4c33e781d389b6.jpg
+promo/EMP3.jpg: promo/EMP3-7893ff1c6eeea8bb269042cc126209c8.jpg
 promo/EMP4.jpg: promo/EMP4-cc5dbb061079ff25102d51b349005b0d.jpg
 share.png: share-6c3ec42bd3706d146a597611539d7c93.png
 share_back.png: share_back-a012d0977f68233f28a18540f944f64f.png
@@ -195,7 +195,7 @@ team/team_vitor.jpg: team/team_vitor-a30fd9e9d16d41c146aa5bdb83e90394.jpg
 um.gif: um-ded6311b2ee5fa05f5d60caab30cb8c3.gif
 waste.png: waste-36b6230b49396cc8d6aea7a570f64a14.png
 application.js: application-641bd200472f03340e0b8ede16cb396e.js
-application.css: application-50751b40f8fb98823bbd8a61ed2e8e7e.css
+application.css: application-ce20b1c34d680877cb2b83e9e9b7e739.css
 public/application.css: public/application-7270767b2a9e9fff880aa5de378ca791.css
 foundation/orbit/bullets.jpg: foundation/orbit/bullets-0ef17726444fdafabfee9e0379b90b28.jpg
 foundation/orbit/left-arrow-small.png: foundation/orbit/left-arrow-small-2dca068ec6187e6ec094ad0becc35b68.png
