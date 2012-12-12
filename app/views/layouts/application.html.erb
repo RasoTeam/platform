@@ -31,10 +31,6 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body class="<%= controller.controller_name %>">
-		
-		<% if !(request.path.include? "feedbacks") %>
-		
-		
 			<div class="row" style="width:100%; padding-bottom: 35px;">
 			<div class="twelve columns" style="padding: 0; z-index: 10;">
 				<!-- Navigation -->
@@ -79,9 +75,6 @@
 			</div>
 			</div>
 		
-
-		<% end %>
-
 		<% flash.each do |key, value| %>
 		<%= content_tag(:div, value, class:"row alert-box #{key}") %>
 		<% end %>
@@ -89,8 +82,6 @@
 	  <%= yield %>
 
 	  <!-- Footer -->
-	<% if !(request.path.include? "feedbacks") %>
-
 	<footer class="row footer_raso">
 		<div class="twelve columns" style="padding: 0;">
 			<hr/>
@@ -111,8 +102,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<% end %>
 
 	<!-- End Footer -->
 	<!-- Included JS Files -->
