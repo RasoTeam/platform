@@ -42,9 +42,9 @@
 								<td style="text-align: center"><%= t.end_at %></td>
 								<td style="text-align: center"><%= t.days %></td>
 								<% if t.category == TIMETYPE[:holiday] %>
-								<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
+									<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
 								<% else ( 
-								if t.state == TIMETYPE[:sick] %>
+								if t.category == TIMETYPE[:sick] %>
 									<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
 								<%end)%>
 								<% end %>
