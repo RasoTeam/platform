@@ -12,10 +12,10 @@
 		<div class="six columns">
 			<h3>Employees</h3>
 		</div>
-		<div class="six columns right">
-			<ul class="button-group radius">
+		<div class="six columns ">
+			<ul class="button-group radius right">
 				<li><%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
-				<li><a class="radius button right add_user" id="update_credits">Edit user credits</a></li>
+				<li><a class="radius button add_user" id="update_credits">Edit user credits</a></li>
 				<li><%= link_to 'Import Users', fst_step_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 			</ul>
 		</div>
