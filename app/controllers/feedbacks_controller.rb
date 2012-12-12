@@ -43,16 +43,10 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(params[:feedback])
 
-    respond_to do |format|
-      if @feedback.save
+    if @feedback.save
         #Send the email with the notification
         UserMailer.feedback_mail_notifier(@feedback).deliver
-        format.html { redirect_to @feedback, notice: 'Feedback successfully saved. An e-mail was sent to your mailbox.' }
-        format.json { render json: @feedback, status: :created, location: @feedback }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
-      end
+        redirect_to @feedback, notice: 'Feedback successfully saved. An e-mail was sent to your mailbox.'
     end
   end
 

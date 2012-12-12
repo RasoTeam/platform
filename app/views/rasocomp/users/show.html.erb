@@ -31,6 +31,10 @@
               <td><span class="label radius"><%= t(:Role) %></span></td>
               <td><%= ROLE.invert[@user.role] %></td>
             </tr>
+            <tr>
+              <td><span class="label radius"><%= t(:time_off_days) %></span></td>
+              <td><%= @user.time_off_days %></td>
+            </tr>
           </tbody>
         </table>
         <div style:"text-alig">
@@ -60,32 +64,9 @@
 
   <div class="three columns">
 
-      <div class=" twelve columns row collapse">
-        <div class="eight mobile-four columns">
-          <input type="text" />
-        </div>
-        <div class="four mobile-one columns">
-          <a class="button expand postfix">Search</a>
-        </div>
-      </div>
-
       <div class="twelve columns" style="padding-bottom:20px">
         <a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
       </div>
-
-      <div class="twelve columns" style="padding-bottom:20px">
-        <div class="panel callout radius">
-            <h5>Formações</h5>
-            <p>Texto aqui</p>
-          </div>
-        </div>
-      <div class="twelve columns" style="padding-bottom:20px">
-        <div class="panel">
-            <h5>Calendário</h5>
-            <p>Texto aqui</p>
-          </div>
-        </div>
-
 </div>
 </div> 
 

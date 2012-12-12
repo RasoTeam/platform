@@ -85,16 +85,29 @@
                       <td style="text-align:center">
                            <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
                            <% @urlredirect = "#{company_job_offers_url(@company)}" %>
-                           <%= link_to 'Update Offer' , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
-                           <%= link_to 'Delete Offer' , [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
-                          <img src="../../assets/share.png" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                           <ul class="jobs_links">
+                            <li>
+                              <%= link_to t(:update) , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
+                            </li>
+                            <li>
+                              <%= link_to t(:delete), [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
+                            </li>
+                            <li>
+                              <img src="<%=asset_path "share.png"%>" class="facebook_button" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
                                 "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' />
-                            <a href="https://twitter.com/share" class="twitter-share-button"
+                              <!-- <a href="#" class="radius label facebook_button" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;'>Share</a> -->
+                            </li>
+                          <!-- <img src="../../assets/share.png" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' /> -->
+                                <li>
+                                <a href="https://twitter.com/share" class="twitter-share-button"
                                 data-via="RasoHR"
                                 data-text="Job Offer: <%= offer.job_name %>"
                                 data-url= "<%= @urlaux %>"
                                 data-lang="en"
                                 data-count="none">Tweet</a>
+                              </li>
                       </td>
                     </tr>
                 <% end %>

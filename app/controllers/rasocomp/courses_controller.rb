@@ -3,7 +3,7 @@ class Rasocomp::CoursesController < ApplicationController
   def index
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings.find( params[:training_id])
-    @courses = @trainings.courses
+    #@courses = @trainings.courses
   end
   
   def activate
@@ -14,7 +14,7 @@ class Rasocomp::CoursesController < ApplicationController
       course.update_attribute :state, 1
     end
     
-    redirect_to company_trainings_path( params[:company_id])
+    redirect_to manage_company_trainings_path( params[:company_id])
   end
   
   def new
@@ -35,7 +35,7 @@ class Rasocomp::CoursesController < ApplicationController
     @course = Course.find( params[:id])
     if @course.update_attributes(params[:course])
       flash[:success] = t(:successful_update)
-      redirect_to company_trainings_path @company
+      redirect_to manage_company_trainings_path @company
     else
       render 'edit'
     end
@@ -46,12 +46,60 @@ class Rasocomp::CoursesController < ApplicationController
     @training = @company.trainings.find( params[:training_id])
     @course = Course.find( params[:id])
     @users_to_add = params[:users]
-    @course.users.clear
-    @test = "hi"
-    @users_to_add.each do |u_id|
-      @course.users << User.find( u_id)
+    #@course.users.clear
+    #if !@users_to_add.nil?
+    #  @users_to_add.each do |u_id|
+    #    @course.users << User.find( u_id)
+    #  end
+    #end
+    @course.course_signups.delete_all
+    if !@users_to_add.nil?
+      @users_to_add.each do |u_id|
+        signup = @course.course_signups.build
+        signup.user_id = u_id
+        signup.status = 0
+        signup.save
+      end
     end
-    render 'edit'
+    redirect_to manage_company_trainings_path @company
+  end
+  
+  def enroll
+    company = Company.find( params[:company_id])
+    current_user_id = current_user( company.slug).id
+    #user = User.find( current_user_id)
+    course = Course.find( params[:id])
+    if course.category == 1
+      #public auto add user
+      signup = course.course_signups.build
+      signup.user_id = current_user_id
+      signup.status = 1
+      signup.save
+      #course.users << user
+    else
+      #private set status to 1
+      signup = course.course_signups.find_by_user_id( current_user_id)
+      signup.status = 1
+      signup.save
+    end
+    redirect_to company_trainings_path( company.slug)
+  end
+  
+  def unenroll
+    company = Company.find( params[:company_id])
+    current_user_id = current_user( company.slug).id
+    #user = User.find( current_user_id)
+    course = Course.find( params[:id])
+    if course.category == 1
+      #course.users.delete(user)
+      signup = course.course_signups.find_by_user_id( current_user_id)
+      signup.destroy
+    else
+      signup = course.course_signups.find_by_user_id( current_user_id)
+      signup.status = 0
+      signup.save
+    end
+    redirect_to company_trainings_path( company.slug)
   end
   
   def create
@@ -60,7 +108,7 @@ class Rasocomp::CoursesController < ApplicationController
     @course = @training.courses.build( params[:course])
     @course.state = 0
     if @course.save
-      redirect_to company_trainings_path( params[:company_id])
+      redirect_to manage_company_trainings_path( params[:company_id])
     else
       render 'new'
     end
@@ -69,6 +117,6 @@ class Rasocomp::CoursesController < ApplicationController
   def destroy
     course = Course.find( params[:id])
     course.destroy
-    redirect_to company_trainings_path( params[:company_id])
+    redirect_to manage_company_trainings_path( params[:company_id])
   end
 end

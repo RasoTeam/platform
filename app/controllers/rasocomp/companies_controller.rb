@@ -14,16 +14,19 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
   def update
     @company = Company.find( params[:id])
 
-    new_attributes = Company.new(params[:company])
-    if new_attributes.valid? && new_attributes.slug != @company.slug
-      user = current_user @company.slug
-      user_sign_out @company.slug
-      sign_in_user user, new_attributes.slug
-    end
+    old = @company.slug
+    new_slug = params[:company][:name].parameterize
 
-    if @company.update_attributes(params[ :company])      
+    if @company.update_attributes(params[:company].merge({slug: new_slug})) 
+
+      if @company.slug != old
+        user = current_user old
+        user_sign_out old
+        sign_in_user user, @company.slug
+      end
+
       flash[:success]= t(:successful_update)
-      redirect_to company_path @company.id
+      redirect_to company_path @company
     else
       render 'edit'
     end

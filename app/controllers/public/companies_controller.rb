@@ -8,7 +8,7 @@ class Public::CompaniesController < Public::ApplicationController
   def create
     @company = Company.new
     @company.name = params[:new_company][:name]
-    @company.slug = params[:new_company][:slug]
+    @company.slug = @company.name.parameterize
     @company.state = 0;
     @user = User.new
     if @company.save
@@ -30,4 +30,5 @@ class Public::CompaniesController < Public::ApplicationController
       render 'new'
     end
   end
+
 end

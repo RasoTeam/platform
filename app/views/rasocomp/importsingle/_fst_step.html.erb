@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li class="current">
+          <a href="#"><%= t(:import_user) %></a>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:first_step) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+        <h2><%= t(:import_user) %></h2>
+        <hr/>
+	        <%= form_tag({:controller => "importsingle", :action => "snd_step"}, :multipart => true) do %>
+				<%= file_field_tag 'excel_file' %>
+			    <br />
+			    <div style="text-align: center"><%= submit_tag 'Continue', :class=>"radius button", :style=>"margin-top: 5px" %></div>
+			<% end %>
+      </div>
+    </div>
+  </div>
+</div>

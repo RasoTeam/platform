@@ -1,13 +1,13 @@
 <h3>COURSES#INDEX | <%= courses.count %> </h3>
 		<% courses.each do |c| %>
-		  ID: <%= c.id %>;
-		  Lecturer: <%= c.lecturer %>;
-		  Start: <%= c.start_at %>;
-		  End: <%= c.end_at %>;
-		  Cate: <%= c.category %>;
-		  State: <%= c.state %>;
-		  Invited: <%= c.users.count %>;
-		  <%= link_to 'enroll', '#' %>
-		  | <%= link_to 'unenroll', '#' %>
+		  ID: <%= c[0].id %>;
+		  Lecturer: <%= c[0].lecturer %>;
+		  Start: <%= c[0].start_at %>;
+		  End: <%= c[0].end_at %>;
+		  Cate: <%= c[0].category %>;
+		  State: <%= c[0].state %>;
+		  Enrolled: <%= c[1] %>;
+		  <%= link_to 'enroll', enroll_company_training_course_path( company.id, training.id, c[0].id), :method => :put %>
+		  | <%= link_to 'unenroll', unenroll_company_training_course_path( company.id, training.id, c[0].id), :method => :put %>
 		  <br/>
 		<% end %>

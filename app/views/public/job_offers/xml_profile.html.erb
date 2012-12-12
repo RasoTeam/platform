@@ -1,28 +1,47 @@
-<h1>Candidate Profile</h1>
-<table>
-  <tr>
-    <td>Name</td>
-    <td><%= @candidate.name %></td>
-  </tr>
-  <tr>
-    <td>E-mail</td>
-    <td><%= @candidate.email %></td>
-  </tr>
-  <tr>
-    <td>Nationality</td>
-    <td><%= @candidate.nationality %></td>
-  </tr>
-  <tr>
-    <td>Location</td>
-    <td><%= @candidate.location %></td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td><%= @candidate.phone %></td>
-  </tr>
-</table>
+<div class="row">
+  <div class="twelve columns" style="margin-top: 50px">
+    <ul class="breadcrumbs">
+      <li><%= link_to @company.name , public_company_job_offers_path( @company) %></li>
+      <li><%= link_to @offer.job_name, new_apply_path(params[:company_id],params[:id]) %></li>
+      <li class="current"> <a><%= t(:xml_profile) %></a></li>
+    </ul>
+  </div>
+</div>
 
-<%= @file_text %>
+<div class="row">
+  <div class="twelve columns">
+    <h2>Profile</h2>
+    <div class="row">
+      <div class="twelve columns">
+        <table class="twelve tableJobs">
+          <tr>
+            <td><p class="radius label">Name</p></td>
+            <td><%= @candidate.name %></td>
+          </tr>
+          <tr>
+            <td><p class="radius label">E-mail</p></td>
+            <td><%= @candidate.email %></td>
+          </tr>
+          <tr>
+            <td><p class="radius label">Nationality</p></td>
+            <td><%= @candidate.nationality %></td>
+          </tr>
+          <tr>
+            <td><p class="radius label">Location</p></td>
+            <td><%= @candidate.location %></td>
+          </tr>
+          <tr>
+            <td><p class="radius label">Phone Number</p></td>
+            <td><%= @candidate.phone %></td>
+          </tr>
+        </table><br/>
 
-<%= link_to 'Confirm' , save_xml_profile_path, :class=>"radius button tiny" %>
-<%= link_to 'Cancel' , cancel_profile_path, :class=>"radius button tiny" %>
+        <%= @file_text %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Accept' , save_xml_profile_path, :class=>"button" %>
+<%= link_to 'Cancel' , cancel_profile_path, :class=>"button" %>

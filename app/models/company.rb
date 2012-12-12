@@ -33,7 +33,7 @@ class Company < ActiveRecord::Base
   validates :state, :presence => true
   VALID_slug_REGEX = /\A[a-z\d][a-z\d_-]*\z/i
   validates :slug, :presence => true, 
-            :length => { :maximum => 20, :minimum => 3 },
+            :length => { :maximum => 100, :minimum => 3 },
             :format => { :with => VALID_slug_REGEX }, :uniqueness => { :case_sensitive => false }
   validates :address, :length => { :maximum => 100 }
 
