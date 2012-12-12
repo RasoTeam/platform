@@ -124,4 +124,18 @@ resources :feedbacks
     end
   end
 
+
+  #Import Controller Routes
+  resources :importsingle do
+      collection do
+        get :fst_step
+        post :snd_step
+        post :trd_step
+        post :default_confirmation_step
+        post :final_import_step
+        post :import_another
+        post :finalize
+      end
+  end
+
 end

@@ -1,0 +1,26 @@
+<h2> Import an <%= "'"+session[:model_name]+"'" %> </h2>
+	
+	<h3>
+		(First Step)
+	</h3>
+
+<%= form_tag({:controller => "importsingle", :action => "snd_step"}, :multipart => true) do %>
+
+	<%= file_field_tag 'excel_file' %>
+
+    <br />
+    <div><%= submit_tag 'Continue' %></div>
+	<% end %>
+
+<!-- ERRORS -->
+<% if !session[:error].eql?("none") %>
+	<hr>
+		<h4>
+			<%= "ERROR: "+session[:error].to_s%>
+		<h4 />
+	<hr/>
+<% end %>
+
+<hr />
+
+<%= link_to 'Cancel', session[:model] %>

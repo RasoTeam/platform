@@ -16,6 +16,9 @@
 			<a class="radius button right add_user" id="update_credits">Edit user credits</a>
 			<%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %>
 		</div>
+		<div class="three columns">
+			<%= link_to 'Import Users', fst_step_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %>
+		</div>
 </div>
 
 <!--<div id="credits_dialog" title="Update Credits" style="display:none">-->

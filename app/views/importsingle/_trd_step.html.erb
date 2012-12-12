@@ -1,0 +1,35 @@
+<h2> Import an <%= "'"+session[:model_name]+"'" %> </h2>
+	
+	<h3>
+		(Third Step)
+	</h3>
+
+<%= form_tag(:controller => "importsingle", :action => "default_confirmation_step", :method => "post") do %>
+	
+	<br />
+	<h3> Options: </h3>
+
+		<br />
+	    <%= label_tag 'default' %>
+	    <%= radio_button_tag 'import_mode' , 'default' %>
+	    <br />
+	    <%= label_tag 'custom' %>
+	    <%= radio_button_tag 'import_mode' , 'custom' %>
+
+
+    <br />
+    <div><%= submit_tag 'Continue' %></div>
+<% end -%>
+
+<!-- ERRORS -->
+<% if !session[:error].eql?("none") %>
+	<hr>
+		<h4>
+			<%= "ERROR: "+session[:error].to_s%>
+		<h4 />
+	<hr/>
+<% end %>
+
+<hr />
+
+<%= link_to 'Cancel', session[:model] %>
