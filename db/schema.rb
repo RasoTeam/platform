@@ -76,14 +76,6 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "events", :force => true do |t|
-    t.string   "name"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "feedbacks", :force => true do |t|
     t.string   "email"
     t.string   "nome"
