@@ -21,13 +21,11 @@
 		</div>
 </div>
 
-<!--<div id="credits_dialog" title="Update Credits" style="display:none">-->
-<div id="credits_dialog" class="reveal-modal">
+<div id="credits_dialog" class="reveal-modal small">
     <%= form_tag update_credits_to_all_path(@company), :method => :put do %>
-		<br/>
 		<%= label_tag(:time_off_days, "Number of credits") %>
 		<%= number_field_tag(:time_off_days) %>
-          
+        
 		<p style="text-align: center">
 		<%= submit_tag('Confirm', :class => "button") %>
 		</p>
