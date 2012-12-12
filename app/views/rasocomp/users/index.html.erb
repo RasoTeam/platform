@@ -70,16 +70,19 @@
 							      			<%end)%>
 							      		<%end)%>
 							      	<% end %>
+							      	<td>
+												<% if u.state == STATE[:active] %>
+													<%= link_to t(:activate), "#"%> 
+													<!--<%= link_to t(:activate), user_activate_account_path(u.company,u), :method=>:put, :class=>"alert label radius" %> -->
+												<% elsif u.state == STATE[:inactive] %>
+													<%= link_to t(:deactivate), "#"%>
+													<!--<%= link_to t(:deactivate), user_deactivate_account_path(u.company,u), :method=>:put, :class=>"label radius" %>-->
+												<% elsif u.state == STATE[:unchecked] %>
+													<%= link_to t(:resend_email), "#"%>
+													<!--<%= link_to t(:resend_email), user_resend_verification_email_path(u.company,u), :method=>:put, :class=>"label radius" %>-->
+												<% end %>
 
-							      	<td style="text-align: center;">
-										<% if u.state == STATE[:active] %>
-											<%= link_to t(:activate), block_company_path(u), :method=>:put, :class=>"alert label radius"%>
-										<% elsif u.state == STATE[:inactive] %>
-											<%= link_to t(:deactivate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
-										<% elsif u.state == STATE[:unchecked] %>
-											<%= link_to t(:resend_email), activate_company_path(u), :method=>:put, :class=>"label radius" %>
-										<% end %>
-									</td>
+											</td>
 
 
 							      	<!-- <td>
