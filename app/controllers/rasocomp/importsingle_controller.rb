@@ -1,6 +1,5 @@
 class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
-
 	#The model to be imported
 	def fst_step
 
