@@ -1,2 +1,2 @@
-module ImportsingleHelper
+module Rasocomp::ImportsingleHelper
 end
