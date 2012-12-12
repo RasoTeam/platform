@@ -73,10 +73,13 @@
 
 							      	<td>
 												<% if u.state == STATE[:active] %>
-													<%= link_to t(:block), block_company_path(u), :method=>:put, :class=>"alert label radius" %>
-												<% else u.state == COMPANY_STATE[:inactive] %>
-													<%= link_to t(:activate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
+													<%= link_to t(:activate), block_company_path(u), :method=>:put, :class=>"alert label radius" %>
+												<% elseif u.state == STATE[:inactive] %>
+													<%= link_to t(:deactivate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
+												<% elseif u.state == STATE[:unchecked] %>
+													<%= link_to t(:resend_email), activate_company_path(u), :method=>:put, :class=>"label radius" %>
 												<% end %>
+
 											</td>
 
 
