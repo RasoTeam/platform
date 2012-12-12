@@ -1,4 +1,10 @@
 class Public::FrontofficeController < Public::ApplicationController
+
+def index
+    @feedback = Feedback.new
+    @feedback.url = params[:url]
+end
+
 def new
 	@company = Company.new
 end

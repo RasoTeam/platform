@@ -16,7 +16,7 @@
 			<ul class="button-group radius right">
 				<li><%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
 				<li><a class="radius button add_user" id="update_credits">Edit user credits</a></li>
-				<li><%= link_to 'Import Users', fst_step_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
+				<li><%= link_to 'Import Users', fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 			</ul>
 		</div>
 </div>
@@ -24,7 +24,7 @@
 <div id="credits_dialog" class="reveal-modal small">
     <%= form_tag update_credits_to_all_path(@company), :method => :put do %>
 		<%= label_tag(:time_off_days, "Number of credits") %>
-		<%= number_field_tag(:time_off_days,nil,:required => :true) %>
+		<%= number_field_tag(:time_off_days,nil, required:true) %>
         
 		<p style="text-align: center">
 		<%= submit_tag('Confirm', :class => "button") %>
@@ -70,14 +70,16 @@
 							      			<%end)%>
 							      		<%end)%>
 							      	<% end %>
-
 							      	<td>
 												<% if u.state == STATE[:active] %>
-													<%= link_to t(:activate), block_company_path(u), :method=>:put, :class=>"alert label radius" %>
-												<% elseif u.state == STATE[:inactive] %>
-													<%= link_to t(:deactivate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
-												<% elseif u.state == STATE[:unchecked] %>
-													<%= link_to t(:resend_email), activate_company_path(u), :method=>:put, :class=>"label radius" %>
+													<%= link_to t(:activate), "#"%> 
+													<!--<%= link_to t(:activate), user_activate_account_path(u.company,u), :method=>:put, :class=>"alert label radius" %> -->
+												<% elsif u.state == STATE[:inactive] %>
+													<%= link_to t(:deactivate), "#"%>
+													<!--<%= link_to t(:deactivate), user_deactivate_account_path(u.company,u), :method=>:put, :class=>"label radius" %>-->
+												<% elsif u.state == STATE[:unchecked] %>
+													<%= link_to t(:resend_email), "#"%>
+													<!--<%= link_to t(:resend_email), user_resend_verification_email_path(u.company,u), :method=>:put, :class=>"label radius" %>-->
 												<% end %>
 
 											</td>
