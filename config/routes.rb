@@ -13,7 +13,10 @@ resources :feedbacks
 #rasocomp
   put  '/companies/:company_id/users/update_credits_to_all' ,
           :to => 'rasocomp/users#update_credits_to_all' , :as => 'update_credits_to_all'
-          
+  put '/companies/:company_id/users/:id/resend_verification_email', :to => 'rasocomp/users#resend_verification_email', as: 'user_resend_verification_email'
+  put '/companies/:company_id/users/:id/activate_account', :to => 'rasocomp/users#activate_account', as: 'user_activate_account'
+  put '/companies/:company_id/users/:id/deactivate_account', :to => 'rasocomp/users#deactivate_account', as: 'user_deactivate_account'
+
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
   get '/companies/:company_id/users/:user_id/time_offs/:id/approve', :to => 'rasocomp/time_offs#approve'
 
