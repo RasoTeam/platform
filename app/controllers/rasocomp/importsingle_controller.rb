@@ -1,4 +1,4 @@
-class ImportsingleController < ApplicationController
+class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 
 	#The model to be imported
@@ -25,7 +25,7 @@ class ImportsingleController < ApplicationController
 			directory = "public/_temp_excel_files"
 		
 
-			if filename.nil? || !(filename.split('.')[(filename.split('.').count)-1].eql?("xls"))
+			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) || !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
 				session[:error] = "File not valid"
 				render :_fst_step
 			else
