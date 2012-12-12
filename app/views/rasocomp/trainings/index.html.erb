@@ -3,7 +3,6 @@
 		  Training id: <%= t.id %>;
 		  Name: <%= t.name %>;
 		  Desc: <%= t.desc %>;
-		  <%= link_to 'start a course', new_company_training_course_path( @company, t) %><br>
 		  <%= render :partial => "/rasocomp/courses/index", :locals => {:courses => t.courses, :training => t} %> 
 		  <br/>
 		<% end %>
