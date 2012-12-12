@@ -9,7 +9,14 @@ class Rasocomp::CandidatesController < Rasocomp::ApplicationController
 
   def apply
     @offer = JobOffer.find(params[:id])
-    @candidato = Candidate.new
+    @candidate = Candidate.new
+  end
+
+  def show
+    @company = Company.find(params[:company_id])
+    @offer = JobOffer.find(params[:job_offer_id])
+    @candidate = Candidate.find(params[:id])
+    @file_text = File.read(@candidate.file_path)
   end
 
 end
