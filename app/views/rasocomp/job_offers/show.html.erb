@@ -7,9 +7,21 @@
     </ul>
   </div>
 </div>
+
+<div class="row">
+    <div class="seven columns">
+      <h3><%= @company.name %> - <%= @offer.job_name %></h3>
+    </div>
+    <div class="five columns">
+      <ul class="button-group radius right">
+        <li><%= link_to "Post on Facebook", '#', :class=>"radius button add_user" %></li>
+        <li><%= link_to "Update Job Offer", edit_company_job_offer_path(@company,@offer), :class=>"radius button add_user" %></li>
+      </ul>
+    </div>
+</div>
+
 <div class="row">
   <div class="twelve columns">
-    <h3><%= @company.name %> - <%= @offer.job_name %></h3>
       <div class="panel">
         <table class="twelve tableJobs">
         <tbody>
@@ -46,7 +58,7 @@
     <div class="panel">
       <div class="row">
         <div class="twelve columns">
-          <table class="twelve tableJobs">
+          <table class="twelve">
             <thead>
               <tr>
                 <th>Nome</th>
@@ -58,7 +70,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
                 <% @candidates.each do |candidate| %>
                 <tr>
                   <td><%= candidate.name %></td>
@@ -69,7 +80,6 @@
                   <td>Awaiting Interview</td>
                 </tr>
               <% end %>
-                </tr>
             </tbody>
           </table>
         </div>
@@ -94,7 +104,7 @@
                 <input type="text" />
               </div>
               <div class="four mobile-one columns">
-                <a class="button expand postfix">Search</a>
+                <a class="button expand postfix" >Search</a>
               </div>
           </div>
         </div>
@@ -104,8 +114,6 @@
   </div>
   <!-- END BOTTOM -->
 </div>
-
-    <%= link_to 'Post Offer on Facebook' , '#' %>  ||
     <p style="text-align: center"><%= link_to 'Back to Job Offers' , company_job_offers_path, :class=>"button" %></p>
   </div>
 </div>

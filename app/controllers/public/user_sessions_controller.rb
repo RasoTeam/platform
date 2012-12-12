@@ -8,14 +8,18 @@ class Public::UserSessionsController < Public::ApplicationController
   end
 
   def create
-    company = Company.find(params[:company_id])
-    user = company.users.find_by_email(params[:user_session][:email].downcase)
+    @company = Company.find(params[:company_id])
+    @user = @company.users.find_by_email(params[:user_session][:email].downcase)
     #use some base64 for company ?
-    if user && user.state != -1 && user.authenticate(params[:user_session][:password])
-      sign_in_user(user, company.slug)
-      redirect_to user_dashboard_path company, user
+    if @user && @user.state != -1 && @user.authenticate(params[:user_session][:password])
+      sign_in_user(@user, @company.slug)
+      if @user.role == ROOT
+        redirect_to company_path @company
+      else
+        redirect_to user_dashboard_path @company, @user
+      end
     else
-      flash.now[:error] = t(:invalid_login)
+      flash.now[:alert] = t(:invalid_login)
       render 'new'
     end
   end
@@ -23,7 +27,7 @@ class Public::UserSessionsController < Public::ApplicationController
   def destroy
     company = Company.find(params[:company_id])
     user_sign_out company.slug
-    redirect_to root_path
+    redirect_to company_signin_path company
   end
 
 

@@ -1,5 +1,6 @@
 class CalendarController < ApplicationController
-  
+layout "rasoemp"
+
   def index
     @company = Company.find( params[:company_id])
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
@@ -7,7 +8,9 @@ class CalendarController < ApplicationController
 
     @shown_month = Date.civil(@year, @month)
     #:conditions => 'some_relations.some_column = true'
-    @event_strips = TimeOff.event_strips_for_month(@shown_month, :conditions => "company_id = #{@company.id}")
+    timeoffs = TimeOff.event_strips_for_month(@shown_month, :conditions => "company_id = #{@company.id}")
+    courses = Course.event_strips_for_month(@shown_month, :conditions => "company_id = #{@company.id}")
+    @event_strips = timeoffs | courses
   end
   
 end

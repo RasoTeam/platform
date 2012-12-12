@@ -1,6 +1,9 @@
 <!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
 <%= stylesheet_link_tag "event_calendar" %>
+<div class="row">
+  <div class="twelve columns">
+		<h1><%= t(:calendar)%></h1>
 
-<h1>Calendar</h1>
-
-<%= raw(event_calendar) %>
+		<%= raw(event_calendar) %>
+	</div>
+</div>

@@ -67,9 +67,7 @@
 	<div class="three columns">
 		<div class="panel callout radius">
 		    <h5>Add User</h5>
-			<% if (current_user( @company.slug).role == ROOT || current_user( @company.slug).role == ROLE[:manager])  %>
 				<%= link_to "Add User", new_backoffice_company_user_path( @company, params[:id]), :class=>"button" %>
-        	<% end %>
 		</div>
 	</div>
 </div>

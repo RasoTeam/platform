@@ -14,10 +14,21 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-
 $(function() {
   $("#time_off_start_at").datepicker({ dateFormat: 'dd-mm-yy' });
 });
+
 $(function() {
   $("#time_off_end_at").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+$(function() {
+  $("#contract_start_date").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+$(function() {
+  $("#contract_end_date").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+$(function() {
+	$("#update_credits").click(function() {
+		$( "#dialog" ).dialog();
+	});
 });

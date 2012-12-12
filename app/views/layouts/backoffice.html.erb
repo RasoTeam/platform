@@ -47,6 +47,10 @@
         <li class="divider"></li>
         <li><%= link_to "Invoices" , backoffice_bills_path %></li>
         <li class="divider"></li>
+        <li>
+          <%= link_to "Super Users", backoffice_super_users_path %>
+        </li>
+        <li class="divider"></li>
       </ul>
 
       <!-- Right Nav Section -->
@@ -61,7 +65,10 @@
   <!-- End Header and Nav -->
   
   <!-- End Header and Nav -->
-  
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class:"row alert-box #{key}") %>
+  <% end %>
+
   <%= yield %>
 
  <!-- Footer -->

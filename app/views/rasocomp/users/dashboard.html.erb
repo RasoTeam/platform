@@ -1,18 +1,9 @@
 <div class="row">
 	<div class="three columns push-nine">
-
-			<div class=" twelve columns row collapse">
-			  <div class="eight mobile-four columns">
-			    <input type="text" />
-			  </div>
-			  <div class="four mobile-one columns">
-			    <a class="button expand postfix">Search</a>
-			  </div>
-			</div>
-
 			<div class="twelve columns" style="padding-bottom:20px">
 				<a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
 			</div>
+<!--
 
 			<div class="twelve columns" style="padding-bottom:20px">
 				<div class="panel callout radius">
@@ -25,8 +16,8 @@
 			      <h5>Calendário</h5>
 			      <p>Texto aqui</p>
 			    </div>
-		    </div>
-	</div> 
+		    </div> -->
+	</div>
 	<!-- Cena Grande -->
 	<div class="nine columns pull-three">
 			<dl class="tabs">
@@ -36,7 +27,7 @@
 			</dl>
 			<ul class="tabs-content">
 			  <li class="active" id="dashboardTab">
-
+<!--
 			  	<h4> Alertas </h4>
 
 					<div class="alert-box">
@@ -53,34 +44,71 @@
 					  This is an alert (div.alert-box.alert)
 					</div>
 
+			  	<hr/>-->
 
-			  	<hr/>
 			  	<h4> Time Offs </h4>
 				<div class="button-bar">
 					<ul class="button-group">
-						<li><%= link_to "Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
+						<li><%= link_to "Check & Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
 					</ul>
 				</div>
 			  </li>
 			  <li id="profileTab">
 
 			  	<h3> User Profile </h3>
-			  	<hr/>
-			  	<p><span class=" radius label">User Name</span><span> <%= @user.name %></span></p>
-			  	<p><span class="radius label">User Email</span><span> <%= @user.email %></span></p>
-			  	<div style:"text-alig">
-
+			  	<div>
+			  		<table class="twelve tableJobs">
+			          <tbody>
+			            <tr>
+			              <td><span class="label radius"><%= t(:name) %></span></td>
+			              <td><%= @user.name %></td>
+			            </tr>
+			            <tr>
+			              <td><span class="label radius"><%= t(:Email) %></span></td>
+			              <td><%= @user.email %></td>
+			            </tr>
+			            <tr>
+			              <td><span class="label radius"><%= t(:Role) %></span></td>
+			              <td><%= ROLE.invert[@user.role] %></td>
+			            </tr>
+			          </tbody>
+			        </table>
+			  	</div>
+			  	<div style="text-align: center">
 				<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
 			  	</div>
 
 			  </li>
 			  <li id="contractTab">
 
-				<h3> Contract </h3>
-			  	<hr/>
-			  	<p><span class=" radius label">Job Title</span><span> Job Title</span></p>
-			  	<p><span class=" radius label">Begin Date</span><span> Date</span></p>
-			  	<p><span class=" radius label">End Date</span><span> Date</span></p>
+			  	<% if !@contract.nil? %>
+					<h3 class="hide-for-small"><%= @contract.job_title %>
+              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
+              				<span class="secondary label radius"><%= link_to "Edit", edit_company_user_contract_path(@company,@user,@contract) %></span>
+              			<% end %>
+              		</h3>
+				  	<hr/>
+				  	<p><span class=" radius label">Begin Date</span><span> <%= @contract.start_date %> </span></p>
+				  	<p><span class=" radius label">End Date</span><span> <%= @contract.end_date %> </span></p>
+				  	<p><span class=" radius label">Value</span><span> <%= @contract.value %> </span></p>
+
+				  	<br/>
+
+				  	<% if @contracts.any? %>
+				  		<h5> Previous Contracts </h5>
+				  		<%= render :partial => "rasocomp/contracts/list" %>
+				  	<% else %>
+				  		<h5> No previous contracts found</h5>
+				  	<% end %>
+				<% else %>
+					<h5> No contracts found</h5>
+				<% end %>
+
+				<% if current_user(@company.slug).role <= ROLE[:manager] %>
+					<div class="three columns">
+						<%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
+					</div>
+				<% end %>
 			  </li>
 			</ul>
 		</div>

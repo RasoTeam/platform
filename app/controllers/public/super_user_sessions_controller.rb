@@ -1,4 +1,6 @@
 class Public::SuperUserSessionsController < Public::ApplicationController
+  layout "nolayout"
+  
   def new
     if super_user_signed_in?
       redirect_to backoffice_super_user_path(current_super_user)
@@ -11,13 +13,13 @@ class Public::SuperUserSessionsController < Public::ApplicationController
       sign_in_super_user super_user
       redirect_to backoffice_stats_path
     else
-      flash.now[:error] = t(:invalid_login)
+      flash.now[:alert] = t(:invalid_login)
       render 'new'
     end
   end
 
   def destroy
     super_user_sign_out
-    redirect_to root_path
+    redirect_to super_user_signin_path
   end
 end

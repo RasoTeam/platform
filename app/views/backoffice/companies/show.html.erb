@@ -18,7 +18,7 @@
 				<!-- Header Content -->
 				<div class="row">
 					<div class="four columns" style="padding-bottom:20px">
-						<a href="#" class="th"><img src="http://placehold.it/250x250" alt="Foto da empresa"></a>
+						<img src="<%=@company.logo_url %>" alt="Foto da empresa" class="company_image" style="width:100%;">
 					</div>
 		          	
 		          	<div class="eight columns">
@@ -42,7 +42,7 @@
 				<div class="row">
 					<div class="twelve columns">
 					    <% if @bills.any? && manager_signed_in?(@company.tag) %>
-					    	<% render :partial => "bills/list" %>
+					    	<%= render :partial => "rasocomp/bills/list" %>
 					    <% end %>
 						<!-- End Table Content -->
 					</div>
@@ -55,12 +55,14 @@
 	<!-- Left Column -->
 	<div class="three columns pull-nine">
 		<div class="row collapse">
-  			<div class="eight mobile-three columns">
-    			<input type="text" />
+			<%= form_tag backoffice_company_path(@company), :method => 'get' do %>
+  			<div class="seven mobile-three columns">
+    				<%= text_field_tag :search, params[:search] %>
   			</div>
-  			<div class="four mobile-one columns">
-    			<a class="button expand postfix">Search</a>
+  			<div class="five mobile-one columns">
+   				 	<%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
   			</div>
+			<% end %>
 		</div>
 			<table class="twelve">
 				<thead>
@@ -86,19 +88,8 @@
 			</table>
 			<%= will_paginate @companies %>
 
-		<!--	<%= render :partial => 'name_list' if super_user_signed_in? %> -->
-
 		  </tbody>
 		</table>
-		<ul class="pagination">
-		  <li class="arrow unavailable"><a href="">&laquo;</a></li>
-		  <li class="current"><a href="">1</a></li>
-		  <li><a href="">2</a></li>
-		  <li class="unavailable"><a href="">&hellip;</a></li>
-		  <li><a href="">12</a></li>
-		  <li><a href="">13</a></li>
-		  <li class="arrow"><a href="">&raquo;</a></li>
-		</ul>
     </div>
     <!-- End Left Column -->
 </div>

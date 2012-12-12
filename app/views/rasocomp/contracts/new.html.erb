@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li class="current">
+          <a><%= @user.name %></a>
+        </li>
+        <li class="current">
+          <a><%= t(:new_contract) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <div id="signup">
+            <div class="panel">
+                <h1>New Contract</h1>
+                <hr/>
+                <%= form_for [@company, @user, @contract] do |f| %>
+                  <% @contract.errors.full_messages.each do |msg| %>
+                    <p><%= msg %></p>
+                  <% end %>
+                  
+                  <%= f.label :job_title, :class=>"radius label" %>
+                  <%= f.text_field :job_title, :class=>"input_space" %>
+                  <%= f.label :start_date, :class=>"radius label" %>
+                  <%= f.text_field :start_date, :class=>"input_space" %>
+                  <%= f.label :end_date, :class=>"radius label" %>
+                  <%= f.text_field :end_date, :class=>"input_space" %>
+                  <%= f.label :value, :class=>"radius label" %>
+                  <%= f.number_field :value, :class=>"input_space" %>
+                  <br/>
+                  <p style="text-align: center"><%= f.submit t(:create_contract), :class => "button"%></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

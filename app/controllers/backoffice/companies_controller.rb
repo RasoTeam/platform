@@ -1,10 +1,10 @@
 class Backoffice::CompaniesController < Backoffice::ApplicationController
 	def index
-    @companies = Company.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 4)
   end
 
   def show
-    @companies = Company.search(nil, params[:order]).paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 10)
     @company = Company.find(params[:id])
     @bills = @company.bills
   end
@@ -25,10 +25,9 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
   end
 
   def block
-    #state 0-> Active 1->Block 2->Deleted
     @company = Company.find( params[:id])
-    @company.state=1
-    if @company.update
+    @company.state=COMPANY_STATE[:blocked]
+    if @company.save
       flash[:success]= t(:blocked_successful)
     else
       flash[:alert]= t(:error)
@@ -38,12 +37,11 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
   end
 
 
-  def destroy
-    #state 0-> Active 1->Block 2->Deleted
+  def activate
     @company = Company.find( params[:id])
-    @company.state=2
-    if @company.update
-      flash[:success]= t(:deleted_successful)
+    @company.state=COMPANY_STATE[:active]
+    if @company.save
+      flash[:success]= t(:activated_successfully)
     else
       flash[:alert]= t(:error)
     end

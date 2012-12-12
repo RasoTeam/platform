@@ -12,3 +12,20 @@
 {
 	border-right: 1px solid #DDD;
 }
+
+.company_image
+{
+	max-width: 300px;
+}
+
+.select
+{
+	margin-top: 7px; 
+	margin-bottom: 7px; 
+	padding: 6px;
+
+	option
+	{
+		line-height: 2em;
+	}
+}

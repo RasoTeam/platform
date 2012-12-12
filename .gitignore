@@ -14,5 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/public/assets/*
 .DS_STORE
 .idea
+
+db/schema.rb
+
+app/assets/candidaturas/

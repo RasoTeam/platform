@@ -680,7 +680,7 @@
 .lv_controls_top_close_skin_mac .lv_controls_top_close_button,
 .lv_thumbnails_skin_mac .lv_thumbnail_icon {
   background-image: url('/assets/lightview/mac/sprite.png') !important;
-  background-image: url('/assets/lightview/mac/sprite_ie_lt_7.png'); IE < 7
+  background-image: url('/assets/lightview/mac/sprite_ie_lt_7.png'); /*IE < 7*/
 }
 
 /* close button */

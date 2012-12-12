@@ -3,9 +3,12 @@
     <div class="row">
       <div class="twelve columns">
         <ul class="breadcrumbs">
-          <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
           <li class="current">
-            <a href="#"><%= @user.name %> | <%= t(:profile) %> </a>
+            <a><%= @user.name %></a>
+          </li>
+          <li class="current">
+            <a><%= t(:profile) %></a>
           </li>
         </ul>
       </div>
@@ -31,10 +34,26 @@
           </tbody>
         </table>
         <div style:"text-alig">
-          <%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
+          <p style="text-align: center"><%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"radius button" %></p>
         </div>
       </div>
-  </div>
+      
+      
+      <div class="panel">
+        <h4>Contracts</h4>
+        <hr/>
+        <% if !@contracts.any? %>
+          <h3 style="text-align:center">There are no contracts</h3>
+        <%else%>
+        <%= render :partial => "rasocomp/contracts/list" %>
+        <% end %>
+
+        <% if current_user(@company.slug).role == ROLE[:manager] %>
+          <p style="text-align: center"><%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button" %></p>
+        <% end %>
+
+    </div>
+</div>
 
 
 

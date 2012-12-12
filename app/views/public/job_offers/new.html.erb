@@ -1,3 +1,12 @@
+<div class="row" style="margin-top: 50px">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to @company.name , public_company_job_offers_path( @company) %></li>
+      <li class="current"><%= link_to @offer.job_name, '' %></li>
+    </ul>
+  </div>
+</div>
+
 <div class="row">
   <div class="twelve columns">
     <h3>Appliance to <%= @company.name %></h3>
@@ -79,47 +88,38 @@
                       <%= f.text_field :nationality, :class=>"eight" %>
                     </div>
                   </div>
-                <div class="row">
-                  <div class="two mobile-one columns">
-                    <%=f.label :location, :class=>"right inline" %>
-                  </div>
-                  <div class="ten mobile-three columns">
-                    <%= f.text_field :location, :class=>"eight" %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="two mobile-one columns">
-                    <%=f.label :phone, :class=>"right inline" %>
-                  </div>
-                  <div class="ten mobile-three columns">
-                   <%= f.text_field :phone, :class=>"eight" %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="two mobile-one columns">
-                    <label class="right inline">CV.:</label>
-                  </div>
-                  <div class="ten mobile-three columns">
-                    <div class="row collapse">
-                        <div class="six mobile-three columns">
-                          <input type="text" />
-                        </div>
-                        <div class="two mobile-one columns">
-                          <a class="button expand postfix">Browse</a>
-                        </div>
-                        <div class="four columns">
-                        </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :location, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.text_field :location, :class=>"eight" %>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="two mobile-one columns">
-                    
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <%=f.label :phone, :class=>"right inline" %>
+                    </div>
+                    <div class="ten mobile-three columns">
+                     <%= f.text_field :phone, :class=>"eight" %>
+                    </div>
                   </div>
-                  <div class="ten mobile-three columns">
-                    <%= f.submit 'Apply for the Job!' , :class=>"radius button" %>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+                      <label class="right inline">CV:</label>
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.file_field "file", :name=>"file" %>
+                    </div>
                   </div>
-                </div>
+                  <div class="row">
+                    <div class="two mobile-one columns">
+
+                    </div>
+                    <div class="ten mobile-three columns">
+                      <%= f.submit 'Apply via CV!' , :class=>"radius button" %>
+                    </div>
+                  </div>
                 <% end %>
             </li>
             <li id="simple2Tab">
@@ -186,7 +186,7 @@
               <% end %>
             </li>
             <li id="simple3Tab">
-              <%= form_for @candidate , :url => create_apply_xml_path, :html => {:multipart => true} do |f| %>
+              <%= form_for @candidate , :url => create_apply_path, :html => {:multipart => true} do |f| %>
                   <% if @candidate.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@candidate.errors.count, "erro") %> estão a impedir o envio da candidatura:</h2>

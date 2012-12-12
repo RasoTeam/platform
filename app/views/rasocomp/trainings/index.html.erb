@@ -1,0 +1,8 @@
+<h1>TRAININGS#INDEX</h1>
+		<% @trainings.each do |t| %>
+		  Training id: <%= t.id %>;
+		  Name: <%= t.name %>;
+		  Desc: <%= t.desc %>;
+		  <%= render :partial => "/rasocomp/courses/index", :locals => {:courses => t.courses, :training => t} %> 
+		  <br/>
+		<% end %>

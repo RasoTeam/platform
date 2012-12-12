@@ -14,11 +14,13 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :password, :password_confirmation
+  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation
   has_secure_password
   belongs_to :company
   has_many :time_offs
-
+  has_many :contracts
+  has_and_belongs_to_many :courses
+  has_many :periods
   before_create :create_remember_token
 
   validates :name, :presence => true, :length => { :maximum => 20}
@@ -26,12 +28,11 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
                     :format => { :with => VALID_EMAIL_REGEX },
-                    :uniqueness => { :case_sensitive => false }
+                    :uniqueness => { :case_sensitive => false, :scope => [:company_id] }
 
   validates :password,  :length => { :minimum => 6 },
-                        :if => :verified?
-  validates :password_confirmation, :presence => true,
-                                    :if => :verified?
+                        :if => :verified?, :on => :create, :on => :update_password
+
   validates :role, :numericality => { :only_integer => true, 
                                       :greater_than_or_equal_to => 0,
                                       :less_than_or_equal_to => 10 }
@@ -42,6 +43,14 @@ class User < ActiveRecord::Base
   
   def verified?
     self.state != -1
+  end
+
+  def self.search(search)
+    if search
+      where('name LIKE ? OR email LIKE ?', '%'+search+'%', '%'+search+'%').where("role > 0").order("name ")
+    else
+      where("role > 0").order("name ")
+    end
   end
 
   private

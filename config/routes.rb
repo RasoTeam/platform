@@ -1,4 +1,6 @@
 Platform::Application.routes.draw do
+put  '/companies/:company_id/users/update_credits_to_all' ,
+          :to => 'rasocomp/users#update_credits_to_all' , :as => 'update_credits_to_all'
 
 resources :feedbacks
 
@@ -7,10 +9,15 @@ resources :feedbacks
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
   match '/backoffice/bills', to: 'backoffice/bills#show_all'
+  put 'backoffice/companies/:id/block', :to => 'backoffice/companies#block', :as => 'block_company'
+  put 'backoffice/companies/:id/activate', :to => 'backoffice/companies#activate', :as => 'activate_company'
 
 #rasocomp
   get '/companies/:company_id/users/:user_id/time_offs/manage', :to => 'rasocomp/time_offs#manage'
   get '/companies/:company_id/users/:user_id/time_offs/:id/approve', :to => 'rasocomp/time_offs#approve'
+
+  get '/companies/:company_id/users/:id/edit_password', :to => 'rasocomp/users#edit_password', :as => 'edit_password_company_user'
+  post '/companies/:company_id/users/:id/update_password', :to => 'rasocomp/users#update_password', :as => 'update_password_company_user'
 
   match '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard', as: 'user_dashboard'
 
@@ -27,17 +34,32 @@ resources :feedbacks
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'
-  post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
+  #post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
 
   #linkedin links
   match '/public/companies/:company_id/job_offers/:id/oauth_account' ,
         :to =>'public/job_offers#oauth_account' , :as => 'linkedin_oauth'
-  match '/public/companies/:company_id/job_offers/:id/linkedin_profile' ,
+  get '/public/companies/:company_id/job_offers/:id/linkedin_profile' ,
         :to => 'public/job_offers#linkedin_profile' , :as => 'linkedin_profile'
-  get  '/public/companies/:company_id/job_offers/:id/profile_saved' ,
-        :to => 'public/job_offers#save_linkedin_profile' , :as => 'save_linkedin_profile'
+  #get  '/public/companies/:company_id/job_offers/:id/profile_saved' ,
+        #:to => 'public/job_offers#nada' , :as => 'nada_profile'
+  post  '/public/companies/:company_id/job_offers/:id/linkedin_profile' ,
+          :to => 'public/job_offers#save_linkedin_profile' , :as => 'save_linkedin_profile'
 
+  #xml links
+  match '/public/companies/:company_id/job_offers/:id/xml_profile',
+        :to => 'public/job_offers#xml_profile' , :as => 'xml_profile'
+  match  '/public/companies/:company_id/job_offers/:id/save_xml_profile' ,
+        :to => 'public/job_offers#save_xml_profile' , :as => 'save_xml_profile'
 
+  #pdf links
+  match '/public/companies/:company_id/job_offers/:id/pdf_profile',
+        :to => 'public/job_offers#pdf_profile' , :as => 'pdf_profile'
+  match  '/public/companies/:company_id/job_offers/:id/save_pdf_profile' ,
+        :to => 'public/job_offers#save_pdf_profile' , :as => 'save_pdf_profile'
+
+  match  '/public/companies/:company_id/job_offers/:id/cancel_profile' ,
+        :to => 'public/job_offers#cancel_profile' , :as => 'cancel_profile'
 
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
@@ -65,14 +87,28 @@ resources :feedbacks
     resources :super_users
 
     resources :companies do
-      resources :users
+      resources :users do
+        resources :periods
+      end
       resources :bills
     end
   end
 
   scope :module => "rasocomp" do
     resources :companies do
+      resources :trainings do
+        collection do
+          get :manage
+        end
+        resources :courses do
+          member do
+            put :update_users
+            put :activate
+          end
+        end
+      end
       resources :users do
+        resources :contracts
         resources :time_offs do
           collection do
             get :manage

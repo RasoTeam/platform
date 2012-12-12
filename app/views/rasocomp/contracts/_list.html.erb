@@ -1,0 +1,26 @@
+<table class="twelve" >
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Value</th>
+      <% if current_user(@company.slug).role <= ROLE[:manager] %>
+        <th>Action</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% @contracts.each do |contract| %>
+    <tr>
+      <td><%= contract.job_title %></td>
+      <td><%= contract.start_date %></td>
+      <td><%= contract.end_date %></td>
+      <td><%= contract.value %></td>
+      <% if current_user(@company.slug).role <= ROLE[:manager] %>
+        <td><%= link_to "Edit", edit_company_user_contract_path(@company,@user,contract) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
