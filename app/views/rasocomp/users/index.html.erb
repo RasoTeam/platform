@@ -44,6 +44,7 @@
 								<th style="text-align: center">E-Mail</th>
 								<th style="text-align: center">Role</th>
 								<th style="text-align: center">Status</th>
+								<th style="text-align: center">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -69,6 +70,14 @@
 							      			<%end)%>
 							      		<%end)%>
 							      	<% end %>
+
+							      	<td>
+												<% if u.state == STATE[:active] %>
+													<%= link_to t(:block), block_company_path(u), :method=>:put, :class=>"alert label radius" %>
+												<% else u.state == COMPANY_STATE[:inactive] %>
+													<%= link_to t(:activate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
+												<% end %>
+											</td>
 
 
 							      	<!-- <td>

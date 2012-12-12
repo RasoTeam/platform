@@ -39,6 +39,7 @@ en:
   description: "Description"
   details: "Details"
   disapproved: "Disapproved"
+  edit: "Edit"
   edit_company: "Edit Company"
   edit_user: "Edit User"
   education: "Education"

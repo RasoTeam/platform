@@ -14,8 +14,10 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
 
   def approve
     @company = Company.find( params[:company_id])
-    @user = @company.users.find( params[:user_id])
-    @timeoff = @user.time_offs.find( params[:id])
+    #@user = @company.users.find( params[:user_id])
+    #@timeoff = @user.time_offs.find( params[:id])
+    @timeoff = TimeOff.find( params[:id])
+    #@user = @user.find( @timeoff.user_id)
     if @timeoff.state == 2
       user_t = User.find( @timeoff.user_id)
       user_t.time_off_days -= @timeoff.days
@@ -23,14 +25,15 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     end
     @timeoff.update_attribute :state, 1
     @timeoff.update_attribute :color, '#33FF33'
-    redirect_to manage_company_user_time_offs_path( @company, @user)
+    redirect_to manage_company_user_time_offs_path( @company, User.find( params[:user_id]))
     #redirect_to 
   end
 
   def disapprove
     company = Company.find( params[:company_id])
-    user = company.users.find( params[:user_id])
-    timeoff = user.time_offs.find( params[:id])
+    #user = company.users.find( params[:user_id])
+    #timeoff = user.time_offs.find( params[:id])
+    timeoff = TimeOff.find( params[:id])
     if timeoff.state != 2
       user_t = User.find( timeoff.user_id)
       user_t.time_off_days += timeoff.days
@@ -38,7 +41,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     end
     timeoff.update_attribute :state, 2
     timeoff.update_attribute :color, '#330000'
-    redirect_to manage_company_user_time_offs_path( company, user)
+    redirect_to manage_company_user_time_offs_path( company, User.find( params[:user_id]))
     #redirect_to root_path
   end
 
