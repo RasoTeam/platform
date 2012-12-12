@@ -18,6 +18,7 @@ module Public::UserSessionsHelper
     @current_user = user
   end
 
+  
   def current_user(slug)
     @current_user = User.find_by_remember_token(cookies[@@x+slug])
   end
