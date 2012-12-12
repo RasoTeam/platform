@@ -27,8 +27,3 @@ $(function() {
 $(function() {
   $("#contract_end_date").datepicker({ dateFormat: 'dd-mm-yy' });
 });
-$(function() {
-	$("#update_credits").click(function() {
-		$( "#dialog" ).dialog();
-	});
-});

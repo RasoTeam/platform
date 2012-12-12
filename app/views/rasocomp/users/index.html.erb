@@ -18,7 +18,8 @@
 		</div>
 </div>
 
-<div id="dialog" title="Update Credits" style="display:none">
+<!--<div id="credits_dialog" title="Update Credits" style="display:none">-->
+<div id="credits_dialog" class="reveal-modal">
     <%= form_tag update_credits_to_all_path(@company), :method => :put do %>
 		<br/>
 		<%= label_tag(:time_off_days, "Number of credits") %>
@@ -106,3 +107,11 @@
 			<!-- Fim Lisslugem -->
 	</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#update_credits").click(function() {
+		$( "#credits_dialog" ).reveal();
+	});
+});
+</script>
