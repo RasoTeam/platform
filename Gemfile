@@ -10,15 +10,16 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'hpricot'
 gem 'event-calendar', :require => 'event_calendar'
 
+
 #Gems para acesso ao LinkedIn
 gem 'linkedin'
 gem 'oauth'
-
+	
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 group :development, :test do
@@ -39,6 +40,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'spreadsheet'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

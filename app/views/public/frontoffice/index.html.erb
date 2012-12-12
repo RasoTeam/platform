@@ -17,24 +17,37 @@
 			<div class="twelve columns centered" style="text-align: center; margin-bottom: 70px;">
 				<div id="featuredContent">
 					<div>
-						<h1>Tired of HR Work?</h1>
-						<h2>Improve your work</h2>
-						<div style="width: 70%; margin: 0 auto;">
-							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						<div class="eight columns">
+							<h2>HR Management has never been so easy!</h2>
+							<div style="width: 70%; margin: 0 auto;">
+								<p>Raso is simple! You don't need to waste time or money learning how to use it.</p>
+							</div>
+						</div>
+						<div class="four columns left">
+							<%= link_to image_tag('carteira.png'), :alt=>"thumb"%>
+						</div>
+
+					</div>
+					<div style="display: none;">
+						<div class="eight columns">
+							<h2>Don't waste your time</h2>
+							<div style="width: 70%; margin: 0 auto;">
+								<p>Stop wasting your time doing the same process over and over again with lots of papersheets.</p>
+							</div>
+						</div>
+						<div class="four columns left">
+							<%= link_to image_tag('waste.png')%>
 						</div>
 					</div>
 					<div style="display: none;">
-						<h1>Forget Spreadsheets!</h1>
-						<h2>Improve your work</h2>
-						<div style="width: 70%; margin: 0 auto;">
-							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						<div class="eight columns">
+							<h2>Save your money</h2>
+							<div style="width: 70%; margin: 0 auto;">
+								<p>Why would you pay for HR Software with tons of features that you don't use? Pay the right price!</p>
+							</div>
 						</div>
-					</div>
-					<div style="display: none;">
-						<h1>Use Raso HR!</h1>
-						<h2>Improve your work</h2>
-						<div style="width: 70%; margin: 0 auto;">
-							<p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</p>
+						<div class="four columns left">
+							<%= link_to image_tag('carteira.png')%>
 						</div>
 					</div>
 				</div>
@@ -115,7 +128,7 @@
 						<div class="six mobile-two columns">
 
 							<h4>Header</h4><hr/>
-							<h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
+							<h5 class="subheader">Raso is an academic project of Masters of Informatics Engineer course of University of Minho.
 							</h5>
 
 							<div class="show-for-small" style="text-align: center">
@@ -127,10 +140,8 @@
 						</div>
 						<div class="six mobile-two columns">
 
-							<p>Suspendisse ultrices ornare tempor. Aenean eget ultricies libero. Phasellus non ipsum eros. Vivamus at dignissim massa. Aenean dolor libero, blandit quis interdum et, malesuada nec ligula. Nullam erat erat, eleifend sed pulvinar ac. Suspendisse ultrices ornare tempor. Aenean eget ultricies libero.
-							</p>
+							<p style="width: 130%"><%= link_to image_tag('um.gif'), 'http://www.uminho.pt'%></p>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -143,7 +154,7 @@
 					<%= nav_link "Contacts", contacts_path, {:class=>"large radius button", :style=>"width:100%; margin-bottom: 10px;"} %>
 				</strong>
 
-				<strong>				
+				<strong>	
 					<%= link_to 'Feedback', new_feedback_path(:url=>request.path), :class=>'lightview large radius button', :"data-lightview-title"=>'Feedback', :"data-lightview-options"=>"width: 650, height: 450, skin:'dark'", :style=>"width: 100%;" %>
 				</strong>
 			</div>

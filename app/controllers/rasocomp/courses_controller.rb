@@ -45,7 +45,12 @@ class Rasocomp::CoursesController < ApplicationController
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
     @course = Course.find( params[:id])
-    @lol = "tru dat"
+    @users_to_add = params[:users]
+    @course.users.clear
+    @test = "hi"
+    @users_to_add.each do |u_id|
+      @course.users << User.find( u_id)
+    end
     render 'edit'
   end
   

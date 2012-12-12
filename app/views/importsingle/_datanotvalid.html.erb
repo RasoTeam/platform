@@ -1,0 +1,12 @@
+<h2>
+	Excel Data not Valid
+<h2/>
+
+<hr />
+<%= form_tag(:controller => "importsingle", :action => "import_another", :method => "post") do %>
+    <div><%= submit_tag 'Import from other Sheet' %></div>
+<% end -%>
+
+<hr />
+
+<%= link_to 'Cancel', session[:model] %>
