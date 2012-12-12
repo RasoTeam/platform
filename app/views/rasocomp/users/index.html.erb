@@ -24,7 +24,7 @@
 <div id="credits_dialog" class="reveal-modal small">
     <%= form_tag update_credits_to_all_path(@company), :method => :put do %>
 		<%= label_tag(:time_off_days, "Number of credits") %>
-		<%= number_field_tag(:time_off_days,nil,:required => :true) %>
+		<%= number_field_tag(:time_off_days,nil, required:true) %>
         
 		<p style="text-align: center">
 		<%= submit_tag('Confirm', :class => "button") %>
@@ -71,16 +71,15 @@
 							      		<%end)%>
 							      	<% end %>
 
-							      	<td>
-												<% if u.state == STATE[:active] %>
-													<%= link_to t(:activate), block_company_path(u), :method=>:put, :class=>"alert label radius" %>
-												<% elseif u.state == STATE[:inactive] %>
-													<%= link_to t(:deactivate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
-												<% elseif u.state == STATE[:unchecked] %>
-													<%= link_to t(:resend_email), activate_company_path(u), :method=>:put, :class=>"label radius" %>
-												<% end %>
-
-											</td>
+							      	<td style="text-align: center;">
+										<% if u.state == STATE[:active] %>
+											<%= link_to t(:activate), block_company_path(u), :method=>:put, :class=>"alert label radius"%>
+										<% elsif u.state == STATE[:inactive] %>
+											<%= link_to t(:deactivate), activate_company_path(u), :method=>:put, :class=>"label radius" %>
+										<% elsif u.state == STATE[:unchecked] %>
+											<%= link_to t(:resend_email), activate_company_path(u), :method=>:put, :class=>"label radius" %>
+										<% end %>
+									</td>
 
 
 							      	<!-- <td>
