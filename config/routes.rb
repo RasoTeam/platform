@@ -105,6 +105,8 @@ resources :feedbacks
           member do
             put :update_users
             put :activate
+            put :enroll
+            put :unenroll
           end
         end
       end

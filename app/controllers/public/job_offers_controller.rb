@@ -340,6 +340,7 @@ class Public::JobOffersController < Public::ApplicationController
     profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil e fácil de iterar
     full_profile = profile.to_hash
+    puts full_profile
     #Devolve
     return full_profile
   end
@@ -416,7 +417,7 @@ class Public::JobOffersController < Public::ApplicationController
     #Habilidades/Conhecimentos
     fileHTML += "<h1>Skills</h1>"
 
-    if profile["skills"]["all"].nil?
+    if profile["skills"].nil?
     else
       profile["skills"]["all"].each do |skill|
         fileHTML += "<table>"
