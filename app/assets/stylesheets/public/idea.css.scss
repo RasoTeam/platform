@@ -1,21 +1,17 @@
-
-#background_grey_idea_first
-{
-	background-color: #E7E7E7; 
-	position: relative;
-	padding-top: 120px;
-	margin-top: -120px;
-}
-
-#background_grey_idea
+.background_grey_idea,.background_grey_idea_first
 {
 	background-color: #E7E7E7; 
 	position: relative;
 	padding: 50px;
-
 }
 
-#background_white_idea
+.background_grey_idea_first
+{
+	padding-top: 120px;
+	margin-top: -120px;
+}
+
+.background_white_idea
 {
 	background-color: #ffffff; 
 	position: relative;

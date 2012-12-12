@@ -46,11 +46,11 @@
 						</div>
 
 						<ul class="right">
-							<li><%= nav_link "about us", aboutus_path %></li>
-							<li><%= nav_link "our idea", idea_path %></li>
-							<li><%= nav_link "contacts", contacts_path %></li>
+							
+							<li><%= nav_link "idea", idea_path %></li>
 							<li><a href="http://rasoblog.herokuapp.com/" target="_blank">blog</a></li>
-							<!-- <li><%= link_to "register company", new_public_company_path %></li> -->
+							<li><%= nav_link "contacts", contacts_path %></li>
+							<li><%= nav_link "team", aboutus_path %></li>
 						</ul>
 
 						<!-- <ul id="helper_menu"
@@ -97,7 +97,7 @@
 			<div class="row">
 
 				<div class="six columns" style="width: 70%;">
-					<p>Copyright &copy; 2012 Raso. Todos os direitos reservados. Desenvolvido por Raso Team.</p>
+					<p>Copyright &copy; 2012 Raso. <%= t(:footer_message) %></p>
 				</div>
 
 				<div class="six columns" style="width: 30%;">

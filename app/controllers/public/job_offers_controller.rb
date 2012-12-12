@@ -25,7 +25,7 @@ class Public::JobOffersController < Public::ApplicationController
   def index
     @company = Company.find(params[:company_id])
     #Usa a função search por causa da pesquisa por palavras chave e ordenação -> ver Modelo JobOffer
-    @offers = @company.job_offers.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 5)
+    @offers = @company.job_offers.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 15)
   end
 
   def show
@@ -338,6 +338,7 @@ class Public::JobOffersController < Public::ApplicationController
     profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil e fácil de iterar
     full_profile = profile.to_hash
+    puts full_profile
     #Devolve
     return full_profile
   end

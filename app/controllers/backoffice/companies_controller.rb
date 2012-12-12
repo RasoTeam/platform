@@ -1,10 +1,10 @@
 class Backoffice::CompaniesController < Backoffice::ApplicationController
 	def index
-    @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 4)
+    @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 15)
   end
 
   def show
-    @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 15)
     @company = Company.find(params[:id])
     @bills = @company.bills
   end

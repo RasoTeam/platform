@@ -12,7 +12,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @users = @company.users.search(params[:search]).paginate(:page => params[:page], :per_page => 4)
+    @users = @company.users.search(params[:search]).paginate(:page => params[:page], :per_page => 15)
     #where("role > 0").paginate(:page => params[:page], :per_page => 5)
   end
 
@@ -21,9 +21,17 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user = @company.users.find( params[:id])
   end
 
-  def add_credits_to_all
+  def update_credits_to_all
     @company = Company.find( params[:company_id] )
-    @user = @company.users
+    if params[:time_off_days] =~ /^\d+$/ 
+      num = Integer(params[:time_off_days])
+      @company.users.update_all ["time_off_days = ?", num]
+      flash[:success] = t(:successful_update)
+      redirect_to company_users_path @company
+    else
+      flash[:alert] = t(:not_a_number)
+      redirect_to company_users_path @company
+    end
   end
   
   def update
