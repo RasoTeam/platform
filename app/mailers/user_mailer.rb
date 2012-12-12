@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def verification_email(user)
     @user = user
+    @company = user.company
     mail( :to => user.email, :subject => "Account Confirmation")
   end
 

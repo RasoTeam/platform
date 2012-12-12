@@ -113,6 +113,18 @@ resources :feedbacks
           end
         end
       end
+      #Import Controller Routes
+      resources :importsingle do
+        collection do
+          get :fst_step
+          post :snd_step
+          post :trd_step
+          post :default_confirmation_step
+          post :final_import_step
+          post :import_another
+          post :finalize
+        end
+      end
       resources :users do
         resources :contracts
         resources :time_offs do
@@ -129,19 +141,4 @@ resources :feedbacks
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
     end
   end
-
-
-  #Import Controller Routes
-  resources :importsingle do
-      collection do
-        get :fst_step
-        post :snd_step
-        post :trd_step
-        post :default_confirmation_step
-        post :final_import_step
-        post :import_another
-        post :finalize
-      end
-  end
-
 end
