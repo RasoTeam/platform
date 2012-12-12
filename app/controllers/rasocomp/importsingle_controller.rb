@@ -76,12 +76,9 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			flash.now[:alert]= t(:no_import_mode)
 			render :_trd_step
 		else
-			session[:error] = "none"
 			session[:import_mode] = params[:import_mode]
 
 			if params[:import_mode].eql?("default")
-				session[:error] = "none"
-
 				#Read the Data from the Excel Sheet
 				@import_logic = ImportLogic.new
 				session[:sheet_data] = @import_logic.read_default_data_from_sheet(session[:excel_file_path], session[:excel_sheet])
@@ -89,7 +86,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 				render :_default_confirmation_step
 			else
 				if params[:import_mode].eql?("custom")
-					session[:error] = "The custom method is not yet implemented"
+					flash.now[:alert]= t(:method_not_implemented)
 					render :_trd_step
 					#render :_custom_step
 				else

@@ -73,6 +73,7 @@ en:
   logout: "Logout"
   manage_time_offs: "Manage Time Offs"
   manager: "Manager"
+  method_not_implemented: "The method is not yet implemented"
   name: "Name"
   nationality: "Nationality"
   new: "New"
