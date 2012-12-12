@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211145946) do
+ActiveRecord::Schema.define(:version => 20121212163652) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -69,11 +69,17 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.string   "color"
   end
 
-  create_table "courses_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "courses_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "course_id"
+  end
+
+  create_table "eval_users", :id => false, :force => true do |t|
+    t.integer  "evaluation_id"
+    t.integer  "evaluator_id"
+    t.integer  "evaluatee_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
