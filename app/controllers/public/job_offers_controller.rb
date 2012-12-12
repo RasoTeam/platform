@@ -113,7 +113,7 @@ class Public::JobOffersController < Public::ApplicationController
       #Limpa as variáveis de sessão
       session[:candidate] = nil
 
-      flash[:success] = "Profile successfully saved."
+      flash[:success] = "Successfully candidate to the job-offer."
       redirect_to public_company_job_offers_path(params[:company_id])
     else
       flash[:alert] = "Could not save, please retry."
@@ -145,7 +145,7 @@ class Public::JobOffersController < Public::ApplicationController
       #Save novamente faz update
       @candidate.save
 
-      flash[:success] = "Profile successfully saved."
+      flash[:success] = "Successfully candidate to the job-offer."
       redirect_to public_company_job_offers_path(params[:company_id])
     else
       flash[:alert] = "Could not save, please retry."
@@ -176,7 +176,7 @@ class Public::JobOffersController < Public::ApplicationController
       #Save novamente faz update
       @candidate.save
 
-      flash[:success] = "Profile successfully saved."
+      flash[:success] = "Successfully candidate to the job-offer."
       redirect_to public_company_job_offers_path(params[:company_id])
     else
       flash[:alert] = "Could not save, please retry."

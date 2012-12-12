@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.string   "color"
   end
 
+  create_table "courses_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "start_at"
