@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :time_offs
   has_many :contracts
+  has_and_belongs_to_many :courses
   has_many :periods
-
   before_create :create_remember_token
 
   validates :name, :presence => true, :length => { :maximum => 20}

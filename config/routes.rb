@@ -97,6 +97,7 @@ resources :feedbacks
       resources :trainings do
         resources :courses do
           member do
+            put :update_users
             put :activate
           end
         end

@@ -16,6 +16,14 @@
       <h1>Edit Company</h1>
       <hr/>
         <%= form_for @company do |f| %>
+
+          <% if @company.errors.any? %> 
+            <% @company.errors.full_messages.each do |msg| %>
+              <div class="alert-box alert"><%= msg %></div>
+            <% end %>
+            <hr/>
+          <% end %>
+
           <span class=" radius label">Company Name</span>
           <%= f.text_field :name, :class=>"input_space" %>
           
@@ -32,14 +40,7 @@
           <%= f.text_field :address, :class=>"input_space"  %>
 
           <p style="text-align: center"><%= f.submit t(:save), :class=>"button" %></p>
-          
-          <% if @company.errors.any? %> <span class=" radius label">Error Messages</span>
-            <hr/>
-            <% end %>
 
-          <% @company.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-          <% end %>
         <% end %>
       </div>
     </div>

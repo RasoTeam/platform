@@ -21,6 +21,7 @@ class Company < ActiveRecord::Base
   validates :slug, :presence => true, 
             :length => { :maximum => 20, :minimum => 3 },
             :format => { :with => VALID_slug_REGEX }, :uniqueness => { :case_sensitive => false }
+  validates :address, :length => { :maximum => 100 }
 
   #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
   #scope :users_paginate, lambda { self.users.paginate(:page => params[:page], :per_page => 4) }
