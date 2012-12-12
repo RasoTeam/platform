@@ -64,6 +64,7 @@ en:
   new_time_off: "New Time Off"
   no_education: "There are no education registered"
   no_permission_to_access: "No permission to access. Please login first."
+  not_a_number: "Has to be a valid number"
   pending: "Pending"
   phone: "phone number"
   profile: "Profile"

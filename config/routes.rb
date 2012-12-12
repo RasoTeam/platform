@@ -1,4 +1,6 @@
 Platform::Application.routes.draw do
+put  '/companies/:company_id/users/update_credits_to_all' ,
+          :to => 'rasocomp/users#update_credits_to_all' , :as => 'update_credits_to_all'
 
 resources :feedbacks
 
