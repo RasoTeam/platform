@@ -1,9 +1,8 @@
-class ImportsingleController < ApplicationController
-
+class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#The model to be imported
 	def fst_step
-
+		@company = Company.find(params[:company_id])
 		session[:error] = "none"
 		session[:companyid] = params[:companyid]
 		session[:model] = params[:model]
@@ -17,7 +16,7 @@ class ImportsingleController < ApplicationController
 
 	#The excel file to be imported
 	def snd_step
-
+		@company = Company.find(params[:company_id])
 		if(!params[:excel_file].nil?)
 			session[:error] = "none"
 
@@ -25,7 +24,7 @@ class ImportsingleController < ApplicationController
 			directory = "public/_temp_excel_files"
 		
 
-			if filename.nil? || !(filename.split('.')[(filename.split('.').count)-1].eql?("xls"))
+			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) || !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
 				session[:error] = "File not valid"
 				render :_fst_step
 			else
