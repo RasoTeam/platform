@@ -338,6 +338,7 @@ class Public::JobOffersController < Public::ApplicationController
     profile = client.profile(:fields => [:positions ,:educations , :skills])
     #Transforma-o em algo útil e fácil de iterar
     full_profile = profile.to_hash
+    puts full_profile
     #Devolve
     return full_profile
   end

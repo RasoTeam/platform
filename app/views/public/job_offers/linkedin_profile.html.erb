@@ -12,7 +12,7 @@
   <div class="twelve columns">
     <h2><%= t(:linkedin_profile) %></h2>
     <hr/>
-    
+
     <div class="row">
       <div class="twelve columns">
 
@@ -106,7 +106,7 @@
         <h2><%= t(:skills) %></h2>
 
         <div class="panel">
-        <% if @profile["skills"]["all"].nil? %>
+        <% if @profile["skills"].nil? %>
             <h3 style="text-align:center"> <%= t(:no_skills) %></h3>
         <% else %>
             <% @profile["skills"]["all"].each do |skill| %>
