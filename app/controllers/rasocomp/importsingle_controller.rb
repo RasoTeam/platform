@@ -2,7 +2,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#The model to be imported
 	def fst_step
-
+		@company = Company.find(params[:company_id])
 		session[:error] = "none"
 		session[:companyid] = params[:companyid]
 		session[:model] = params[:model]
@@ -16,7 +16,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#The excel file to be imported
 	def snd_step
-
+		@company = Company.find(params[:company_id])
 		if(!params[:excel_file].nil?)
 			session[:error] = "none"
 
