@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :time_offs
   has_many :contracts
+  has_many :course_signups
+  has_many :courses, :through => :course_signups
   has_and_belongs_to_many :courses
   has_many :periods
   before_create :create_remember_token

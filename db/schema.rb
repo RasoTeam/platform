@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211145946) do
+ActiveRecord::Schema.define(:version => 20121212161312) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "course_signups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "courses", :force => true do |t|
     t.integer  "training_id"
     t.integer  "company_id"
@@ -69,12 +77,12 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.string   "color"
   end
 
-  create_table "courses_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "courses_users", :primary_key => "user_id", :force => true do |t|
+    t.integer "course_id",                     :null => false
+    t.integer "enroll_status", :default => -1
   end
+
+  add_index "courses_users", ["user_id", "course_id"], :name => "sqlite_autoindex_courses_users_1", :unique => true
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -90,6 +98,13 @@ ActiveRecord::Schema.define(:version => 20121211145946) do
     t.text     "texto"
     t.string   "tipo"
     t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "foos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "field"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
