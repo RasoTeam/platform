@@ -10,6 +10,11 @@ class Public::UsersController < Public::ApplicationController
       period.save
 
       @user.state = 1
+
+      if @user.role == ROOT
+        @company.state = COMPANY_STATE[:active]
+        @company.save
+      end
     end
     if @user.update_attributes( params[:user])
       flash[:success] = t(:account_activated)
