@@ -10,6 +10,12 @@ class Public::UsersController < Public::ApplicationController
       period.save
 
       @user.state = STATE[:active]
+
+      if @user.role == ROOT
+        @company.state = COMPANY_STATE[:active]
+        @company.save
+      end
+      
     end
     @user.remember_token = SecureRandom.urlsafe_base64
     if @user.update_attributes( params[:user])

@@ -28,6 +28,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="wrap">
 	<!-- Header and Nav -->
 <!-- Header and Nav -->
 
@@ -38,7 +39,7 @@
         <% if current_user(@company.slug).role > ROOT %>
           <%= link_to  @company.name, user_dashboard_path(@company.slug, current_user(@company.slug)) %>
         <% else %>
-          <a><%= @company.name %></a>
+          <%= link_to @company.name, company_path(@company) %>
         <% end %>
       </li>
     </ul>
@@ -65,10 +66,12 @@
         <li><%= link_to t(:employees), company_users_path(@company) %></li>
         <% end %>
         <li class="divider"></li>
+        <% if current_user(@company.slug).role >= ROLE[:manager] %>
         <li><%= link_to t(:company) , company_path(@company) %></li>
-        <li class="divider"></li>
+        <li class="divider"></li>        
         <li><%= link_to t(:calendar), calendar_path(@company) %></li>
         <li class="divider"></li>
+        <%end%>
       </ul>
       <!-- Right Nav Section -->
       <ul class="right">
@@ -98,9 +101,9 @@
 
 
   <%= yield %>
-
+  <div class="push"></div>
+</div>
  <!-- Footer -->
-
   <footer class="row footer_raso">
 		<div class="twelve columns" style="padding: 0;">
 			<hr/>

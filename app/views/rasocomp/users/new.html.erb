@@ -1,7 +1,11 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <% if current_user(@company.slug).role >= ROLE[:manager] %>
+        <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <%else%>
+        <li><%= link_to @company.name, company_path(@company) %></li>
+      <%end%>
       <li><%= link_to t(:employees), company_users_path(@company)  %></li>
         <li class="current">
           <a href="#"><%= t(:new_employee) %></a>

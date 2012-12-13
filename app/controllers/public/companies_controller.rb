@@ -9,14 +9,14 @@ class Public::CompaniesController < Public::ApplicationController
     @company = Company.new
     @company.name = params[:new_company][:name]
     @company.slug = @company.name.parameterize
-    @company.state = 0;
+    @company.state = COMPANY_STATE[:unchecked]
     @user = User.new
     if @company.save
       @user = @company.users.build
       @user.email = params[:new_company][:email]
-      @user.name = 'root'
-      @user.state = -1
-      @user.role = 0
+      @user.name = t(:root)
+      @user.state = STATE[:unchecked]
+      @user.role = ROOT
       @user.password_digest = 0
       if @user.save
         UserMailer.verification_email(@user).deliver
@@ -57,5 +57,8 @@ class Public::CompaniesController < Public::ApplicationController
     end
   end
 
+  def user_blocked
+    @company = Company.find(params[:company_id])
+  end
 
 end
