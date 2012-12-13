@@ -81,9 +81,10 @@
 					<td>
 						<% if company.state == COMPANY_STATE[:active] %>
 							<span style="color:green;"> <%= t(:active)%> </span>
-						<% else (if company.state == COMPANY_STATE[:blocked] %>
+						<% elsif company.state == COMPANY_STATE[:blocked] %>
 							<span style="color:red;"><%= t(:blocked)%></span>
-						<%end)%>
+						<% elsif company.state == COMPANY_STATE[:unchecked] %>
+							<span style="color:orange;"><%= t(:unchecked)%></span>
 						<%end%> 
 					</td>
 					<td> 
