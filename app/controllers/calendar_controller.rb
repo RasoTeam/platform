@@ -1,5 +1,5 @@
 class CalendarController < ApplicationController
-
+layout "rasoemp"
 
   def index
     @company = Company.find( params[:company_id])
