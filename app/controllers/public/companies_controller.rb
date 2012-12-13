@@ -14,7 +14,7 @@ class Public::CompaniesController < Public::ApplicationController
     if @company.save
       @user = @company.users.build
       @user.email = params[:new_company][:email]
-      @user.name = t(:admin)
+      @user.name = t(:root)
       @user.state = STATE[:unchecked]
       @user.role = ROOT
       @user.password_digest = 0

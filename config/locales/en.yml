@@ -13,7 +13,6 @@ en:
   active: "Active"
   actions: "Actions"
   add_employee: "Add employee"
-  admin: "Administrator"
   approved: "Approved"
   book: "Book"
   book_time_off: "Book new time off"
@@ -121,7 +120,7 @@ en:
   start_day: "Start Day"
   state: "State"
   successful_update: "Successfully updated"
-  time_off_days: "Time Off days"
+  time_off_days: "Time Off days left"
   timeoffs: "Time Offs"
   time_offs_management: "Time Offs Management"
   title: "Title"
@@ -133,7 +132,7 @@ en:
   users: "Users"
   users_imported: "The following users were imported"
   unchecked: "Unchecked"
-  ROOT: "Root"
+  ROOT: "Administrator"
 
   date:
     formats:
