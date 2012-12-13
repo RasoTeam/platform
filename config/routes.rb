@@ -41,6 +41,11 @@ resources :feedbacks
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'
   #post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
+  get '/public/companies/:company_id/reset_pass_require', :to => 'public/companies#reset_pass_require', :as => 'reset_pass_require'
+  get '/public/companies/:company_id/users/:id/reset_new_password', :to => 'public/users#reset_new_password', :as => 'reset_new_password'
+  post '/public/companies/:company_id/submit_pass_require', :to => 'public/companies#submit_pass_require', :as => 'submit_pass_require'
+  put '/public/companies/:company_id/users/:id/reset_password_submit', :to => 'public/users#reset_password_submit', :as => 'reset_password_submit'
+
 
   #linkedin links
   match '/public/companies/:company_id/job_offers/:id/oauth_account' ,

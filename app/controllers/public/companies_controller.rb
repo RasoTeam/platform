@@ -35,6 +35,28 @@ class Public::CompaniesController < Public::ApplicationController
     @company = Company.find(params[:company_id])
   end
 
+  def reset_pass_require
+    @company = Company.find(params[:company_id])
+  end
+
+  def submit_pass_require
+    @company = Company.find(params[:company_id])
+    user = @company.users.find_by_email(params[:user_email][:email])
+    if user.nil?
+      flash.now[:alert] = t(:user_not_exists)
+      render 'reset_pass_require'
+    else
+      if user.save
+        UserMailer.reset_password(user).deliver
+        flash[:success] = t(:email_sent)
+        redirect_to company_signin_path @company
+      else
+        flash.now[:alert] = t(:error)
+        render 'reset_pass_require'
+      end
+    end
+  end
+
   def user_blocked
     @company = Company.find(params[:company_id])
   end
