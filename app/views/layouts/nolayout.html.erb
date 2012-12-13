@@ -30,18 +30,17 @@
 	</head>
 	<body >
 		<div class="wrap">
-		<div class="<%= controller.controller_name %>">
-		<div class="row" >
-			<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, class:"row alert-box #{key}") %>
-			<% end %>
-			<%= yield %>
+			<div class="<%= controller.controller_name %>">
+				<div class="row" >
+					<% flash.each do |key, value| %>
+					<%= content_tag(:div, value, class:"row alert-box #{key}") %>
+					<% end %>
+					<%= yield %>
+				</div>
+		  	</div>
+		<div class="push"></div>
 		</div>
-	  </div>
-	  	  <div class="push"></div>
-
-</div>
-	  <!-- Footer -->
+	<!-- Footer -->
 
 	<footer class="row footer_raso">
 		<div class="twelve columns" style="padding: 0;">
