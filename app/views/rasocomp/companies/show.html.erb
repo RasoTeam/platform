@@ -30,16 +30,14 @@
               				<span class="secondary label radius"><%= link_to t(:edit), edit_company_path(@company) %></span>
               			<% end %>
               		</h4>
-
                 </div>
-                <% if current_user(@company.slug).role == ROOT %>
-                   <div class="four columns">
-                    <%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button" %>
-                  </div>
-                <%end%>
-                  <div class="twelve columns">
-                  <hr/>
+                <div class="six columns">
+                  <% if current_user(@company.slug).role == ROOT %>
+                    <p class="add_user" style="text-align: right;"><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button" %></p>
+                  <%end%>
+                 </div>
 
+              		<hr/>
               		<table class="twelve tableJobs">
         						<tbody>
           						<tr>
@@ -77,7 +75,6 @@
   	            		</tbody>
   	            	</table>
               	</div>
-              </div>
       			</div>
         </div>
         <!-- End Header Content -->
