@@ -77,7 +77,7 @@
             <%  curUser=current_user(@company.slug) %>
             <span style="color:white"><%=  curUser.name %></span><br/>
             <span class="secondary radius label"><%  if curUser.role == 0%>
-            <%= t(:root)%>
+            <%= t(:ROOT)%>
             <%else%>
             <%= ROLE.invert[current_user(@company.slug).role]%>
             <%end%></span>
