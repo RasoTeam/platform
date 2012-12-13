@@ -1,9 +1,32 @@
-<h1>TRAININGS#MANAGE</h1>
-		<% @trainings.each do |t| %>
-		  Training id: <%= t.id %>;
-		  Name: <%= t.name %>;
-		  Desc: <%= t.desc %>;
-		  <%= link_to 'start a course', new_company_training_course_path( @company, t) %><br>
-		  <%= render :partial => "/rasocomp/courses/manage", :locals => {:courses => t.courses, :training => t} %> 
-		  <br/>
-		<% end %>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.slug, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:trainings) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  	<div class="twelve columns">
+  		<h2><%= t(:trainings) %></h2>
+		<ul class="accordion">
+	   		<% @trainings.each do |t| %>
+			   	<li>
+			    	<div class="title">
+						<h5>Training id: <%= t.id %>;
+						  Name: <%= t.name %>;
+						  Desc: <%= t.desc %>;
+						  <%= link_to 'start a course', new_company_training_course_path( @company, t) %><br>
+							</h5>
+					</div>
+					<div class="content">
+						<%= render :partial => "/rasocomp/courses/manage", :locals => {:courses => t.courses, :training => t} %> 
+					</div>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
