@@ -1,23 +1,57 @@
-<h2>
-	IMPORTED DATA STATS
-</h2>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li class="current">
+          <a href="#"><%= t(:import_user) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:first_step) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:second_step) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:third_step) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:comfirmation_step) %></a>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:import_stats) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+      <div class="panel">
+        <h2><%= t(:import_stats) %></h2>
+        <hr/>
+		<h4>
+			<%= t(:users_imported) %>:
+		</h4>
+			<% session[:imported_users].each do |u| %>
+				<p><%= u.to_s %><p/>
+			<% end %>
+ 		 <div class="twelve columns">
+			<div class="six columns">
+			<%= form_tag(:controller => "importsingle", :action => "finalize", :method => "post") do %>
+			    <%= submit_tag t(:ok), :class=>"radius button right" %>
+			<% end %>
+			</div>
+			<div class="six columns">
+			<%= form_tag(:controller => "importsingle", :action => "import_another", :method => "post") do %>
+			    <%= submit_tag t(:import_from_o_sheet), :class=>"radius button left" %>
+			<% end %>
+			</div>
+		</div>
+		<div style="clear: both;"> </div>
+	</div>
+    </div>
+  </div>
+</div>
 
-	<h3> 
-		The Following Users were imported:
-	<h3/>
-	<% session[:imported_users].each do |u| %>
-		<p>
-		* <%= u.to_s %>
-		<p/>
-	<% end %>
 
 
-<hr />
-
-<%= form_tag(:controller => "importsingle", :action => "finalize", :method => "post") do %>
-    <div><%= submit_tag 'OK' %></div>
-<% end -%>
-<hr />
-<%= form_tag(:controller => "importsingle", :action => "import_another", :method => "post") do %>
-    <div><%= submit_tag 'Import from other Sheet' %></div>
-<% end -%>
