@@ -35,4 +35,8 @@ class Public::CompaniesController < Public::ApplicationController
     @company = Company.find(params[:company_id])
   end
 
+  def user_blocked
+    @company = Company.find(params[:company_id])
+  end
+
 end

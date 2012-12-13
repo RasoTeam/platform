@@ -27,6 +27,7 @@ resources :feedbacks
 
 #public
   get '/public/companies/:company_id/company_blocked', :to => 'public/companies#company_blocked', as: 'company_blocked'
+  get '/public/companies/:company_id/user_blocked', :to => 'public/companies#user_blocked', as: 'user_blocked'
   get '/public/companies/:company_id/users/verify', :to => 'public/users#verify', as: 'email_verify'
   match '/companies/:company_id/signin', to:'public/user_sessions#new', as: 'company_signin'
   match '/companies/:company_id/signout', to:'public/user_sessions#destroy', as: 'company_signout'

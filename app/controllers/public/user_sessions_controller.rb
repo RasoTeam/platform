@@ -13,12 +13,16 @@ class Public::UserSessionsController < Public::ApplicationController
     @company = Company.find(params[:company_id])
     @user = @company.users.find_by_email(params[:user_session][:email].downcase)
     #use some base64 for company ?
-    if @user && @user.state != -1 && @user.authenticate(params[:user_session][:password])
-      sign_in_user(@user, @company.slug)
-      if @user.role == ROOT
-        redirect_to company_path @company
+    if @user && @user.state != STATE[:unchecked] && @user.authenticate(params[:user_session][:password])
+      if @user.state == STATE[:inactive]
+        redirect_to user_blocked_path @user.company
       else
-        redirect_to user_dashboard_path @company, @user
+        sign_in_user(@user, @company.slug)
+        if @user.role == ROOT
+          redirect_to company_path @company
+        else
+          redirect_to user_dashboard_path @company, @user
+        end
       end
     else
       flash.now[:alert] = t(:invalid_login)
