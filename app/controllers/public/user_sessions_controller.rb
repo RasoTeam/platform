@@ -1,10 +1,10 @@
 class Public::UserSessionsController < Public::ApplicationController
+  before_filter :company_active, :only => [:new, :create]
+
   layout "nolayout"
   def new
     @company = Company.find(params[:company_id])
-    if @company.state == COMPANY_STATE[:blocked]
-      redirect_to company_blocked_path @company
-    elsif user_signed_in?(@company.slug)
+    if user_signed_in?(@company.slug)
       redirect_to user_dashboard_path(@company,current_user(@company.slug))
     end
   end
