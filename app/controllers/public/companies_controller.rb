@@ -41,13 +41,11 @@ class Public::CompaniesController < Public::ApplicationController
 
   def submit_pass_require
     @company = Company.find(params[:company_id])
-    puts "\n\n\n\n" + params[:user_email][:email] + "\n\n\n\n"
     user = @company.users.find_by_email(params[:user_email][:email])
     if user.nil?
       flash.now[:alert] = t(:user_not_exists)
       render 'reset_pass_require'
     else
-      user.remember_token = SecureRandom.urlsafe_base64
       if user.save
         UserMailer.reset_password(user).deliver
         flash[:success] = t(:email_sent)

@@ -11,6 +11,7 @@ class Public::UsersController < Public::ApplicationController
 
       @user.state = STATE[:active]
     end
+    @user.remember_token = SecureRandom.urlsafe_base64
     if @user.update_attributes( params[:user])
       flash[:success] = t(:account_activated)
       redirect_to company_signin_path @company
@@ -46,6 +47,7 @@ class Public::UsersController < Public::ApplicationController
   def reset_password_submit
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
+    @user.remember_token = SecureRandom.urlsafe_base64
     if @user.update_attributes( params[:user])
       flash[:success] = t(:password_updated)
       redirect_to company_signin_path @company
