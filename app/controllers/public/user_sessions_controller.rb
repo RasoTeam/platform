@@ -1,4 +1,6 @@
 class Public::UserSessionsController < Public::ApplicationController
+  before_filter :company_active, :only => [:new, :create]
+
   layout "nolayout"
   def new
     @company = Company.find(params[:company_id])

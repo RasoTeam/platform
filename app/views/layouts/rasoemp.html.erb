@@ -36,7 +36,7 @@
       <!-- Title Area -->
       <li class="name">
         <% if current_user(@company.slug).role > ROOT %>
-          <%= link_to  @company.name, user_dashboard_path(@company.id, current_user(@company.slug)) %>
+          <%= link_to  @company.name, user_dashboard_path(@company.slug, current_user(@company.slug)) %>
         <% else %>
           <a><%= @company.name %></a>
         <% end %>
@@ -53,7 +53,11 @@
         </li>
         <li class="divider"></li>
         <li>
-          <%= link_to t(:time_offs_management), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
+          <%= link_to t(:time_offs), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
         </li>
         <% end %>
         <% if current_user(@company.slug).role <= ROLE[:manager] %>

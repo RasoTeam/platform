@@ -34,17 +34,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- ERRORS -->
-<% if !session[:error].eql?("none") %>
-	<hr>
-		<h4>
-			<%= "ERROR: "+session[:error].to_s%>
-		<h4 />
-	<hr/>
-<% end %>
-
-<hr />
-
-<%= link_to 'Cancel', session[:model] %>
