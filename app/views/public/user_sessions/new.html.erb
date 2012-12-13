@@ -4,7 +4,6 @@
 
 </div>
 
-<%= link_to "Adicione", company_signin_path(@company) %>
 
 <div class="six columns">
 <p><%= link_to image_tag('logo.png'), '/'%></p>
@@ -17,9 +16,18 @@
 
 <div class="six columns">
 	<div class="panel">
-	  <h2><%= @company.name %></h2>		
-      <h5>Welcome to Raso</h5>
-      <p>This is your company login page</p>
+	  <div class="twelve columns">	
+	  <h2><%= @company.name %></h2>
+	  </div>
+	  <div class="seven columns">	
+	      <h5>Welcome to Raso</h5>
+	      <p>This is your company login page</p>
+	  </div>
+      <div class="five columns">
+		<%= t(:drop_bookmark) %>
+      	<%= link_to "#{@company.name} | Raso", company_signin_path(@company), :class=>"radius button", :style=>"margin-top: 10px"  %>
+	  </div>
+
 		<hr />		
 			<%= form_for(:user_session, url: public_company_user_sessions_path) do |f| %>
 			  

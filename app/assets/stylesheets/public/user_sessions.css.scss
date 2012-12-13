@@ -1,3 +1,21 @@
 // Place all the styles related to the UserSessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrap{
+	 min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -111px ; 
+}
+html,
+body {
+	height: 100%;
+
+}
+
+.push{
+	height: 111px;
+
+}

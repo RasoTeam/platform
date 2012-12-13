@@ -90,7 +90,6 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 					render :_trd_step
 					#render :_custom_step
 				else
-					session[:error] = "none"
 					render :_trd_step
 				end
 			end
@@ -121,8 +120,6 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 			isValid = validateExcel
 			if isValid == 1
-				session[:error] = "none"
-
 				$i1 = 1
 				$j1 = 0
 				while $i1 < session[:sheet_data].count
