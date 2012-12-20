@@ -65,7 +65,11 @@
           <li class="divider"></li>
           <% if current_user(@company.slug).role >= ROLE[:manager] %>
           <li><%= link_to t(:company) , company_path(@company) %></li>
-          <li class="divider"></li>        
+              <% if current_user(@company.slug).role <= ROLE[:manager] %>
+                  <li class="divider"></li>
+                  <li><%= link_to "Evaluations", company_evaluations_path(@company) %></li>
+              <% end %>
+          <li class="divider"></li>
           <li><%= link_to t(:calendar), calendar_path(@company) %></li>
           <li class="divider"></li>
           <%end%>

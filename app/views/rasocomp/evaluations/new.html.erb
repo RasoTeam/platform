@@ -1,0 +1,35 @@
+<h1>Create a new Evaluation</h1>
+
+<%= form_for [@company, @evaluation] do |f| %>
+    <% @evaluation.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+
+    <%= f.label "Description" %>
+    <%= f.text_field :description %>
+    <br/>
+    <%= f.label "Start Date" %>
+    <%= f.date_select :period_begin %>
+    <%= f.label "End Date" %>
+    <%= f.date_select :period_end %>
+    <br/><br/>
+    <%= f.label "Evaluator" %>
+    <%= f.select :user_id , options_from_collection_for_select(@employees, :id,:name) %>
+    <br/><br/>
+    <%= f.label "Parameters" %>
+    <% @parameters.each do |p| %>
+        <%= check_box_tag "evalparams[param_id][]", p.id %>
+        <%= p.name %>
+    <% end %>
+    <br/>
+    <%= link_to "New Parameter?" , new_company_parameter_path(@company) %>
+    <br/><br/>
+    <%= f.label "Evaluatees" %>
+    <% @employees.each do |em| %>
+        <%= check_box_tag "evaluatees[user_id][]", em.id %>
+        <%= em.name %>
+    <% end %>
+    <br/><br/>
+    <%= f.submit %>
+
+<% end %>

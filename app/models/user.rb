@@ -24,9 +24,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :courses
   has_many :periods
 
-  has_many :evaluatees, :class_name => "Users"  , :through => :eval_users , :foreign_key => "evaluator_id"
+  has_and_belongs_to_many :evaluations
 
-  has_many :evaluators , :class_name => "Users" , :through => :eval_users , :foreign_key => "evaluatee_id"
 
   before_create :create_remember_token
 

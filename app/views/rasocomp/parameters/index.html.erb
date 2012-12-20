@@ -1,0 +1,18 @@
+<h1>All Evaluation Parameters</h1>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <% @parameters.each do |pr| %>
+  <tr>
+    <td><%= pr.name %></td>
+    <td><%= pr.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "Create New Evaluation Parameter" , new_company_parameter_path %>
+

@@ -1,0 +1,21 @@
+<h1>All Evaluations from <%= @company.name %></h1>
+<table>
+  <tr>
+    <th>Evaluation</th>
+    <th>Begin Date</th>
+    <th>End Date</th>
+    <th>Evaluator</th>
+    <th>Status</th>
+  </tr>
+  <% @evaluations.each do |ev| %>
+  <tr>
+    <td><%= ev.description %></td>
+    <td><%= ev.period_begin %></td>
+    <td><%= ev.period_end %></td>
+    <td><%= User.find(ev.user_id).name %></td>
+    <td><%= ev.status %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "Create new Evaluation Process" , new_company_evaluation_path(@company.id) %>

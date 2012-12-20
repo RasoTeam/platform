@@ -150,6 +150,8 @@ resources :feedbacks
       end
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
+      resources :evaluations
+      resources :parameters
     end
   end
 end
