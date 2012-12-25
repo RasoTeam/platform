@@ -1,4 +1,4 @@
-class Rasocomp::EvaluationParametersController < ApplicationController
+class Rasocomp::EvaluationParametersController < Rasocomp::ApplicationController
   def index
   end
 

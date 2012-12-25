@@ -1,4 +1,4 @@
-class Rasocomp::ParametersController < ApplicationController
+class Rasocomp::ParametersController < Rasocomp::ApplicationController
 
   def index
     @parameters = Parameter.all

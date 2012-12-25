@@ -1,4 +1,4 @@
-class Rasocomp::EvaluationsController < ApplicationController
+class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
 
   def index
     @company = Company.find(params[:company_id])

@@ -1,35 +1,68 @@
-<h1>Create a new Evaluation</h1>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:evaluations), company_evaluations_path(@company) %></li>
+      <li class="current"><a href="#"><%= t(:new) %></a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <div id="signup">
+            <div class="panel">
+                <h1><%= t(:new_evaluation) %></h1>
 
-<%= form_for [@company, @evaluation] do |f| %>
-    <% @evaluation.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
+                <%= form_for [@company, @evaluation] do |f| %>
+                    <% @evaluation.errors.full_messages.each do |msg| %>
+                        <p><%= msg %></p>
+                    <% end %>
+                    <span class=" radius label"><%= t(:description) %></span>
+                    <%= f.text_field :description, :class=>"input_space"  %>
+                    <span class=" radius label"><%= t(:start_day) %></span>
+                    <%= f.text_field :period_begin, :class=>"input_space" %>
+                    <span class=" radius label"><%= t(:end_day) %></span>
+                    <%= f.text_field :period_end, :class=>"input_space" %>
+                    <span class=" radius label"><%= t(:evaluator) %></span>
+                    <%= f.select :user_id , options_from_collection_for_select(@employees, :id,:name), {}, {:class=>"select"} %>
+                    <span class=" radius label"><%= t(:parameters) %></span>
+                    <br/>
+                    <% @parameters.each do |p| %>
+                        <%= check_box_tag "evalparams[param_id][]", p.id %>
+                        <%= p.name %>
+                        <br/>
+                    <% end %>
+                    <br/>
+                    <%= link_to "New Parameter?" , new_company_parameter_path(@company) %>
+                    <br/><br/>
+                    <span class=" radius label"><%= t(:evaluatees) %></span>
+                    <br/>
+                    <% @employees.each do |em| %>
+                        <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
+                        <%= check_box_tag "evaluatees[user_id][]", em.id %>
+                        <%= em.name %>
+                        <br/>                        
+                    <% end %>
+                    <br/><br/>
+                    <!-- TODO: DELETE QUANDO O PICKER FUNCIONAR COM O FORM -->
+                        <%= f.label "Period Begin" %>
+                        <%= f.date_select :period_begin %>
+                        <%= f.label "Period End" %>
+                        <%= f.date_select :period_end %>
+                    <!-- END TODO -->
+                    <%= f.submit %>
+                <% end %>
+            </div> <!-- Fecha Panel -->
+        </div> <!-- Fecha signup -->
+    </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->
 
-    <%= f.label "Description" %>
-    <%= f.text_field :description %>
-    <br/>
-    <%= f.label "Start Date" %>
-    <%= f.date_select :period_begin %>
-    <%= f.label "End Date" %>
-    <%= f.date_select :period_end %>
-    <br/><br/>
-    <%= f.label "Evaluator" %>
-    <%= f.select :user_id , options_from_collection_for_select(@employees, :id,:name) %>
-    <br/><br/>
-    <%= f.label "Parameters" %>
-    <% @parameters.each do |p| %>
-        <%= check_box_tag "evalparams[param_id][]", p.id %>
-        <%= p.name %>
-    <% end %>
-    <br/>
-    <%= link_to "New Parameter?" , new_company_parameter_path(@company) %>
-    <br/><br/>
-    <%= f.label "Evaluatees" %>
-    <% @employees.each do |em| %>
-        <%= check_box_tag "evaluatees[user_id][]", em.id %>
-        <%= em.name %>
-    <% end %>
-    <br/><br/>
-    <%= f.submit %>
-
-<% end %>
+<script type="text/javascript">
+    $(function() {
+        $("#evaluation_period_begin").datepicker({ dateFormat: 'dd-mm-yy' });
+    });
+    
+    $(function() {
+        $("#evaluation_period_end").datepicker({ dateFormat: 'dd-mm-yy' });
+    });
+</script>
