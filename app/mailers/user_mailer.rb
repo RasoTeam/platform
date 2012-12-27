@@ -7,6 +7,12 @@ class UserMailer < ActionMailer::Base
     mail( :to => user.email, :subject => "Account Confirmation")
   end
 
+  def reset_password(user)
+    @user = user
+    @company = user.company
+    mail( :to => user.email, :subject => "Account Confirmation")
+  end
+
   def feedback_mail_notifier(feedback)
     @feedback = feedback
     mail(:to => feedback.email, :subject => "Raso-LeanHR Feedback", :content_type => "text/html")

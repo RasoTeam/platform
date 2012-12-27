@@ -1,22 +1,28 @@
-<div class="row">
-  <div class="twelve columns">
-    <ul class="breadcrumbs">
-    	<li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
-        <li class="current">
-          <a href="#"><%= t(:employees) %></a>
-        </li>
-    </ul>
-  </div>
-</div>
+	<div class="row">
+	  <div class="twelve columns">
+	    <ul class="breadcrumbs">
+	    	<% if current_user(@company.slug).role >= ROLE[:manager] %>
+	    		<li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+	    	<%else%>
+	    		<li><%= link_to @company.name, company_path(@company) %></li>
+	    	<%end%>
+
+	        <li class="current">
+	          <a href="#"><%= t(:employees) %></a>
+	        </li>
+	    </ul>
+	  </div>
+	</div>
+
 <div class="row">
 		<div class="six columns">
 			<h3>Employees</h3>
 		</div>
 		<div class="six columns ">
 			<ul class="button-group radius right">
-				<li><%= link_to "Add User", new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
-				<li><a class="radius button add_user" id="update_credits">Edit user credits</a></li>
-				<li><%= link_to 'Import Users', fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
+				<li><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
+				<li><a class="radius button add_user" id="update_credits"> <%= t(:edit_user_days) %></a></li>
+				<li><%= link_to t(:import_user), fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 			</ul>
 		</div>
 </div>
@@ -70,19 +76,19 @@
 							      			<%end)%>
 							      		<%end)%>
 							      	<% end %>
-							      	<td>
-												<% if u.state == STATE[:active] %>
-													<%= link_to t(:activate), "#"%> 
-													<!--<%= link_to t(:activate), user_activate_account_path(u.company,u), :method=>:put, :class=>"alert label radius" %> -->
-												<% elsif u.state == STATE[:inactive] %>
-													<%= link_to t(:deactivate), "#"%>
-													<!--<%= link_to t(:deactivate), user_deactivate_account_path(u.company,u), :method=>:put, :class=>"label radius" %>-->
-												<% elsif u.state == STATE[:unchecked] %>
-													<%= link_to t(:resend_email), "#"%>
-													<!--<%= link_to t(:resend_email), user_resend_verification_email_path(u.company,u), :method=>:put, :class=>"label radius" %>-->
-												<% end %>
+							      	<td style="text-align: center">
+										<% if u.state == STATE[:active] %>
+											<!--<%= link_to t(:activate), "#"%> -->
+											<%= link_to t(:deactivate), user_deactivate_account_path(u.company,u), :method=>:put, :class=>"alert label radius" %> 
+										<% elsif u.state == STATE[:inactive] %>
+											<!--<%= link_to t(:deactivate), "#"%> -->
+											<%= link_to t(:activate), user_activate_account_path(u.company,u), :method=>:put, :class=>"label radius" %>
+										<% elsif u.state == STATE[:unchecked] %>
+											<!--<%= link_to t(:resend_email), "#"%>-->
+											<%= link_to t(:resend_email), user_resend_verification_email_path(u.company,u), :method=>:put, :class=>"label radius" %>
+										<% end %>
 
-											</td>
+									</td>
 
 
 							      	<!-- <td>

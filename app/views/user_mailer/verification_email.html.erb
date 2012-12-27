@@ -23,36 +23,44 @@
                 padding: 10px;
               ">
       <% if @user.role == ROOT %>
-        <h1> <%= @user.company.name %> </h1>
         <h2> Welcome to Raso </h2>
+        <h1> <%= @user.company.name %> </h1>
         <p>Thanks for signing up to Raso. We'll do everything we can to make sure it's a great experience your company.</p>
-        <p> 
-          <ul>
-            <li>To validate your account please click 
-              <%= link_to "here.", email_verify_url(@user.company_id, token: @user.remember_token) %>
-            </li>
-            <li>
-              Your company login is done at
-              <div style="width: 70%; 
+          <div style="width: 70%; 
                 border: solid 1px #E6E6E6; 
                 background-color: #868B8D; 
                 padding: 10px;
                 text-align: center;
-                margin-top: 10px;">
+                margin: 10px auto 0px auto;">
+                <%= link_to "Validate Your Account!", email_verify_url(@user.company_id, token: @user.remember_token), :style=>"color:white; font-size: 15px; font-weight: bold;" %>
+          </div>
+          <p>
+            Your company login is done at:
+          </p>
+          <div style="width: 70%; 
+                border: solid 1px #E6E6E6; 
+                background-color: #868B8D; 
+                padding: 10px;
+                text-align: center;
+                margin: 10px auto 0px auto;">
                 <%= link_to company_url(@company), company_url(@company), :style=>"color:white; font-size: 15px; font-weight: bold;"%>
-              </div>
-            </li>
-          </ul>
-        </p>
+          </div>
         <p> After validating your account you can login as admin with this email address. </p>
         <p> Looking forward to hear from you, </p>
         <p> Raso Team </p>
       <% else %>
-        <h1>Welcome to rasohr.com, <%= @user.name %></h1>
-        <p>You have been invited to rasohr.com. To login after you activate your account, you have to insert your email: <%= @user.email %>.</p>
-        <p>      
-          To confirm your email click 
-          <%= link_to "here.", email_verify_url(@user.company_id, token: @user.remember_token) %>
+        <h2> Welcome to Raso </h2>
+        <h1><%= @user.name %></h1>
+        <p>You have been invited to raso by <%= @user.company.name %>. To login after you activate your account, you have to insert your email: <%= @user.email %>.</p>
+        <div style="width: 70%; 
+              border: solid 1px #E6E6E6; 
+              background-color: #868B8D; 
+              padding: 10px;
+              text-align: center;
+              margin: 10px auto 0px auto;">
+              <%= link_to "Validate Your Account!", email_verify_url(@user.company_id, token: @user.remember_token), :style=>"color:white; font-size: 15px; font-weight: bold;" %>
+        </div>
+          
         </p>
         <p> Looking forward to hear from you, </p>
         <p> Raso Team </p>

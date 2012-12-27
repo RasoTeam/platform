@@ -31,6 +31,7 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body class="<%= controller.controller_name %>">
+		<div class="wrap_front">
 			<div class="row" style="width:100%; padding-bottom: 35px;">
 			<div class="twelve columns" style="padding: 0; z-index: 10;">
 				<!-- Navigation -->
@@ -80,7 +81,8 @@
 		<% end %>
 
 	  <%= yield %>
-
+	  <div class="push_front"></div>
+	</div>
 	  <!-- Footer -->
 	<footer class="row footer_raso">
 		<div class="twelve columns" style="padding: 0;">

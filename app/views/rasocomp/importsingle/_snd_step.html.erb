@@ -1,8 +1,12 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
-      <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <% if current_user(@company.slug).role >= ROLE[:manager] %>
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <%else%>
+          <li><%= link_to @company.name, company_path(@company) %></li>
+        <%end%>
+        <li><%= link_to t(:employees), company_users_path(@company)  %></li>
         <li class="current">
           <a href="#"><%= t(:import_user) %></a>
         </li>
@@ -21,51 +25,16 @@
       <div class="panel">
         <h2><%= t(:import_user) %></h2>
         <hr/>
-	        <%= form_tag({:controller => "importsingle", :action => "snd_step"}, :multipart => true) do %>
-				<%= file_field_tag 'excel_file' %>
-			    <br />
-			    <div style="text-align: center"><%= submit_tag 'Continue', :class=>"radius button", :style=>"margin-top: 5px" %></div>
-			<% end %>
+        <p><%= t(:sheet_choose)%></p>
+			<%= form_tag(:controller => "importsingle", :action => "trd_step", :method => "post") do %>
+				
+				<% session[:sheetsArray].each do |sheet| %>
+     				<span><%= radio_button_tag 'sheet' , sheet.to_s %><%= label_tag sheet.to_s %></span>
+			    <% end %>
+
+			    <div style="text-align: center"><%= submit_tag t(:continue) , :class=>"radius button" %></div>
+			<% end -%>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-<h2> Import an <%= "'"+session[:model_name]+"'" %> </h2>
-	
-	<h3>
-		(Second Step)
-	</h3>
-
-<%= form_tag(:controller => "importsingle", :action => "trd_step", :method => "post") do %>
-	
-	<br />
-	<h3> Choose the Excel Sheet: </h3>
-	<% session[:sheetsArray].each do |sheet| %>
-	    <%= label_tag sheet.to_s %>
-	    <%= radio_button_tag 'sheet' , sheet.to_s %>
-	 	<br />
-    <% end %>
-
-    <br />
-    <div><%= submit_tag 'Continue' %></div>
-<% end -%>
-
-<!-- ERRORS -->
-<% if !session[:error].eql?("none") %>
-	<hr>
-		<h4>
-			<%= "ERROR: "+session[:error].to_s%>
-		<h4 />
-	<hr/>
-<% end %>
-
-<hr />
-
-<%= link_to 'Cancel', session[:model] %>

@@ -1,5 +1,6 @@
 class Rasocomp::ApplicationController < ::ApplicationController
   before_filter :user_authentication
+  before_filter :company_active
   layout "rasoemp"
 
 private
@@ -11,6 +12,15 @@ private
       	flash[:alert] = t(:no_permission_to_access)
      	  redirect_to company_signin_path(comp)
      end
+    end
+
+    def company_active
+      id = params[:company_id]
+      id ||= params[:id]
+      comp = Company.find(id)
+      unless comp.state == COMPANY_STATE[:active]
+        redirect_to company_blocked_path comp
+      end
     end
 
     def manager_or_root
