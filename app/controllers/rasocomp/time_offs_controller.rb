@@ -20,7 +20,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     #@user = @user.find( @timeoff.user_id)
     if @timeoff.state == 2
       user_t = User.find( @timeoff.user_id)
-      user_t.time_off_days -= @timeoff.days
+      user_t.time_off_days -= @timeoff.total_credits
       user_t.save!(:validate => false)
     end
     @timeoff.update_attribute :state, 1
@@ -36,7 +36,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     timeoff = TimeOff.find( params[:id])
     if timeoff.state != 2
       user_t = User.find( timeoff.user_id)
-      user_t.time_off_days += timeoff.days
+      user_t.time_off_days += timeoff.total_credits
       user_t.save!(:validate => false)
     end
     timeoff.update_attribute :state, 2
@@ -67,11 +67,12 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     @timeoff = @user.time_offs.build( params[:time_off])
     @timeoff.company_id = @company.id
     @timeoff.state = 0
-    @timeoff.credits = @user.time_off_days
+    @timeoff.credits = 1 #@user.time_off_days
     @timeoff.color = '#B8B8B8'
     @timeoff.name = @user.name + " | " + TIMETYPE.invert[@timeoff.category].to_s
+    @timeoff.valid?
     if @timeoff.save
-      @user.time_off_days -= @timeoff.days
+      @user.time_off_days -= @timeoff.total_credits
       @user.save!(:validate => false)
       redirect_to company_user_time_offs_path( params[:company_id], params[:user_id])
     else
@@ -83,7 +84,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     user = User.find( params[:user_id])
     timeoff = TimeOff.find( params[:id])
     if timeoff.state != 2 #only return credits if pending (0) or approved (1)
-      user.time_off_days += timeoff.days
+      user.time_off_days += timeoff.total_credits
       user.save!(:validate => false)
     end
     timeoff.destroy
