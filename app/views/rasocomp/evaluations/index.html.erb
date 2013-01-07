@@ -51,7 +51,7 @@
             <tbody>
               <% @evaluations.each do |ev| %>
               <tr>
-                <td style="text-align:center"><%= ev.description %><!-- TODO: LINK SHOW --></td>
+                <td style="text-align:center"><%= link_to(ev.description, company_evaluation_path(@company,ev)) %></td>
                 <td style="text-align:center"><%= ev.period_begin %></td>
                 <td style="text-align:center"><%= ev.period_end %></td>
                 <td style="text-align:center"><%= User.find(ev.user_id).name %></td>
