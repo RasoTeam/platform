@@ -2,50 +2,30 @@
 
 class TimeOff < ActiveRecord::Base
   attr_accessor :credits
-  attr_accessible :days, :description, :end_at, :start_at, :state, :category, :company_id, :user_id, :credits, :name
+  attr_accessible :days, :description, :end_at, :start_at, :state, :category, :company_id, :user_id, :credits, :name, :total_credits
   belongs_to :user
   has_event_calendar
-
-
-  #before_validation :fix_date
+  
   before_validation :set_days
+  
+  validates :total_credits, :presence => true,
+                            :numericality => { :only_integer => true,
+                                               :greater_than_or_equal_to => 1 } 
 
-  validates :user_id, :presence => true
-
-  validates :end_at, :presence => true,
-                       :timeliness => { :after => lambda { :start_date },
-                                        :after_message => ':end_at > :start_at',
-                                        :type => :date}
-
-  validates :start_at, :presence => true,
-                         :timeliness => { :after => lambda { Date.current }, 
-                                          :after_message => ':start_at > today',
-                                          :type => :date}
-
-  validates :category, :presence => true, 
-                       :numericality => { :only_integer => true,
-                                          :greater_than_or_equal_to => 0,
-                                          :less_than_or_equal_to => 3 }
-
-  validates :state, :presence => true, 
-                    :numericality => { :only_integer => true,
-                                       :greater_than_or_equal_to => -1,
-                                       :less_than_or_equal_to => 1 }
-
-  validates :days, :presence => true,
-                   :numericality => { :onlu_integer => true,
-                                      :greater_than_or_equal_to => 0 } 
-
-  validates :credits, :presence => true,
-                      :numericality => { :onlu_integer => true,
-                                         :greater_than_or_equal_to => :days } 
-
+  #validates :credits, :presence => true,
+  #                    :numericality => { :only_integer => true,
+  #                                       :greater_than_or_equal_to => :days }
+  
   def days_diff
-    (self.end_at - self.start_at).to_i
+    if self.end_at.nil? || self.start_at.nil?
+      return 0
+    end
+    n = Integer(self.end_at - self.start_at) + 1
+    return n
   end
 
   private
     def set_days
-      self.days = days_diff
+      self.total_credits = days_diff
     end
 end

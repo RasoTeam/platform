@@ -78,4 +78,32 @@ form
 	}
 }
 
+.wrap{
+	 min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -85px;
+}
 
+html,
+body {
+	height: 100%;
+}
+
+.push{
+	height: 85px;
+}
+
+.wrap_front{
+	 min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -111px !important;  
+}
+
+.push_front{
+	height: 111px !important;
+
+}

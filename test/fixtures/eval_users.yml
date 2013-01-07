@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  evaluation_id: 1
+  evaluator_id: 1
+  evaluatee_id: 1
+
+two:
+  evaluation_id: 1
+  evaluator_id: 1
+  evaluatee_id: 1

@@ -1,8 +1,12 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
-      <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <% if current_user(@company.slug).role >= ROLE[:manager] %>
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <%else%>
+          <li><%= link_to @company.name, company_path(@company) %></li>
+        <%end%>
+        <li><%= link_to t(:employees), company_users_path(@company)  %></li>
         <li class="current">
           <a href="#"><%= t(:import_user) %></a>
         </li>
@@ -21,25 +25,9 @@
 	        <%= form_tag({:controller => "importsingle", :action => "snd_step"}, :multipart => true) do %>
 				<%= file_field_tag 'excel_file' %>
 			    <br />
-			    <div style="text-align: center"><%= submit_tag 'Continue', :class=>"radius button"%></div>
+			    <div style="text-align: center"><%= submit_tag 'Continue', :class=>"radius button", :style=>"margin-top: 5px" %></div>
 			<% end %>
       </div>
     </div>
   </div>
 </div>
-	
-
-
-
-<!-- ERRORS -->
-<% if !session[:error].eql?("none") %>
-	<hr>
-		<h4>
-			<%= "ERROR: "+session[:error].to_s%>
-		<h4 />
-	<hr/>
-<% end %>
-
-<hr />
-
-<%= link_to 'Cancel', session[:model] %>

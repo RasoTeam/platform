@@ -1,42 +1,47 @@
-
-<div style="height: 100px">
-
-
-</div>
-
-<%= link_to "Adicione", company_signin_path(@company) %>
-
-<div class="six columns">
-<p><%= link_to image_tag('logo.png'), '/'%></p>
-<div class="panel">
-<h3> About the company </h3>
-<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean est quam, viverra id iaculis eget, imperdiet non urna. Duis sed sapien a leo dictum tristique id ac ipsum. Integer quis diam tellus, nec malesuada arcu. Vivamus commodo ipsum elit, vel gravida nibh. Pellentesque adipiscing neque eu velit ultrices fringilla. </p>
-</div>
-</div>
-
-
-<div class="six columns">
-	<div class="panel">
-	  <h2><%= @company.name %></h2>		
-      <h5>Welcome to Raso</h5>
-      <p>This is your company login page</p>
-		<hr />		
+<div class="row" style="margin-top: 100px;">
+	<div class="six columns">
+		<% if @company.logo_url %>
+			<p><%= link_to image_tag(@company.logo_url), '/'%></p>
+		<% else %>
+			<p><%= link_to image_tag('logo.png'), '/'%></p>
+		<% end %> 
+	</div>  <!-- end six columns -->
+	<div class="six columns">
+	<%# t(:drop_bookmark) %>
+		<div class="row">
+			<div class="six columns" style="text-align:right;">
+				<%= link_to image_tag('bookmark.png'), '/'%>
+			</div><!-- end six columns -->
+			<div class="six columns">
+      			<%= link_to "#{@company.name}", company_signin_path(@company), :class=>"radius button", :style=>"margin-top: 10px"  %>
+      		</div><!-- end six columns -->
+	    </div> <!-- end row -->
+	</div> <!-- end six columns -->
+</div> <!-- end row -->
+<div class="row">
+	<div class="six columns">
+		<div class="panel">
+			<h3><%= @company.name %></h3>
+			<h5>Welcome to Raso</h5>
+			<p>This is your company login page</p>
+			<hr />
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean est quam, viverra id iaculis eget, imperdiet non urna. Duis sed sapien a leo dictum tristique id ac ipsum. Integer quis diam tellus, nec malesuada arcu. Vivamus commodo ipsum elit, vel gravida nibh. Pellentesque adipiscing neque eu velit ultrices fringilla. </p>
+		</div>
+	</div> <!-- end six columns -->
+	<div class="six columns">
+		<div class="panel">
 			<%= form_for(:user_session, url: public_company_user_sessions_path) do |f| %>
 			  
-			  <%= f.label :email %>
-			  <%= f.text_field :email, :required => true %>
+				<%= f.label :email %>
+				<%= f.text_field :email, :required => true %>
 
-			  <%= f.label :password %>
-			  <%= f.password_field :password, :required => true %>
-
-			  <p style="text-align: center"><%= f.submit 'Sign In', :class => "button" %></p>
-
-			<% end %>
-    </div>
-</div>
-
-
-
-
-
-
+				<%= f.label :password %>
+				<%= f.password_field :password, :required => true %>
+			
+				<%= link_to "Forgot your password?", reset_pass_require_path(@company) %>
+				
+				<p style="text-align: center"><%= f.submit 'Sign In', :class => "button" %></p>
+			<% end %> <!-- end form -->
+		</div> <!-- end panel -->
+	</div> <!-- end six columns -->
+</div> <!-- end row -->

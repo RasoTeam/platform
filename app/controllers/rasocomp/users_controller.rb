@@ -84,7 +84,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user = @company.users.build( params[:user])
     @user.role = Integer role
     @user.time_off_days = 0
-    @user.state = -1
+    @user.state = STATE[:unchecked]
     @user.password_digest = 0
     if @user.save
       UserMailer.verification_email(@user).deliver
@@ -113,18 +113,45 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     company = Company.find(params[:company_id])
     user = company.users.find(params[:id])
     UserMailer.verification_email(user).deliver
+    flash[:success] = t(:email_resent)
     redirect_to company_users_path company
   end
 
   def activate_account
     company = Company.find(params[:company_id])
     user = company.users.find(params[:id])
-    redirect_to company_users_path company
+    user.state = STATE[:active]
+    if user.save
+
+      period = user.periods.build
+      period.start_date = Date.today
+      period.state = STATE[:active]
+      period.save
+
+      flash[:success] = t(:activated_successfully)
+      redirect_to company_users_path company
+    else
+      flash[:error] = t(:error)
+      redirect_to company_users_path company
+    end
   end
 
   def deactivate_account
     company = Company.find(params[:company_id])
     user = company.users.find(params[:id])
-    redirect_to company_users_path company
+    user.state = STATE[:inactive]
+    if user.save
+
+      period = user.periods.build
+      period.start_date = Date.today
+      period.state = STATE[:inactive]
+      period.save
+
+      flash[:success] = t(:deactivated_successfully)
+      redirect_to company_users_path company
+    else
+      flash[:error] = t(:error)
+      redirect_to company_users_path company
+    end
   end
 end

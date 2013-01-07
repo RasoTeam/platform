@@ -1,32 +1,40 @@
-<h2> Import an <%= "'"+session[:model_name]+"'" %> </h2>
-	
-	<h3>
-		(Second Step)
-	</h3>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+        <% if current_user(@company.slug).role >= ROLE[:manager] %>
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <%else%>
+          <li><%= link_to @company.name, company_path(@company) %></li>
+        <%end%>
+        <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li class="current">
+          <a href="#"><%= t(:import_user) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:first_step) %></a>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:second_step) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+        <h2><%= t(:import_user) %></h2>
+        <hr/>
+        <p><%= t(:sheet_choose)%></p>
+			<%= form_tag(:controller => "importsingle", :action => "trd_step", :method => "post") do %>
+				
+				<% session[:sheetsArray].each do |sheet| %>
+     				<span><%= radio_button_tag 'sheet' , sheet.to_s %><%= label_tag sheet.to_s %></span>
+			    <% end %>
 
-<%= form_tag(:controller => "importsingle", :action => "trd_step", :method => "post") do %>
-	
-	<br />
-	<h3> Choose the Excel Sheet: </h3>
-	<% session[:sheetsArray].each do |sheet| %>
-	    <%= label_tag sheet.to_s %>
-	    <%= radio_button_tag 'sheet' , sheet.to_s %>
-	 	<br />
-    <% end %>
-
-    <br />
-    <div><%= submit_tag 'Continue' %></div>
-<% end -%>
-
-<!-- ERRORS -->
-<% if !session[:error].eql?("none") %>
-	<hr>
-		<h4>
-			<%= "ERROR: "+session[:error].to_s%>
-		<h4 />
-	<hr/>
-<% end %>
-
-<hr />
-
-<%= link_to 'Cancel', session[:model] %>
+			    <div style="text-align: center"><%= submit_tag t(:continue) , :class=>"radius button" %></div>
+			<% end -%>
+      </div>
+    </div>
+  </div>
+</div>
