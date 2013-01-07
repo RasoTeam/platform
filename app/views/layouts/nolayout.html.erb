@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 	<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 	<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 	<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
@@ -28,41 +28,39 @@
 
 	  <%= csrf_meta_tags %>
 	</head>
-	<body >
+	<body>
 		<div class="wrap">
-		<div class="<%= controller.controller_name %>">
-		<div class="row" >
-			<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, class:"row alert-box #{key}") %>
-			<% end %>
-			<%= yield %>
-		</div>
-	  </div>
-	  	  <div class="push"></div>
-
-</div>
-	  <!-- Footer -->
-
-	<footer class="row footer_raso">
-		<div class="twelve columns" style="padding: 0;">
-			<hr/>
-			<div class="row">
-
-				<div class="six columns" style="width: 70%;">
-					<p>Copyright &copy; 2012 Raso. <%= t(:footer_message) %></p>
+			<div class="<%= controller.controller_name %>">
+				<div class="row" >
+					<% flash.each do |key, value| %>
+					<%= content_tag(:div, value, class:"row alert-box #{key}") %>
+					<% end %>
+					<%= yield %>
 				</div>
+		  	</div>
+			<div class="push">
 			</div>
 		</div>
-	</footer>
-</div>
+	<!-- Footer -->
+		<footer class="row footer_raso">
+			<div class="twelve columns" style="padding: 0;">
+				<hr/>
+				<div class="row">
+					<div class="six columns" style="width: 70%;">
+						<p>Copyright &copy; 2012 Raso. <%= t(:footer_message) %></p>
+					</div>
+				</div>
+			</div>
+		</footer>
 	<!-- End Footer -->
+
 	<!-- Included JS Files -->
 	<!-- <script src="../public/assets/templates.js"></script> -->
 		<script type="text/javascript">
 			$(window).load(function() {
 				$('#featured').orbit({ fluid: '2x1' });
 			});
-			</script>
+		</script>
 
-		</body>
-	</html>
+	</body>
+</html>

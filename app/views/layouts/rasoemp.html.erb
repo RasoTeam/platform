@@ -29,67 +29,68 @@
 </head>
 <body>
   <div class="wrap">
-	<!-- Header and Nav -->
-<!-- Header and Nav -->
-
-  <nav class="top-bar">
-    <ul>
-      <!-- Title Area -->
-      <li class="name">
-        <% if current_user(@company.slug).role > ROOT %>
-          <%= link_to  @company.name, user_dashboard_path(@company.slug, current_user(@company.slug)) %>
-        <% else %>
-          <%= link_to @company.name, company_path(@company) %>
-        <% end %>
-      </li>
-    </ul>
-
-    <section>
-      <!-- Left Nav Section -->
-      <ul class="left">
-        <% if current_user(@company.slug).role == ROLE[:manager] %>
-        <li class="divider"></li>
-        <li>
-          <%= link_to t(:job_offers), company_job_offers_path(@company) %>
+    <nav class="top-bar">
+      <ul>
+        <!-- Title Area -->
+        <li class="name">
+          <% if current_user(@company.slug).role > ROOT %>
+            <%= link_to  @company.name, user_dashboard_path(@company.slug, current_user(@company.slug)) %>
+          <% else %>
+            <%= link_to @company.name, company_path(@company) %>
+          <% end %>
         </li>
-        <li class="divider"></li>
-        <li>
-          <%= link_to t(:time_offs), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
-        </li>
-        <% end %>
-        <% if current_user(@company.slug).role <= ROLE[:manager] %>
-        <li class="divider"></li>
-        <li><%= link_to t(:employees), company_users_path(@company) %></li>
-        <% end %>
-        <li class="divider"></li>
-        <% if current_user(@company.slug).role >= ROLE[:manager] %>
-        <li><%= link_to t(:company) , company_path(@company) %></li>
-        <li class="divider"></li>        
-        <li><%= link_to t(:calendar), calendar_path(@company) %></li>
-        <li class="divider"></li>
-        <%end%>
       </ul>
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="divider"></li>
-        <li  class="name" style="line-height: 20px; padding: 15px; text-align: center">
-          <%  curUser=current_user(@company.slug) %>
-          <span style="color:white"><%=  curUser.name %></span><br/>
-          <span class="secondary radius label"><%  if curUser.role == 0%>
-          ROOT
-          <%else%>
-          <%= ROLE.invert[current_user(@company.slug).role]%>
-          <%end%></span>
-        </li>
-        <li class="divider"></li>
-        <li><%= link_to t(:logout), company_signout_path(@company) %></li>
-      </ul>
-    </section>
-  </nav>
+
+      <section>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <% if current_user(@company.slug).role == ROLE[:manager] %>
+          <li class="divider"></li>
+          <li>
+            <%= link_to t(:job_offers), company_job_offers_path(@company) %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to t(:time_offs), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
+          </li>
+          <% end %>
+          <% if current_user(@company.slug).role <= ROLE[:manager] %>
+          <li class="divider"></li>
+          <li><%= link_to t(:employees), company_users_path(@company) %></li>
+          <% end %>
+          <li class="divider"></li>
+          <% if current_user(@company.slug).role >= ROLE[:manager] %>
+          <li><%= link_to t(:company) , company_path(@company) %></li>
+              <% if current_user(@company.slug).role <= ROLE[:manager] %>
+                  <li class="divider"></li>
+                  <li><%= link_to "Evaluations", company_evaluations_path(@company) %></li>
+              <% end %>
+          <li class="divider"></li>
+          <li><%= link_to t(:calendar), calendar_path(@company) %></li>
+          <li class="divider"></li>
+          <%end%>
+        </ul>
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li  class="name" style="line-height: 20px; padding: 15px; text-align: center">
+            <%  curUser=current_user(@company.slug) %>
+            <span style="color:white"><%=  curUser.name %></span><br/>
+            <span class="secondary radius label"><%  if curUser.role == 0%>
+            <%= t(:ROOT)%>
+            <%else%>
+            <%= ROLE.invert[current_user(@company.slug).role]%>
+            <%end%></span>
+          </li>
+          <li class="divider"></li>
+          <li><%= link_to t(:logout), company_signout_path(@company) %></li>
+        </ul>
+      </section>
+    </nav>
 
 
   <!-- End Header and Nav -->
@@ -98,9 +99,8 @@
    <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class:"row alert-box #{key}") %>
   <% end %>
-
-
   <%= yield %>
+
   <div class="push"></div>
 </div>
  <!-- Footer -->

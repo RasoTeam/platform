@@ -83,17 +83,16 @@ form
         height: auto !important;
         height: 100%;
         /* Negative indent footer by it's height */
-        margin: 0 auto -85px !important;
+        margin: 0 auto -85px;
 }
+
 html,
 body {
 	height: 100%;
-
 }
 
 .push{
 	height: 85px;
-
 }
 
 .wrap_front{
@@ -101,10 +100,10 @@ body {
         height: auto !important;
         height: 100%;
         /* Negative indent footer by it's height */
-        margin: 0 auto -111px; 
+        margin: 0 auto -111px !important;  
 }
 
 .push_front{
-	height: 111px;
+	height: 111px !important;
 
 }

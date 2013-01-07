@@ -24,6 +24,7 @@ class Company < ActiveRecord::Base
   has_many :time_offs
   has_many :trainings
   has_many :job_offers
+  has_many :evaluations
 
 
   before_save { |company| company.slug = slug.downcase

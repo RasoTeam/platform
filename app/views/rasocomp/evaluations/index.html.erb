@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:evaluations) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+
+    <h2><%= t(:evaluations) %></h2>
+    
+    <div class="row">
+      <div class="four columns">
+        <dl class="tabs pill">
+          <dd class="active"><a href="#">A-Z <!-- TODO: LINK A-Z --></a></dd>
+          <dd><a href="#">Z-A <!-- TODO: LINK Z-A --></a></dd>
+        </dl>
+      </div>  <!-- Fecha four columns -->
+      <div class="eight columns">
+        <dl class="sub-nav">
+            <dt>Filter:</dt>
+              <dd class="active"><a href="#">All <!-- TODO: LINK FILTERS --></a></dd>
+              <dd><a href="#">Filter1</a></dd>
+              <dd><a href="#">Filter2</a></dd>
+              <dd><a href="#">Filter3</a></dd>
+        </dl>
+      </div> <!-- Fecha eight columns -->
+    </div> <!-- Fecha row -->
+  </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->
+<div class="row">
+  <div class="twelve columns">
+    <div class="panel">
+      <div class="row">
+        <div class="twelve columns">
+          <table class="twelve">
+            <thead>
+              <tr>
+                <th style="text-align:center">Evaluation</th>
+                <th style="text-align:center">Begin Date</th>
+                <th style="text-align:center">End Date</th>
+                <th style="text-align:center">Evaluator</th>
+                <th style="text-align:center">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @evaluations.each do |ev| %>
+              <tr>
+                <td style="text-align:center"><%= link_to(ev.description, company_evaluation_path(@company,ev)) %></td>
+                <td style="text-align:center"><%= ev.period_begin %></td>
+                <td style="text-align:center"><%= ev.period_end %></td>
+                <td style="text-align:center"><%= User.find(ev.user_id).name %></td>
+                <td style="text-align:center"><%= ev.status %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="eight columns">
+            </div>
+            <div class="four columns">
+              <div class="row collapse">
+                <!-- TODO: FORM SEARCH (VER EXEMPLO JOB OFFERS) -->
+                <form>
+                  <div class="eight columns">
+                    <input id="search" name="Search" type="text"/>
+                  </div>
+                  <div class="four mobile-one columns">
+                    <input class="button expand postfix" type="submit" value="Search"/>
+                  </div>
+                </form>
+              </div> <!--  Fecha row -->
+            </div> <!-- Fecha four columns -->
+          </div> <!-- Fecha row -->
+        </div> <!-- Fecha twelve columns -->
+      </div> <!-- Fecha row -->
+    </div> <!-- Fecha panel -->
+  </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->
+
+<div class="row">
+  <div class="twelve columns">
+    <p style="text-align: center">
+      <%= link_to "Create Evaluation Process" , new_company_evaluation_path(@company.id), :class=>"button" %>
+    </p>
+  </div>
+</div>
+
+
