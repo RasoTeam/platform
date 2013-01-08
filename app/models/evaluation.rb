@@ -7,5 +7,8 @@ class Evaluation < ActiveRecord::Base
   belongs_to :company
 
   has_many :parameters , :through => :evaluation_parameters
+  has_many :evaluation_parameters
+
+  accepts_nested_attributes_for :evaluation_parameters
 
 end

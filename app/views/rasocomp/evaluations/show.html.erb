@@ -38,10 +38,27 @@
           </tr>
           <tr>
             <td><span class="label radius">Evaluatees</span></td>
-            <td><% @evaluatees.each do |ev|%><%= ev.name + "  ,  "%><% end %></td>
+            <td><% @evaluatees.each do |ev|%><%= ev.name + "    "%><% end %></td>
+          </tr>
+          <tr>
+            <td><span class="label radius">Evaluation Parameters</span></td>
+            <td>
+              <% @eval_params.each do |ev|%>
+                  <% @parameter = Parameter.find(ev.parameter_id)%>
+                  <p><%= @parameter.name + ': ' + ev.min_value.to_s + ' to ' + ev.max_value.to_s %></p>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
+
+      <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
+        <p style="text-align: left;">
+              <%= link_to "Evaluate" , evaluate_users_path(@company.id,@evaluation.id),:class=>"button" %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>
+
+

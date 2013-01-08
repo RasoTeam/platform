@@ -76,6 +76,10 @@ resources :feedbacks
   get 'companies/:company_id/job_offers/:job_offer_id/candidates/:id',
         :to => 'rasocomp/candidates#show' , :as => 'show_candidate'
 
+  #evaluations
+  get 'companies/:company_id/evaluations/:evaluation_id/evaluate',
+      :to => 'rasocomp/evaluations#evaluate' , :as => 'evaluate_users'
+
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
   #match '/' => 'public/companies#signin', :constraints => {:subdomain => /.+/}
