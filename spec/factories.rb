@@ -11,4 +11,25 @@ FactoryGirl.define do
 		sequence(:slug) { |n| "slug#{n}" }
 		state 0
 	end
+
+	factory :user do 
+		company_id 1
+		state 1
+		password "fubarz"
+		password_confirmation "fubarz"
+		time_off_days 100
+
+		factory :cooperator do
+			email "cooperator@rasohr.com"
+			name "user cooperator"
+			role 10
+		end
+
+		factory :manager do
+			email "manager@rasohr.com"
+			name "user manager"
+			role 1
+		end
+
+	end 
 end

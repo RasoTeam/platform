@@ -5,10 +5,10 @@ describe "Backoffice pages" do
 	subject { page }
 
 	shared_examples_for "all backoffice pages" do
-    it { should have_content('Raso Admin') }
-    it { should have_content('Companies') }
-    it { should have_content('Invoices') }
-    it { should have_content('Super User Sign Out') }
+	  it { should have_content('Raso Admin') }
+	  it { should have_content('Companies') }
+	  it { should have_content('Invoices') }
+	  it { should have_content('Super User Sign Out') }
 
 	  it { should have_link('Raso Admin', href: backoffice_stats_path) }
 	  it { should have_link('Companies', href: backoffice_companies_path) }
@@ -25,7 +25,7 @@ describe "Backoffice pages" do
 
 	describe "Stats page" do
 		
-    it_should_behave_like "all backoffice pages"
+    	it_should_behave_like "all backoffice pages"
 		it { should have_selector('h1', text: 'Welcome to RASO Backoffice') }
 		it { should have_content('Total in Debt') }
 	end
