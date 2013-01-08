@@ -38,8 +38,13 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
       flash[:error] = "Problem saving evaluation"
       redirect_to new_company_evaluation_path(params[:company_id])
     end
+  end
 
-
+  def show
+    @company = Company.find(params[:company_id])
+    @evaluation = Evaluation.find(params[:id])
+    @evaluator = User.find(@evaluation.user_id)
+    @evaluatees = @evaluation.users
   end
 
 end
