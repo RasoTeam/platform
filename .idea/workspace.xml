@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/evaluation.rb" afterPath="$PROJECT_DIR$/app/models/evaluation.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/parameter.rb" afterPath="$PROJECT_DIR$/app/models/parameter.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
     </list>
     <ignored path="platform.iws" />
     <ignored path=".idea/workspace.xml" />
