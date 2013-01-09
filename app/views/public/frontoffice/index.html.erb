@@ -143,72 +143,17 @@
 					<%= nav_link "Contacts", contacts_path, {:class=>"large radius button", :style=>"width:100%; margin-bottom: 10px;"} %>
 				</strong>
 
-				<strong>	
+				<!--<strong>	
 					<a href="#" class="lightview large radius button" id="buttonForModal" data-reveal-id="myModal" style="width: 100%;">Feedback</a>
-				</strong>
+				</strong>-->
 			</div>
 			<!-- End Content -->
 		</div>
 	</div>
 </div>
 
-<div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
-  <div class="row">
-   <div class="twelve columns">
-    <%= form_for(@feedback) do |f| %>
-      <% if @feedback.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@feedback.errors.count, "Error") %>:</h2>
-
-          <ul>
-          <% @feedback.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-        <table class="twelve tableJobs">
-        	<tr>
-                <td><p class="radius label">Name:</p></td>
-                <td><%= f.text_field :nome, :size=>30 %></td>
-            </tr>
-            <tr>
-                <td><p class="radius label">E-Mail:</p></td>
-                <td><%= f.text_field :email, :size=>30, required:true %></td>
-            </tr>
-            <tr>
-                <td><p class="radius label">Type:</p></td>
-                <!-- hack para "feedback[tipo]", ele estava a assumir apenas "tipo" -->
-                <td><%= select_tag("feedback[tipo]", options_for_select(["Error","Aspect","Funcionality","Other"],"Error")) %></td>
-            </tr>
-            <tr>
-                <td style="vertical-align:top"><p class="radius label">Description</p></td>
-                <td><%= f.text_area :texto, :rows=>"10", :cols=>"40", :style=>"width:97%;", required:true %></td>
-            </tr>
-            <tr>
-                <td>
-                    <%= f.text_field :url, :type=>"hidden" %>
-                </td>
-                <td align="right">
-                    <%= f.submit "Submit", :id=>"commit", :class=>"button" %>
-                </td>
-            </tr>
-        </table>
-    <% end %>
-  </div>
- </div>
-</div>
-
 <script type='text/javascript'>
    $(window).load(function() {
       $('#featuredContent').orbit({ fluid: '16x4', advanceSpeed: 3000});
    });
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#buttonForModal").click(function() {
-      $("#myModal").reveal();
-    });
-  });
 </script>

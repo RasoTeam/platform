@@ -46,7 +46,7 @@ class FeedbacksController < ApplicationController
     if @feedback.save
         #Send the email with the notification
         UserMailer.feedback_mail_notifier(@feedback).deliver
-        redirect_to @feedback, notice: 'Feedback successfully saved. An e-mail was sent to your mailbox.'
+        redirect_to :back, notice: 'Feedback successfully saved. An e-mail was sent to your mailbox.'
     end
   end
 

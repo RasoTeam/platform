@@ -1,6 +1,15 @@
 class Public::ApplicationController < ApplicationController
 	layout "application"
 
+	before_filter :createfeedback
+
+	def createfeedback
+	    if @feedback.nil?
+	    	@feedback = Feedback.new
+	    	@feedback.url = params[:url]
+	    end
+	end
+
 	private
 		def company_active
 	      id = params[:company_id]
