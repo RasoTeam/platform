@@ -78,13 +78,15 @@
         <ul class="right">
           <li class="divider"></li>
           <li  class="name" style="line-height: 20px; padding: 15px; text-align: center">
-            <%  curUser=current_user(@company.slug) %>
+            <%  curUser = current_user(@company.slug) %>
             <span style="color:white"><%=  curUser.name %></span><br/>
-            <span class="secondary radius label"><%  if curUser.role == 0%>
-            <%= t(:ROOT)%>
-            <%else%>
-            <%= ROLE.invert[current_user(@company.slug).role]%>
-            <%end%></span>
+            <span class="secondary radius label">
+              <%  if curUser.role == 0%>
+                <%= t(:ROOT)%>
+              <%else%>
+                <%= ROLE.invert[current_user(@company.slug).role]%>
+              <%end%>
+            </span>
           </li>
           <li class="divider"></li>
           <li><%= link_to t(:logout), company_signout_path(@company) %></li>

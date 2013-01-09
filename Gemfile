@@ -9,7 +9,8 @@ gem "mail", "2.4.4"
 gem 'validates_timeliness', '~> 3.0'
 gem 'hpricot'
 gem 'event-calendar', :require => 'event_calendar'
-
+gem 'yard'
+gem 'redcarpet'
 
 #Gems para acesso ao LinkedIn
 gem 'linkedin'
@@ -19,7 +20,7 @@ gem 'oauth'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 group :development, :test do

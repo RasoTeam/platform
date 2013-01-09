@@ -143,6 +143,7 @@ en:
   users_imported: "The following users were imported"
   unchecked: "Unchecked"
   ROOT: "Administrator"
+  root: "root"
 
   date:
     formats:
