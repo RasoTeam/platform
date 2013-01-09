@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to "Evaluations", company_evaluations_path(@company) %></li>
+      <li class="current"><a href="#"><%= @evaluation.description %></a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+    <div class="seven columns">
+      <h3><%= @company.name %> - <%= @evaluation.description %></h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <div id="signup">
+            <div class="panel">
+                <h1><%= "Evaluate them!" %></h1>
+                <%= render 'evaluate_form' %>
+            </div> <!-- Fecha Panel -->
+        </div> <!-- Fecha signup -->
+    </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->

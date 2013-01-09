@@ -10,7 +10,8 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @evaluation = Evaluation.new
     @evaluation.company_id = @company.id
     @employees = @company.users
-    @parameters = Parameter.all
+    @parameters = Parameter.all(:order => 'name ASC')
+    evaluation_parameter = @evaluation.evaluation_parameters.build()
   end
 
   def create
@@ -31,6 +32,17 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     end
     @evaluation.users = @users
 
+    #Preencher a tabela ponte Evaluatio Parameters
+    @evalparams = Array.new
+    @set = Array.new(params[:selected][:parameter_id])  #Vai buscar o Array com as opções, onde andas tu Ajax!?
+    params[:evaluation][:evaluation_parameters_attributes].values.each do |evp|
+      if @set.include?(evp[:parameter_id])  #Verifica que foram escolhidos.
+        @evalparam = @evaluation.evaluation_parameters.build(evp)
+        @evalparams << @evalparam
+      end
+    end
+    @evaluation.evaluation_parameters = @evalparams
+
     if @evaluation.save
       flash[:success] = "Evaluation created successfully"
       redirect_to company_evaluations_path(params[:company_id])
@@ -45,6 +57,15 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @evaluation = Evaluation.find(params[:id])
     @evaluator = User.find(@evaluation.user_id)
     @evaluatees = @evaluation.users
+    @eval_params = @evaluation.evaluation_parameters
+  end
+
+  def evaluate
+    @company = Company.find(params[:company_id])
+    @evaluation = Evaluation.find(params[:evaluation_id])
+    @evaluator = User.find(@evaluation.user_id)
+    @evaluatees = @evaluation.users
+    @eval_params = @evaluation.evaluation_parameters
   end
 
 end
