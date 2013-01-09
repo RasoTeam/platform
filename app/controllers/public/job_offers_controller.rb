@@ -71,11 +71,7 @@ class Public::JobOffersController < Public::ApplicationController
 
         redirect_to pdf_profile_path params[:company_id],params[:id]
       end
-
     end
-
-      #flash[:alert] = "Something went wrong, try again."
-    redirect_to new_apply_path(params[:company_id])
   end
 
   def xml_profile
