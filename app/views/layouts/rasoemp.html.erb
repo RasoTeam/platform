@@ -118,5 +118,65 @@
 			</div>
 		</div>
 	</footer>
+
+  <div id="giveUsFeedback" class="small radius button">
+    <a href="#" data-reveal-id="myModal" style="color:white">Feedback</a>
+  </div>
+
+  <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <div class="row">
+     <div class="twelve columns">
+      <h3 align="center">Give Feedback</h3>
+      <%= form_for(@feedback) do |f| %>
+        <% if @feedback.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@feedback.errors.count, "Error") %>:</h2>
+
+            <ul>
+            <% @feedback.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+          <table class="twelve tableJobs">
+            <tr>
+                  <td style="vertical-align:middle;"><p class="radius label">Name:</p></td>
+                  <td><%= f.text_field :nome, :size=>30, :style=>"margin:0px;" %></td>
+              </tr>
+              <tr>
+                  <td style="vertical-align:middle;"><p class="radius label">*E-Mail:</p></td>
+                  <td><%= f.text_field :email, :size=>30, required:true, :style=>"margin:0px;" %></td>
+              </tr>
+              <tr>
+                  <td style="vertical-align:middle;"><p class="radius label">Type:</p></td>
+                  <!-- hack para "feedback[tipo]", ele estava a assumir apenas "tipo" -->
+                  <td><%= select_tag("feedback[tipo]", options_for_select(["Error","Aspect","Funcionality","Other"],"Error")) %></td>
+              </tr>
+              <tr>
+                  <td style="vertical-align:top"><p class="radius label">*Description:</p></td>
+                  <td><%= f.text_area :texto, :rows=>"5", :cols=>"40", :style=>"width:100%;", required:true %></td>
+              </tr>
+              <tr>
+                  <td>
+                      <%= f.text_field :url, :type=>"hidden" %>
+                  </td>
+                  <td align="right">
+                      <%= f.submit "Submit", :id=>"commit", :class=>"small radius button", :style=>"align:right;" %>
+                  </td>
+              </tr>
+          </table>
+      <% end %>
+    </div>
+   </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#buttonForModal").click(function() {
+        $("#myModal").reveal();
+      });
+    });
+  </script>
 </body>
 </html>
