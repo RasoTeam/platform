@@ -107,3 +107,20 @@ body {
 	height: 111px !important;
 
 }
+
+
+#giveUsFeedback{
+	left:0.2mm;
+	top:350px;
+	position:fixed;
+	-webkit-transform: rotate(-90deg);
+	-webkit-transform-origin: top left;
+     -moz-transform: rotate(-90deg);
+     -moz-transform-origin: top left;
+      -ms-transform: rotate(-90deg);
+      -ms-transform-origin: top left;
+       -o-transform: rotate(-90deg);
+       -o-transform-origin: top left;
+          transform: rotate(-90deg);
+          transform-origin: top left;
+}
