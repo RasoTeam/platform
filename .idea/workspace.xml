@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" afterPath="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" />
     </list>
     <ignored path="platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,68 +29,90 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="evaluations_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="18" selection-start="2543" selection-end="2543" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluate.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/evaluate.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="41" selection-start="700" selection-end="700" vertical-scroll-proportion="-13.730769">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="59" selection-start="2188" selection-end="2188" vertical-scroll-proportion="-9.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_evaluate_form.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluate_form.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="43" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="80" selection-start="387" selection-end="387" vertical-scroll-proportion="3.2692308">
+            <state line="37" column="69" selection-start="1598" selection-end="1598" vertical-scroll-proportion="-8.615385">
               <folding>
-                <element signature="e#541#554#0" expanded="true" />
+                <element signature="e#181#196#0" expanded="true" />
+                <element signature="e#304#317#0" expanded="true" />
+                <element signature="e#425#436#0" expanded="true" />
+                <element signature="e#542#555#0" expanded="true" />
+                <element signature="e#715#729#0" expanded="true" />
+                <element signature="e#1387#1401#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parameter.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/parameter.rb">
+      <file leaf-file-name="evaluations_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="33" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
+            <state line="12" column="53" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb">
+      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="41" selection-start="412" selection-end="412" vertical-scroll-proportion="-5.230769">
+            <state line="14" column="61" selection-start="579" selection-end="579" vertical-scroll-proportion="-9.153846">
               <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="e#200#215#0" expanded="true" />
+                <element signature="n#t(:new)#0;n#!!top" expanded="true" />
+                <element signature="n#t(:new_evaluation_parameter)#0;n#!!top" expanded="true" />
+                <element signature="e#646#654#0" expanded="true" />
+                <element signature="e#781#796#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parameters_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="117" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="197" column="8" selection-start="6294" selection-end="6294" vertical-scroll-proportion="6.698">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/create.js.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/new.js.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="16" selection-start="16" selection-end="50" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_parameter.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/_parameter.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="704" vertical-scroll-proportion="-0.0">
+              <folding>
+                <element signature="n#t(:new_evaluation_parameter)#0;n#!!top" expanded="true" />
+                <element signature="e#272#280#0" expanded="true" />
+                <element signature="e#407#422#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,29 +134,25 @@
   <component name="GitLogSettings">
     <option name="myStructureFilterPaths" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Rails console: platform" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: platform" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/public/job_offers/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/rasocomp/job_offers/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/parameter.rb" />
         <option value="$PROJECT_DIR$/app/models/evaluation.rb" />
-        <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluation_parameter_fields.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/evaluate.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluate_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/_parameter.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/rasocomp/evaluation.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/new.js.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/create.js.erb" />
       </list>
     </option>
   </component>
@@ -174,7 +196,6 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -283,7 +304,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="evaluations" />
+              <option name="myItemId" value="parameters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontoffice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,27 +402,94 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rasocomp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="69" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="96" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../depot" />
-    <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="163" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="949" />
+    <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="820" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="949" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="153" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="151" />
     <property name="Database.TableEditor.Splitter" value="0.9" />
@@ -368,11 +504,11 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="reference.settings.deploy.options" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="IRB console.Rails console: platform">
+  <component name="RunManager" selected="Rails.Development: platform">
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="platform" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -751,14 +887,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2530303" sideWeight="0.06506849" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15984848" sideWeight="0.06506849" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26363635" sideWeight="0.06506849" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22878788" sideWeight="0.06506849" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -766,7 +903,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1969178" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -827,118 +963,195 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/super_user.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/time_offs_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18923934">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.56771797">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/courses_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.816">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.6085343">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/company.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+    <entry file="uml://DATABASE/5c636879-2c5e-450c-8703-e97db60f54fb">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>5c636879-2c5e-450c-8703-e97db60f54fb</OriginalElement>
+          <nodes>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:users</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:feedbacks</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:job_offers</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:contracts</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:trainings</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:course_signups</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:time_offs</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:bills</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:candidates</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:courses</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:import_logics</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:schema_migrations</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:evaluation_parameters</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:super_users</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:evaluations_users</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:evaluations</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:periods</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:courses_users</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:sqlite_sequence</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:parameters</node>
+            <node x="" y="">5c636879-2c5e-450c-8703-e97db60f54fb.table:companies</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.54006586169045" x="512.0" y="445.50000000000006" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+    <entry file="uml://RailsDependency/#platform">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>RailsDependency</ID>
+          <OriginalElement>#platform</OriginalElement>
+          <nodes>
+            <node x="" y="">User</node>
+            <node x="" y="">Period</node>
+            <node x="" y="">Candidate</node>
+            <node x="" y="">Training</node>
+            <node x="" y="">EvaluationParameter</node>
+            <node x="" y="">Event</node>
+            <node x="" y="">EvalUser</node>
+            <node x="" y="">CourseSignup</node>
+            <node x="" y="">SuperUser</node>
+            <node x="" y="">Contract</node>
+            <node x="" y="">Evaluation</node>
+            <node x="" y="">Bill</node>
+            <node x="" y="">Course</node>
+            <node x="" y="">TimeOff</node>
+            <node x="" y="">ImportLogic</node>
+            <node x="" y="">Feedback</node>
+            <node x="" y="">Company</node>
+            <node x="" y="">Parameter</node>
+            <node x="" y="">JobOffer</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.34243964421855144" x="766.8794063079779" y="737.5769944341373" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Association fields</Category>
+            <Category>Migration fields</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/rasoemp.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.5309569">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="348" selection-end="688" vertical-scroll-proportion="0.2982456">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="69" selection-start="5310" selection-end="5310" vertical-scroll-proportion="0.7794677">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/evaluation.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="33" selection-start="268" selection-end="268" vertical-scroll-proportion="0.28385898">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/parameter.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="33" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
+        <state line="60" column="57" selection-start="2261" selection-end="2261" vertical-scroll-proportion="0.0331384">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="41" selection-start="412" selection-end="412" vertical-scroll-proportion="-5.230769">
+        <state line="11" column="41" selection-start="412" selection-end="412" vertical-scroll-proportion="0.031894933">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/rasocomp/evaluation.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.09461967">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/_parameter.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="704" vertical-scroll-proportion="-0.0">
           <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#t(:new_evaluation_parameter)#0;n#!!top" expanded="true" />
+            <element signature="e#272#280#0" expanded="true" />
+            <element signature="e#407#422#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluation_parameter_fields.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/new.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="16" selection-start="16" selection-end="50" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="18" selection-start="2543" selection-end="2543" vertical-scroll-proportion="0.0">
+        <state line="12" column="53" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="59" selection-start="2188" selection-end="2188" vertical-scroll-proportion="-9.5">
-          <folding />
+        <state line="14" column="61" selection-start="579" selection-end="579" vertical-scroll-proportion="-9.153846">
+          <folding>
+            <element signature="e#200#215#0" expanded="true" />
+            <element signature="n#t(:new)#0;n#!!top" expanded="true" />
+            <element signature="n#t(:new_evaluation_parameter)#0;n#!!top" expanded="true" />
+            <element signature="e#646#654#0" expanded="true" />
+            <element signature="e#781#796#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="80" selection-start="387" selection-end="387" vertical-scroll-proportion="3.2692308">
+        <state line="37" column="69" selection-start="1598" selection-end="1598" vertical-scroll-proportion="-8.615385">
           <folding>
-            <element signature="e#541#554#0" expanded="true" />
+            <element signature="e#181#196#0" expanded="true" />
+            <element signature="e#304#317#0" expanded="true" />
+            <element signature="e#425#436#0" expanded="true" />
+            <element signature="e#542#555#0" expanded="true" />
+            <element signature="e#715#729#0" expanded="true" />
+            <element signature="e#1387#1401#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/evaluate.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="41" selection-start="700" selection-end="700" vertical-scroll-proportion="-13.730769">
+        <state line="9" column="117" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluate_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="43" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rasocomp/parameters/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="197" column="8" selection-start="6294" selection-end="6294" vertical-scroll-proportion="6.698">
           <folding />
         </state>
       </provider>

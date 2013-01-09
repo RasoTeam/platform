@@ -1,4 +1,4 @@
-<%= form_for [@company, @evaluation] do |f| %>
+<%= form_for [@company, @evaluation]  do |f| %>
     <% @evaluation.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>
@@ -27,7 +27,8 @@
         <% end %>
     </table>
 
-    <%= link_to "New Parameter?" , new_company_parameter_path(@company) %>
+    <%= link_to "New Parameter?" , new_company_parameter_path(@company), :id => 'evaluationModel', :remote => :true %>
+
     <br/><br/>
     <span class=" radius label"><%= t(:evaluatees) %></span>
     <br/>
@@ -46,3 +47,6 @@
     <!-- END TODO -->
     <%= f.submit %>
 <% end %>
+
+<div id="parameter" class="reveal-modal [expand, xlarge, large, medium, small]">
+</div>
