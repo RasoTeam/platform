@@ -1,6 +1,6 @@
 Platform::Application.routes.draw do
 
-resources :feedbacks
+resources :feedbacks , :only => [:new,:create]
 
   match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 

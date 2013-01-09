@@ -6,10 +6,8 @@ class ApplicationController < ActionController::Base
 	before_filter :createfeedback
 
 	def createfeedback
-	    if @feedback.nil?
-	    	@feedback = Feedback.new
-	    	@feedback.url = params[:url]
-	    end
+	    @feedback = Feedback.new
+	    @feedback.url = request.fullpath
 	end
 
 end
