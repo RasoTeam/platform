@@ -38,6 +38,11 @@ class Public::JobOffersController < Public::ApplicationController
     @company = @offer.company
     @candidate = Candidate.new
     @candidate.job_offer_id = @offer.id
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @candidate }
+    end
   end
 
   def create
@@ -67,10 +72,10 @@ class Public::JobOffersController < Public::ApplicationController
         redirect_to pdf_profile_path params[:company_id],params[:id]
       end
 
-    else
-      flash[:alert] = "Something went wrong, try again."
-      redirect_to new_apply_path(params[:company_id])
     end
+
+      #flash[:alert] = "Something went wrong, try again."
+    redirect_to new_apply_path(params[:company_id])
   end
 
   def xml_profile
