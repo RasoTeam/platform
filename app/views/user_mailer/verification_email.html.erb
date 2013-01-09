@@ -16,36 +16,51 @@
                 border-top-right-radius: 2px;
       ">
       <!--<%= image_tag('http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png')%>-->
-      <h2>RasoHR</h2>
+      <h2 style="text-align: right; margin-right: 20px;">Raso - Lean HR Management</h2>
     </div>
     <div style="border: solid 1px #E6E6E6; 
                 background-color: #F2F2F2; 
                 padding: 10px;
               ">
       <% if @user.role == ROOT %>
-        <h1> <%= @user.company.name %> </h1>
         <h2> Welcome to Raso </h2>
-        <p>Thanks for signing up to RasoHR. We'll do everything we can to make sure it's a great experience your company.</p>
-        <p> 
-          <ul>
-            <li>To validate your account please click 
-              <%= link_to "here.", email_verify_url(@user.company_id, token: @user.remember_token) %>
-            </li>
-            <li>
-              Your company login is done at:
-              <%= link_to company_url(@company), company_url(@company) %>
-            </li>
-          </ul>
-        </p>
+        <h1> <%= @user.company.name %> </h1>
+        <p>Thanks for signing up to Raso. We'll do everything we can to make sure it's a great experience your company.</p>
+          <div style="width: 70%; 
+                border: solid 1px #E6E6E6; 
+                background-color: #868B8D; 
+                padding: 10px;
+                text-align: center;
+                margin: 10px auto 0px auto;">
+                <%= link_to "Validate Your Account!", email_verify_url(@user.company_id, token: @user.remember_token), :style=>"color:white; font-size: 15px; font-weight: bold;" %>
+          </div>
+          <p>
+            Your company login is done at:
+          </p>
+          <div style="width: 70%; 
+                border: solid 1px #E6E6E6; 
+                background-color: #868B8D; 
+                padding: 10px;
+                text-align: center;
+                margin: 10px auto 0px auto;">
+                <%= link_to company_url(@company), company_url(@company), :style=>"color:white; font-size: 15px; font-weight: bold;"%>
+          </div>
         <p> After validating your account you can login as admin with this email address. </p>
         <p> Looking forward to hear from you, </p>
         <p> Raso Team </p>
       <% else %>
-        <h1>Welcome to rasohr.com, <%= @user.name %></h1>
-        <p>You have been invited to rasohr.com. To login after you activate your account, you have to insert your email: <%= @user.email %>.</p>
-        <p>      
-          To confirm your email click 
-          <%= link_to "here.", email_verify_url(@user.company_id, token: @user.remember_token) %>
+        <h2> Welcome to Raso </h2>
+        <h1><%= @user.name %></h1>
+        <p>You have been invited to raso by <%= @user.company.name %>. To login after you activate your account, you have to insert your email: <%= @user.email %>.</p>
+        <div style="width: 70%; 
+              border: solid 1px #E6E6E6; 
+              background-color: #868B8D; 
+              padding: 10px;
+              text-align: center;
+              margin: 10px auto 0px auto;">
+              <%= link_to "Validate Your Account!", email_verify_url(@user.company_id, token: @user.remember_token), :style=>"color:white; font-size: 15px; font-weight: bold;" %>
+        </div>
+          
         </p>
         <p> Looking forward to hear from you, </p>
         <p> Raso Team </p>
@@ -62,11 +77,6 @@
                 border-bottom-right-radius: 2px;
                 border-bottom-left-radius: 2px;">
                 Copyright © 2012 Raso. All rights reserved. Developed by Raso Team.
-                <ul class="link-list right">
-                  <li><a href="https://www.facebook.com/rasohr" target="_blank" style="background: url(http://rasohr.com/assets/social/48x48/facebook-97e768e2bb005f1f7c7d90a38e5b3906.png)"></a></li>
-                  <li><a href="https://twitter.com/RasoHR" target="_blank" style="background: url(http://rasohr.com/assets/social/48x48/twitter-b1fd592d248a56377b05edfd847fa331.png)" ></a></li>
-                  <li><a href="https://www.youtube.com/user/rasohr" target="_blank" style="background: url(http://rasohr.com/assets/social/48x48/youtube-69680288b6a060a1676ad4648fe74019.png)"></a></li>
-                </ul>
     </div>
   </body>
 </html>

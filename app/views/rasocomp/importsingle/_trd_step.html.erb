@@ -1,35 +1,46 @@
-<h2> Import an <%= "'"+session[:model_name]+"'" %> </h2>
-	
-	<h3>
-		(Third Step)
-	</h3>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+        <% if current_user(@company.slug).role >= ROLE[:manager] %>
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <%else%>
+          <li><%= link_to @company.name, company_path(@company) %></li>
+        <%end%>      <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li class="current">
+          <a href="#"><%= t(:import_user) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:first_step) %></a>
+        </li>
+        <li class="unavailable">
+          <a href="#"><%= t(:second_step) %></a>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:third_step) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+        <h2><%= t(:import_user) %></h2>
+        <hr/>
+        <p><%= t(:options_import)%></p>
+			<%= form_tag(:controller => "importsingle", :action => "default_confirmation_step", :method => "post") do %>
+			    <%= radio_button_tag 'import_mode' , 'default' %>
+			    <%= label_tag t(:default) %>
 
-<%= form_tag(:controller => "importsingle", :action => "default_confirmation_step", :method => "post") do %>
-	
-	<br />
-	<h3> Options: </h3>
-
-		<br />
-	    <%= label_tag 'default' %>
-	    <%= radio_button_tag 'import_mode' , 'default' %>
-	    <br />
-	    <%= label_tag 'custom' %>
-	    <%= radio_button_tag 'import_mode' , 'custom' %>
+			    <%= radio_button_tag 'import_mode' , 'custom' %>
+			    <%= label_tag t(:custom) %>
+		   		<div style="text-align: center"><%= submit_tag t(:continue) , :class=>"radius button" %></div>
+			<% end -%>	
+		</div>
+    </div>
+  </div>
+</div>
 
 
-    <br />
-    <div><%= submit_tag 'Continue' %></div>
-<% end -%>
 
-<!-- ERRORS -->
-<% if !session[:error].eql?("none") %>
-	<hr>
-		<h4>
-			<%= "ERROR: "+session[:error].to_s%>
-		<h4 />
-	<hr/>
-<% end %>
 
-<hr />
-
-<%= link_to 'Cancel', session[:model] %>

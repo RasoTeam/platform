@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:evaluations), company_evaluations_path(@company) %></li>
+      <li class="current"><a href="#"><%= t(:new) %></a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <div id="signup">
+            <div class="panel">
+                <h1><%= t(:new_evaluation_parameter) %></h1>
+                <%= form_for [@company,@parameter] do |f| %>
+                	<span class=" radius label"><%= t(:name) %></span>
+                	<%= f.text_field :name, :class=>"input_space"  %>
+                	<span class=" radius label"><%= t(:description) %></span>
+                	<%= f.text_area :description , :size => "30x5", :class=>"input_space"  %>
+                	<br/>
+                	<%= f.submit %>
+                <% end %>
+			</div> <!-- Fecha Panel -->
+        </div> <!-- Fecha signup -->
+    </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->

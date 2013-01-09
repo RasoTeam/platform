@@ -26,6 +26,8 @@ resources :feedbacks
   match '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard', as: 'user_dashboard'
 
 #public
+  get '/public/companies/:company_id/company_blocked', :to => 'public/companies#company_blocked', as: 'company_blocked'
+  get '/public/companies/:company_id/user_blocked', :to => 'public/companies#user_blocked', as: 'user_blocked'
   get '/public/companies/:company_id/users/verify', :to => 'public/users#verify', as: 'email_verify'
   match '/companies/:company_id/signin', to:'public/user_sessions#new', as: 'company_signin'
   match '/companies/:company_id/signout', to:'public/user_sessions#destroy', as: 'company_signout'
@@ -39,6 +41,11 @@ resources :feedbacks
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'
   #post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create_xml' , :as => 'create_apply_xml'
+  get '/public/companies/:company_id/reset_pass_require', :to => 'public/companies#reset_pass_require', :as => 'reset_pass_require'
+  get '/public/companies/:company_id/users/:id/reset_new_password', :to => 'public/users#reset_new_password', :as => 'reset_new_password'
+  post '/public/companies/:company_id/submit_pass_require', :to => 'public/companies#submit_pass_require', :as => 'submit_pass_require'
+  put '/public/companies/:company_id/users/:id/reset_password_submit', :to => 'public/users#reset_password_submit', :as => 'reset_password_submit'
+
 
   #linkedin links
   match '/public/companies/:company_id/job_offers/:id/oauth_account' ,
@@ -64,6 +71,14 @@ resources :feedbacks
 
   match  '/public/companies/:company_id/job_offers/:id/cancel_profile' ,
         :to => 'public/job_offers#cancel_profile' , :as => 'cancel_profile'
+
+  #candidates links
+  get 'companies/:company_id/job_offers/:job_offer_id/candidates/:id',
+        :to => 'rasocomp/candidates#show' , :as => 'show_candidate'
+
+  #evaluations
+  get 'companies/:company_id/evaluations/:evaluation_id/evaluate',
+      :to => 'rasocomp/evaluations#evaluate' , :as => 'evaluate_users'
 
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}
@@ -139,6 +154,8 @@ resources :feedbacks
       end
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
+      resources :evaluations
+      resources :parameters
     end
   end
 end

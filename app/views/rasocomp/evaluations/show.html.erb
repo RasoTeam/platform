@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to "Evaluations", company_evaluations_path(@company) %></li>
+      <li class="current"><a href="#"><%= @evaluation.description %></a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+    <div class="seven columns">
+      <h3><%= @company.name %> - <%= @evaluation.description %></h3>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="twelve columns">
+      <div class="panel">
+        <table class="twelve tableJobs">
+        <tbody>
+          <tr>
+            <td><span class="label radius">Status</span></td>
+            <td><%= @evaluation.status %></td>
+          </tr>
+          <tr>
+            <td><span class="label radius">Begins</span></td>
+            <td><%= @evaluation.period_begin %></td>
+          </tr>
+          <tr>
+            <td><span class="label radius">Ends</span></td>
+            <td><%= @evaluation.period_end %></td>
+          </tr>
+          <tr>
+            <td><span class="label radius">Evaluator</span></td>
+            <td><%= link_to(@evaluator.name,company_user_path(@company,@evaluator)) %></td>
+          </tr>
+          <tr>
+            <td><span class="label radius">Evaluatees</span></td>
+            <td><% @evaluatees.each do |ev|%><%= ev.name + "    "%><% end %></td>
+          </tr>
+          <tr>
+            <td><span class="label radius">Evaluation Parameters</span></td>
+            <td>
+              <% @eval_params.each do |ev|%>
+                  <% @parameter = Parameter.find(ev.parameter_id)%>
+                  <p><%= @parameter.name + ': ' + ev.min_value.to_s + ' to ' + ev.max_value.to_s %></p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
+        <p style="text-align: left;">
+              <%= link_to "Evaluate" , evaluate_users_path(@company.id,@evaluation.id),:class=>"button" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

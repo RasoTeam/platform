@@ -3,7 +3,6 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 	#The model to be imported
 	def fst_step
 		@company = Company.find(params[:company_id])
-		session[:error] = "none"
 		session[:companyid] = params[:companyid]
 		session[:model] = params[:model]
 		session[:model_name] = params[:model].split('/')[(params[:model].split('/').count)-1]
@@ -18,18 +17,14 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 	def snd_step
 		@company = Company.find(params[:company_id])
 		if(!params[:excel_file].nil?)
-			session[:error] = "none"
-
 			filename = params[:excel_file].original_filename
 			directory = "public/_temp_excel_files"
 		
 
-			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) || !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
-				session[:error] = "File not valid"
+			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
+				flash.now[:alert]= t(:file_not_valid)
 				render :_fst_step
 			else
-				session[:error] = "none"
-
 				session[:excel_file] = (Time.now.to_i).to_s+""+filename
 
 				#create the path
@@ -46,7 +41,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			end
 
 		else
-			session[:error] = "Choose a file"
+			flash.now[:alert]= t(:please_choose_file)
 			render :_fst_step
 		end
 
@@ -58,12 +53,12 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 	#The excel sheet from where to be imported
 	def trd_step
 
+		@company = Company.find(params[:company_id])
+
 		if params[:sheet].nil?
-			session[:error] = "No sheet was selected"
+			flash.now[:alert]= t(:no_sheet_selected)
 			render :_snd_step
 		else
-			session[:error] = "none"
-
 			session[:excel_sheet] = params[:sheet]
 			render :_trd_step
 		end
@@ -75,17 +70,15 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#The Default Confirmation import mode
 	def default_confirmation_step
+		@company = Company.find(params[:company_id])
 
 		if params[:import_mode].nil?
-			session[:error] = "No import mode was choosen"
+			flash.now[:alert]= t(:no_import_mode)
 			render :_trd_step
 		else
-			session[:error] = "none"
 			session[:import_mode] = params[:import_mode]
 
 			if params[:import_mode].eql?("default")
-				session[:error] = "none"
-
 				#Read the Data from the Excel Sheet
 				@import_logic = ImportLogic.new
 				session[:sheet_data] = @import_logic.read_default_data_from_sheet(session[:excel_file_path], session[:excel_sheet])
@@ -93,11 +86,10 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 				render :_default_confirmation_step
 			else
 				if params[:import_mode].eql?("custom")
-					session[:error] = "The custom method is not yet implemented"
+					flash.now[:alert]= t(:method_not_implemented)
 					render :_trd_step
 					#render :_custom_step
 				else
-					session[:error] = "none"
 					render :_trd_step
 				end
 			end
@@ -110,6 +102,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#The Custom import mode
 	def custom_step
+		@company = Company.find(params[:company_id])
 		render :text => "custom_import"
 	end
 
@@ -121,13 +114,12 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#Pick the sheet entries and create the model entry for each
 	#Check the model
+		@company = Company.find(params[:company_id])
 
 			imported_users = Array.new
 
 			isValid = validateExcel
 			if isValid == 1
-				session[:error] = "none"
-
 				$i1 = 1
 				$j1 = 0
 				while $i1 < session[:sheet_data].count
@@ -176,6 +168,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#Return to the current model index page and dump all session variables
 	def finalize
+		@company = Company.find(params[:company_id])
 
 		#delete the temp file
 		File.delete(session[:excel_file_path])
@@ -198,6 +191,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#Return to the sheet options
 	def import_another
+		@company = Company.find(params[:company_id])
 
 		session.delete(:imported_users)
 		session.delete(:sheet_data)
@@ -210,6 +204,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#Validates the excel
 	def validateExcel
+		@company = Company.find(params[:company_id])
 
 		result=1
 		#It's different between models
