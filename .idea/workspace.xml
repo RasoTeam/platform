@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" afterPath="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" />
-    </list>
+    <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="" />
     <ignored path="platform.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -81,8 +75,10 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="8" selection-start="6294" selection-end="6294" vertical-scroll-proportion="6.698">
-              <folding />
+            <state line="143" column="8" selection-start="4334" selection-end="4334" vertical-scroll-proportion="4.162">
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,7 +140,6 @@
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/evaluate.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluate_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/rasocomp/parameters_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/_parameter.html.erb" />
@@ -153,6 +148,7 @@
         <option value="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rasocomp/parameters/create.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb" />
       </list>
     </option>
   </component>
@@ -1151,8 +1147,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/public/frontoffice/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="8" selection-start="6294" selection-end="6294" vertical-scroll-proportion="6.698">
-          <folding />
+        <state line="143" column="8" selection-start="4334" selection-end="4334" vertical-scroll-proportion="4.162">
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
