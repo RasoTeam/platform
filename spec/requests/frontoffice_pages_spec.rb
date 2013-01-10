@@ -11,6 +11,7 @@ describe "Frontoffice pages" do
       it { should have_content('Company') }
       it { should have_content('Calendar') } 
       it { should have_content('Logout') }  
+      it { should have_content('Developed by Raso Team.') }
 
       it { should have_link("company name", href: user_dashboard_path(slug, user.id)) }
       it { should have_link('Company', href: company_path(slug)) }
@@ -49,8 +50,6 @@ describe "Frontoffice pages" do
          it_should_behave_like "all frontoffice pages"
          it { should have_content('cooperator') }
 
-         #debugging
-         it { should_not have_content('No permission to access.') }
 
          it { should have_content('Dashboard') }
          it { should have_content('Profile') }
@@ -91,7 +90,6 @@ describe "Frontoffice pages" do
 
       before (:each) do   
          valid_user_signin user
-         #visit user_dashboard_path(1)
          visit company_path(1)
       end
 
@@ -101,9 +99,6 @@ describe "Frontoffice pages" do
          it_should_behave_like "all frontoffice pages"
          it_should_behave_like "manager pages"        
          it { should have_content('manager') }
-
-         #debugging
-         it { should_not have_content('No permission to access.') }
 
          it { should have_content('Dashboard') }
          it { should have_content('Profile') }
@@ -119,6 +114,7 @@ describe "Frontoffice pages" do
 
          it { should have_selector('h2', text: 'Job Offers') }
          it { should have_link('See Public Page', href: public_company_job_offers_path(slug)) }
+         it { should have_field("search") }
          it { should have_link('Create Job Offer', href: new_company_job_offer_path(slug)) }
       end
 
@@ -158,9 +154,9 @@ describe "Frontoffice pages" do
          it { should have_selector('h3', text: 'Employees') } 
          it { should have_content('Name') }
          it { should have_content('E-Mail') }
-         it { should have_content('Search') }
+         it { should have_field('search') }
          it { should have_link('Add employee', href:  new_company_user_path(slug)) }
-         it { should have_link('Import employees', href: fst_step_company_importsingle_index_path(slug)) }
+        # it { should have_link('Import employees', href: fst_step_company_importsingle_index_path(slug)) }
       end
 
       describe "Company page" do
@@ -187,8 +183,10 @@ describe "Frontoffice pages" do
 
          it { should have_selector('h2', text: 'Evaluations') }
          it { should have_content('Evaluator') }
-         it { should have_content('Search') }
+         it { should have_field('search') }
+         #the route should be using the slug and not the company.id
          it { should have_link('Create Evaluation Process', href: new_company_evaluation_path(slug)) }
+         it { should have_link('Create Evaluation Process', href: new_company_evaluation_path(1)) }
       end
 
       describe "Calendar page" do
