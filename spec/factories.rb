@@ -8,8 +8,8 @@ FactoryGirl.define do
 
 	factory :company do
 		sequence(:name) { |n| "Company_#{n}" }
-		sequence(:slug) { |n| "slug#{n}" }
 		state 0
+		sequence(:slug) { |n| "slug#{n}" }
 	end
 
 	factory :user do 
@@ -30,6 +30,5 @@ FactoryGirl.define do
 			name "user manager"
 			role 1
 		end
-
 	end 
 end

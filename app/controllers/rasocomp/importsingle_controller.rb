@@ -149,7 +149,6 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
       					imported_users[$j1] = name
       					$j1 += 1
       				end
-					#Company.create(:name => name, :created => created, :nif => nif)
 
 				$i1 += 1
 				end

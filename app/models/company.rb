@@ -1,10 +1,8 @@
-
-
 class Company < ActiveRecord::Base 
   extend FriendlyId
   friendly_id :slug
 
-  attr_accessible :address, :logo_url, :name, :nif, :state, :slug
+  attr_accessible :address, :logo_url, :name, :state, :slug
   has_many :bills
   has_many :users
   has_many :time_offs

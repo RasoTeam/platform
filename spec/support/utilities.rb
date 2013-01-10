@@ -10,7 +10,7 @@ def valid_admin_signin(admin)
 end
 
 def valid_user_signin(user)
-	visit company_signin_path(user.company_id)
+	visit company_signin_path("compslug")
 	fill_in "Email", 	with: user.email
 	fill_in "Password",	with: user.password
 	click_button "Sign In"

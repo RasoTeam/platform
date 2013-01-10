@@ -41,7 +41,18 @@
         </div>
       </div>
       
-      <p id="alert"><%= alert %></p>
+      <!--<p id="alert"><%= alert %></p>-->
+      <% if @candidate.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@candidate.errors.count, "Error") %>:</h2>
+
+          <ul>
+          <% @candidate.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
       <div class="row">
         <div class="twelve columns">
@@ -54,16 +65,13 @@
           <ul class="tabs-content">
             <li class="active" id="simple1Tab">
                 <%= form_for @candidate , :url => create_apply_path do |f| %>
-                  <% if @candidate.errors.any? %>
                     <div id="error_explanation">
-                      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
                       <ul>
                         <% @candidate.errors.full_messages.each do |msg| %>
                           <li><%= msg %></li>
                         <% end %>
                       </ul>
                     </div>
-                  <% end %>
                   <div class="row">
                     <div class="two mobile-one columns">
                         <%=f.label :name, :class=>"right inline"%>
