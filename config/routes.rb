@@ -1,6 +1,6 @@
 Platform::Application.routes.draw do
 
-resources :feedbacks
+resources :feedbacks , :only => [:new,:create]
 
   match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
@@ -36,7 +36,11 @@ resources :feedbacks
   match '/supersignout', to:'public/super_user_sessions#destroy', as: 'super_user_signout'
   get '/homefront' , :to => 'public/frontoffice#index'
   get '/aboutus' , :to => 'public/frontoffice#aboutus'
-  get '/idea' , :to => 'public/frontoffice#idea'
+  get '/idea' , :to => 'public/frontoffice#idea', as: 'idea'
+  get '/idea#employee' , :to => 'public/frontoffice#idea#employee', as: 'idea_employee'
+  get '/idea#cheap' , :to => 'public/frontoffice#idea#cheap', as: 'idea_cheap'
+  get '/idea#import_data' , :to => 'public/frontoffice#idea#import_data', as: 'idea_import_data'
+  get '/idea#job_offers' , :to => 'public/frontoffice#idea#job_offers', as: 'idea_job_offers'
   get '/contacts' , :to => 'public/frontoffice#contacts'
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
