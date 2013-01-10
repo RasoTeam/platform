@@ -43,24 +43,29 @@ describe "Frontoffice pages" do
          visit company_path(1)
       end
 
-      it_should_behave_like "all frontoffice pages"
-
-      #Testes de Dashboard estão um cagalhao
       describe "Dashboard page" do
          before { visit user_dashboard_path(slug, user.id) }
 
-         it { should have_content('Contract') }
-         it { should have_selector('h4', text: 'company name') }
-        # it { should have_link('Dashboard', href: dashboard) } 
-         it { should have_selector('img', text: 'Foto da Pessoa')}
-         it { should have_content('Address') }
+         it_should_behave_like "all frontoffice pages"
+         it { should have_content('cooperator') }
+
+         #debugging
+         it { should_not have_content('No permission to access.') }
+
+         it { should have_content('Dashboard') }
+         it { should have_content('Profile') }
+         it { should have_content('Contract') }    
       end
 
       describe "Company page" do
          before { visit company_path(slug) }
 
+         it_should_behave_like "all frontoffice pages"
+         it { should have_content('cooperator') }
+
          it { should have_selector('h4', text: 'company name') }
-         it { should have_content('NIF') }
+         #nif suppressed?
+         #it { should have_content('NIF') }
          it { should have_content('Address') }
          it { should have_content('WWW') }
          it { should have_content('Employees') }
@@ -68,6 +73,9 @@ describe "Frontoffice pages" do
 
       describe "Calendar page" do
          before { visit calendar_path(slug) }
+
+         it_should_behave_like "all frontoffice pages"
+         it { should have_content('cooperator') }
 
          it { should have_selector('h1', text: 'Calendar') }
          it { should have_content('Mon') }
@@ -78,6 +86,7 @@ describe "Frontoffice pages" do
    describe "Manager user" do
       #Company foi criada na consola de teste do rails.. nao consegui usar a FactoryGirl
       #let(:company) { FactoryGirl.create(:company) }
+      #> Company.create(name: "company name", state: 0, slug: "compslug")
       let(:user) { FactoryGirl.create(:manager) }
 
       before (:each) do   
@@ -86,12 +95,27 @@ describe "Frontoffice pages" do
          visit company_path(1)
       end
 
-      it_should_behave_like "all frontoffice pages"
-      it_should_behave_like "manager pages"
+      describe "Dashboard page" do
+         before { visit user_dashboard_path(slug, user.id) }
 
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"        
+         it { should have_content('manager') }
+
+         #debugging
+         it { should_not have_content('No permission to access.') }
+
+         it { should have_content('Dashboard') }
+         it { should have_content('Profile') }
+         it { should have_content('Contract') }    
+      end
 
       describe "Job Offers page" do
          before { visit company_job_offers_path(slug) }
+
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
 
          it { should have_selector('h2', text: 'Job Offers') }
          it { should have_link('See Public Page', href: public_company_job_offers_path(slug)) }
@@ -102,17 +126,81 @@ describe "Frontoffice pages" do
       describe "Time Offs page" do
          before { visit manage_company_user_time_offs_path(slug, user.id) }
 
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
+
          it { should have_selector('h2', text: 'Manage Time Offs') }
          it { should have_content('Cooperator name') }
-         it { should have_link('Accept', href: approve_company_user_time_off_path(slug, user.id)) }
+         it { should have_content('Actions')}
+         #it { should have_link('Accept', href: approve_company_user_time_off_path(slug, user.id)) }
+
       end
 
-      describe "Evaluation page" do
+      describe "Trainings page" do
+         before { visit manage_company_trainings_path(slug) }
+
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
+
+         it { should have_selector('h2', text: 'Trainings') }
+         #WAITING FOR COMPLETION?!
+      end
+
+      describe "Employees page" do
+         before { visit company_users_path(slug) }
+
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
+
+         it { should have_selector('h3', text: 'Employees') } 
+         it { should have_content('Name') }
+         it { should have_content('E-Mail') }
+         it { should have_content('Search') }
+         it { should have_link('Add employee', href:  new_company_user_path(slug)) }
+         it { should have_link('Import employees', href: fst_step_company_importsingle_index_path(slug)) }
+      end
+
+      describe "Company page" do
+         before { visit company_path(slug) }
+
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
+
+         it { should have_selector('h4', text: 'company name') }
+         #nif suppressed?
+         #it { should have_content('NIF') }
+         it { should have_content('Address') }
+         it { should have_content('WWW') }
+         it { should have_content('Employees') }
+      end
+
+      describe "Evaluations page" do
          before { visit company_evaluations_path(slug) }
 
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
+
          it { should have_selector('h2', text: 'Evaluations') }
+         it { should have_content('Evaluator') }
+         it { should have_content('Search') }
+         it { should have_link('Create Evaluation Process', href: new_company_evaluation_path(slug)) }
+      end
+
+      describe "Calendar page" do
+         before { visit calendar_path(slug) }
+
+         it_should_behave_like "all frontoffice pages"
+         it_should_behave_like "manager pages"
+         it { should have_content('manager') }
+
+         it { should have_selector('h1', text: 'Calendar') }
+         it { should have_content('Mon') }
+         it { should have_content(Date::MONTHNAMES[Date.today.month]) }
       end
    end
-
-
 end
