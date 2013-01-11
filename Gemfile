@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem "friendly_id", "~> 4.0.1"
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '~> 3.0'
 gem 'annotate', '2.5.0'
