@@ -1,12 +1,13 @@
 Platform::Application.routes.draw do
 
-resources :feedbacks
+resources :feedbacks , :only => [:new,:create]
 
   match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
   match '/backoffice/bills', to: 'backoffice/bills#show_all'
+  get 'backoffice/bills/generate', :to => 'backoffice/bills#generate_invoices', :as => 'generate_invoices'
   put 'backoffice/companies/:id/block', :to => 'backoffice/companies#block', :as => 'block_company'
   put 'backoffice/companies/:id/activate', :to => 'backoffice/companies#activate', :as => 'activate_company'
 
