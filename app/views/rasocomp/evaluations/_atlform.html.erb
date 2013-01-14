@@ -10,7 +10,7 @@
     <%= f.text_field :period_end, :class=>"input_space" %>
     <span class=" radius label"><%= t(:evaluator) %></span>
     <%= f.select :user_id , options_from_collection_for_select(@employees, :id,:name), {}, {:class=>"select"} %>
-    <span class=" radius label"><%= t(:parameters) %></span>
+
     <br/>
 
     <span class=" radius label"><%= t(:evaluatees) %></span>
@@ -45,7 +45,6 @@
     <br/><br/>
 
     <%= f.submit %>
-
 <% end %>
 
 <div id="parameter" class="reveal-modal [expand, xlarge, large, medium, small]">
