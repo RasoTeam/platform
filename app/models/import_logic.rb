@@ -1,9 +1,18 @@
+# == Schema Information
+#
+# Table name: import_logics
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class ImportLogic < ActiveRecord::Base
   # attr_accessible :title, :body
 
 
-#
-# Returns the sheets on the target Excel File
+# @param [String] fullPath file
+# @return [Array] Returns the sheets on the target Excel File
 #
 	def get_sheets_from_excel_file(fullPath)
 
@@ -28,8 +37,9 @@ class ImportLogic < ActiveRecord::Base
 
 
 
-#
-# Returns the Data from the target Excel File
+# @param [String] fullPath the file name
+# @param [String] sheet_name the sheet name
+# @return [Array] Returns the Data from the target Excel File
 #
 	def read_default_data_from_sheet(fullPath, sheet_name)
 

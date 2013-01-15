@@ -11,6 +11,9 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
+#  time_off_days   :integer          default(0)
+#  user_photo      :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -53,10 +56,13 @@ class User < ActiveRecord::Base
                                        :greater_than_or_equal_to => -1,
                                        :less_than_or_equal_to => 1 }
   
+  # It checks if the user has validated the email address
   def verified?
     self.state != -1
   end
 
+  # @param [String] search Searches for users which has name LIKE or email LIKE
+  # @return [Relation] the users matching the property
   def self.search(search)
     if search
       where('name LIKE ? OR email LIKE ?', '%'+search+'%', '%'+search+'%').where("role > 0").order("name ")

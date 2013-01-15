@@ -8,6 +8,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 class SuperUser < ActiveRecord::Base
@@ -27,6 +28,8 @@ class SuperUser < ActiveRecord::Base
   validates :password_confirmation, :presence => true
 
   private
+
+    #Creates a 64 bits hash for the user
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end

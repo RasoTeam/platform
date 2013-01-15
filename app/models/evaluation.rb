@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: evaluations
+#
+#  id           :integer          not null, primary key
+#  description  :string(255)
+#  period_begin :date
+#  period_end   :date
+#  status       :string(255)
+#  user_id      :integer
+#  company_id   :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Evaluation < ActiveRecord::Base
 
   attr_accessible :description, :period_begin, :period_end, :status, :user_id

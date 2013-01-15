@@ -5,12 +5,11 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  logo_url   :string(255)
-#  email      :string(255)
 #  address    :string(255)
 #  state      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  slug        :string(255)
+#  slug       :string(255)
 #
 
 class Company < ActiveRecord::Base 
@@ -40,6 +39,17 @@ class Company < ActiveRecord::Base
   #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
   #scope :users_paginate, lambda { self.users.paginate(:page => params[:page], :per_page => 4) }
 
+  # Searches for companies which match certan properties
+  #
+  # @param [String] search is used to filter companies with id LIKE or with slug LIKE
+  # @param [String] order is used to order the result as "ASC" or "DESC". default "ASC".
+  # @param [String] state companies by state. 
+  #  Examples:
+  #  ">= 0"
+  #  "< 0"
+  #  "==0"
+  #  default: nil.
+  # @return [Relation] All companies matching the parameters.
   def self.search(search,order,state=nil)
     order ||= ""
     if search

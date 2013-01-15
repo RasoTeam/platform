@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: time_offs
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  category      :integer
+#  state         :integer
+#  description   :text
+#  days          :integer
+#  start_at      :date
+#  end_at        :date
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  name          :string(255)
+#  color         :string(255)
+#  company_id    :integer
+#  total_credits :integer
+#
+
 class TimeOff < ActiveRecord::Base
   attr_accessor :credits
   attr_accessible :days, :description, :end_at, :start_at, :state, :category, :company_id, :user_id, :credits, :name, :total_credits
