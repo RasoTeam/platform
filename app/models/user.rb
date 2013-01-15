@@ -26,6 +26,12 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :evaluations
 
+  has_many :evaluations , :through => :evaluation_user_parameters
+  has_many :evaluation_user_parameters
+
+  has_many :parameters , :through => :evaluation_user_parameters
+  has_many :evaluation_user_parameters
+
 
   before_create :create_remember_token
 
