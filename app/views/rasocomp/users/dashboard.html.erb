@@ -100,11 +100,7 @@
 		<div class="twelve columns" style="padding-bottom:20px">
 			<div class="panel">
 				<div id="imagem">
-					<% if @user.attach.url.nil? %>
-            			<img src="http://placehold.it/200x200" alt="Foto da Pessoa">
-          			<% else %>
-            			<%= image_tag @user.attach.url %>
-          			<% end %>
+           			<%= image_tag @user.attach.url %>
 				</div>
 			</div>
 		</div>

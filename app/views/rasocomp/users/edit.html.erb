@@ -1,13 +1,6 @@
-<div class="row">
-  <div class="three columns push-nine">
-
-      <div class="twelve columns" style="padding-bottom:20px">
-        <a href="#" class="th"><%= image_tag @user.attach.url %></a>
-      </div>
-
-</div> 
-  <!-- Cena Grande -->
-  <div class="nine columns pull-three">
+<div class="row  dashboard">
+<!-- Cena Grande -->
+  <div class="eight columns">
     <div class="row">
       <div class="twelve columns">
         <ul class="breadcrumbs">
@@ -61,6 +54,15 @@
 
             <% end %>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="four columns">
+    <div class="twelve columns" style="padding-bottom:20px">
+      <div class="panel">
+        <div id="imagem">
+          <%= image_tag @user.attach.url %>
         </div>
       </div>
     </div>
