@@ -15,12 +15,14 @@
 
     <span class=" radius label"><%= t(:evaluatees) %></span>
     <br/>
-    <% @employees.each do |em| %>
-        <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
-        <%= check_box_tag "evaluatees[user_id][]" , em.id %>
-        <%= em.name %>
-        <br/>
-    <% end %>
+    <div class="employees">
+        <% @employees.each do |em| %>
+            <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
+            <%= check_box_tag "evaluatees[user_id][]" , em.id %>
+            <%= em.name %>
+            <br/>
+        <% end %>
+    </div>
     <br/>
     <br/>
 
