@@ -1,3 +1,6 @@
+# == Couse Signup Model
+#  It contains the registrations from a specific user for a specific course
+#
 # == Schema Information
 #
 # Table name: course_signups

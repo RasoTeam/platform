@@ -1,4 +1,8 @@
+# == Calendar Helper
+#  Helpers to deal with the calendar utility
 module CalendarHelper
+
+  # generates link on calendar
   def month_link(month_date)
     link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year})
   end
@@ -14,6 +18,7 @@ module CalendarHelper
       :next_month_text => month_link(@shown_month.next_month) + " >>"    }
   end
 
+  # generates button on calendar
   def event_calendar
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|

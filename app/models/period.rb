@@ -1,3 +1,6 @@
+# == Period Model
+#  This Model is used to keep the period when an user is active/inactive. Useful to calculate the monthly price for a company.
+#
 # == Schema Information
 #
 # Table name: periods

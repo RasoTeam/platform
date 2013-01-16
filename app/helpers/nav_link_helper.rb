@@ -1,3 +1,6 @@
+# == NavLink Heler
+#  Helper to select the current tag when an user is logged in. 
+#  More information: http://viget.com/extend/rails-selected-nav-link-helper
 module NavLinkHelper
 
   def nav_link(title, path, html_options = {}, options = {}, &block)

@@ -1,3 +1,6 @@
+# == Super User Model
+#  Super User are the users able to login in the back office - RasoHR management
+#
 # == Schema Information
 #
 # Table name: super_users

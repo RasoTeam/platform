@@ -1,3 +1,6 @@
+# == Evaluation Paramenter Model
+#  Parameter for an Evaluation Parameter - The component in which an employee is going to be evaluated. Metric bounds for each parameter is kept.
+#
 # == Schema Information
 #
 # Table name: evaluation_user_parameters

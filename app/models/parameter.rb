@@ -1,3 +1,6 @@
+# == Parameter Model
+#  Parameter for an evaluation - Component for the evaluation
+#
 # == Schema Information
 #
 # Table name: parameters

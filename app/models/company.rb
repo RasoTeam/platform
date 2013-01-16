@@ -1,3 +1,6 @@
+# == Company Model
+#  Contains information about a company
+#
 # == Schema Information
 #
 # Table name: companies
@@ -10,8 +13,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string(255)
-#
-
+# 
 class Company < ActiveRecord::Base 
   extend FriendlyId
   friendly_id :slug

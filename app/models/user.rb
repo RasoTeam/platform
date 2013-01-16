@@ -1,3 +1,6 @@
+# == User Model
+#  Main model for the company employees. 
+#
 # == Schema Information
 #
 # Table name: users

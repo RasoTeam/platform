@@ -1,3 +1,6 @@
+# == Course Model
+#  Represents a course for the employees from a company
+#
 # == Schema Information
 #
 # Table name: courses
@@ -15,9 +18,8 @@
 #  name        :string(255)
 #  color       :string(255)
 #
-
-# STATE: 0 - INACTIVE; 1 - ACTIVE; 2 - ONHOLD
-# CATEGORY: 1 - PUBLIC; 2 - PRIVATE
+#  STATE: 0 - INACTIVE; 1 - ACTIVE; 2 - ONHOLD
+#  CATEGORY: 1 - PUBLIC; 2 - PRIVATE
 class Course < ActiveRecord::Base
   attr_accessible :category, :company_id, :end_at, :lecturer, :start_at, :state, :training_id, :name
   has_many :course_signups

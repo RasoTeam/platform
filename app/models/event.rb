@@ -1,3 +1,6 @@
+# == Event Model
+#  Represents an event for an user
+#
 # == Schema Information
 #
 # Table name: events

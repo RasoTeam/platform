@@ -1,3 +1,7 @@
+# == Evaluation Model
+#  Companies can create evaluation plans. Each evaluation has evaluations parameters (components in which an employee is evaluated). 
+#  Employees which are going to be evaluated have to be specified as well as their evaluators.
+#
 # == Schema Information
 #
 # Table name: evaluations

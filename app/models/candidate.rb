@@ -14,6 +14,8 @@
 #  updated_at   :datetime         not null
 #
 
+# Candidate Model
+# Candidate for job offer
 class Candidate < ActiveRecord::Base
   attr_accessible :email, :file_path, :location, :name, :nationality, :phone
 

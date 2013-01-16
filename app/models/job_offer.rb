@@ -1,3 +1,6 @@
+# == Job Offer Model
+#  Details about a job offer from a company.
+# 
 # == Schema Information
 #
 # Table name: job_offers

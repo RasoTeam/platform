@@ -1,3 +1,6 @@
+# == Contract Model
+#  Has information about an employee contract
+#
 # == Schema Information
 #
 # Table name: contracts

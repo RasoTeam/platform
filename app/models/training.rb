@@ -1,3 +1,6 @@
+# == Training Model
+#  A company can have training programs for its employees. These programs may have several courses. 
+#
 # == Schema Information
 #
 # Table name: trainings

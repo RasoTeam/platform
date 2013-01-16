@@ -1,3 +1,6 @@
+# == Time off Model
+#  Model used to keep track of holidays and sick days.
+#
 # == Schema Information
 #
 # Table name: time_offs

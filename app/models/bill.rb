@@ -11,6 +11,7 @@
 #  company_id   :integer
 #
 
+# Company Bill Model
 class Bill < ActiveRecord::Base
   attr_accessible :payment_date, :state, :value, :company_id
   belongs_to :company

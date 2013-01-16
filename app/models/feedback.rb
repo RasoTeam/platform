@@ -1,3 +1,6 @@
+# == Feedback Model
+#  Feedback messages from visitors and employees using the system
+#
 # == Schema Information
 #
 # Table name: feedbacks
