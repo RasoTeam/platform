@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4b9c654-8431-47a8-abdd-9283244c7189" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\views\rasocomp\evaluations\_atlform.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Carlos\RubymineProjects\platform\app\views\rasocomp\evaluations\_evaluation_parameter_fields.html.erb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/platform.iml" afterPath="$PROJECT_DIR$/.idea/platform.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/rasocomp/evaluations_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/evaluation.rb" afterPath="$PROJECT_DIR$/app/models/evaluation.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluate_form.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_evaluate_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/evaluate.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/evaluate.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb" afterPath="$PROJECT_DIR$/app/views/rasocomp/evaluations/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,7 +32,7 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="73" selection-start="761" selection-end="761" vertical-scroll-proportion="0.51031893">
+            <state line="43" column="96" selection-start="1610" selection-end="1610" vertical-scroll-proportion="1.3714821">
               <folding />
             </state>
           </provider>
@@ -351,7 +342,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
   </component>
-  <component name="RunManager" selected="Rake.routes">
+  <component name="RunManager" selected="Rake.db:migrate">
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="platform" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -674,8 +665,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Rake.routes" />
-        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: platform" />
+        <item index="0" class="java.lang.String" itemvalue="Rake.db:migrate" />
+        <item index="1" class="java.lang.String" itemvalue="Rake.routes" />
         <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: platform" />
         <item index="3" class="java.lang.String" itemvalue="IRB console.Rails console: platform" />
         <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: platform" />
@@ -907,7 +898,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/rasocomp/evaluations/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="73" selection-start="761" selection-end="761" vertical-scroll-proportion="0.51031893">
+        <state line="43" column="96" selection-start="1610" selection-end="1610" vertical-scroll-proportion="1.3714821">
           <folding />
         </state>
       </provider>
