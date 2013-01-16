@@ -24,6 +24,7 @@
 					<th style="text-align:center"><%= t(:actions) %></th>
 				</thead>
 			<tbody>
+				<li><%= link_to 'Importar Férias', fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 				<% @timeoffs.each do |t| %>
 			    <tr>
 					<td><%= User.find(t.user_id).name %></td>
