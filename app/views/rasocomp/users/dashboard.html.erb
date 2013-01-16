@@ -1,33 +1,16 @@
-<div class="row">
-	<div class="three columns push-nine">
-			<div class="twelve columns" style="padding-bottom:20px">
-				<a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
-			</div>
-<!--
-
-			<div class="twelve columns" style="padding-bottom:20px">
-				<div class="panel callout radius">
-			      <h5>Formações</h5>
-			      <p>Texto aqui</p>
-			    </div>
-		    </div>
-			<div class="twelve columns" style="padding-bottom:20px">
-				<div class="panel">
-			      <h5>Calendário</h5>
-			      <p>Texto aqui</p>
-			    </div>
-		    </div> -->
-	</div>
-	<!-- Cena Grande -->
-	<div class="nine columns pull-three">
-			<dl class="tabs">
-			  <dd class="active"><a href="#dashboard">Dashboard</a></dd>
-			  <dd><a href="#profile">Profile</a></dd>
-			  <dd><a href="#contract">Contract</a></dd>
-			</dl>
-			<ul class="tabs-content">
-			  <li class="active" id="dashboardTab">
-<!--
+<div class="row dashboard">
+<!-- ::::::::::::::::::::::::: LEFT SIDE ::::::::::::::::::::::::::::: -->
+	<div class="eight columns">
+		<dl class="tabs">
+			<dd class="active"><a href="#dashboard">Dashboard</a></dd>
+			<dd><a href="#profile">Profile</a></dd>
+			<dd><a href="#contract">Contract</a></dd>
+			<dd><a href="#contract2">Contract2</a></dd>
+		</dl>
+		<ul class="tabs-content">
+	<!-- ####################### DASHBOARD TAB ########################### -->
+			<li class="active" id="dashboardTab">
+			<!--
 			  	<h4> Alertas </h4>
 
 					<div class="alert-box">
@@ -46,15 +29,15 @@
 
 			  	<hr/>-->
 
-			  	<h4> Time Offs </h4>
+				<h4> Time Offs </h4>
 				<div class="button-bar">
 					<ul class="button-group">
 						<li><%= link_to "Check & Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
 					</ul>
 				</div>
-			  </li>
-			  <li id="profileTab">
-
+			</li>
+	<!-- ########################### PROFILE TAB ############################ -->
+			<li id="profileTab">
 			  	<h3> User Profile </h3>
 			  	<div>
 			  		<table class="twelve tableJobs">
@@ -78,8 +61,9 @@
 				<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
 			  	</div>
 
-			  </li>
-			  <li id="contractTab">
+			</li>
+	<!-- ########################### CONTRACT TAB ################################ -->
+			<li id="contractTab">
 
 			  	<% if !@contract.nil? %>
 					<h3 class="hide-for-small"><%= @contract.job_title %>
@@ -109,9 +93,35 @@
 						<%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
 					</div>
 				<% end %>
-			  </li>
-			</ul>
+			</li>
+		</ul>
+	</div>
+<!-- ::::::::::::::::::::::::: RIGHT SIDE ::::::::::::::::::::::::::::: -->
+	<div class="four columns">
+		<div class="twelve columns" style="padding-bottom:20px">
+			<div class="panel">
+				<div id="imagem">
+					<img src="http://placehold.it/200x200" alt="Foto da Pessoa">
+					
+				</div>
+			</div>
 		</div>
-
-
+<!-- 		<div class="twelve columns" style="padding-bottom:20px">
+			<div class="panel">
+		    	<h5>Formações</h5>
+			</div>
+	    </div> -->
+		<div class="twelve columns" style="padding-bottom:20px">
+			<div class="panel" id="calendario">
+		    	<h5>Calendário</h5>
+		    	<div id="datepicker"></div>
+		    </div>
+	    </div>
+	</div>
 </div>
+
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+</script>

@@ -6,14 +6,27 @@
         <%else%>
           <li><%= link_to @company.name, company_path(@company) %></li>
         <%end%>
-        <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li>
+          <% if session[:model_name].eql?("users") %>
+              <%= link_to t(:employees), company_users_path(@company)  %></li>
+            <% end %>
+            <% if session[:model_name].eql?("time_offs") %>
+              <%= link_to t(:time_offs), company_users_path(@company)  %></li>
+            <% end %>
         <li class="current">
-          <a href="#"><%= t(:import_user) %></a>
+          <a href="#">
+            <% if session[:model_name].eql?("users") %>
+              <%= t(:import_user) %>
+            <% end %>
+            <% if session[:model_name].eql?("time_offs") %>
+              <%= t(:import_time_offs) %>
+            <% end %>
+            </a>
         </li>
-        <li class="unavailable">
+        <li class="current">
           <a href="#"><%= t(:first_step) %></a>
         </li>
-        <li class="current">
+        <li class="unavailable">
           <a href="#"><%= t(:second_step) %></a>
         </li>
     </ul>
@@ -23,7 +36,14 @@
   <div class="twelve columns">
     <div id="signup">
       <div class="panel">
-        <h2><%= t(:import_user) %></h2>
+        <h2>
+          <% if session[:model_name].eql?("users") %>
+            <%= t(:import_user) %>
+          <% end %>
+          <% if session[:model_name].eql?("time_offs") %>
+            <%= t(:import_time_offs) %>
+          <% end %>
+        </h2>
         <hr/>
         <p><%= t(:sheet_choose)%></p>
 			<%= form_tag(:controller => "importsingle", :action => "trd_step", :method => "post") do %>

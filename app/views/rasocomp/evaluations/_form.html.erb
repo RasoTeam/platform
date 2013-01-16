@@ -10,7 +10,7 @@
     <%= f.text_field :period_end, :class=>"input_space" %>
     <span class=" radius label"><%= t(:evaluator) %></span>
     <%= f.select :user_id , options_from_collection_for_select(@employees, :id,:name), {}, {:class=>"select"} %>
-    <span class=" radius label"><%= t(:parameters) %></span>
+
     <br/>
 
     <span class=" radius label"><%= t(:evaluatees) %></span>
@@ -24,6 +24,7 @@
     <br/>
     <br/>
 
+    <span class=" radius label"><%= t(:parameters) %></span>
     <table border="1">
       <tr>
         <td>Parameter Name</td>

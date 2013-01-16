@@ -2,7 +2,7 @@
   <div class="three columns push-nine">
 
       <div class="twelve columns" style="padding-bottom:20px">
-        <a href="#" class="th"><img src="http://placehold.it/200x200" alt="Foto da Pessoa"></a>
+        <a href="#" class="th"><%= image_tag @user.attach.url %></a>
       </div>
 
 </div> 
@@ -35,7 +35,7 @@
           <div class="twelve columns">
           <hr/>
 
-            <%= form_for [@company, @user] do |f| %>
+            <%= form_for [@company, @user], :html => { :multipart => true } do |f| %>
 
               <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
                 <hr/>
@@ -46,6 +46,9 @@
 
               <span class=" radius label"><%= t(:name) %></span>
               <%= f.text_field :name, :class=>"input_space"  %>
+
+              <span class=" radius label"><%= t(:photo) %></span><br>
+              <%= f.file_field :attach, :class=>"input_space" %><br><br>
           
               <% if current_user(@company.slug).role == ROLE[:manager] %>
                 <span class=" radius label"><%= t(:time_off_days) %></span>

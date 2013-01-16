@@ -1,33 +1,35 @@
-# == Schema Information
-#
-# Table name: import_logics
-#
-#  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
 class ImportLogic < ActiveRecord::Base
   # attr_accessible :title, :body
 
 
-# @param [String] fullPath file
-# @return [Array] Returns the sheets on the target Excel File
+#
+# Returns the sheets on the target Excel File
 #
 	def get_sheets_from_excel_file(fullPath)
 
-		#Spreadsheet.client_enconding = 'UTF-8'
-		book = Spreadsheet.open fullPath
-		sheetsNum = book.worksheets.count
-
+		require 'iconv'
+		
 		sheets_array = []
+
+		case File.extname(fullPath)
+
+			when ".ods"
+	    		book = Openoffice.new(fullPath)      # creates an Openoffice Spreadsheet instance
+			when ".xls"
+			    book = Excel.new(fullPath)           # creates an Excel Spreadsheet instance
+			when ".xlsx"
+			    book = Excelx.new(fullPath)         # creates an Excel Spreadsheet instance for Excel .xlsx files
+			else
+				sheets_array[0] = File.extname(fullPath)
+				return sheets_array
+    	end
+
+		sheetsNum = book.sheets.count
 		#Iterate trough the excel worksheets
 		$i=0
 		while $i<sheetsNum
 
-			#Get the Sheet
-			sheet = book.worksheet $i
-			sheets_array[$i] = sheet.name
+			sheets_array[$i] = book.sheets[$i]
 
 		$i += 1
 		end
@@ -37,36 +39,45 @@ class ImportLogic < ActiveRecord::Base
 
 
 
-# @param [String] fullPath the file name
-# @param [String] sheet_name the sheet name
-# @return [Array] Returns the Data from the target Excel File
+#
+# Returns the Data from the target Excel File
 #
 	def read_default_data_from_sheet(fullPath, sheet_name)
-
-		book = Spreadsheet.open fullPath
-		sheet = book.worksheet sheet_name
-
-		#Getting the sheet dimensions
-		dim = sheet.dimensions
-		fst_row = dim[0]
-		lst_row = dim[1]
-		fst_col = dim[2]
-		lst_col = dim[3]
 
 		line_data = Array.new
 		sheet_data = Array.new(line_data)
 
+		case File.extname(fullPath)
+
+			when ".xls"
+			    book = Excel.new(fullPath)           # creates an Excel Spreadsheet instance
+			when ".xlsx"
+			    book = Excelx.new(fullPath)         # creates an Excel Spreadsheet instance for Excel .xlsx files
+			else
+				return sheet_data
+				
+    	end
+
+		book.default_sheet = sheet_name
+
+		#Getting the sheet dimensions
+		fst_row = book.first_row
+		lst_row = book.last_row
+		fst_col = book.first_column
+		lst_col = book.last_column
+
+
 		$row_count = 0
 		$k = fst_row
-		while $k<lst_row
+		while $k<=lst_row
 
 				line_data = Array.new
 				$column_count = 0
 				$z = fst_col
-				while $z<lst_col
+				while $z<=lst_col
 				
 					#storing the data
-					line_data[$column_count] = sheet.cell($k,$z).to_s
+					line_data[$column_count] = book.cell($k,$z).to_s
 
 				$column_count += 1
 				$z += 1

@@ -1,0 +1,7 @@
+<p>Parameter: <%= Parameter.find(evaluate_parameter.parameter_id).name %></p>
+<%= form_for [@company,@evaluation,evaluate_parameter], :remote => :true do |f| %>
+    <div id=<%= 'parameterShow' + evaluate_parameter.id.to_s %>>
+      <%= f.select :result , options_for_select(((evaluate_parameter.min_value)..(evaluate_parameter.max_value)).to_a.collect) %>
+      <%= f.submit  'Evaluate' %>
+    </div>
+<% end %>

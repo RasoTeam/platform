@@ -145,6 +145,13 @@ resources :feedbacks , :only => [:new,:create]
           post :finalize
         end
       end
+      #Export Controller Routes
+      resources :exportsingle do
+        collection do
+          get :choose_users_step
+          post :export_users_step
+        end
+      end
       resources :users do
         resources :contracts
         resources :time_offs do
@@ -160,7 +167,7 @@ resources :feedbacks , :only => [:new,:create]
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
       resources :evaluations do
-        resources :evaluation_parameters
+        resources :evaluation_user_parameters
       end
       resources :parameters
     end

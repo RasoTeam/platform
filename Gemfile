@@ -13,6 +13,7 @@ gem 'event-calendar', :require => 'event_calendar'
 gem 'jquery-rails'
 gem 'yard'
 gem 'redcarpet'
+gem "paperclip", "~> 2.3"
 
 
 #Gems para acesso ao LinkedIn
@@ -23,7 +24,7 @@ gem 'oauth'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 group :development, :test do
@@ -59,6 +60,7 @@ group :test do
 end
 
 gem 'spreadsheet'
+gem 'roo'
 
 
 # To use ActiveModel has_secure_password

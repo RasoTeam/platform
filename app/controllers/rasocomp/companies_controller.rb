@@ -4,7 +4,7 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
   def show
     @companies = Company.search(nil, params[:order]).paginate(:page => params[:page], :per_page => 15)
     @company = Company.find(params[:id])
-    @bills = @company.bills
+    @bills = @company.bills.paginate(:page => params[:page], :per_page => 5)
   end
 
   def edit

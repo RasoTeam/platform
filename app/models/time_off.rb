@@ -9,12 +9,26 @@ class TimeOff < ActiveRecord::Base
   
   validates :total_credits, :presence => true,
                             :numericality => { :only_integer => true,
-                                               :greater_than_or_equal_to => 1 } 
+                                               :greater_than_or_equal_to => 1 }
+
+  validates :credits, :presence => true,
+                      :numericality => { :only_integer => true,
+                                         :greater_than_or_equal_to => :total_credits },
+                      :if => :is_sick?
+
+  validates :start_at, :presence => true,
+                       :timeliness => { :on_or_after => lambda { Date.current }, 
+                                        :on_or_after_message => ':start_at >= today',
+                                        :type => :date}
 
   #validates :credits, :presence => true,
   #                    :numericality => { :only_integer => true,
   #                                       :greater_than_or_equal_to => :days }
-  
+
+  def is_sick?
+    category == 0 
+  end
+
   def days_diff
     if self.end_at.nil? || self.start_at.nil?
       return 0
