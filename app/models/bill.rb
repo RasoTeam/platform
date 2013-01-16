@@ -19,6 +19,17 @@ class Bill < ActiveRecord::Base
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 
+  # Searches for bills which match certan properties
+  #
+  # @param [String] search is used to filter bills with id LIKE or bill which belong to a company with an id LIKE
+  # @param [String] order is used to order the result as "ASC" or "DESC". default "DESC".
+  # @param [String] filt bills by state. 
+  #  Examples:
+  #  ">= 0"
+  #  "< 0"
+  #  "==0"
+  #  default: ">= 0".
+  # @return [Relation] All bills matching the parameters.
   def self.search(search,order,filt)
     order ||= "DESC"
     filt ||= ">= 0"

@@ -1,5 +1,4 @@
 
-
 class TimeOff < ActiveRecord::Base
   attr_accessor :credits
   attr_accessible :days, :description, :end_at, :start_at, :state, :category, :company_id, :user_id, :credits, :name, :total_credits

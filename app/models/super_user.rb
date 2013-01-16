@@ -28,6 +28,8 @@ class SuperUser < ActiveRecord::Base
   validates :password_confirmation, :presence => true
 
   private
+
+    #Creates a 64 bits hash for the user
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end

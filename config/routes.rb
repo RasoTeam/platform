@@ -7,6 +7,7 @@ resources :feedbacks , :only => [:new,:create]
 #backoffice
   match '/backoffice/stats', :to => 'backoffice/super_users#stats'
   match '/backoffice/bills', to: 'backoffice/bills#show_all'
+  get 'backoffice/bills/generate', :to => 'backoffice/bills#generate_invoices', :as => 'generate_invoices'
   put 'backoffice/companies/:id/block', :to => 'backoffice/companies#block', :as => 'block_company'
   put 'backoffice/companies/:id/activate', :to => 'backoffice/companies#activate', :as => 'activate_company'
 
@@ -158,7 +159,9 @@ resources :feedbacks , :only => [:new,:create]
       end
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
-      resources :evaluations
+      resources :evaluations do
+        resources :evaluation_parameters
+      end
       resources :parameters
     end
   end

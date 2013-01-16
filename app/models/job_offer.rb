@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: job_offers
-#
-#  id                 :integer          not null, primary key
-#  job_name           :string(255)
-#  description        :text
-#  required_education :text
-#  skills             :text
-#  active             :boolean
-#  conditions         :text
-#  company_id         :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#
 
 class JobOffer < ActiveRecord::Base
 
@@ -35,10 +20,11 @@ class JobOffer < ActiveRecord::Base
 
   validates_inclusion_of :status , :in => ["Open","Selection","Closed"]
 
-
-  ##Utilitário para apresentar ordenadamente uma lista de job_offers - Credits to Tiago
-  # search = string usada para pesquisar por nome da job_offer
-  # order = de A-Z ou de Z-A, por outras palavras crescente ou decrescente
+  # Searches for job offers which match certan properties
+  #
+  # @param [String] search is used to filter job_offers with name LIKE
+  # @param [String] order is used to order the result as "ASC" or "DESC". default "DESC".
+  # @return [Relation] All job_offers matching the parameters.
   def self.search(search,order)
     order ||= ""
     if search #Se foi inserida uma string de pesquisa
