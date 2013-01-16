@@ -76,7 +76,6 @@ describe "Backoffice pages" do
 		# it { should have_selector('h1', text: 'Companies') }
 		it { should have_content('Name') }
 		it { should have_content('SLUG') }
-		it { should have_content('NIF') }
 		it { should have_content('Status') }
 		it { should have_content('Actions') }
 		it { should have_selector('input[name=search]') }

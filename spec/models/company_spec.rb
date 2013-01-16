@@ -1,25 +1,10 @@
-# == Schema Information
-#
-# Table name: companies
-#
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  logo_url        :string(255)
-#  address         :string(255)
-#  nif             :string(255)
-#  state           :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  tag             :string(255)
-#  password_digest :string(255)
-#
-
 require 'spec_helper'
 
 describe Company do
   
   before do
-    @company = Company.new(name: "test company inc", slug: "tci", logo_url: "http://somelogo.com", address: "company address, 123", state: 0, nif: 123456789 )
+    @company = Company.new(name: "test company inc", slug: "tci", logo_url: "http://somelogo.com", 
+      address: "company address, 123", state: 0 )
   end
 
   subject { @company }
@@ -27,7 +12,6 @@ describe Company do
   it { should respond_to(:name) }
   it { should respond_to(:slug) }
   it { should respond_to(:address) }
-  it { should respond_to(:nif) }
   it { should respond_to(:logo_url) }
   it { should respond_to(:state) }
 
@@ -61,7 +45,7 @@ describe Company do
   end
 
   describe "when slug is too long" do
-    before { @company.slug = "a" * 21 }
+    before { @company.slug = "a" * 101 }
     it { should_not be_valid }
   end
 
@@ -93,4 +77,10 @@ describe Company do
     
     it { should_not be_valid }
   end
+
+  describe "when address is too long" do
+    before { @company.address = "a" * 101 }
+    it { should_not be_valid }
+  end
+
 end

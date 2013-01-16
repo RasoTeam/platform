@@ -11,7 +11,7 @@ describe "BackofficeAuthentications" do
   	it { should have_selector('title', text: 'RasoHR | Admin sign in') }
   	it { should have_button('Sign In') }
   	it { should_not have_content('company login page') }
-        it { should_not have_selector('div.row.alert-box.error') }
+    it { should_not have_selector('div.row.alert-box.error') }
   end
 
   describe "sign in" do
@@ -29,7 +29,8 @@ describe "BackofficeAuthentications" do
   		it { should have_content('Raso Admin') }
 
    		describe "after visiting another page" do
-  			before { click_link "about us" }
+  		#	before { click_link "about us" }
+      before { visit aboutus_path }
   			it { should_not have_alert_message('Wrong') }
   		end
   	end
@@ -59,11 +60,12 @@ describe "BackofficeAuthentications" do
 	  		before { click_link "Super User Sign Out" }
       # before { visit super_user_signout_path }
 
-	  		it { should have_content('Try it Free!') }
-        it { should have_content('Get In Touch!') }
+	  	#	it { should have_content('Try it Free!') }
+      # it { should have_content('Get In Touch!') }
 	    	it { should_not have_link('Companies',  href: backoffice_companies_path) }
 	    	it { should_not have_link('Invoices', 	href: backoffice_bills_path) }
 	  		it { should_not have_link('Super User Sign Out', href: super_user_signout_path) }
+        it { should have_content('Raso Admin') }
 	  	end
 	  end
   end

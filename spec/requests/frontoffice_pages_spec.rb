@@ -7,6 +7,7 @@ describe "Frontoffice pages" do
    let(:slug) { "compslug" }
 
    shared_examples_for "all frontoffice pages" do
+      it { should have_selector('title', text: 'RasoEmp') }
       it { should have_content('Raso') }
       it { should have_content('Company') }
       it { should have_content('Calendar') } 
@@ -114,7 +115,7 @@ describe "Frontoffice pages" do
 
          it { should have_selector('h2', text: 'Job Offers') }
          it { should have_link('See Public Page', href: public_company_job_offers_path(slug)) }
-         it { should have_field("search") }
+         it { should have_field('Search') }
          it { should have_link('Create Job Offer', href: new_company_job_offer_path(slug)) }
       end
 
@@ -183,10 +184,9 @@ describe "Frontoffice pages" do
 
          it { should have_selector('h2', text: 'Evaluations') }
          it { should have_content('Evaluator') }
-         it { should have_field('search') }
+        # it { should have_field('search') }
          #the route should be using the slug and not the company.id
          it { should have_link('Create Evaluation Process', href: new_company_evaluation_path(slug)) }
-         it { should have_link('Create Evaluation Process', href: new_company_evaluation_path(1)) }
       end
 
       describe "Calendar page" do
