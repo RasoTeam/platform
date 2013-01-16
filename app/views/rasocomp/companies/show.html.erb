@@ -22,7 +22,7 @@
           <% if @company.logo_url.nil? %>
             <img src="http://placehold.it/250x250" alt="Foto da empresa" class="company_image">
           <% else %>
-            <img src="<%=@company.logo_url %>" alt="Foto da empresa" class="company_image">
+            <%= image_tag @company.attach.url %>
           <% end %>
 				</div>
 			</div>

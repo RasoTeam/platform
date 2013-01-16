@@ -60,7 +60,7 @@
 									<%end)%>
 								<% end %>
 								<td><%= t.description %></td>
-								<td style="text-align: center"><%= link_to t(:cancel), [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => t(:cancel_message)} %></td>
+								<td style="text-align: center"><%= link_to_if t.state == 0, t(:cancel), [@company, @user, t], :class=>"radius label",:method => :delete, :data => { :confirm => t(:cancel_message)} %></td>
 				            </tr>
 			        	<% end %>
 			          </tbody>
