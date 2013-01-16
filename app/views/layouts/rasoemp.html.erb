@@ -27,12 +27,12 @@
   
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller.controller_name %>">
   <div class="wrap">
     <nav class="top-bar">
       <ul>
         <!-- Title Area -->
-        <li class="name">
+        <li>
           <% if current_user(@company.slug).role > ROOT %>
             <%= link_to  @company.name, user_dashboard_path(@company.slug, current_user(@company.slug)) %>
           <% else %>
