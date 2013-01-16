@@ -22,7 +22,7 @@ class Rasocomp::ExportsingleController < Rasocomp::ApplicationController
 
 	   		#Make the file available for download
 	   		send_file result, :type => "application/vnd.ms-excel", :x_sendfile=>true
-			File.delete(result)
+			#File.delete(result)
 
 		else
 			redirect_to "/companies/" + session[:companyname].downcase + "/users"
