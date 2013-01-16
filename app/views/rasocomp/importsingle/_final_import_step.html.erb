@@ -6,9 +6,22 @@
         <%else%>
           <li><%= link_to @company.name, company_path(@company) %></li>
         <%end%>
-        <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li>
+          <% if session[:model_name].eql?("users") %>
+              <%= link_to t(:employees), company_users_path(@company)  %></li>
+            <% end %>
+            <% if session[:model_name].eql?("time_offs") %>
+              <%= link_to t(:time_offs), company_users_path(@company)  %></li>
+            <% end %>
         <li class="current">
-          <a href="#"><%= t(:import_user) %></a>
+          <a href="#">
+            <% if session[:model_name].eql?("users") %>
+              <%= t(:import_user) %>
+            <% end %>
+            <% if session[:model_name].eql?("time_offs") %>
+              <%= t(:import_time_offs) %>
+            <% end %>
+            </a>
         </li>
         <li class="unavailable">
           <a href="#"><%= t(:first_step) %></a>
@@ -34,11 +47,23 @@
         <h2><%= t(:import_stats) %></h2>
         <hr/>
 		<h4>
-			<%= t(:users_imported) %>:
+      <% if session[:model_name].eql?("users") %>
+        <%= t(:users_imported) %>:
+      <% end %>
+        <% if session[:model_name].eql?("time_offs") %>
+        <%= t(:time_offs_imported) %>:
+      <% end %>
 		</h4>
-			<% session[:imported_users].each do |u| %>
-				<p><%= u.to_s %><p/>
-			<% end %>
+      <% if session[:model_name].eql?("users") %>
+        <% session[:imported_users].each do |u| %>
+          <p><%= u.to_s %><p/>
+        <% end %>
+      <% end %>
+        <% if session[:model_name].eql?("time_offs") %>
+        <% session[:imported_time_offs].each do |u| %>
+          <p><%= u.to_s %><p/>
+        <% end %>
+      <% end %>
  		 <div class="twelve columns">
 			<div class="six columns">
 			<%= form_tag(:controller => "importsingle", :action => "finalize", :method => "post") do %>

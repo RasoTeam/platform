@@ -145,6 +145,13 @@ resources :feedbacks , :only => [:new,:create]
           post :finalize
         end
       end
+      #Export Controller Routes
+      resources :exportsingle do
+        collection do
+          get :choose_users_step
+          post :export_users_step
+        end
+      end
       resources :users do
         resources :contracts
         resources :time_offs do

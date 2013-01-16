@@ -23,6 +23,7 @@
 				<li><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
 				<li><a class="radius button add_user" id="update_credits"> <%= t(:edit_user_days) %></a></li>
 				<li><%= link_to t(:import_user), fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
+				<li><%= link_to t(:export_user), choose_users_step_company_exportsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 			</ul>
 		</div>
 </div>

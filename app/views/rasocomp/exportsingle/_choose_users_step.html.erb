@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+        <% if current_user(@company.slug).role >= ROLE[:manager] %>
+          <li><%= link_to t(:home), user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+        <%else%>
+          <li><%= link_to @company.name, company_path(@company) %></li>
+        <%end%>
+        <li><%= link_to t(:employees), company_users_path(@company)  %></li>
+        <li class="current">
+          <a href="#"><%= t(:export_user) %></a>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:choose_users_export) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+        <div class="row">
+          <div class="twelve columns">
+
+
+            <h2><%= t(:export_user) %></h2>
+            <%= form_tag(:controller => "exportsingle", :action => "export_users_step", :method => "post") do %>
+              
+              <div style="text-align: center">
+                <%= submit_tag 'Download', :class=>"radius button" %>
+                <%= link_to 'Done', :back , :class=>"radius button"%>
+              </div>
+             </br>
+              <p><%= t(:choose_users_export)%></p>
+
+              <% @users.each do |u| %>
+                <span><%= check_box_tag "users_emails[]" , u.email , :checked => true %><%= u.name + "(" + u.email + ")" %></span>
+                </br>
+              <% end %>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
