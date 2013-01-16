@@ -6,6 +6,9 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 		session[:companyid] = params[:companyid]
 		session[:model] = params[:model]
 		session[:model_name] = params[:model].split('/')[(params[:model].split('/').count)-1]
+		if session[:model_name].eql?("manage")
+			session[:model_name]="time_offs"
+		end
 		render :_fst_step
 
 	end
