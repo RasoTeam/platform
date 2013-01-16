@@ -167,7 +167,7 @@ resources :feedbacks , :only => [:new,:create]
       resources :bills
       resources :job_offers , :only => [:index ,:new , :create ,:show ,:delete,:edit ,:update ,:destroy]
       resources :evaluations do
-        resources :evaluation_parameters
+        resources :evaluation_user_parameters
       end
       resources :parameters
     end

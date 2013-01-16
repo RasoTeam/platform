@@ -1,7 +1,7 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
+      <li><%= link_to 'Home', user_dashboard_path(@company, current_user(@company.slug)) %></li>
       <li><%= link_to "Evaluations", company_evaluations_path(@company) %></li>
       <li class="current"><a href="#"><%= @evaluation.description %></a></li>
     </ul>
@@ -43,9 +43,8 @@
           <tr>
             <td><span class="label radius">Evaluation Parameters</span></td>
             <td>
-              <% @eval_params.each do |ev|%>
-                  <% @parameter = Parameter.find(ev.parameter_id)%>
-                  <p><%= @parameter.name + ': ' + ev.min_value.to_s + ' to ' + ev.max_value.to_s %></p>
+              <% @eval_user_params.each do |param|%>
+                  <p><%= param.name  %></p>
               <% end %>
             </td>
           </tr>
@@ -54,7 +53,7 @@
 
       <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
         <p style="text-align: left;">
-              <%= link_to "Evaluate" , evaluate_users_path(@company.id,@evaluation.id),:class=>"button" %>
+              <%= link_to "Evaluate" , evaluate_users_path(@company,@evaluation.id),:class=>"button" %>
         </p>
       <% end %>
     </div>

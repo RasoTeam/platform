@@ -33,26 +33,26 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     end
     @evaluation.users = @users
 
+    @users.each do |user1|
+      puts "Este utilizador" + user1.id.to_s
+    end
+
     #Preencher a tabela ponte Evaluation_User_Parameters
 
     @evalparams1 = Array.new
+
+    #Itera pelos parametros declarados e multiplica os registos pelo numero de utilizadores avaliados
     params[:evaluation][:evaluation_user_parameters_attributes].values.each do |evp|
       if evp[:_destroy] == "1"  #Verifica que foram escolhidos.
-        @evalparam = @evaluation.evaluation_user_parameters.build(evp)
-        @evalparams1 << @evalparam
+        @users.each do |user| #para cada user cria registos dos parametros
+          @evalparam = @evaluation.evaluation_user_parameters.build(evp)
+          @evalparam.user_id = user.id
+          @evalparams1 << @evalparam
+        end
       end
     end
 
-    @evalparams2 = Array.new
-    @users.each do |user|
-      @evalparams1.each do |evalp|
-        @evp = evalp
-        @evp.user_id = user.id
-        @evalparams2 << @evp
-      end
-    end
-
-    @evaluation.evaluation_user_parameters = @evalparams2
+    @evaluation.evaluation_user_parameters = @evalparams1
 
     #Acção de guardar efectivamente
     if @evaluation.save
@@ -69,16 +69,18 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @evaluation = Evaluation.find(params[:id])
     @evaluator = User.find(@evaluation.user_id)
     @evaluatees = @evaluation.users
-    @eval_params = @evaluation.evaluation_parameters
+
+    @eval_user_params = @evaluation.parameters
+    @eval_user_params.uniq! #Elimina duplicados
   end
 
   def evaluate
     @company = Company.find(params[:company_id])
     @evaluation = Evaluation.find(params[:evaluation_id])
     @evaluator = User.find(@evaluation.user_id)
-    @evaluatees = @evaluation.users
-    @eval_params = @evaluation.evaluation_parameters
-    @parameters = @eval_params.parameters
+
+    @eval_users = @evaluation.users
+    @eval_users_params = @evaluation.evaluation_user_parameters
   end
 
 end

@@ -15,5 +15,5 @@ class Training < ActiveRecord::Base
   belongs_to :company
   has_many :courses
   
-  
+  validates :name, :presence => true
 end
