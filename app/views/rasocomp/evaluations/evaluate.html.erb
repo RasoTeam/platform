@@ -15,12 +15,16 @@
 </div>
 
 <div class="row">
-    <div class="twelve columns">
-        <div id="signup">
-            <div class="panel">
-                <h1><%= "Evaluate them!" %></h1>
-                <%= render 'evaluate_form' %>
-            </div> <!-- Fecha Panel -->
-        </div> <!-- Fecha signup -->
-    </div> <!-- Fecha twelve columns -->
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+
+        <h1><%= "Evaluate them!" %></h1>
+        <% @eval_params.each do |eval_param| %>
+            <%= render 'evaluate_form', :evaluation_parameter => eval_param %>
+        <% end %>
+
+      </div> <!-- Fecha Panel -->
+    </div> <!-- Fecha signup -->
+  </div> <!-- Fecha twelve columns -->
 </div> <!-- Fecha row -->

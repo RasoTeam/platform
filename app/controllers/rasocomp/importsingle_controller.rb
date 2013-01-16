@@ -18,10 +18,10 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 		@company = Company.find(params[:company_id])
 		if(!params[:excel_file].nil?)
 			filename = params[:excel_file].original_filename
-			directory = "public/_temp_excel_files"
+			directory = "public/_temp_up_excel_files"
 		
 
-			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx"))
+			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("ods"))
 				flash.now[:alert]= t(:file_not_valid)
 				render :_fst_step
 			else
@@ -112,55 +112,126 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 	#The Final import mode
 	def final_import_step
 
-	#Pick the sheet entries and create the model entry for each
-	#Check the model
 		@company = Company.find(params[:company_id])
 
-			imported_users = Array.new
+	#Pick the sheet entries and create the model entry for each
+	#Check the model
 
-			isValid = validateExcel
-			if isValid == 1
-				$i1 = 1
-				$j1 = 0
-				while $i1 < session[:sheet_data].count
+		case session[:model_name]
 
-					line_data = session[:sheet_data][$i1]
+			when "users"
 
-					name = (line_data[0]).to_s
-					email = (line_data[1]).to_s
-					role = (line_data[2]).to_s
+				imported_users = Array.new
 
-					#Create the User
-					company = Company.find(session[:companyid])
-					us = company.users.build
-					us.name = name 
-					us.email = email
-					us.role = role.to_i
-					us.state = -1
-    				us.password_digest = 0
-    				if us.save
-      					UserMailer.verification_email(us).deliver
+				isValid = validateExcel
+				if isValid == 1
+					$i1 = 1
+					$j1 = 0
+					while $i1 < session[:sheet_data].count
 
-      					period = us.periods.build
-      					period.start_date = Date.today
-      					period.state = STATE[:unchecked]
-      					period.save
+						line_data = session[:sheet_data][$i1]
 
-      					imported_users[$j1] = name
-      					$j1 += 1
-      				end
-					#Company.create(:name => name, :created => created, :nif => nif)
+						name = (line_data[0]).to_s
+						email = (line_data[1]).to_s
+						role = (line_data[2]).to_s
 
-				$i1 += 1
+						#Create the User
+						company = Company.find(session[:companyid])
+						us = company.users.build
+						us.name = name 
+						us.email = email
+						us.role = role.to_i
+						us.state = -1
+	    				us.password_digest = 0
+	    				if us.save
+	      					UserMailer.verification_email(us).deliver
+
+	      					period = us.periods.build
+	      					period.start_date = Date.today
+	      					period.state = STATE[:unchecked]
+	      					period.save
+
+	      					imported_users[$j1] = name
+	      					$j1 += 1
+	      				end
+						#Company.create(:name => name, :created => created, :nif => nif)
+
+					$i1 += 1
+					end
+
+				session[:imported_users] = imported_users
+				render :_final_import_step
+
+				else
+					render :_datanotvalid
 				end
 
-			session[:imported_users] = imported_users
-			render :_final_import_step
+			when "time_offs"
+				
+				imported_time_offs = Array.new
 
+				isValid = validateExcel
+				if isValid == 1
+					$i1 = 1
+					$j1 = 0
+					while $i1 < session[:sheet_data].count
+
+						fail_flag = false
+
+						line_data = session[:sheet_data][$i1]
+
+						titulo = (line_data[0]).to_s
+						categoria = (line_data[1]).to_s
+						datadeinicio = (line_data[2]).to_s
+						datadefim= (line_data[3]).to_s
+						email= (line_data[4]).to_s
+
+						#Create the Time_Off
+						company = Company.find(session[:companyid])
+
+						@user = @company.users.find_by_email(email)
+					    @timeoff = @user.time_offs.build
+					    @timeoff.description = titulo
+					    @timeoff.category = 0
+					    begin
+						    @timeoff.start_at = Date.parse(datadeinicio)
+						rescue
+						    fail_flag = true
+						end
+						begin
+						    @timeoff.end_at = Date.parse(datadefim)
+						rescue 
+						    fail_flag = true
+						end
+					    @timeoff.user_id = @user.id
+					    @timeoff.company_id = @company.id
+					    @timeoff.state = 0
+					    @timeoff.credits = 1 #@user.time_off_days
+					    @timeoff.color = '#B8B8B8'
+					    @timeoff.name = @user.name + " | " + TIMETYPE.invert[@timeoff.category].to_s
+					    @timeoff.valid?
+					    if @timeoff.save && fail_flag == false
+					      @user.time_off_days -= @timeoff.total_credits
+					      @user.save!(:validate => false)
+
+					      imported_time_offs[$j1] = email
+					      $j1 += 1
+					    end
+
+						$i1 += 1
+					end
+
+				session[:imported_time_offs] = imported_time_offs
+				render :_final_import_step
+
+				else
+					render :_datanotvalid
+				end
+			
 			else
-				render :_datanotvalid
-			end
+				render :text => "model unknown"
 
+		end	
 	end
 
 
@@ -209,48 +280,109 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 		result=1
 		#It's different between models
 
-		#
-		#User model
-		#
-		#check the number of lines
-		if session[:sheet_data].count >0
-			#check the number of columns
-			if (session[:sheet_data][0]).count == 3
+		case session[:model_name]
 
-				nameFlag=0
-				emailFlag=0
-				roleFlag=0
+			when "users"
+				#
+				#User model
+				#
+				#check the number of lines
+				if session[:sheet_data].count >0
+					#check the number of columns
+					if (session[:sheet_data][0]).count == 3
 
-				#check the columns indexes
-				(session[:sheet_data][0]).each do |colIndex|
+						nameFlag=0
+						emailFlag=0
+						roleFlag=0
 
-					#search for the Name idex
-					if (colIndex.to_s).eql?("Name")
-						nameFlag=1
+						#check the columns indexes
+						(session[:sheet_data][0]).each do |colIndex|
+
+							#search for the Name idex
+							if (colIndex.to_s).eql?("Name")
+								nameFlag=1
+							end
+							#search for the Email index
+							if (colIndex.to_s).eql?("Email")
+								emailFlag=1
+							end
+							#search for the Role index
+							if (colIndex.to_s).eql?("Role")
+								roleFlag=1
+							end
+
+						end
+
+						#Validate all columns indexes
+						if nameFlag==1 && emailFlag==1 && roleFlag==1
+						else
+							result = 0
+						end
+					else
+						result=0
 					end
-					#search for the Email index
-					if (colIndex.to_s).eql?("Email")
-						emailFlag=1
-					end
-					#search for the Role index
-					if (colIndex.to_s).eql?("Role")
-						roleFlag=1
-					end
-
-				end
-
-				#Validate all columns indexes
-				if nameFlag==1 && emailFlag==1 && roleFlag==1
 				else
-					result = 0
+					result=0
 				end
-			else
-				result=0
-			end
-		else
-			result=0
-		end
 
+			when "time_offs"
+
+				#
+				#Time Offs model
+				#
+				#check the number of lines
+				if session[:sheet_data].count >0
+					#check the number of columns
+					if (session[:sheet_data][0]).count == 5
+
+						tituloFlag=0
+						categoriaFlag=0
+						dataInicioFlag=0
+						dataFimFlag=0
+						emailFlag=0
+
+						#check the columns indexes
+						(session[:sheet_data][0]).each do |colIndex|
+
+							#search for the Titulo idex
+							if (colIndex.to_s).eql?("Titulo")
+								tituloFlag=1
+							end
+							#search for the Categoria index
+							if (colIndex.to_s).eql?("Tipo")
+								categoriaFlag=1
+							end
+							#search for the Data de Inicio index
+							if (colIndex.to_s).eql?("Data de Inicio")
+								dataInicioFlag=1
+							end
+							#search for the Data de Fim index
+							if (colIndex.to_s).eql?("Data de Fim")
+								dataFimFlag=1
+							end
+							#search for the Email index
+							if (colIndex.to_s).eql?("Email")
+								emailFlag=1
+							end
+
+						end
+
+						#Validate all columns indexes
+						if tituloFlag==1 && categoriaFlag==1 && dataInicioFlag==1 && dataFimFlag==1 && emailFlag==1
+						else
+							result = 0
+						end
+					else
+						result=0
+					end
+				else
+					result=0
+				end
+
+			else
+				render :text => "model unknow"
+
+		end
 	return result
 	end
 

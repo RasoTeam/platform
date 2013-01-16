@@ -13,39 +13,39 @@
     <span class=" radius label"><%= t(:parameters) %></span>
     <br/>
 
+    <span class=" radius label"><%= t(:evaluatees) %></span>
+    <br/>
+    <% @employees.each do |em| %>
+        <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
+        <%= check_box_tag "evaluatees[user_id][]" , em.id %>
+        <%= em.name %>
+        <br/>
+    <% end %>
+    <br/>
+    <br/>
+
     <table border="1">
-        <tr>
-          <td>Parameter Name</td>
-          <td>Accept</td>
-          <td>Minimum Value</td>
-          <td>Maximum Value</td>
-        </tr>
-        <% @parameters.each do |parameter| %>
-          <%= f.fields_for :evaluation_parameters do |builder|  %>
-            <%= render 'evaluation_parameter_fields', :f => builder, :evaluation => @evaluation, :parameter => parameter %>
+      <tr>
+        <td>Parameter Name</td>
+        <td>Accept</td>
+        <td>Minimum Value</td>
+        <td>Maximum Value</td>
+      </tr>
+
+      <% @parameters.each do |parameter| %>
+          <%= f.fields_for :evaluation_user_parameters do |builder|  %>
+              <%= render 'evaluation_user_parameters_fields', :f => builder, :evaluation => @evaluation, :parameter => parameter %>
           <% end %>
-        <% end %>
+      <% end %>
+
     </table>
 
     <%= link_to "New Parameter?" , new_company_parameter_path(@company), :id => 'evaluationModel', :remote => :true %>
 
     <br/><br/>
-    <span class=" radius label"><%= t(:evaluatees) %></span>
-    <br/>
-    <% @employees.each do |em| %>
-        <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
-        <%= check_box_tag "evaluatees[user_id][]", em.id %>
-        <%= em.name %>
-        <br/>
-    <% end %>
-    <br/><br/>
-    <!-- TODO: DELETE QUANDO O PICKER FUNCIONAR COM O FORM -->
-    <%= f.label "Period Begin" %>
-    <%= f.date_select :period_begin %>
-    <%= f.label "Period End" %>
-    <%= f.date_select :period_end %>
-    <!-- END TODO -->
+
     <%= f.submit %>
+
 <% end %>
 
 <div id="parameter" class="reveal-modal [expand, xlarge, large, medium, small]">

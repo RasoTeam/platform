@@ -3,7 +3,7 @@
     <ul class="breadcrumbs">
       <li><%= link_to t(:home) , user_dashboard_path(@company.id, current_user(@company.slug)) %></li>
         <li class="current">
-          <a href="#"><%= t(:timeoffs) %></a>
+          <a href="#"><%= t(:timeoffs)%></a>
         </li>
     </ul>
   </div>
@@ -13,7 +13,7 @@
   <div class="twelve columns">
   	<div class="row">
 	  	<div class="ten columns">
-			<h2><%= t(:timeoffs) %> <span class="radius label" style="margin-left: 10px"><%=t(:remaining_days)%></span> <span class="secondary radius label"><%= @user.time_off_days %></span></h2>
+			<h2><%= "fdadsaas"%> <span class="radius label" style="margin-left: 10px"><%=t(:remaining_days)%></span> <span class="secondary radius label"><%= @user.time_off_days %></span></h2>
 	  	</div>
 	  	<div class="two columns" style="margin-top: 15px; text-align: right">
 			<%= link_to t(:book), new_company_user_time_off_path( @company, @user), :class=> "radius button" %><br>

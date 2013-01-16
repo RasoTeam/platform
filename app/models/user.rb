@@ -11,10 +11,13 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
+#  time_off_days   :integer          default(0)
+#  user_photo      :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation
+  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation, :attach
   has_secure_password
   belongs_to :company
   has_many :time_offs
@@ -25,6 +28,14 @@ class User < ActiveRecord::Base
   has_many :periods
 
   has_and_belongs_to_many :evaluations
+
+  has_many :evaluations , :through => :evaluation_user_parameters
+  has_many :evaluation_user_parameters
+
+  has_many :parameters , :through => :evaluation_user_parameters
+  has_many :evaluation_user_parameters
+
+  has_attached_file :attach
 
 
   before_create :create_remember_token
@@ -47,10 +58,13 @@ class User < ActiveRecord::Base
                                        :greater_than_or_equal_to => -1,
                                        :less_than_or_equal_to => 1 }
   
+  # It checks if the user has validated the email address
   def verified?
     self.state != -1
   end
 
+  # @param [String] search Searches for users which has name LIKE or email LIKE
+  # @return [Relation] the users matching the property
   def self.search(search)
     if search
       where('name LIKE ? OR email LIKE ?', '%'+search+'%', '%'+search+'%').where("role > 0").order("name ")
