@@ -11,6 +11,7 @@ gem 'hpricot'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'yard'
 gem 'redcarpet'
+gem "paperclip", "~> 2.3"
 
 #Gems para acesso ao LinkedIn
 gem 'linkedin'
@@ -20,7 +21,7 @@ gem 'oauth'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 group :development, :test do

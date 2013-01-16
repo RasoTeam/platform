@@ -18,57 +18,61 @@
 		<!-- Header Content -->
 		<div class="row">
 			<div class="four columns">
-				<div class="twelve columns" style="padding-bottom:20px">
-					<img src="<%=@company.logo_url %>" alt="Foto da empresa" class="company_image">
+				<div class="panel" style="padding-bottom:20px">
+          <% if @company.logo_url.nil? %>
+            <img src="http://placehold.it/250x250" alt="Foto da empresa" class="company_image">
+          <% else %>
+            <img src="<%=@company.logo_url %>" alt="Foto da empresa" class="company_image">
+          <% end %>
 				</div>
 			</div>
-          	<div class="eight columns">
-            	<div class="panel details">
-                <div class="six columns">
-              		<h4 class="hide-for-small"><%= @company.name %>
-              			<% if current_user(@company.slug).role <= ROLE[:manager] %>
-              				<span class="secondary label radius"><%= link_to t(:edit), edit_company_path(@company) %></span>
-              			<% end %>
-              		</h4>
-                </div>
-                <div class="six columns">
-                  <% if current_user(@company.slug).role == ROOT %>
-                    <p class="add_user" style="text-align: right;"><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button" %></p>
-                  <%end%>
-                 </div>
+    	<div class="eight columns">
+      	<div class="panel details">
+          <div class="six columns">
+        		<h4 class="hide-for-small"><%= @company.name %>
+        			<% if current_user(@company.slug).role <= ROLE[:manager] %>
+        				<span class="secondary label radius"><%= link_to t(:edit), edit_company_path(@company) %></span>
+        			<% end %>
+        		</h4>
+          </div>
+          <div class="six columns">
+            <% if current_user(@company.slug).role == ROOT %>
+              <p class="add_user" style="text-align: right;"><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button" %></p>
+            <%end%>
+           </div>
 
-              		<hr/>
-              		<table class="twelve tableJobs">
-        						<tbody>
-  				            <tr>
-  				            	<td>
-  				            		<span class="label radius">Address</span>
-  				            	</td>
-  				            	<td> 
-  				            		<%= @company.address %>
-  				            	</td>
-  				            </tr>
-              				<tr>
-              					<td>
-              						<span class="label radius">WWW</span> 
-              					</td>
-              					<td>
-              						<%= link_to "rasohr.com/companies/"+@company.slug, company_path(@company.slug) %>
-              					</td>
-              				</tr>
-              				<tr>
-              					<td>
-              						<span class="label radius">Employees</span> 
-              					</td> 
-              					<td> 
-              						<%= @company.users.length-1 %>
-              					</td>
-              				</tr>
-  	            		</tbody>
-  	            	</table>
-              	</div>
-      			</div>
-        </div>
+        		<hr/>
+        		<table class="twelve tableJobs">
+  						<tbody>
+		            <tr>
+		            	<td>
+		            		<span class="label radius">Address</span>
+		            	</td>
+		            	<td> 
+		            		<%= @company.address %>
+		            	</td>
+		            </tr>
+        				<tr>
+        					<td>
+        						<span class="label radius">WWW</span> 
+        					</td>
+        					<td>
+        						<%= link_to "rasohr.com/companies/"+@company.slug, company_path(@company.slug) %>
+        					</td>
+        				</tr>
+        				<tr>
+        					<td>
+        						<span class="label radius">Employees</span> 
+        					</td> 
+        					<td> 
+        						<%= @company.users.length-1 %>
+        					</td>
+        				</tr>
+          		</tbody>
+          	</table>
+        	</div>
+			</div>
+    </div>
         <!-- End Header Content -->
     	<!-- Table Content -->
 		<div class="row">
