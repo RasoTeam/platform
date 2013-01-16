@@ -1,6 +1,5 @@
-<%= form_for [@company,@evaluation,@evaluation_parameter] do |f| %>
+<p>Nome : <%= evaluatee.name %></p>
 
-    <span class=" radius label"><%=
-    %></span>
-
+<% evaluation_parameters.each do |evp| %>
+        <%= render 'evaluate_parameter' , :evaluate_parameter => evp  %>
 <% end %>
