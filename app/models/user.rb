@@ -17,7 +17,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation
+  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation, :attach
   has_secure_password
   belongs_to :company
   has_many :time_offs
@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
 
   has_many :parameters , :through => :evaluation_user_parameters
   has_many :evaluation_user_parameters
+
+  has_attached_file :attach
 
 
   before_create :create_remember_token
