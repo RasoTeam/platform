@@ -27,6 +27,8 @@ class Rasocomp::CoursesController < ApplicationController
     @company = Company.find( params[:company_id])
     @training = Training.find( params[:training_id])
     @course = Course.find( params[:id])
+    #ALL USERS EXCEPT ROOT (role != 0) AND INACTIVE USERS state == 0
+    @users = @company.users.find( :all, :conditions => ["role != ? AND state == ?", 0, 1])
   end
   
   def update
