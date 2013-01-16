@@ -128,7 +128,7 @@
   <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
     <div class="row">
      <div class="twelve columns">
-      <h3 align="center">Give Feedback</h3>
+      <h3 style="text-align: center">Give Feedback</h3>
       <%= form_for(@feedback) do |f| %>
         <% if @feedback.errors.any? %>
           <div id="error_explanation">
@@ -163,7 +163,7 @@
                   <td>
                       <%= f.text_field :url, :type=>"hidden" %>
                   </td>
-                  <td align="right">
+                  <td style="text-align: right">
                       <%= f.submit "Submit", :id=>"commit", :class=>"small radius button", :style=>"align:right;" %>
                   </td>
               </tr>
