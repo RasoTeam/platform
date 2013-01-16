@@ -21,6 +21,7 @@ class Candidate < ActiveRecord::Base
   belongs_to :job_offer
 
   #Validadações para o Candidato
+  #validates_format_of :file_path, :with => %r{\.(pdf | xml)$}i
   validates_presence_of :email, :location, :name, :nationality, :phone
   validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i
   validates_numericality_of :phone, :only_integer => true

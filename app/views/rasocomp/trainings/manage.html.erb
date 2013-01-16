@@ -12,22 +12,35 @@
 <div class="row">
   	<div class="twelve columns">
   		<h2><%= t(:trainings) %></h2>
-		<ul class="accordion">
+  		<table class="twelve">
+			<thead>
+				<tr>
+					<th style="text-align: center"><%= t(:trainings) %></th>
+					<th style="text-align: center"><%= t(:actions) %></th>
+				</tr>
+			</thead>
+			<tbody>
 	   		<% @trainings.each do |t| %>
-			   	<li>
-			    	<div class="title">
-						<h5>Training id: <%= t.id %>;
+			   	<tr>
+			    	<td>
+						Training id: <%= t.id %>;
 						  Name: <%= t.name %>;
 						  Desc: <%= t.desc %>;
 						  <%= link_to 'start a course', new_company_training_course_path( @company, t) %><br>
-							</h5>
-					</div>
-					<div class="content">
+					</td>
+					<td>
 						<%= render :partial => "/rasocomp/courses/manage", :locals => {:courses => t.courses, :training => t} %> 
-					</div>
-				</li>
+					</td>
+				</tr>
+				<tr>
+
+				</tr>
+
 			<% end %>
-		</ul>
+						</tbody>
+
+	</table>
+
 	</div>
 </div>
 
