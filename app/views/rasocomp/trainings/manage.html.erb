@@ -10,8 +10,17 @@
 </div>
 
 <div class="row">
+		<div class="four columns">
+			<h2><%= t(:trainings) %></h2>
+		</div>
+		<div class="eight columns ">
+			<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
+		</div>
+</div>
+
+
+<div class="row">
   	<div class="twelve columns">
-  		<h2><%= t(:trainings) %></h2>
   		<table class="twelve">
 			<thead>
 				<tr>

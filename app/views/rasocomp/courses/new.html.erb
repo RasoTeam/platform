@@ -1,7 +1,30 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.slug, current_user(@company.slug)) %></li>
+        <li>
+      <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
+        </li>
+        <li class="current">
+          <a href="#"><%= @training.name %></a>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:new_course) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+
+
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "new_course.js" %>
 <% end %>
-<h1>COURSES#NEW</h1>
+<h1><%= t(:new_course) %></h1>
 <%= form_for [@company, @training, @course] do |f| %>
   <% @training.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
@@ -15,3 +38,8 @@
   <%= f.select :category, [["PUBLIC", 1],["PRIVATE", 2]] %>
   <%= f.submit %>
 <% end %>
+
+  </div>
+</div>
+  </div>
+</div>
