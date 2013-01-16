@@ -25,6 +25,7 @@
 				</thead>
 			<tbody>
 				<li><%= link_to 'Importar Férias', fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
+				<li><%= link_to 'Exportar Férias', choose_users_step_company_exportsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 				<% @timeoffs.each do |t| %>
 			    <tr>
 					<td><%= User.find(t.user_id).name %></td>
