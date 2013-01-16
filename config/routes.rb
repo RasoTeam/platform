@@ -26,6 +26,8 @@ resources :feedbacks , :only => [:new,:create]
 
   match '/companies/:company_id/users/:id/dashboard', :to => 'rasocomp/users#dashboard', as: 'user_dashboard'
 
+  get '/companies/:company_id/trainings/:training_id/courses/manage', :to => "rasocomp/courses#manage", as: 'training_courses_manage'
+
 #public
   get '/public/companies/:company_id/company_blocked', :to => 'public/companies#company_blocked', as: 'company_blocked'
   get '/public/companies/:company_id/user_blocked', :to => 'public/companies#user_blocked', as: 'user_blocked'
