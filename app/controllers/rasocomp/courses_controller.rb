@@ -1,5 +1,7 @@
 class Rasocomp::CoursesController < ApplicationController
 
+layout 'rasoemp'
+
   def index
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings.find( params[:training_id])
@@ -14,7 +16,7 @@ class Rasocomp::CoursesController < ApplicationController
       course.update_attribute :state, 1
     end
     
-    redirect_to manage_company_trainings_path( params[:company_id])
+    redirect_to training_courses_manage_path(@company,@training)
   end
   
   def new
@@ -27,6 +29,8 @@ class Rasocomp::CoursesController < ApplicationController
     @company = Company.find( params[:company_id])
     @training = Training.find( params[:training_id])
     @course = Course.find( params[:id])
+    #ALL USERS EXCEPT ROOT (role != 0) AND INACTIVE USERS state == 0
+    @users = @company.users.find( :all, :conditions => ["role != ? AND state == ?", 0, 1])
   end
   
   def update
@@ -119,4 +123,12 @@ class Rasocomp::CoursesController < ApplicationController
     course.destroy
     redirect_to manage_company_trainings_path( params[:company_id])
   end
+
+  def manage
+    @company = Company.find( params[:company_id])
+    @training = @company.trainings.find( params[:training_id])
+    @courses = @training.courses
+  end 
+
 end
+

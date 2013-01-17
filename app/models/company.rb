@@ -11,7 +11,7 @@ class Company < ActiveRecord::Base
   has_many :job_offers
   has_many :evaluations
 
-  has_attached_file :attach
+  has_attached_file :attach, :default_url => "http://placehold.it/250x250"
 
 
   before_save { |company| company.slug = slug.downcase

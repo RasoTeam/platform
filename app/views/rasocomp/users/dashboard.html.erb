@@ -5,7 +5,6 @@
 			<dd class="active"><a href="#dashboard">Dashboard</a></dd>
 			<dd><a href="#profile">Profile</a></dd>
 			<dd><a href="#contract">Contract</a></dd>
-			<dd><a href="#contract2">Contract2</a></dd>
 		</dl>
 		<ul class="tabs-content">
 	<!-- ####################### DASHBOARD TAB ########################### -->
@@ -101,8 +100,7 @@
 		<div class="twelve columns" style="padding-bottom:20px">
 			<div class="panel">
 				<div id="imagem">
-					<img src="http://placehold.it/200x200" alt="Foto da Pessoa">
-					
+           			<%= image_tag @user.attach.url %>
 				</div>
 			</div>
 		</div>

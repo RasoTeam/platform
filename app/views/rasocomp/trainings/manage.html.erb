@@ -10,8 +10,17 @@
 </div>
 
 <div class="row">
+		<div class="four columns">
+			<h2><%= t(:trainings) %></h2>
+		</div>
+		<div class="eight columns ">
+			<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
+		</div>
+</div>
+
+
+<div class="row">
   	<div class="twelve columns">
-  		<h2><%= t(:trainings) %></h2>
   		<table class="twelve">
 			<thead>
 				<tr>
@@ -23,21 +32,16 @@
 	   		<% @trainings.each do |t| %>
 			   	<tr>
 			    	<td>
-						Training id: <%= t.id %>;
-						  Name: <%= t.name %>;
-						  Desc: <%= t.desc %>;
-						  <%= link_to 'start a course', new_company_training_course_path( @company, t) %><br>
+						<%= link_to t.name, training_courses_manage_path( @company, t)%>
 					</td>
 					<td>
-						<%= render :partial => "/rasocomp/courses/manage", :locals => {:courses => t.courses, :training => t} %> 
+						<%= link_to 'Start a Course', new_company_training_course_path( @company, t) %><br>
+						
 					</td>
-				</tr>
-				<tr>
-
 				</tr>
 
 			<% end %>
-						</tbody>
+		</tbody>
 
 	</table>
 

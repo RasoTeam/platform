@@ -15,30 +15,34 @@
 
     <span class=" radius label"><%= t(:evaluatees) %></span>
     <br/>
-    <% @employees.each do |em| %>
-        <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
-        <%= check_box_tag "evaluatees[user_id][]" , em.id %>
-        <%= em.name %>
-        <br/>
-    <% end %>
+    <div class="employees">
+        <% @employees.each do |em| %>
+            <!-- TODO: CHECKBOX's COM OS EMPREGADOS TODOS?! -->
+            <%= check_box_tag "evaluatees[user_id][]" , em.id %>
+            <%= em.name %>
+            <br/>
+        <% end %>
+    </div>
     <br/>
     <br/>
 
     <span class=" radius label"><%= t(:parameters) %></span>
-    <table border="1">
-      <tr>
-        <td>Parameter Name</td>
-        <td>Accept</td>
-        <td>Minimum Value</td>
-        <td>Maximum Value</td>
-      </tr>
-
-      <% @parameters.each do |parameter| %>
-          <%= f.fields_for :evaluation_user_parameters do |builder|  %>
-              <%= render 'evaluation_user_parameters_fields', :f => builder, :evaluation => @evaluation, :parameter => parameter %>
-          <% end %>
-      <% end %>
-
+    <table class="twelve">
+        <thead>
+            <tr>
+                <th>Parameter Name</th>
+                <th>Accept</th>
+                <th>Minimum Value</th>
+                <th>Maximum Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @parameters.each do |parameter| %>
+                <%= f.fields_for :evaluation_user_parameters do |builder|  %>
+                <%= render 'evaluation_user_parameters_fields', :f => builder, :evaluation => @evaluation, :parameter => parameter %>
+                <% end %>
+            <% end %>
+        </tbody>
     </table>
 
     <%= link_to "New Parameter?" , new_company_parameter_path(@company), :id => 'evaluationModel', :remote => :true %>
