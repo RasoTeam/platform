@@ -1,7 +1,9 @@
+# == User Sessions Controller
 class Public::UserSessionsController < Public::ApplicationController
   before_filter :company_active, :only => [:new, :create]
 
   layout "nolayout"
+  # New user session
   def new
     @company = Company.find(params[:company_id])
     if user_signed_in?(@company.slug)
@@ -9,6 +11,7 @@ class Public::UserSessionsController < Public::ApplicationController
     end
   end
 
+  # Creates a new user session
   def create
     @company = Company.find(params[:company_id])
     @user = @company.users.find_by_email(params[:user_session][:email].downcase)
@@ -30,6 +33,7 @@ class Public::UserSessionsController < Public::ApplicationController
     end
   end
 
+  # Destroys a user session
   def destroy
     company = Company.find(params[:company_id])
     user_sign_out company.slug

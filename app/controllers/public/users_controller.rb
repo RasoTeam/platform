@@ -1,5 +1,9 @@
+# == User controller
+#  User controllor for public visitors
 class Public::UsersController < Public::ApplicationController
-	def activate
+	
+  # Activates an user account
+  def activate
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:id])
     if @user.state == STATE[:unchecked]
@@ -26,6 +30,7 @@ class Public::UsersController < Public::ApplicationController
     end
   end
 
+  # Prepares to set user password
   def verify
     if !params[:token] || !params[:company_id]
       flash[:alert] = t(:invalid_verification)
@@ -41,6 +46,7 @@ class Public::UsersController < Public::ApplicationController
     end
   end
 
+  # Request to reset password
   def reset_new_password
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])
@@ -50,6 +56,7 @@ class Public::UsersController < Public::ApplicationController
     end
   end
 
+  # Chooses new password after a password reset request
   def reset_password_submit
     @company = Company.find(params[:company_id])
     @user = @company.users.find(params[:id])

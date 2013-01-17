@@ -1,10 +1,14 @@
+# == Company Controller
+#  Company controller for visitors
 class Public::CompaniesController < Public::ApplicationController
 
+  # New company
   def new
     @company = Company.new
     @user = @company.users.build
   end
 
+  # Creates a company and a root user. Root user is used to keep the company email.
   def create
     @company = Company.new
     @company.name = params[:new_company][:name]
@@ -31,14 +35,17 @@ class Public::CompaniesController < Public::ApplicationController
     end
   end
 
+  # Used to get the company when it is blocked. It is used to show the company name
   def company_blocked
     @company = Company.find(params[:company_id])
   end
 
+  # Request password reset
   def reset_pass_require
     @company = Company.find(params[:company_id])
   end
 
+  # Sumbit a password reset request
   def submit_pass_require
     @company = Company.find(params[:company_id])
     user = @company.users.find_by_email(params[:user_email][:email])
@@ -57,6 +64,7 @@ class Public::CompaniesController < Public::ApplicationController
     end
   end
 
+  # Used when a user is bloqued. It is used to show the company name
   def user_blocked
     @company = Company.find(params[:company_id])
   end

@@ -1,17 +1,24 @@
+# == Bills Controller
+#  Controller to manage bills in the backoffice
 class Backoffice::BillsController < Backoffice::ApplicationController
+
+  # Show a bill
   def show
     @bill = Company.find(params[:company_id]).bills.find(params[:id])
   end
 
+  # Show all bills from a company
   def index
     @company = Company.find(params[:company_id])
     @bills = @company.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 15) 
   end
 
+  # Show all bills
   def show_all
       @bills = Bill.search(params[:search], params[:order], params[:filt]).paginate(:page => params[:page], :per_page => 15)
   end
 
+  # generate bills to the current month
   def generate_invoices
     companies = Company.all
 

@@ -1,18 +1,24 @@
+# == Super Users Controller
+#  Super users controller for the backoffice
 class Backoffice::SuperUsersController < Backoffice::ApplicationController
 	before_filter :super_user_self, :only => [:edit, :update, :destroy]
 	
+	# List all super users
 	def index
 		@super_users = SuperUser.all
 	end
 
+	# Show super user information
 	def show
 		@super_user = SuperUser.find(params[:id])
 	end
 	
+	# Edit a super user
 	def edit
 		@super_user = SuperUser.find(params[:id])
 	end
 
+	# Update a super user. Only accessible to the own super user
 	def update
 		@super_user = SuperUser.find(params[:id])
 
@@ -30,10 +36,12 @@ class Backoffice::SuperUsersController < Backoffice::ApplicationController
 		end
 	end
 
+	# Prepare to create new super user
 	def new
 		@super_user = SuperUser.new
 	end
 
+	# create a super user
 	def create
 		@super_user = SuperUser.new(params[:super_user])
 		if @super_user.save
@@ -43,6 +51,7 @@ class Backoffice::SuperUsersController < Backoffice::ApplicationController
 		end
 	end
 
+	# Destroy a super user
 	def destroy
 		@super_user = SuperUser.find(params[:id])
 		if @super_user.destroy
@@ -52,6 +61,7 @@ class Backoffice::SuperUsersController < Backoffice::ApplicationController
 		end
 	end
 
+	# Calculates some stats about the current companies
 	def stats
 		if params[:year] != nil
 			year = Integer(params[:year])
@@ -78,6 +88,7 @@ class Backoffice::SuperUsersController < Backoffice::ApplicationController
 	end
 
 	private
+		# Used to check if it is the own user
 		def super_user_self
 			unless current_super_user.id == Integer(params[:id])
 				flash[:alert] = t(:no_permission_to_access) 

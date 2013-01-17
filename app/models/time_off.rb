@@ -47,10 +47,15 @@ class TimeOff < ActiveRecord::Base
   #                    :numericality => { :only_integer => true,
   #                                       :greater_than_or_equal_to => :days }
 
+  # Returns if a day is booked as sick day
   def is_sick?
     category == 0 
   end
 
+  # Returns the number of days from a time off
+  # 0 if nil
+  # > 0 if positive
+  # < 0 if negative
   def days_diff
     if self.end_at.nil? || self.start_at.nil?
       return 0
@@ -59,6 +64,7 @@ class TimeOff < ActiveRecord::Base
     return n
   end
 
+  # sets the number of days
   private
     def set_days
       self.total_credits = days_diff

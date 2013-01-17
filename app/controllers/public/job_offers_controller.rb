@@ -1,9 +1,11 @@
+# == Job Offers Controller
+#  Job Offers controller for visitors 
 class Public::JobOffersController < Public::ApplicationController
   layout "nolayout"
 
   require 'rack/utils'
 
-  #Chaves da API do LinkedIn para esta aplicação
+  # Linkdin API keys to this application
   @@api_key =  'gdpw09c8khsp'
   @@api_secret = 'GjOzGtusFpJ2e9as'
   @@user_token = '1b7ef419-844d-4c26-8807-aa9f5fa39d96'
@@ -13,7 +15,7 @@ class Public::JobOffersController < Public::ApplicationController
   @@accesssecret = nil
   @@accesstoken = nil
 
-  #Hash de configuração usada pela gem oauth e/ou linkedin
+  # Hash confirmation used by the gem oauth e/ou linkedin
   @@configuration =   { :site => 'https://api.linkedin.com',
                         :authorize_path => '/uas/oauth/authenticate',
                         :request_token_path => '/uas/oauth/requestToken?scope=r_fullprofile',
@@ -22,17 +24,21 @@ class Public::JobOffersController < Public::ApplicationController
 
   ######################################################################################################################
 
+  # Lists all job offers
   def index
     @company = Company.find(params[:company_id])
     #Usa a função search por causa da pesquisa por palavras chave e ordenação -> ver Modelo JobOffer
     @offers = @company.job_offers.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 15)
   end
 
+  # Show a job offer
   def show
       @offer = JobOffer.find(params[:id])
       @company = @offer.company
   end
 
+
+  # New candidate
   def new
     @offer = JobOffer.find(params[:id])
     @company = @offer.company
@@ -45,6 +51,7 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
+  # Creates a new candidate for a job offer
   def create
     @candidate = Candidate.new(params[:candidate])
     @candidate.job_offer_id = params[:id]
@@ -74,6 +81,7 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
+  # Collects information from xml file and sends it to database
   def xml_profile
     @company = Company.find(params[:company_id])
     @offer = JobOffer.find(params[:id])
@@ -91,6 +99,7 @@ class Public::JobOffersController < Public::ApplicationController
     @candidate = session[:candidate]
   end
 
+  # Collects information from pdf and sends it to database
   def pdf_profile
     @company = Company.find(params[:company_id])
     @offer = JobOffer.find(params[:id])
@@ -105,7 +114,7 @@ class Public::JobOffersController < Public::ApplicationController
     session.delete(:file)
   end
 
-  #Esta acção guarda efectivamente um CV carregado através do LinkedIn
+  # It saves a curriculum uploaded through LinkdIn
   def save_linkedin_profile
     #Obter variáveis guardadas na session
     @candidate = session[:candidate]
@@ -127,7 +136,7 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
-  #Esta acção guarda efectivamente um CV carregado através de XML
+  # Saves a curriculum uploaded through XML
   def save_xml_profile
     #Obter variáveis guardadas na session
     @candidate = session[:candidate]
@@ -159,7 +168,7 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
-  #Esta acção guarda efectivamente um CV carregado através de XML
+  # Saves a curriculum uploaded through PDF
   def save_pdf_profile
     #Obter variáveis guardadas na session
     @candidate = session[:candidate]
@@ -190,6 +199,7 @@ class Public::JobOffersController < Public::ApplicationController
     end
   end
 
+  # Cancel an application
   def cancel_profile
     session.delete(:candidate)
     File.delete(session[:file_path])
@@ -201,6 +211,7 @@ class Public::JobOffersController < Public::ApplicationController
   # FUNÇÕES NECESSÁRIAS
   ######################################################################################################################
 
+  # Reads a xml file and converts it into html
   def readXMLfile2html(xmlf)
     doc = Hpricot::XML(xmlf)
 
@@ -283,7 +294,7 @@ class Public::JobOffersController < Public::ApplicationController
 
 
   ### LINKEDIN
-
+  # Generates oauth request
   def generate_linkedin_oauth_url(candidate)
     client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
 
@@ -302,6 +313,7 @@ class Public::JobOffersController < Public::ApplicationController
 
   end
 
+  # Receives and processes oauth request
   def oauth_account
     #Cria um cliente Linkedin com as credenciais actuais
     client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
@@ -323,7 +335,7 @@ class Public::JobOffersController < Public::ApplicationController
     redirect_to linkedin_profile_path @company,@job_offer,@candidate
   end
 
-  #Mostra o perfil
+  # Show profile
   def linkedin_profile
     @candidate = session[:candidate]
     @profile = get_full_profile
@@ -331,7 +343,7 @@ class Public::JobOffersController < Public::ApplicationController
     @offer = JobOffer.find(params[:id])
   end
 
-  #Obtem e devolve o perfil do utilizador actual do linkedin.
+  # Gets and returns user profile from linkedin
   def get_full_profile
     #Novo cliente
     client = LinkedIn::Client.new(@@api_key, @@api_secret, @@configuration)
@@ -346,7 +358,7 @@ class Public::JobOffersController < Public::ApplicationController
     return full_profile
   end
 
-  #Grava o ficheiro com o HTML retirado do perfil do LinkedIn
+  # Saves html file from linkedin profide
   def save_linkedin_to_html(candidate)
 
     #Isto foi um workaround a enviar params, basicamente saca de novo o perfil.

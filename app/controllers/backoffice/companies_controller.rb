@@ -1,18 +1,25 @@
+# == Companies Controller
+#  Controller to manage companies in the backoffice
 class Backoffice::CompaniesController < Backoffice::ApplicationController
-	def index
+	
+  # Show all companies
+  def index
     @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 15)
   end
 
+  # Show a company
   def show
     @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 15)
     @company = Company.find(params[:id])
     @bills = @company.bills
   end
 
+  # Edit a company
   def edit
     @company = Company.find( params[:id])
   end
 
+  # Update a company
   def update
 
     @company = Company.find( params[:id])
@@ -24,6 +31,7 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
     end
   end
 
+  # Block a company. Employees cannot log in after a company is blocked.
   def block
     @company = Company.find( params[:id])
     @company.state=COMPANY_STATE[:blocked]
@@ -36,7 +44,7 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
 
   end
 
-
+  # Activate a blocked or not verified (email) company
   def activate
     @company = Company.find( params[:id])
     @company.state=COMPANY_STATE[:active]
