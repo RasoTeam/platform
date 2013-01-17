@@ -7,7 +7,7 @@ describe "Frontoffice pages" do
    let(:slug) { "compslug" }
 
    shared_examples_for "all frontoffice pages" do
-      it { should have_selector('title', text: 'RasoEmp') }
+      it { should have_selector("title:contains('RasoEmp')")}
       it { should have_content('Raso') }
       it { should have_content('Company') }
       it { should have_content('Calendar') } 

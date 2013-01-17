@@ -22,7 +22,7 @@ describe "Public pages" do
 
     it_should_behave_like "all public pages"
     
-    it { should have_selector('title', text: 'RasoHR') }
+    it { should have_selector("title:contains('RasoHR')")}
     it { should have_link('Try it Free!', href: new_public_company_path) }
   end
 
@@ -31,7 +31,7 @@ describe "Public pages" do
 
   	it_should_behave_like "all public pages"
     it { should have_content('Meet the Team') }
-  	it {should have_selector('title', text: 'RasoHR | About us')}
+  	it { should have_selector("title:contains('RasoHR | About us')")}
   end
 
   describe "idea" do
@@ -39,7 +39,7 @@ describe "Public pages" do
 
     it_should_behave_like "all public pages"
     it { should have_selector('h1', text: 'Employee Self Management') }
-  	it { should have_selector('title', text: 'RasoHR | Idea') }
+  	it { should have_selector("title:contains('RasoHR | Idea')")}
     it { should have_content("It's cheap!") }
   end
 
@@ -48,7 +48,7 @@ describe "Public pages" do
 
     it { should have_content('Get in Touch') }
   	it_should_behave_like "all public pages"
-  	it {should have_selector('title', text: 'RasoHR | Contacts')}
+  	it { should have_selector("title:contains('RasoHR | Contacts')")}
   end
 
   describe "sign up/register page" do

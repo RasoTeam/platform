@@ -8,7 +8,7 @@ describe "BackofficeAuthentications" do
   	before { visit super_user_signin_path }
 
 		it { should have_selector('h1', text: 'Raso Admin') }
-  	it { should have_selector('title', text: 'RasoHR | Admin sign in') }
+  	it { should have_selector("title:contains('RasoHR | Admin Signin')")}
   	it { should have_button('Sign In') }
   	it { should_not have_content('company login page') }
     it { should_not have_selector('div.row.alert-box.error') }
@@ -24,7 +24,7 @@ describe "BackofficeAuthentications" do
   			click_button "Sign In"
   		end
 
-  		it { should have_selector('title', text: 'RasoHR | Admin sign in') }
+  		it { should have_selector("title:contains('RasoHR | Admin Signin')")}
   		it { should have_alert_message('Wrong') }
   		it { should have_content('Raso Admin') }
 
@@ -39,7 +39,7 @@ describe "BackofficeAuthentications" do
 	  	let(:admin) { FactoryGirl.create(:super_user) }
 	  	before { valid_admin_signin(admin) }
 
-	  	it { should have_selector('title', text: 'RasoHR | Backoffice') }
+	  	it { should have_selector("title:contains('RasoHR | Backoffice')")}
 
 	  	it { should have_content('Welcome to RASO Backoffice') }
 
@@ -91,7 +91,7 @@ describe "BackofficeAuthentications" do
 
           #Page redirect?
           it "should render the desired protected page" do
-            page.should have_selector('title', text: "Edit a Super User")
+            should have_selector("title:contains('RasoHR | Edit a Superuser')")
           end
 
           describe "when signing in again" do
@@ -104,8 +104,8 @@ describe "BackofficeAuthentications" do
             end
 
             it "should render the default (profile) page" do
-              page.should have_selector('title', text: 'RasoHR | Backoffice')
-              page.should have_selector('h1', text: 'Welcome to RASO Backoffice')
+              should have_selector("title:contains('RasoHR | Backoffice')")
+              should have_selector('h1', text: 'Welcome to RASO Backoffice')
             end
           end
         end
@@ -115,7 +115,7 @@ describe "BackofficeAuthentications" do
 
         describe "visiting the edit page" do
           before { visit edit_backoffice_super_user_path(admin) }
-         # it { should have_selector('title', text: 'RasoHR | Admin sign in') }
+
           it { should have_selector('h1', text: 'Raso Admin') }
           it { should have_alert_message('No permission to access') }
         end
@@ -127,7 +127,7 @@ describe "BackofficeAuthentications" do
 
         describe "visiting the user index" do
           before { visit backoffice_super_users_path}
-         # it { should have_selector('title', text: 'RasoHR | Admin sign in') }
+
           it { should have_selector('h1', text: 'Raso Admin') }
           it { should have_alert_message('No permission to access') }
         end
