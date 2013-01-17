@@ -41,7 +41,12 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
 
-  #validates_attachment_dimensions :attach, :minimum => 100, :maximum => 800
+  validates_attachment_size :attach, :less_than => 1.megabyte, #another option is :greater_than
+    :message => "max size is 1M"
+
+  validates_attachment_content_type :attach,
+    :content_type => ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png'],
+    :message => "only image files are allowed"
 
   validates :name, :presence => true, :length => { :maximum => 50}
 
