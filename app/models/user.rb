@@ -38,10 +38,13 @@ class User < ActiveRecord::Base
   has_many :parameters , :through => :evaluation_user_parameters
   has_many :evaluation_user_parameters
 
-  has_attached_file :attach
+  has_attached_file :attach, :default_url => "http://placehold.it/200x200"
 
 
   before_create :create_remember_token
+
+
+  #validates_attachment_dimensions :attach, :minimum => 100, :maximum => 800
 
   validates :name, :presence => true, :length => { :maximum => 50}
 

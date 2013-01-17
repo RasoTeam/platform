@@ -10,24 +10,41 @@
 </div>
 
 <div class="row">
+		<div class="four columns">
+			<h2><%= t(:trainings) %></h2>
+		</div>
+		<div class="eight columns ">
+			<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
+		</div>
+</div>
+
+
+<div class="row">
   	<div class="twelve columns">
-  		<h2><%= t(:trainings) %></h2>
-		<ul class="accordion">
+  		<table class="twelve">
+			<thead>
+				<tr>
+					<th style="text-align: center"><%= t(:trainings) %></th>
+					<th style="text-align: center"><%= t(:actions) %></th>
+				</tr>
+			</thead>
+			<tbody>
 	   		<% @trainings.each do |t| %>
-			   	<li>
-			    	<div class="title">
-						<h5>Training id: <%= t.id %>;
-						  Name: <%= t.name %>;
-						  Desc: <%= t.desc %>;
-						  <%= link_to 'start a course', new_company_training_course_path( @company, t) %><br>
-							</h5>
-					</div>
-					<div class="content">
-						<%= render :partial => "/rasocomp/courses/manage", :locals => {:courses => t.courses, :training => t} %> 
-					</div>
-				</li>
+			   	<tr>
+			    	<td>
+						<%= link_to t.name, training_courses_manage_path( @company, t)%>
+					</td>
+					<td>
+						<%= link_to 'Start a Course', new_company_training_course_path( @company, t) %><br>
+						
+					</td>
+				</tr>
+
 			<% end %>
-		</ul>
+		</tbody>
+
+	</table>
+
 	</div>
 </div>
 

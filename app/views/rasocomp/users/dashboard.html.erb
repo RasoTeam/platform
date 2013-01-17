@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row dashboard">
 <!-- ::::::::::::::::::::::::: LEFT SIDE ::::::::::::::::::::::::::::: -->
 	<div class="eight columns">
 		<dl class="tabs">
@@ -100,62 +100,19 @@
 		<div class="twelve columns" style="padding-bottom:20px">
 			<div class="panel">
 				<div id="imagem">
-					<img src="http://placehold.it/200x200" alt="Foto da Pessoa">
-					
+           			<%= image_tag @user.attach.url %>
 				</div>
 			</div>
 		</div>
-		<div class="twelve columns" style="padding-bottom:20px">
+<!-- 		<div class="twelve columns" style="padding-bottom:20px">
 			<div class="panel">
 		    	<h5>Formações</h5>
-		    	<table>
-		    		<thead>
-		    			<tr>
-							<td>DOM</td>
-							<td>QUI</td>
-							<td>SEX</td>
-							<td>SÁB</td>
-		    			</tr>
-		    		</thead>
-		    		<tbody>
-		    			<tr>
-							<td>01</td>
-							<td>02</td>
-							<td>03</td>
-							<td>04</td>
-		    			</tr>
-		    		</tbody>
-		    	</table>
 			</div>
-	    </div>
+	    </div> -->
 		<div class="twelve columns" style="padding-bottom:20px">
 			<div class="panel" id="calendario">
 		    	<h5>Calendário</h5>
 		    	<div id="datepicker"></div>
-		    	<!-- <table>
-		    		<thead>
-		    			<tr>
-							<td>DOM</td>
-							<td>SEG</td>
-							<td>TER</td>
-							<td>QUA</td>
-							<td>QUI</td>
-							<td>SEX</td>
-							<td>SÁB</td>
-		    			</tr>
-		    		</thead>
-		    		<tbody>
-		    			<tr>
-							<td>01</td>
-							<td>02</td>
-							<td>03</td>
-							<td>04</td>
-							<td>05</td>
-							<td>06</td>
-							<td>07</td>
-		    			</tr>
-		    		</tbody>
-		    	</table> -->
 		    </div>
 	    </div>
 	</div>

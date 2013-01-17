@@ -57,27 +57,30 @@ class Public::JobOffersController < Public::ApplicationController
     @candidate.job_offer_id = params[:id]
 
     if @candidate.valid?
-      
       if params[:cv_type] == 'linkedin'     #Se for um post para linkedin
-
         #começa o processo de autenticação no linkedin
         generate_linkedin_oauth_url @candidate
-
       elsif params[:cv_type] == 'xml'     #Se for um post para xml
-
         session[:file] = params[:file].path
         session[:candidate] = @candidate
 
         redirect_to xml_profile_path params[:company_id],params[:id]
-
       else     #Se for um post para pdf
-
         session[:file] = params[:file].path
         #so para modificar algo...
         session[:candidate] = @candidate
 
-        redirect_to pdf_profile_path params[:company_id],params[:id]
+        redirect_to pdf_profile_path params[:company_id],params[:id]  
       end
+    else
+      alert = "<ul>"
+      @candidate.errors.full_messages.each do |msg|
+        alert += "<li>"+msg+"</li>"
+      end
+      alert += "</ul>"
+
+      flash[:alert] = alert.html_safe
+      redirect_to :action => "new"
     end
   end
 

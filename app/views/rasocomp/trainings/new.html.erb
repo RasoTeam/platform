@@ -1,12 +1,48 @@
-<h1>TRAININGS#NEW</h1>
-<%= form_for [@company, @training] do |f| %>
-  <% @training.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-  <% end %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :desc %>
-  <%= f.text_field :desc %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.slug, current_user(@company.slug)) %></li>
+        <li>
+      <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
+        </li>
+        <li class="current">
+          <a href="#"><%= t(:new) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+  		<h2><%= t(:new_training) %></h2>
+			<%= form_for [@company, @training] do |f| %>
+			  <% @training.errors.full_messages.each do |msg| %>
+			    <p><%= msg %></p>
+			  <% end %>
+			  <%= f.label t(:name), :class=>"radius label" %>
+			  <%= f.text_field :name, :class=>"input_space" %>
+			  <%= f.label :desc, :class=>"radius label" %>
+			  <%= f.text_field :desc, :class=>"input_space" %>
+          	  <p style="text-align: center"><%= f.submit t(:submit), :class => "button" %></p>
+			<% end %>
+
+	</div>
+</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 

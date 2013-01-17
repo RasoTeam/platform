@@ -77,7 +77,7 @@
                         <%=f.label :name, :class=>"right inline"%>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :name, :class=>"eight" %>
+                      <%= f.text_field :name, :class=>"eight", required:true %>
                     </div>
                   </div> 
                   <div class="row">
@@ -85,7 +85,7 @@
                       <%=f.label :email, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :email, :class=>"eight" %>
+                      <%= f.text_field :email, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -93,7 +93,7 @@
                       <%=f.label :nationality, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :nationality, :class=>"eight" %>
+                      <%= f.text_field :nationality, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -101,7 +101,7 @@
                       <%=f.label :location, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :location, :class=>"eight" %>
+                      <%= f.text_field :location, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -109,12 +109,12 @@
                       <%=f.label :phone, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                     <%= f.text_field :phone, :class=>"eight" %>
+                     <%= f.text_field :phone, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <label class="right inline">CV:</label>
+                      <label class="right inline">CV(.pdf):</label>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.file_field "file", :name=>"file", required:true %>
@@ -148,7 +148,7 @@
                       <%=hidden_field_tag 'cv_type' , 'linkedin'%>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :name, :class=>"eight" %>
+                      <%= f.text_field :name, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -156,7 +156,7 @@
                       <%=f.label :email, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :email, :class=>"eight" %>
+                      <%= f.text_field :email, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -164,7 +164,7 @@
                       <%=f.label :nationality, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :nationality, :class=>"eight" %>
+                      <%= f.text_field :nationality, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -172,7 +172,7 @@
                       <%=f.label :location, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :location, :class=>"eight" %>
+                      <%= f.text_field :location, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -180,7 +180,7 @@
                       <%=f.label :phone, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :phone, :class=>"eight" %>
+                      <%= f.text_field :phone, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -212,7 +212,7 @@
                       <%=hidden_field_tag 'cv_type' , 'xml'%>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :name, :class=>"eight" %>
+                      <%= f.text_field :name, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -220,7 +220,7 @@
                       <%=f.label :email, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :email, :class=>"eight" %>
+                      <%= f.text_field :email, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -228,7 +228,7 @@
                       <%=f.label :nationality, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :nationality, :class=>"eight" %>
+                      <%= f.text_field :nationality, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -236,7 +236,7 @@
                       <%=f.label :location, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :location, :class=>"eight" %>
+                      <%= f.text_field :location, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
@@ -244,7 +244,7 @@
                       <%=f.label :phone, :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.text_field :phone, :class=>"eight" %>
+                      <%= f.text_field :phone, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">

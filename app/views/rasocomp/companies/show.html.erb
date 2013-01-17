@@ -19,11 +19,7 @@
 		<div class="row">
 			<div class="four columns">
 				<div class="panel" style="padding-bottom:20px">
-          <% if @company.logo_url.nil? %>
-            <img src="http://placehold.it/250x250" alt="Foto da empresa" class="company_image">
-          <% else %>
-            <img src="<%=@company.logo_url %>" alt="Foto da empresa" class="company_image">
-          <% end %>
+            <%= image_tag @company.attach.url %>
 				</div>
 			</div>
     	<div class="eight columns">

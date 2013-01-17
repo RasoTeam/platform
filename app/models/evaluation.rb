@@ -21,6 +21,11 @@ class Evaluation < ActiveRecord::Base
 
   attr_accessible :description, :period_begin, :period_end, :status, :user_id
 
+  validates :description, :presence => :true
+  validates :period_begin , :presence => :true
+  validates :period_end , :presence => :true
+  validates_inclusion_of :status , :in => ["Active","Closed"]
+
   has_and_belongs_to_many :users
 
   belongs_to :company

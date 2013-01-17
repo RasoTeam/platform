@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.slug, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:trainings), manage_company_trainings_path(@company) %></li>
+      <li class="current">
+          <a href="#"><%= @training.name %></a>
+      </li>
+      <li class="current">
+          <a href="#"><%= t(:courses) %></a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  	<div class="twelve columns">
+
+<h3><%= t(:courses) %> </h3>
+<table class="twelve">
+	<thead>
+		<tr>
+			<th style="text-align: center"><%= t(:lecturer) %></th>
+			<th style="text-align: center"><%= t(:start_day) %></th>
+			<th style="text-align: center"><%= t(:end_day) %></th>
+			<th style="text-align: center"><%= t(:category) %></th>
+			<th style="text-align: center"><%= t(:state) %></th>
+			<th style="text-align: center"><%= t(:invited) %></th>
+			<th style="text-align: center"><%= t(:enrolled) %></th>
+			<th style="text-align: center"><%= t(:actions) %></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @courses.each do |c| %>
+	<tr>
+		<td><%= c.lecturer %></td>
+		<td style="text-align: center"><%= c.start_at %></td>
+		<td style="text-align: center"><%= c.end_at %></td>
+		<td style="text-align: center"><%= c.category %></td>
+		<td style="text-align: center"><%= c.state %></td>
+		<td style="text-align: center"><%= c.course_signups.count %></td>
+		<td style="text-align: center"><%= c.course_signups.find( :all, :conditions => ['status = ?', 1]).count %></td>
+		<td>
+			<ul class="jobs_links">
+				<li><%= link_to t(:activate), activate_company_training_course_path( @company, @training, c), :method => :put, :class=>"radius label" %></li>
+		    	<li><%= link_to t(:edit), edit_company_training_course_path( @company, @training, c), :class=>"radius secondary label"  %></li>
+		    	<li><%= link_to t(:remove), [@company, @training, c], :method => :delete, :class=>"radius alert label"  %></li>
+
+		    	<li><%= link_to 'add user', '#', :class=>"radius label" %></li>
+		    	<li><%= link_to 'cancel', '#', :class=>"radius label"  %></li>
+			</ul>
+		</td>
+	</tr>
+
+	<% end %>
+	</tbody>
+
+</table>
+
+	</div>
+</div>

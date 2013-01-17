@@ -18,13 +18,15 @@ class Company < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug
 
-  attr_accessible :address, :logo_url, :name, :state, :slug
+  attr_accessible :address, :logo_url, :name, :state, :slug, :attach
   has_many :bills
   has_many :users
   has_many :time_offs
   has_many :trainings
   has_many :job_offers
   has_many :evaluations
+
+  has_attached_file :attach, :default_url => "http://placehold.it/250x250"
 
 
   before_save { |company| company.slug = slug.downcase
