@@ -29,6 +29,8 @@
   <% @training.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
   <%= f.label :lecturer %>
   <%= f.text_field :lecturer %>
   <%= f.label :start_at %>
