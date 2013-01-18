@@ -124,7 +124,7 @@ layout 'rasoemp'
     @course = @training.courses.build( params[:course])
     @course.state = 0
     if @course.save
-      redirect_to manage_company_trainings_path( params[:company_id])
+      redirect_to training_courses_manage_path( @company,@training)
     else
       render 'new'
     end
@@ -134,7 +134,7 @@ layout 'rasoemp'
   def destroy
     course = Course.find( params[:id])
     course.destroy
-    redirect_to manage_company_trainings_path( params[:company_id])
+    redirect_to training_courses_manage_path( params[:company_id],params[:training_id])
   end
 
   # Return all courses for a training programme in a company
