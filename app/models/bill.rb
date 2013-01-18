@@ -22,11 +22,12 @@ class Bill < ActiveRecord::Base
 
 def paypal_url(return_url, payment_notification)
   values = {
-    :business => 'raso_1358547915_biz@rasohr.com',
+    :business => 'raso_1358550325_biz@rasohr.com',
     :cmd => '_cart',
     :upload => 1,
     :return => return_url,
     :invoice => id,
+    :mc_currency => "EUR",
     :notify_url => payment_notification
   }
   values.merge!({

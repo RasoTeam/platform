@@ -15,7 +15,13 @@
       <td><%= bill.id %></td>
       <td><%= bill.created_at %></td>
       <td><%= bill.value %></td>
-      <td><%= bill.state %></td>
+      <% if bill.state == BILLSTATE[:unpaid] %>
+        <td><%= t(:unpaid) %></td>
+      <% elsif bill.state== BILLSTATE[:pending] %>
+        <td><%= t(:pending) %></td>
+      <% else %>
+        <td><%= t(:paid) %></td>
+      <% end %>
       <% if bill.state == BILLSTATE[:unpaid] %>
         <td><%= link_to t(:pay), bill.paypal_url(company_url, payment_notification_url) %></td>
       <% elsif bill.state== BILLSTATE[:pending] %>

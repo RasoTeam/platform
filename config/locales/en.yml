@@ -158,6 +158,7 @@ en:
   paid: "Paid"
   pay: "Pay"
   pending: "Pending"
+  unpaid: "Unpaid"
 
   date:
     formats:
