@@ -21,6 +21,7 @@
 <table class="twelve">
 	<thead>
 		<tr>
+			<th style="text-align: center"><%= t(:name) %></th>
 			<th style="text-align: center"><%= t(:lecturer) %></th>
 			<th style="text-align: center"><%= t(:start_day) %></th>
 			<th style="text-align: center"><%= t(:end_day) %></th>
@@ -34,7 +35,8 @@
 	<tbody>
 	<% @courses.each do |c| %>
 	<tr>
-		<td><%= c.lecturer %></td>
+		<td><%= c.name %></td>
+		<td style="text-align: center"><%= c.lecturer %></td>
 		<td style="text-align: center"><%= c.start_at %></td>
 		<td style="text-align: center"><%= c.end_at %></td>
 		<td style="text-align: center"><%= c.category %></td>

@@ -41,6 +41,7 @@
 							</td>
 							<td style="text-align: center">
 								<%= link_to t(:start_course), new_company_training_course_path( @company, t), :class =>"radius label" %> 
+								<%= link_to "Delete training", company_training_path(@company, t), :method => :delete, :class =>"radius label" %>
 							</td>
 						</tr>
 					<% end %>
