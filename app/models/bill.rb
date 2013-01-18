@@ -22,7 +22,7 @@ class Bill < ActiveRecord::Base
 
 def paypal_url(return_url, payment_notification)
   values = {
-    :business => 'rasohr_1358528869_biz@rasohr.com',
+    :business => 'raso_1358547915_biz@rasohr.com',
     :cmd => '_cart',
     :upload => 1,
     :return => return_url,
