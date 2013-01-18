@@ -14,19 +14,38 @@
 
       <ul class="tabs-content contained">
         <li id="contactFormTab" class="active">
+
+        <% @feedback = Feedback.new %>
+        <%= form_for(@feedback, :url => get_in_touch_path) do |f| %>
+          <% if @feedback.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@feedback.errors.count, "Error") %>:</h2>
+
+              <ul>
+              <% @feedback.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
           <div class="row collapse">
             <div class="two columns"><label class="inline">Your Name</label></div>
-            <div class="ten columns"><input type="text" id="yourName" placeholder="Jane Smith" /></div>
+            <%= f.text_field :nome, :size=>30, :class => "ten columns", :placeholder => "Name" %>
           </div>
+
           <div class="row collapse">
             <div class="two columns"><label class="inline">Your Email</label></div>
-            <div class="ten columns"><input type="text" id="yourEmail" placeholder="jane@smithco.com" /></div>
+            <%= f.text_field :email, :size=>30, :class => "ten columns", :placeholder => "Email" %>
           </div>
 
           <label>What's up?</label>
-          <textarea rows="4"></textarea>
+          <%= f.text_area :texto, :rows=>"10", :cols=>"40", :style=>"width:97%;" %>
 
-          <button type="submit" class="radius button">Submit</button>
+          <%= f.submit "Submit", :id=>"commit", :class => "radius button" %>
+
+        <% end %>
+
         </li>
       </ul>
 
