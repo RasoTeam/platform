@@ -20,6 +20,22 @@ class Bill < ActiveRecord::Base
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 
+def paypal_url(return_url, payment_notification)
+  values = {
+    :business => 'rasohr_1358528869_biz@rasohr.com',
+    :cmd => '_cart',
+    :upload => 1,
+    :return => return_url,
+    :invoice => id,
+    :notify_url => payment_notification
+  }
+  values.merge!({
+    "amount_1" => value,
+    "item_name_1" => "Bill " + created_at.to_s
+  })
+  "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+end
+
   # Searches for bills which match certan properties
   #
   # @param [String] search is used to filter bills with id LIKE or bill which belong to a company with an id LIKE
