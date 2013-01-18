@@ -10,41 +10,43 @@
 </div>
 
 <div class="row">
+	<div id="signup">
+
 		<div class="four columns">
-			<h2><%= t(:trainings) %></h2>
+			<h3><%= t(:trainings) %></h3>
 		</div>
 		<div class="eight columns ">
 			<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
 		</div>
+	</div>
 </div>
 
 
 <div class="row">
   	<div class="twelve columns">
-  		<table class="twelve">
-			<thead>
-				<tr>
-					<th style="text-align: center"><%= t(:trainings) %></th>
-					<th style="text-align: center"><%= t(:actions) %></th>
-				</tr>
-			</thead>
-			<tbody>
-	   		<% @trainings.each do |t| %>
-			   	<tr>
-			    	<td>
-						<%= link_to t.name, training_courses_manage_path( @company, t)%>
-					</td>
-					<td>
-						<%= link_to 'Start a Course', new_company_training_course_path( @company, t) %><br>
-						
-					</td>
-				</tr>
+  		<div id="signup">
 
-			<% end %>
-		</tbody>
-
-	</table>
-
+	  		<table class="twelve">
+				<thead>
+					<tr>
+						<th style="text-align: center"><%= t(:trainings) %></th>
+						<th style="text-align: center"><%= t(:actions) %></th>
+					</tr>
+				</thead>
+				<tbody>
+			   		<% @trainings.each do |t| %>
+					   	<tr>
+					    	<td>
+								<%= link_to t.name, training_courses_manage_path( @company, t)%>
+							</td>
+							<td style="text-align: center">
+								<%= link_to t(:start_course), new_company_training_course_path( @company, t), :class =>"radius label" %> 
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 

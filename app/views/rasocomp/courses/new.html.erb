@@ -19,27 +19,26 @@
   <div class="twelve columns">
     <div id="signup">
       <div class="panel">
-
-
-<% content_for :javascript_includes do %>
-  <%= javascript_include_tag "new_course.js" %>
-<% end %>
-<h1><%= t(:new_course) %></h1>
-<%= form_for [@company, @training, @course] do |f| %>
-  <% @training.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-  <% end %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :lecturer %>
-  <%= f.text_field :lecturer %>
-  <%= f.label :start_at %>
-  <%= f.text_field :start_at, :placeholder => 'dd-mm-yyyy'%>
-  <%= f.label :end_at %>
-  <%= f.text_field :end_at, :placeholder => 'dd-mm-yyyy'%>
-  <%= f.select :category, [["PUBLIC", 1],["PRIVATE", 2]] %>
-  <%= f.submit %>
-<% end %>
+        <% content_for :javascript_includes do %>
+          <%= javascript_include_tag "new_course.js" %>
+        <% end %>
+        <h1><%= t(:new_course) %></h1>
+        <hr/>
+        <%= form_for [@company, @training, @course] do |f| %>
+          <% @training.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          <%= f.label :name, :class => "radius label" %>
+          <%= f.text_field :name, :class=>"input_space" %>
+          <%= f.label :lecturer, :class => "radius label" %>
+          <%= f.text_field :lecturer, :class=>"input_space" %>
+          <%= f.label :start_at, :class => "radius label" %>
+          <%= f.text_field :start_at, :placeholder => 'dd-mm-yyyy', :class=>"input_space"%>
+          <%= f.label :end_at, :class => "radius label" %>
+          <%= f.text_field :end_at, :placeholder => 'dd-mm-yyyy', :class=>"input_space"%>
+          <%= f.select :category, [["PUBLIC", 1],["PRIVATE", 2]] %>
+           <p style="text-align: center"><%= f.submit t(:submit), :class=>"button input_space" %></p>
+        <% end %>
 
   </div>
 </div>
