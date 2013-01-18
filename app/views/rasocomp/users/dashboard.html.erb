@@ -1,75 +1,39 @@
 <div class="row dashboard">
 <!-- ::::::::::::::::::::::::: LEFT SIDE ::::::::::::::::::::::::::::: -->
 	<div class="eight columns">
-		<dl class="tabs">
-			<dd class="active"><a href="#dashboard">Dashboard</a></dd>
-			<dd><a href="#profile">Profile</a></dd>
-			<dd><a href="#contract">Contract</a></dd>
-		</dl>
-		<ul class="tabs-content">
-	<!-- ####################### DASHBOARD TAB ########################### -->
-			<li class="active" id="dashboardTab">
-			<!--
-			  	<h4> Alertas </h4>
 
-					<div class="alert-box">
-						This is a standard alert (div.alert-box).
-					 
-					</div>
-
-					<div class="alert-box success">
-					  This is a success alert (div.alert-box.success).
-					  <a href="" class="close">&times;</a>
-					</div>
-
-					<div class="alert-box alert">
-					  This is an alert (div.alert-box.alert)
-					</div>
-
-			  	<hr/>-->
-
-				<h4> Time Offs </h4>
-				<div class="button-bar">
-					<ul class="button-group">
-						<li><%= link_to "Check & Book", company_user_time_offs_path(@company, @user), :class=>"button" %></li>
-					</ul>
-				</div>
-				<h4> Trainings </h4>
-				<div class="button-bar">
-					<ul class="button-group">
-						<li><%= link_to "Check & Book", company_trainings_path(@company), :class=>"button" %></li>
-					</ul>
-				</div>
-			</li>
+	<h3>Hi <%= @user.name %>! </h3>
+	<hr/>
 	<!-- ########################### PROFILE TAB ############################ -->
-			<li id="profileTab">
-			  	<h3> User Profile </h3>
-			  	<div>
-			  		<table class="twelve tableJobs">
-			          <tbody>
-			            <tr>
-			              <td><span class="label radius"><%= t(:name) %></span></td>
-			              <td><%= @user.name %></td>
-			            </tr>
-			            <tr>
-			              <td><span class="label radius"><%= t(:Email) %></span></td>
-			              <td><%= @user.email %></td>
-			            </tr>
-			            <tr>
-			              <td><span class="label radius"><%= t(:Role) %></span></td>
-			              <td><%= ROLE.invert[@user.role] %></td>
-			            </tr>
-			          </tbody>
-			        </table>
-			  	</div>
-			  	<div style="text-align: center">
-				<%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"button" %>
-			  	</div>
+	  	<div class="twelve columns">
+	  		<div class="six columns"><h3>User Profile</h3></div>
+		  	<div class="six columns">		
+		  		<p style="text-align: right"><%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"radius button add_user" %></p>
+			</div>
+		</div>
+	  	<div class="panel">
+	  		<table class="twelve tableJobs">
+	          <tbody>
+	            <tr>
+	              <td><span class="label radius"><%= t(:name) %></span></td>
+	              <td><%= @user.name %></td>
+	            </tr>
+	            <tr>
+	              <td><span class="label radius"><%= t(:Email) %></span></td>
+	              <td><%= @user.email %></td>
+	            </tr>
+	            <tr>
+	              <td><span class="label radius"><%= t(:Role) %></span></td>
+	              <td><%= ROLE.invert[@user.role] %></td>
+	            </tr>
+	          </tbody>
+	        </table>
+	  	</div>
 
-			</li>
+
 	<!-- ########################### CONTRACT TAB ################################ -->
-			<li id="contractTab">
-
+				<h4> Contracts </h4>
+				<div class="panel">
 			  	<% if !@contract.nil? %>
 					<h3 class="hide-for-small"><%= @contract.job_title %>
               			<% if current_user(@company.slug).role <= ROLE[:manager] %>
@@ -92,15 +56,26 @@
 				<% else %>
 					<h5> No contracts found</h5>
 				<% end %>
-
 				<% if current_user(@company.slug).role <= ROLE[:manager] %>
-					<div class="three columns">
-						<%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button right add_user" %>
-					</div>
+				<div>
+					<p style="text-align: center"><%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button " %></p>
+				</div>
 				<% end %>
-			</li>
-		</ul>
+			</div>
+<!-- ####################### DASHBOARD TAB ########################### -->
+		
+		<div class="panel five columns" style="text-align: center">
+			<h4> Time Offs </h4>
+			<%= link_to "Check & Book", company_user_time_offs_path(@company, @user), :class=>"radius button" %>
+		</div>
+		<div class="panel five columns" style="text-align: center">
+			<h4> Trainings </h4>
+			<%= link_to "Check & Book", company_trainings_path(@company), :class=>"radius button" %>
+		</div>
+
 	</div>
+
+
 <!-- ::::::::::::::::::::::::: RIGHT SIDE ::::::::::::::::::::::::::::: -->
 	<div class="four columns">
 		<div class="twelve columns" style="padding-bottom:20px">
