@@ -1,3 +1,5 @@
+# == Export Model
+#  Used to export users to xls format
 class ExportLogic < ActiveRecord::Base
   # attr_accessible :title, :body
 

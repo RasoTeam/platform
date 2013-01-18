@@ -1,3 +1,5 @@
+# == Import Model
+#  Used to import users and time offs from xls or xlsx
 class ImportLogic < ActiveRecord::Base
   # attr_accessible :title, :body
 

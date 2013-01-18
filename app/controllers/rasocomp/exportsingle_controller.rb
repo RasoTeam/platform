@@ -1,6 +1,8 @@
+# == Export Controoler
+#  Controller used to export users.
 class Rasocomp::ExportsingleController < Rasocomp::ApplicationController
 
-	#The model to be imported
+	#The model to be exported
 	def choose_users_step
 		@company = Company.find(params[:company_id])
 		session[:companyid]=@company.id

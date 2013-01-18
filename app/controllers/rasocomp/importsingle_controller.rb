@@ -1,3 +1,5 @@
+# == Import Controller
+#  Controller used to import users and free days
 class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	#The model to be imported

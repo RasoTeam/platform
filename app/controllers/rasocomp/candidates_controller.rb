@@ -1,17 +1,22 @@
+# == Candidates Controller
+#  Controller used to manage candidates for a job offer inside a company. Only accessible to managers. 
 class Rasocomp::CandidatesController < Rasocomp::ApplicationController
   before_filter :manager
 
+  # Returns all candidates for a job offer.
   def index
     @company = Company.find(params[:company_id])
     @offers = @company.job_offers
     @candidate = Candidate.new
   end
 
+  # Apply for a job offer
   def apply
     @offer = JobOffer.find(params[:id])
     @candidate = Candidate.new
   end
 
+  # Show a job offer
   def show
     @company = Company.find(params[:company_id])
     @offer = JobOffer.find(params[:job_offer_id])

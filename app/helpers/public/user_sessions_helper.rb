@@ -2,10 +2,12 @@
 module Public::UserSessionsHelper
   @@x = "fdlsakb123kfjdaFSADyshfdyKJDHAkuyre"
 
+  # Auxiliar. Not used but it can help understanding.
   def make_cookie(val, slug)
     cookies.permanent[ @@x+slug] = val
   end
 
+  # Auxiliar. Not used but it can help understanding.
   def read_cookie( slug)
     return cookies[ @@x+slug]
   end

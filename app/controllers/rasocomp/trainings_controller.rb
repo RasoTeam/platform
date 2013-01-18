@@ -1,5 +1,8 @@
+# == Training Programmes Controller
+#  Controller used to manage training programmes
 class Rasocomp::TrainingsController <  Rasocomp::ApplicationController
 
+  # Lists all training programmes as well as a link to show a specific training program details
   def index
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings
@@ -20,16 +23,19 @@ class Rasocomp::TrainingsController <  Rasocomp::ApplicationController
     end
   end
   
+  # Lists all training programmes
   def manage
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings
   end
 
+  # New training programme
   def new
     @company = Company.find( params[:company_id])
     @training = @company.trainings.build
   end
 
+  # Creates a new training programme
   def create
     @company = Company.find( params[:company_id])
     @training = @company.trainings.build( params[:training])

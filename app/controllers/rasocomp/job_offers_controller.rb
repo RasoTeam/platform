@@ -1,20 +1,22 @@
+# == Job Offers Controller
+#  Controller to manage job offers
 class Rasocomp::JobOffersController < Rasocomp::ApplicationController
   before_filter :manager
 
-  #Listar todas as ofertas de trabalho de uma empresa
+  # List all job offers in a company
   def index
     @company = Company.find(params[:company_id])
     #Usa a função search por causa da pesquisa por palavras chave e ordenação -> ver Modelo JobOffer
     @offers = @company.job_offers.search(params[:search], params[:order]).paginate(:page => params[:page], :per_page => 15)
   end
 
-  #Preparar para criar uma nova oferta de trabalho
+  # New job offer in a company
   def new
     @company = Company.find(params[:company_id])
     @offer = JobOffer.new
   end
 
-  #Criar uma nova oferta de trabalho
+  # Creates a new job offer in a company
   def create
     @company = Company.find(params[:company_id])
 
@@ -30,20 +32,20 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
     end
   end
 
-  #Mostrar uma oferta de trabalho
+  # Shows a job offer in a company
   def show
     @offer = JobOffer.find(params[:id])
     @company = @offer.company
     @candidates = @offer.candidates
   end
 
-  #Editar uma oferta de trabalho
+  # Edit a job offer in a company
   def edit
     @offer = JobOffer.find(params[:id])
     @company = Company.find(@offer.company)
   end
 
-  #Actualizar atributos de uma oferta de trabalho
+  # Update a job offer in a company
   def update
     @company = Company.find(params[:company_id])
     @offer = @company.job_offers.find(params[:id])
@@ -57,6 +59,7 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
 
   end
 
+  # Destroy a job offer in a company
   def destroy
     JobOffer.find(params[:id]).destroy
     flash[:success] = 'Job Offer Deleted'

@@ -1,17 +1,22 @@
+# == Time Offs Controller
+#  Controller to manage time offs in a company
 class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
 
+  # Lits all time offs for an employee in a company
   def index
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
     @timeoffs = @user.time_offs #TimeOff.find_by_user_id( params[:user_id])
   end
 
+  # Lists all time offs for an employee in a company
   def manage
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
     @timeoffs = @company.time_offs
   end
 
+  # Used by the manager to approve a time off request
   def approve
     @company = Company.find( params[:company_id])
     #@user = @company.users.find( params[:user_id])
@@ -29,6 +34,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     #redirect_to 
   end
 
+  # Used by the manager to disapprove a time off request
   def disapprove
     company = Company.find( params[:company_id])
     #user = company.users.find( params[:user_id])
@@ -45,14 +51,17 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     #redirect_to root_path
   end
 
+  # Change time off state to valid
   def set_state_to_valid
      
   end
 
+  # Show time off details
   def show
     @timeoff = TimeOff.find( params[:id])
   end
 
+  # New time off request
   def new
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
@@ -61,6 +70,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     @timeoff = @user.time_offs.build
   end
 
+  # Creates a new time off request
   def create
     @company = Company.find( params[:company_id])
     @user = @company.users.find( params[:user_id])
@@ -80,6 +90,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     end
   end
 
+  # Destroys a time off
   def destroy
     user = User.find( params[:user_id])
     timeoff = TimeOff.find( params[:id])

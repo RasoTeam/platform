@@ -1,6 +1,9 @@
+# == Calendar Controller
+#  Controller to manager the calendars used in the application
 class CalendarController < ApplicationController
 layout "rasoemp"
 
+  # Set some properties for the calendar
   def index
     @company = Company.find( params[:company_id])
     @month = (params[:month] || (Time.zone || Time).now.month).to_i

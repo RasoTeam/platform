@@ -1,16 +1,21 @@
+# == Company Controller
+#  Controller to manage the company.
 class Rasocomp::CompaniesController < Rasocomp::ApplicationController
   before_filter :manager_or_root, :only => [:edit, :update]
 
+  # Shows companies details. Accessible to all users logged in a company.
   def show
     @companies = Company.search(nil, params[:order]).paginate(:page => params[:page], :per_page => 15)
     @company = Company.find(params[:id])
     @bills = @company.bills.paginate(:page => params[:page], :per_page => 5)
   end
 
+  # Edit a company. Only accessible to managers and roots
   def edit
     @company = Company.find( params[:id])
   end
 
+  # Update a company. Only accessible to managers and roots.
   def update
     @company = Company.find( params[:id])
 

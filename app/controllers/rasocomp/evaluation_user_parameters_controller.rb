@@ -1,5 +1,7 @@
+# == Evaluation User Parameters Controller
 class Rasocomp::EvaluationUserParametersController < ApplicationController
 
+  # Updates evaluation parameter for an user
   def update
     @evaluation_user_parameter = EvaluationUserParameter.find(params[:id])
     @evaluation_user_parameter.result = params[:evaluation_user_parameter]["result"]
