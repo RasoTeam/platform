@@ -45,4 +45,13 @@ class Rasocomp::TrainingsController <  Rasocomp::ApplicationController
       render 'new'
     end
   end
+
+  # Deletes a training programme
+  def destroy
+    company = Company.find(params[:company_id])
+    company.trainings.find(params[:id]).destroy
+    flash[:success] = 'Training Deleted'
+
+    redirect_to manage_company_trainings_path(company)
+  end
 end
