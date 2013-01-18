@@ -17,7 +17,7 @@
       <td><%= bill.value %></td>
       <td><%= bill.state %></td>
       <% if bill.state == BILLSTATE[:unpaid] %>
-        <td><%= link_to t(:pay), bill.paypal_url(company_url) %></td>
+        <td><%= link_to t(:pay), bill.paypal_url(company_url, payment_notification_index_url) %></td>
       <% else %>
         <td>t(:paid)</td>
       <% end %>

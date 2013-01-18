@@ -20,13 +20,14 @@ class Bill < ActiveRecord::Base
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 
-def paypal_url(return_url)
+def paypal_url(return_url, payment_notification)
   values = {
-    :business => 'raso_1358520248_biz@rasohr.com',
+    :business => 'rasohr_1358528869_biz@rasohr.com',
     :cmd => '_cart',
     :upload => 1,
     :return => return_url,
-    :invoice => id
+    :invoice => id,
+    :notify_url => payment_notification
   }
   values.merge!({
     "amount_1" => value,
