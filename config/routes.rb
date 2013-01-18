@@ -1,7 +1,7 @@
 Platform::Application.routes.draw do
 
-resources :feedbacks , :only => [:new,:create]
-resources :payment_notification, :only => [:create] 
+  resources :feedbacks , :only => [:new,:create]
+  post '/payment_notification' => 'payment_notification#create', :as => 'payment_notification'
 
   match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
