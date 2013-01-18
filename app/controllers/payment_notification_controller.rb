@@ -11,6 +11,8 @@ class PaymentNotificationController < ApplicationController
       puts bill.save
       puts "\n\n $$$$$$$$$$$$ saved  $$$$$$$$$$\n\n\n"
       render :nothing => true
+    else
+      render :nothing => true
     end
   end
 
