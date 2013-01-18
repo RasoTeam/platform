@@ -10,4 +10,4 @@ TIMETYPE={ :holiday=> 0, :sick => 1}
 
 COMPANY_STATE = {:unchecked => -1, :active => 0, :blocked => 1}
 
-BILLSTATE = {:unpaid => -1, :paid => 1}
+BILLSTATE = {:unpaid => -1, :pending => -2, :paid => 1}

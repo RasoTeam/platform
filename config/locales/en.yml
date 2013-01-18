@@ -157,6 +157,7 @@ en:
   root: "root"
   paid: "Paid"
   pay: "Pay"
+  pending: "Pending"
 
   date:
     formats:
