@@ -1,5 +1,4 @@
 class PaymentNotificationController < ApplicationController
-
   protect_from_forgery :except => [:create]
 
   def create
@@ -9,7 +8,7 @@ class PaymentNotificationController < ApplicationController
       bill.paypal_transaction_id = params[:txn_id]
       bill.payment_date = Time.now
       puts "\n\n $$$$$$$$$$$$ updating  $$$$$$$$$$\n\n\n"
-      bill.save
+      puts bill.save
       puts "\n\n $$$$$$$$$$$$ saved  $$$$$$$$$$\n\n\n"
       render :nothing => true
     end
