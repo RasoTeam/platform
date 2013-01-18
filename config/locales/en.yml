@@ -154,6 +154,8 @@ en:
   unchecked: "Unchecked"
   ROOT: "Administrator"
   root: "root"
+  paid: "Paid"
+  pay: "Pay"
 
   date:
     formats:
