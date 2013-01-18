@@ -30,7 +30,7 @@ layout 'rasoemp'
     @training = Training.find( params[:training_id])
     @course = Course.find( params[:id])
     #ALL USERS EXCEPT ROOT (role != 0) AND INACTIVE USERS state == 0
-    @users = @company.users.find( :all, :conditions => ["role != ? AND state == ?", 0, 1])
+    @users = @company.users.find( :all, :conditions => ["role != ? AND state == ?", ROOT, STATE[:active]])
   end
   
   def update
@@ -39,8 +39,9 @@ layout 'rasoemp'
     @course = Course.find( params[:id])
     if @course.update_attributes(params[:course])
       flash[:success] = t(:successful_update)
-      redirect_to manage_company_trainings_path @company
+      redirect_to training_courses_manage_path @company, @training
     else
+      puts @course.errors.full_messages
       render 'edit'
     end
   end

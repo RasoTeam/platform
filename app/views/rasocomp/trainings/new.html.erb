@@ -16,7 +16,8 @@
   <div class="twelve columns">
     <div id="signup">
       <div class="panel">
-  		<h2><%= t(:new_training) %></h2>
+  		<h1><%= t(:new_training) %></h1>
+      <hr/>
 			<%= form_for [@company, @training] do |f| %>
 			  <% @training.errors.full_messages.each do |msg| %>
 			    <p><%= msg %></p>

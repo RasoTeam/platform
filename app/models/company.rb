@@ -40,6 +40,13 @@ class Company < ActiveRecord::Base
             :format => { :with => VALID_slug_REGEX }, :uniqueness => { :case_sensitive => false }
   validates :address, :length => { :maximum => 100 }
 
+  validates_attachment_size :attach, :less_than => 1.megabyte, #another option is :greater_than
+    :message => "max size is 1M"
+
+  validates_attachment_content_type :attach,
+    :content_type => ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png'],
+    :message => "only image files are allowed"
+
   #scope :cenas, lambda { self.bills.order("created_at Desc").paginate(:page => params[:page], :per_page => 4) }
   #scope :users_paginate, lambda { self.users.paginate(:page => params[:page], :per_page => 4) }
 
