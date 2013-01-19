@@ -20,21 +20,24 @@ class Bill < ActiveRecord::Base
   validates :state, presence: true
   validates :value, presence: true, :numericality => {:greater_than => 0} 
 
-def paypal_url(return_url, payment_notification)
+
+# https://cms.paypal.com/cms_content/en_US/files/developer/PP_OrderMgmt_IntegrationGuide.pdf
+def paypal_encrypted(return_url, payment_notification)
   values = {
-    :business => 'raso_1358550325_biz@rasohr.com',
+    :business => APP_CONFIG[:paypal_email],
     :cmd => '_cart',
     :upload => 1,
     :return => return_url,
     :invoice => id,
-    :mc_currency => "EUR",
-    :notify_url => payment_notification
+    :currency_code => "EUR",
+    :notify_url => payment_notification,
+    :cert_id => APP_CONFIG[:paypal_cert_id]
   }
   values.merge!({
     "amount_1" => value,
     "item_name_1" => "Bill " + created_at.to_s
   })
-  "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+  encrypt_for_paypal(values)
 end
 
   # Searches for bills which match certan properties
@@ -58,4 +61,18 @@ end
       order("created_at "+order)
     end
   end
+
+  private
+    # Public paypal certificate
+    PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")
+    # Public raso hr certificate
+    APP_CERT_PEM = File.read("#{Rails.root}/certs/app_cert.pem")
+    # Private raso hr certificate
+    APP_KEY_PEM = File.read("#{Rails.root}/certs/app_key.pem")
+
+    # Encrypt hash for paypal
+    def encrypt_for_paypal(values)
+      signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_CERT_PEM), OpenSSL::PKey::RSA.new(APP_KEY_PEM, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)
+      OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT_PEM)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")
+    end
 end
