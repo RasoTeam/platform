@@ -8,7 +8,12 @@
         <%end%>
         <li><%= link_to t(:employees), company_users_path(@company)  %></li>
         <li class="current">
-          <a href="#"><%= t(:export_user) %></a>
+          <% if session[:model_name].eql?("users") %>
+            <a href="#"><%= t(:export_user) %></a>
+          <% end %>
+          <% if session[:model_name].eql?("time_offs") %>
+            <a href="#"><%= t(:export_time_offs) %></a>
+          <% end %>
         </li>
         <li class="current">
           <a href="#"><%= t(:choose_users_export) %></a>
@@ -23,8 +28,13 @@
         <div class="row">
           <div class="twelve columns">
 
+            <% if session[:model_name].eql?("users") %>
+              <h2><%= t(:export_user) %></h2>
+            <% end %>
+            <% if session[:model_name].eql?("time_offs") %>
+              <h2><%= t(:export_time_offs) %></h2>
+            <% end %>
 
-            <h2><%= t(:export_user) %></h2>
             <%= form_tag(:controller => "exportsingle", :action => "export_users_step", :method => "post") do %>
               
               <div style="text-align: center">
