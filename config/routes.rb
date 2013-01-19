@@ -45,6 +45,7 @@ Platform::Application.routes.draw do
   get '/idea#import_data' , :to => 'public/frontoffice#idea#import_data', as: 'idea_import_data'
   get '/idea#job_offers' , :to => 'public/frontoffice#idea#job_offers', as: 'idea_job_offers'
   get '/contacts' , :to => 'public/frontoffice#contacts'
+  post '/contacts' , :to => 'public/frontoffice#get_in_touch', as: 'get_in_touch'
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'

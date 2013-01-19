@@ -21,7 +21,7 @@ class Rasocomp::ExportsingleController < Rasocomp::ApplicationController
 	def export_users_step
 
 		users_emails_array = params[:users_emails]
-
+		
 		if users_emails_array.nil? == false && users_emails_array.length>0
 
 			@export_logic = ExportLogic.new
@@ -42,6 +42,7 @@ class Rasocomp::ExportsingleController < Rasocomp::ApplicationController
 		else
 			redirect_to "/companies/" + session[:companyname].downcase + "/users"
 		end
+		
 	end
 
 end

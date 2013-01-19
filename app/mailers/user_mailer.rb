@@ -25,4 +25,11 @@ class UserMailer < ActionMailer::Base
     @feedback = feedback
     mail(:to => feedback.email, :subject => "Raso-LeanHR Feedback", :content_type => "text/html")
   end
+
+  # Sends an email to raso team with user comment
+  # @param [Feedback] feedback Information with the comment and email address 
+  def get_in_touch(feedback)
+    @feedback = feedback
+    mail(:to => "no-reply@rasohr.com", :subject => "Get in Touch", :content_type => "text/html")
+  end
 end

@@ -127,11 +127,13 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			when "users"
 
 				imported_users = Array.new
+				notimported_users = Array.new
 
 				isValid = validateExcel
 				if isValid == 1
 					$i1 = 1
 					$j1 = 0
+					$j11 = 0
 					while $i1 < session[:sheet_data].count
 
 						line_data = session[:sheet_data][$i1]
@@ -158,6 +160,9 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 	      					imported_users[$j1] = name
 	      					$j1 += 1
+	      				else
+	      					notimported_users[$j11] = name
+	      					$j11 += 1
 	      				end
 						#Company.create(:name => name, :created => created, :nif => nif)
 
@@ -165,6 +170,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 					end
 
 				session[:imported_users] = imported_users
+				session[:notimported_users] = notimported_users
 				render :_final_import_step
 
 				else
@@ -174,11 +180,13 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 			when "time_offs"
 				
 				imported_time_offs = Array.new
+				notimported_time_offs = Array.new
 
 				isValid = validateExcel
 				if isValid == 1
 					$i1 = 1
 					$j1 = 0
+					$j11 = 0
 					while $i1 < session[:sheet_data].count
 
 						fail_flag = false
@@ -211,7 +219,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 					    @timeoff.user_id = @user.id
 					    @timeoff.company_id = @company.id
 					    @timeoff.state = 0
-					    @timeoff.credits = 1 #@user.time_off_days
+					    @timeoff.credits = @user.time_off_days
 					    @timeoff.color = '#B8B8B8'
 					    @timeoff.name = @user.name + " | " + TIMETYPE.invert[@timeoff.category].to_s
 					    @timeoff.valid?
@@ -221,12 +229,16 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 
 					      imported_time_offs[$j1] = email
 					      $j1 += 1
+					  	else
+					  		notimported_time_offs[$j11] = email
+					      $j11 += 1
 					    end
 
 						$i1 += 1
 					end
 
 				session[:imported_time_offs] = imported_time_offs
+				session[:notimported_time_offs] = notimported_time_offs
 				render :_final_import_step
 
 				else

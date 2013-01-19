@@ -44,24 +44,33 @@
 <div class="row">
   <div class="twelve columns">
       <div class="panel">
-        <h2><%= t(:import_stats) %></h2>
-        <hr/>
 		<h4>
       <% if session[:model_name].eql?("users") %>
-        <%= t(:users_imported) %>:
+        <%= t(:users_imported) %>
       <% end %>
         <% if session[:model_name].eql?("time_offs") %>
-        <%= t(:time_offs_imported) %>:
+        <%= t(:time_offs_imported) %>
       <% end %>
+    </hr>
 		</h4>
       <% if session[:model_name].eql?("users") %>
+      <h5><%= 'Imported:' %></h5>
         <% session[:imported_users].each do |u| %>
-          <p><%= u.to_s %><p/>
+          <p>&nbsp&nbsp&nbsp&nbsp&nbsp<%= u.to_s %><p/>
+        <% end %>
+      <h5><%= 'Not Imported:' %></h5>
+        <% session[:notimported_users].each do |u| %>
+          <p>&nbsp&nbsp&nbsp&nbsp&nbsp<%= u.to_s %><p/>
         <% end %>
       <% end %>
-        <% if session[:model_name].eql?("time_offs") %>
+      <% if session[:model_name].eql?("time_offs") %>
+      <h5><%= 'Imported:' %></h5>
         <% session[:imported_time_offs].each do |u| %>
-          <p><%= u.to_s %><p/>
+          <p>&nbsp&nbsp&nbsp&nbsp&nbsp<%= u.to_s %><p/>
+        <% end %>
+      <h5><%= 'Not Imported:' %></h5>
+        <% session[:notimported_time_offs].each do |u| %>
+          <p>&nbsp&nbsp&nbsp&nbsp&nbsp<%= u.to_s %><p/>
         <% end %>
       <% end %>
  		 <div class="twelve columns">
