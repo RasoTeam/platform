@@ -47,6 +47,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     params[:user].delete(:password)
     params[:user].delete(:password_confirmation)
     if @user.update_attributes(params[:user])
+      I18n.locale = params[:user][:locale]
       flash[:success] = t(:successful_update)
       redirect_to company_user_path @company, @user
     else
@@ -97,6 +98,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @user.time_off_days = 0
     @user.state = STATE[:unchecked]
     @user.password_digest = 0
+    @user.locale = I18n.locale
     if @user.save
       UserMailer.verification_email(@user).deliver
       

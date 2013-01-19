@@ -11,6 +11,19 @@ end
 
 module Platform
   class Application < Rails::Application
+
+    #http://stackoverflow.com/questions/2324398/fall-back-to-default-language-if-translation-missing
+    # rails will fallback to config.i18n.default_locale translation
+    config.i18n.fallbacks = true
+
+    # rails will fallback to en, no matter what is set as config.i18n.default_locale
+    config.i18n.fallbacks = [:en]
+
+    # fallbacks value can also be a hash - a map of fallbacks if you will
+    # missing translations of es and fr languages will fallback to english
+    # missing translations in german will fallback to french ('de' => 'fr')
+    config.i18n.fallbacks = {'pt' => 'en'}
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

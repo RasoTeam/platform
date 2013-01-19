@@ -39,18 +39,23 @@
 					<div id="topo">
 						
 						<div class="sombra_img">
-							<%= link_to image_tag('logo.png'), '/'%>
+							<%= link_to image_tag('logo.png'), root_path%>
 						</div>
 
 						<ul class="right">
 							
-							<li><%= nav_link "idea", idea_path %></li>
+							<li><%= nav_link t(:idea), idea_path %></li>
 							<li><a href="http://rasoblog.herokuapp.com/" target="_blank">blog</a></li>
 							<li><%= nav_link "contacts", contacts_path %></li>
 							<li><%= nav_link "team", aboutus_path %></li>
+							<% if I18n.default_locale == I18n.locale %>
+								<li><%= link_to "pt",  url_for(:locale => 'pt') %></li>
+							<% else %>
+								<li><%= link_to "en", url_for(:locale => 'en') %></li>
+							<% end %>
 						</ul>
 
-						<!-- <ul id="helper_menu"
+						<!-- <ul id="helper_menu"''
 							class="right nav_raso" 
 							style="padding-top: 110px; 
 								   padding-right: 30px;">

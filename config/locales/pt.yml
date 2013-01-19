@@ -5,7 +5,7 @@
 # COLEQUEM ESPAÇO ENTRE OS ":" E O QUE FICA EMTRE ""
 # POR EXEMPLO SE COLOCAREM accept:"Accept" SEM O ESPAÇO NADA DISTO FUNCIONA
 
-en:
+pt:
   accept: "Accept"
   account_activated: "Your account has been successfuly activated"
   activate: "Activate"
@@ -28,7 +28,7 @@ en:
   company: "Company"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
   confirm: "Confirm"
-  confirm_account: "Confirm Account"
+  confirm_account: "Confirmar Conta"
   confirmation_step: "Confirmation Step"
   continue: "Continue"
   cooperator: "Cooperator"
@@ -78,7 +78,7 @@ en:
   hello: "Hello world"
   holidays: "Holidays"
   home: "Home"
-  idea: "idea"
+  idea: "ideia"
   import_from_o_sheet: "Import from other Sheet"
   import_stats: "Import Data Stats"
   import_user: "Import employees"
@@ -87,8 +87,8 @@ en:
   invalid_login: "Wrong username or password!"
   invalid_verification: "Invalid Verification"
   invited: "Invited"
-  job_offers: "Job Offers"
-  language: "Language"
+  job_offers: "Job Offers"  
+  language: "Idioma"
   linkedin_profile: "LinkedIn Profile"
   lecturer: "Lecturer"
   location: "Location"
@@ -167,9 +167,9 @@ en:
   user_not_exists: "There is not any user with this email in this company"
   users: "Users"
   users_imported: "The following users were"
-  verify_user: "Verify User"
   time_offs_imported: "The following time offs were"
   unchecked: "Unchecked"
+  verify_user: "Verificar Utilizador"
   ROOT: "Administrator"
   root: "root"
   unpaid: "Unpaid"

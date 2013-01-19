@@ -2,6 +2,7 @@
 #  Controller to manage the company.
 class Rasocomp::CompaniesController < Rasocomp::ApplicationController
   before_filter :manager_or_root, :only => [:edit, :update]
+  before_filter :set_user_local if :locale_in_params
 
   # Shows companies details. Accessible to all users logged in a company.
   def show
@@ -36,4 +37,18 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
       render 'edit'
     end
   end
+
+  private
+    # If locale is not specified in the parameters and an user is logged in, the user language will be used
+    def set_user_local
+      company = Company.find( params[:id])
+      if user_signed_in?(company.slug)
+        I18n.locale = current_user(company.slug).locale || I18n.default_locale
+      end
+    end
+
+    # Returns whether an params[:locale] is nil or not 
+    def locale_in_params
+      params[:locale].nil?
+    end
 end
