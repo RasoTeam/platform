@@ -13,7 +13,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @company = Company.find(params[:company_id])
     @evaluation = Evaluation.new
     @evaluation.company_id = @company.id
-    @employees = @company.users
+    @employees = @company.users.where("role !=  0")
     @parameters = Parameter.all(:order => 'name ASC')
     #evaluation_parameter = @evaluation.evaluation_parameters.build()
     evaluation_user_parameters = @evaluation.evaluation_user_parameters.build()
