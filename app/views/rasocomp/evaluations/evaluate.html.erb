@@ -27,7 +27,8 @@
                                         :company => @company%>
         <% end %>
 
-        <%= link_to 'Done' ,company_evaluations_path(@company) ,  :class => "button" %>
+        <%= link_to 'Done' , confirm_evaluation_path(@company,@evaluation) ,  :class => "button",
+                    :confirm => "Are you sure?\n Changes are irreversible." %>
 
       </div> <!-- Fecha Panel -->
     </div> <!-- Fecha signup -->

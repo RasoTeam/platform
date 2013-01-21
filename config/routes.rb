@@ -89,6 +89,8 @@ Platform::Application.routes.draw do
   #evaluations
   get 'companies/:company_id/evaluations/:evaluation_id/evaluate',
       :to => 'rasocomp/evaluations#evaluate' , :as => 'evaluate_users'
+  get 'companies/:company_id/evaluations/:evaluation_id/evaluation_done',
+      :to => 'rasocomp/evaluations#confirm_evaluation', :as => 'confirm_evaluation'
 
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}

@@ -97,4 +97,20 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @eval_users_params = @evaluation.evaluation_user_parameters
   end
 
+  def confirm_evaluation
+    @company = Company.find(params[:company_id])
+    @evaluation = Evaluation.find(params[:evaluation_id])
+
+    @evaluation.status = "Closed"
+
+    if @evaluation.save
+      flash[:success] = "Evaluation has been closed."
+      redirect_to company_evaluations_path(@company)
+    else
+      flash[:error] = "Problem closing Evaluation, please try again."
+      redirect_to company_evaluations_path(@company)
+    end
+
+  end
+
 end
