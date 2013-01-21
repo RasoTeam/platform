@@ -34,6 +34,7 @@ class Company < ActiveRecord::Base
 
   validates :name, :presence => true, :length => { :maximum => 100 }
   validates :state, :presence => true
+  # Validates a slug
   VALID_slug_REGEX = /\A[a-z\d][a-z\d_-]*\z/i
   validates :slug, :presence => true, 
             :length => { :maximum => 100, :minimum => 3 },

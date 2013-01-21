@@ -8,7 +8,7 @@ class Rasocomp::ApplicationController < ::ApplicationController
 
 private
 
-  # 
+  # Checks if user is authenticatedm in a specific company
   def user_authentication
     id = params[:company_id]
     id ||= params[:id]
@@ -19,6 +19,7 @@ private
    end
   end
 
+  # Checks if a company is active
   def company_active
     id = params[:company_id]
     id ||= params[:id]
@@ -28,6 +29,7 @@ private
     end
   end
 
+  # Checks if a user is logged in a company and if the user is root or manager
   def manager_or_root
     id = params[:company_id]
     id ||= params[:id]
@@ -38,6 +40,7 @@ private
     end
   end
 
+  # Checks if a user is logged in and if the user is a manager or trying to access his own stuff
   def manager_or_user_self
     id = params[:company_id]
     id ||= params[:id]
@@ -48,7 +51,7 @@ private
     end
   end
 
-
+  # Checks if a user is logged in and if the user is a manager
   def manager
     id = params[:company_id]
     id ||= params[:id]
@@ -59,6 +62,7 @@ private
     end
   end
 
+  # Checks if a user is trying to access is own stuff
   def user_self
     comp = Company.find(params[:company_id])
     unless user_signed_in?(comp.slug) && current_user(comp.slug).id == Integer(params[:id])
@@ -67,6 +71,7 @@ private
     end
   end
 
+  # Checks if a user is trying to access his own stuff and the user is not root
   def user_self_not_root
     comp = Company.find(params[:company_id])
     unless user_signed_in?(comp.slug) && current_user(comp.slug).id == Integer(params[:id]) && current_user(comp.slug).role != ROOT

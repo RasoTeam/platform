@@ -1,10 +1,14 @@
+# == Evaluation Controller
+#  Controller to manage Evaluations
 class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
 
+  # Lists all evaluations programmes in a company
   def index
     @company = Company.find(params[:company_id])
     @evaluations = @company.evaluations
   end
 
+  # New evaluation programme in a company
   def new
     @company = Company.find(params[:company_id])
     @evaluation = Evaluation.new
@@ -15,6 +19,14 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     evaluation_user_parameters = @evaluation.evaluation_user_parameters.build()
   end
 
+  # Creates a new evaluation programme in a company.
+  # Includes:
+  #  Description
+  #  Start Day
+  #  End Day
+  #  Evaluator: The employee who is going to evaluate
+  #  Evaluated Employees: The employees which are going to be evaluated by the evluator
+  #  Evaluation Parameters and values: Indicates what are the evaluation parameters and their minimun and maximum evaluation value
   def create
     @evaluation = Evaluation.new
     @data = params[:evaluation]
@@ -64,6 +76,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     end
   end
 
+  # Shows an evaluation details.
   def show
     @company = Company.find(params[:company_id])
     @evaluation = Evaluation.find(params[:id])
@@ -74,6 +87,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @eval_user_params.uniq! #Elimina duplicados
   end
 
+  # Prepares to evaluate.
   def evaluate
     @company = Company.find(params[:company_id])
     @evaluation = Evaluation.find(params[:evaluation_id])

@@ -18,9 +18,11 @@
   	<div class="twelve columns">
 
 <h3><%= t(:courses) %> </h3>
+<%if @courses.any?%>
 <table class="twelve">
 	<thead>
 		<tr>
+			<th style="text-align: center"><%= t(:name) %></th>
 			<th style="text-align: center"><%= t(:lecturer) %></th>
 			<th style="text-align: center"><%= t(:start_day) %></th>
 			<th style="text-align: center"><%= t(:end_day) %></th>
@@ -34,21 +36,30 @@
 	<tbody>
 	<% @courses.each do |c| %>
 	<tr>
-		<td><%= c.lecturer %></td>
+		<td><%= c.name %></td>
+		<td style="text-align: center"><%= c.lecturer %></td>
 		<td style="text-align: center"><%= c.start_at %></td>
 		<td style="text-align: center"><%= c.end_at %></td>
-		<td style="text-align: center"><%= c.category %></td>
-		<td style="text-align: center"><%= c.state %></td>
-		<td style="text-align: center"><%= c.course_signups.count %></td>
+		<% if c.category == 1 %>
+			<td style="color:green; text-align: center"><%= t(:public)  %></td>
+		<% else ( 
+			if c.category == 2 %>
+				<td style="color:orange; text-align: center"><%= t(:private)  %></td>
+			<%end)%>
+		<% end %>		
+		<% if c.state == 0 %>
+			<td style="color:red; text-align: center"><%= t(:inactive)  %></td>
+		<% else ( 
+			if c.state == 1 %>
+				<td style="color:green; text-align: center"><%= t(:active)  %></td>
+			<%end)%>
+		<% end %>		<td style="text-align: center"><%= c.course_signups.count %></td>
 		<td style="text-align: center"><%= c.course_signups.find( :all, :conditions => ['status = ?', 1]).count %></td>
 		<td>
 			<ul class="jobs_links">
 				<li><%= link_to t(:activate), activate_company_training_course_path( @company, @training, c), :method => :put, :class=>"radius label" %></li>
 		    	<li><%= link_to t(:edit), edit_company_training_course_path( @company, @training, c), :class=>"radius secondary label"  %></li>
 		    	<li><%= link_to t(:remove), [@company, @training, c], :method => :delete, :class=>"radius alert label"  %></li>
-
-		    	<li><%= link_to 'add user', '#', :class=>"radius label" %></li>
-		    	<li><%= link_to 'cancel', '#', :class=>"radius label"  %></li>
 			</ul>
 		</td>
 	</tr>
@@ -57,6 +68,11 @@
 	</tbody>
 
 </table>
+<%else%>
+	<div class="panel">
+		<h3 style="text-align:center"> <%= t(:no_courses_available) %></h3>
+	</div>
+<%end%>
 
 	</div>
 </div>

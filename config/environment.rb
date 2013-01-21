@@ -15,3 +15,10 @@ ActionMailer::Base.smtp_settings = {
   :authentication => "plain",
   :enable_starttls_auto => true
 }
+
+APP_CONFIG = {
+  paypal_email: "raso_1358550325_biz@rasohr.com",
+  paypal_secret: "_secret_",
+  paypal_cert_id: "S9WH6WPKFBG3G",
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+}

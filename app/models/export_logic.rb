@@ -1,3 +1,5 @@
+# == Export Model
+#  Used to export users to xls format
 class ExportLogic < ActiveRecord::Base
   # attr_accessible :title, :body
 
@@ -42,6 +44,8 @@ class ExportLogic < ActiveRecord::Base
 #
 	def export_timeoffs_from_company(company_id, company_name, emailsArray)
 
+		res = ""
+
 		book = Spreadsheet::Workbook.new
 		sheet1 = book.create_worksheet
 		sheet1.name = company_name.to_s + "_timeoffs" 
@@ -53,22 +57,25 @@ class ExportLogic < ActiveRecord::Base
 		sheet1[0,4]='Email'
 
 		$row=1
-		$array_it=0
 
 		emailsArray.each do |user_email|
 
-			@user = User.find_by_company_id_and_email(company_id, emailsArray[$array_it])
-			@timeoff = TimeOff.find_by_user_id(@user.id)
-			if !(@timeoff.nil?)
-				sheet1[$row,0]= @timeoff.description.to_s
-				sheet1[$row,1]= @timeoff.category.to_s
-				sheet1[$row,2]= @timeoff.start_at.to_s
-				sheet1[$row,3]= @timeoff.end_at.to_s
-				sheet1[$row,4]= @user.email.to_s
+			@user = User.find_by_company_id_and_email(company_id, user_email)
+			timeoff = TimeOff.find_all_by_user_id(@user.id)
+			if !(timeoff.nil?)
 
-				$row += 1
-				$array_it += 1
+				timeoff.each do |toff|
+
+					sheet1[$row,0]= toff.description.to_s
+					sheet1[$row,1]= toff.category.to_s
+					sheet1[$row,2]= toff.start_at.to_s
+					sheet1[$row,3]= toff.end_at.to_s
+					sheet1[$row,4]= @user.email.to_s
+
+					$row += 1
+				end
 			end
+
 		end
 
 		bookname = company_name.to_s + '_' + (Time.now.to_i).to_s + '_timeoffs.xls'

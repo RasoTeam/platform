@@ -1,6 +1,7 @@
+# == Feedback Controller
+#  Controllert to manage the feedback actions
 class FeedbacksController < ApplicationController
-  # GET /feedbacks
-  # GET /feedbacks.json
+  # Lists all feedback messages
   def index
     @feedbacks = Feedback.all
 
@@ -10,8 +11,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # GET /feedbacks/1
-  # GET /feedbacks/1.json
+  # Shows a feedback message
   def show
     @feedback = Feedback.find(params[:id])
 
@@ -21,8 +21,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # GET /feedbacks/new
-  # GET /feedbacks/new.json
+  # Creates a new feedback message
   def new
     @feedback = Feedback.new
     @feedback.url = params[:url]
@@ -33,13 +32,12 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # GET /feedbacks/1/edit
+  # Edit a feedback message
   def edit
     @feedback = Feedback.find(params[:id])
   end
 
-  # POST /feedbacks
-  # POST /feedbacks.json
+  # Creates a feedback message
   def create
     @feedback = Feedback.new(params[:feedback])
 
@@ -50,8 +48,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # PUT /feedbacks/1
-  # PUT /feedbacks/1.json
+  # Updates a feedback message
   def update
     @feedback = Feedback.find(params[:id])
 
@@ -66,8 +63,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # DELETE /feedbacks/1
-  # DELETE /feedbacks/1.json
+  # Destroyes a feedback message
   def destroy
     @feedback = Feedback.find(params[:id])
     @feedback.destroy

@@ -1,6 +1,8 @@
 Platform::Application.routes.draw do
 
-resources :feedbacks , :only => [:new,:create]
+  resources :feedbacks , :only => [:new,:create]
+  post '/payment_notification' => 'payment_notification#create', :as => 'payment_notification'
+  get '/locale' => 'locale#set', :as => 'setlocal'
 
   match '/companies/:company_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
@@ -44,6 +46,7 @@ resources :feedbacks , :only => [:new,:create]
   get '/idea#import_data' , :to => 'public/frontoffice#idea#import_data', as: 'idea_import_data'
   get '/idea#job_offers' , :to => 'public/frontoffice#idea#job_offers', as: 'idea_job_offers'
   get '/contacts' , :to => 'public/frontoffice#contacts'
+  post '/contacts' , :to => 'public/frontoffice#get_in_touch', as: 'get_in_touch'
   get '/signup', :to => 'public/frontoffice#new'
   get '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#new' , :as => 'new_apply'
   post '/public/companies/:company_id/job_offers/:id/new' , :to => 'public/job_offers#create' , :as => 'create_apply'

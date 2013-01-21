@@ -1,9 +1,32 @@
-<h1>TRAININGS#INDEX</h1>
-USER_ID:<%= @current_user_id %> | <%= @current_user %><br>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company.slug, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:trainings) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  	<div class="twelve columns">
+		<h3><%= t(:trainings_available) %></h3>
+		<%if @trainings.any?%>
 		<% @training_course.each do |t| %>
-		  Training id: <%= t[0].id %>;
-		  Name: <%= t[0].name %>;
-		  Desc: <%= t[0].desc %>;
-		  <%= render :partial => "/rasocomp/courses/index", :locals => {:courses => t[1], :training => t[0], :company => @company} %> 
-		  <br/>
+		<div class="panel">
+
+		  <h3><%= t[0].name %></h3>
+		  <%= t[0].desc %>
+		  	<%= render :partial => "/rasocomp/courses/index", :locals => {:courses => t[1], :training => t[0], :company => @company} %> 
+			</div>
 		<% end %>
+		</div>
+		<%else%>
+				<div class="panel">
+
+		    <h3 style="text-align:center"> <%= t(:no_trainings_available) %></h3>
+		</div>
+		<%end%>
+	</div>
+</div>

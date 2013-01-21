@@ -1,13 +1,17 @@
+# == Course Controller
+#  Controller used to manage training courses.
 class Rasocomp::CoursesController < ApplicationController
 
 layout 'rasoemp'
 
+  # Lists all courses in a training programme
   def index
     @company = Company.find( params[:company_id])
     @trainings = @company.trainings.find( params[:training_id])
-    #@courses = @trainings.courses
+    # - @courses = @trainings.courses
   end
   
+  # Activates a course for training programme in a company.
   def activate
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
@@ -19,12 +23,14 @@ layout 'rasoemp'
     redirect_to training_courses_manage_path(@company,@training)
   end
   
+  # New course for a training programme in a company.
   def new
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
     @course = @training.courses.build
   end
 
+  # Edit a course for a training programme in a company.
   def edit
     @company = Company.find( params[:company_id])
     @training = Training.find( params[:training_id])
@@ -33,6 +39,7 @@ layout 'rasoemp'
     @users = @company.users.find( :all, :conditions => ["role != ? AND state == ?", ROOT, STATE[:active]])
   end
   
+  # Update a course for a training programme in a company.
   def update
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
@@ -46,6 +53,7 @@ layout 'rasoemp'
     end
   end
 
+  # Update users enrolled for a course in a trainning programme
   def update_users
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
@@ -69,6 +77,7 @@ layout 'rasoemp'
     redirect_to manage_company_trainings_path @company
   end
   
+  # Used for an user to enroll in a course for a training programme
   def enroll
     company = Company.find( params[:company_id])
     current_user_id = current_user( company.slug).id
@@ -90,6 +99,7 @@ layout 'rasoemp'
     redirect_to company_trainings_path( company.slug)
   end
   
+  # Used for users to resign a course programme
   def unenroll
     company = Company.find( params[:company_id])
     current_user_id = current_user( company.slug).id
@@ -107,24 +117,27 @@ layout 'rasoemp'
     redirect_to company_trainings_path( company.slug)
   end
   
+  # Creates a course for a training programme
   def create
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])
     @course = @training.courses.build( params[:course])
     @course.state = 0
     if @course.save
-      redirect_to manage_company_trainings_path( params[:company_id])
+      redirect_to training_courses_manage_path( @company,@training)
     else
       render 'new'
     end
   end
   
+  # Removes a course from a training programme
   def destroy
     course = Course.find( params[:id])
     course.destroy
-    redirect_to manage_company_trainings_path( params[:company_id])
+    redirect_to training_courses_manage_path( params[:company_id],params[:training_id])
   end
 
+  # Return all courses for a training programme in a company
   def manage
     @company = Company.find( params[:company_id])
     @training = @company.trainings.find( params[:training_id])

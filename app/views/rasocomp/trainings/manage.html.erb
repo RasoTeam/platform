@@ -25,7 +25,7 @@
 <div class="row">
   	<div class="twelve columns">
   		<div id="signup">
-
+  			<% if @trainings.any? %>
 	  		<table class="twelve">
 				<thead>
 					<tr>
@@ -40,12 +40,20 @@
 								<%= link_to t.name, training_courses_manage_path( @company, t)%>
 							</td>
 							<td style="text-align: center">
-								<%= link_to t(:start_course), new_company_training_course_path( @company, t), :class =>"radius label" %> 
+								<ul class="jobs_links">
+									<li><%= link_to t(:start_course), new_company_training_course_path( @company, t), :class =>"radius label" %> </li>
+									<li><%= link_to "Delete training", company_training_path(@company, t), :method => :delete, :class =>"radius alert label" %></li>
+								</ul>	
 							</td>
 						</tr>
 					<% end %>
 				</tbody>
 			</table>
+			<%else%>
+				<div class="panel">
+		    		<h3 style="text-align:center"> <%= t(:no_trainings_available) %></h3>
+				</div>
+			<%end%>
 		</div>
 	</div>
 </div>

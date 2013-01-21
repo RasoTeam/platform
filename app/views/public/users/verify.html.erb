@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="twelve columns">
 		<div id="signup">
-			<h3> Verify User </h3>
+			<h3> <%= t(:verify_user) %></h3>
 			<hr/>
 			<%= form_for [@company, @user], :url => activate_public_company_user_path(@company, @user) do |f| %>
 			  <% @user.errors.full_messages.each do |error| %>

@@ -201,6 +201,7 @@ DEPENDENCIES
   mail (= 2.4.4)
   oauth
   paperclip (~> 2.3)
+  pg
   rails (= 3.2.11)
   redcarpet
   roo

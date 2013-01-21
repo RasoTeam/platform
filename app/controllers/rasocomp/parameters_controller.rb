@@ -1,10 +1,13 @@
+# == Parameters Controller
+#  Controllert to manage parameters in an evaluation process
 class Rasocomp::ParametersController < Rasocomp::ApplicationController
 
+  # Lists all parameters available for evaluations
   def index
     @parameters = Parameter.all
   end
 
-
+  # New parameter for future evaluation process
   def new
     @parameter = Parameter.new
     @company = Company.find(params[:company_id])
@@ -16,6 +19,7 @@ class Rasocomp::ParametersController < Rasocomp::ApplicationController
     end
   end
 
+  # Creates a new parameter for future evaluation process
   def create
     @parameter = Parameter.new(params[:parameter])
     @company_id = params[:company_id]
@@ -39,6 +43,7 @@ class Rasocomp::ParametersController < Rasocomp::ApplicationController
 
   end
 
+  # Shows a parameter 
   def show
   end
 end

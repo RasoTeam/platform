@@ -42,7 +42,11 @@
 
               <span class=" radius label"><%= t(:photo) %></span><br>
               <%= f.file_field :attach, :class=>"input_space" %><br><br>
-          
+
+              <span class=" radius label" style="width:5px;"><%= t(:language) %></span><br>
+              <%= f.select :locale, options_for_select([["English", "en"], ["Português","pt"]], @user.locale) %>
+              <br/><br/>
+
               <% if current_user(@company.slug).role == ROLE[:manager] %>
                 <span class=" radius label"><%= t(:time_off_days) %></span>
                 <%= f.text_field :time_off_days, :class=>"input_space"  %>

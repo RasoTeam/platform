@@ -22,6 +22,7 @@ class Public::CompaniesController < Public::ApplicationController
       @user.state = STATE[:unchecked]
       @user.role = ROOT
       @user.password_digest = 0
+      @user.locale = I18n.locale
       if @user.save
         UserMailer.verification_email(@user).deliver
         flash[:success] = t(:company_account_created)

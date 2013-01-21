@@ -20,7 +20,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation, :attach
+  attr_accessible :company_id, :email, :name, :role, :time_off_days, :state, :user_photo, :password, :password_confirmation, :attach, :locale
   has_secure_password
   belongs_to :company
   has_many :time_offs
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     :message => "only image files are allowed"
 
   validates :name, :presence => true, :length => { :maximum => 50}
-
+  # Validation regular expression for email address
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
                     :format => { :with => VALID_EMAIL_REGEX },
