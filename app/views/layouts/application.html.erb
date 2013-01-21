@@ -46,13 +46,16 @@
 							
 							<li><%= nav_link t(:idea), idea_path %></li>
 							<li><a href="http://rasoblog.herokuapp.com/" target="_blank">blog</a></li>
-							<li><%= nav_link "contacts", contacts_path %></li>
-							<li><%= nav_link "team", aboutus_path %></li>
-							<% if I18n.default_locale == I18n.locale %>
-								<li><%= link_to "pt",  url_for(:locale => 'pt') %></li>
-							<% else %>
-								<li><%= link_to "en", url_for(:locale => 'en') %></li>
-							<% end %>
+							<li><%= nav_link t(:contacts), contacts_path %></li>
+							<li><%= nav_link t(:team), aboutus_path %></li>
+							<li class="has-dropdown">
+								<a id="world-icon" href="#"><%= t(:language2)%></a>
+								<ul class="dropdown">
+									<li><%= link_to "English", url_for(:locale => 'en') %></li>
+									<li><%= link_to "Portuguese",  url_for(:locale => 'pt') %></li>
+									<li class="divider"></li>
+								</ul>
+							</li>
 						</ul>
 
 						<!-- <ul id="helper_menu"''
