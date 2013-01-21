@@ -49,11 +49,10 @@
 							<li><%= nav_link t(:contacts), contacts_path %></li>
 							<li><%= nav_link t(:team), aboutus_path %></li>
 							<li class="has-dropdown">
-								<a id="world-icon" href="#"><%= t(:language2)%></a>
+								<a id="world-icon" href="#"></a>
 								<ul class="dropdown">
 									<li><%= link_to "English", url_for(:locale => 'en') %></li>
-									<li><%= link_to "Portuguese",  url_for(:locale => 'pt') %></li>
-									<li class="divider"></li>
+									<li style="padding-bottom: 15px;"><%= link_to "Portuguese",  url_for(:locale => 'pt') %></li>
 								</ul>
 							</li>
 						</ul>
