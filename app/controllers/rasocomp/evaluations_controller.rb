@@ -5,7 +5,10 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
   # Lists all evaluations programmes in a company
   def index
     @company = Company.find(params[:company_id])
-    @evaluations = @company.evaluations
+    respond_to do |format|
+      format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).order("description " + params[:order].to_s)}
+      format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s)}
+    end
   end
 
   # New evaluation programme in a company

@@ -17,8 +17,8 @@
     <div class="row">
       <div class="four columns">
         <dl class="tabs pill">
-          <dd class="active"><a href="#">A-Z <!-- TODO: LINK A-Z --></a></dd>
-          <dd><a href="#">Z-A <!-- TODO: LINK Z-A --></a></dd>
+          <dd id="linkAsc" class="active"><%= link_to 'A-Z' , company_evaluations_path(@company, :order => "ASC"), :remote => :true ,:id => "asc" %></dd>
+          <dd id="linkDesc"><%= link_to 'Z-A' , company_evaluations_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
         </dl>
       </div>  <!-- Fecha four columns -->
       <div class="eight columns">
@@ -48,29 +48,11 @@
                 <th style="text-align:center">Status</th>
               </tr>
             </thead>
-            <tbody>
-            <% if (current_user(@company.slug).role == 1) %>
-                <% @evaluations.each do |ev| %>
-                    <tr>
-                      <td style="text-align:center"><%= link_to(ev.description, company_evaluation_path(@company,ev)) %></td>
-                      <td style="text-align:center"><%= ev.period_begin %></td>
-                      <td style="text-align:center"><%= ev.period_end %></td>
-                      <td style="text-align:center"><%= User.find(ev.user_id).name %></td>
-                      <td style="text-align:center"><%= ev.status %></td>
-                    </tr>
-                <% end %>
-            <% else %>
-                <%  @evaluations.where( "user_id = " + current_user(@company.slug).id.to_s).each do |ev| %>
-                    <tr>
-                      <td style="text-align:center"><%= link_to(ev.description, company_evaluation_path(@company,ev)) %></td>
-                      <td style="text-align:center"><%= ev.period_begin %></td>
-                      <td style="text-align:center"><%= ev.period_end %></td>
-                      <td style="text-align:center"><%= User.find(ev.user_id).name %></td>
-                      <td style="text-align:center"><%= ev.status %></td>
-                    </tr>
-                <% end %>
-            <% end %>
+            <!-- Inicio do corpo da tabela -->
+            <tbody id="evalTable">
+                <%= render 'evaluation_table' , :evaluations => @evaluations %>
             </tbody>
+            <!--Fim do corpo da tabela -->
           </table>
           <div class="row">
             <div class="eight columns">
@@ -95,7 +77,7 @@
   </div> <!-- Fecha twelve columns -->
 </div> <!-- Fecha row -->
 
-<% if current_user(@company.slug).role == '1' %>
+<% if (current_user(@company.slug).role == 1) %>
     <div class="row">
       <div class="twelve columns">
         <p style="text-align: center">
@@ -104,5 +86,24 @@
       </div>
     </div>
 <% end %>
+
+<!-- Script JQuery para filtros ASC DESC -->
+<script>
+    $('#asc').click(function(event) //Quando se clica no link A-Z
+    {
+        $('#linkAsc').addClass('active');
+        $('#linkDesc').removeClass('active');
+    }
+    );
+
+    $('#desc').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkDesc').addClass('active');
+        $('#linkAsc').removeClass('active');
+    }
+    );
+</script>
+<!-- Fim de script para ASC DESC -->
+
 
 
