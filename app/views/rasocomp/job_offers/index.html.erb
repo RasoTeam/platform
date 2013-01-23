@@ -16,7 +16,7 @@
     <h2><%= t(:job_offers) %></h2>
     
     <div class="row">
-      <div class="four columns">
+      <div class="three columns">
         <dl class="tabs pill">
           <% if params[:order] == "DESC" %>
               <dd><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
@@ -27,34 +27,38 @@
           <% end %>
         </dl>
       </div>
-      <div class="four columns">
+      <div class="five columns">
         <dl class="sub-nav">
-            <dt>Filter:</dt>
+            <dt><%= t(:filter) %></dt>
             <% if(params[:search].to_s != "Open" && params[:search].to_s != "Selection" && params[:search].to_s != "Closed") %>
-              <dd class="active"><%= link_to "All", company_job_offers_path(@company) %></dd>
-              <dd><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+              <dd class="active">
+                  <%= link_to t(:all), company_job_offers_path(@company) %></dd>
+              <dd><%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd><%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd><%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
             <% elsif(params[:search].to_s == "Open")%>
-              <dd><%= link_to "All", company_job_offers_path(@company) %></dd>
-              <dd class="active"><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+              <dd><%= link_to t(:all), company_job_offers_path(@company) %></dd>
+              <dd class="active">
+                  <%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd><%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd><%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
             <% elsif params[:search].to_s == "Selection" %>
-              <dd><%= link_to "All", company_job_offers_path(@company) %></dd>
-              <dd><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd class="active"><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+              <dd><%= link_to t(:all), company_job_offers_path(@company) %></dd>
+              <dd><%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd class="active">
+                  <%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd><%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
             <% elsif params[:search].to_s == "Closed" %>
-              <dd><%= link_to "All", company_job_offers_path(@company) %></dd>
-              <dd><%= link_to "Open", company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd><%= link_to "Selection", company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd class="active"><%= link_to "Closed", company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
+              <dd><%= link_to t(:all), company_job_offers_path(@company) %></dd>
+              <dd><%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
+              <dd><%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
+              <dd class="active">
+                  <%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
             <% end %>
         </dl>
       </div>
       <div class="four columns">
-        <%= link_to "See Public Page", public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
+        <%= link_to t(:see_public_page), public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
       </div>
     </div>
   </div>
@@ -68,11 +72,11 @@
             <table class="twelve">
               <thead>
                 <tr>
-                  <th style="text-align:center">Job Offer</th>
-                  <th style="text-align:center" >Date</th>
-                  <th style="text-align:center">Candidates</th>
-                  <th style="text-align:center">Status</th>
-                  <th style="text-align:center">Actions</th>
+                  <th style="text-align:center"><%= t(:job_offer) %></th>
+                  <th style="text-align:center"><%= t(:date_t) %></th>
+                  <th style="text-align:center"><%= t(:candidates) %></th>
+                  <th style="text-align:center"><%= t(:status) %></th>
+                  <th style="text-align:center"><%= t(:actions) %></th>
                 </tr>
               </thead>
               <tbody>
@@ -90,16 +94,12 @@
                               <%= link_to t(:update) , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
                             </li>
                             <li>
-                              <%= link_to t(:delete), [@company,offer] , :method => :delete , :confirm => 'Are you sure?', :class=>"alert radius label" %>
+                              <%= link_to t(:delete), [@company,offer] , :method => :delete , :confirm => t(:are_you_sure), :class=>"alert radius label" %>
                             </li>
                             <li>
                               <img src="<%=asset_path "share.png"%>" class="facebook_button" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
                                 "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' />
-                              <!-- <a href="#" class="radius label facebook_button" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
-                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;'>Share</a> -->
                             </li>
-                          <!-- <img src="../../assets/share.png" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
-                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' /> -->
                                 <li>
                                 <a href="https://twitter.com/share" class="twitter-share-button"
                                 data-via="RasoHR"
@@ -125,7 +125,7 @@
                       <%= text_field_tag :search %>
                     </div>
                     <div class="four mobile-one columns">
-                    <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+                    <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
                 </div>
             <% end %>
           </div>
