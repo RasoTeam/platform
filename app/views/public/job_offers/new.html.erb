@@ -9,7 +9,7 @@
 
 <div class="row">
   <div class="twelve columns">
-    <h3>Application to <%= @company.name %></h3>
+    <h3><%= t(:application_to) %> <%= @company.name %></h3>
     <div class="panel">
       <div class="row">
         <div class="twelve columns">
@@ -17,23 +17,23 @@
             <table class="twelve tableJobs">
             <tbody>
               <tr>
-                <td><span class="label radius">Job Offer</span></td>
+                <td><span class="label radius"><%= t(:job_offer) %></span></td>
                 <td><%= @offer.job_name %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Required Education</span></td>
+                <td><span class="label radius"><%= t(:required_education) %></span></td>
                 <td><%= @offer.required_education %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Skills</span></td>
+                <td><span class="label radius"><%= t(:skills) %></span></td>
                 <td><%= @offer.skills %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Description</span></td>
+                <td><span class="label radius"><%= t(:description) %></span></td>
                 <td><%= @offer.description %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Conditions</span></td>
+                <td><span class="label radius"><%= t(:conditions) %></span></td>
                 <td><%= @offer.conditions %></td>
               </tr>
             </tbody>
@@ -57,9 +57,9 @@
       <div class="row">
         <div class="twelve columns">
           <dl class="tabs">
-            <dd class="active"><a href="#simple1">Apply Via CV</a></dd>
-            <dd><a href="#simple2">Apply Via Linked-In</a></dd>
-            <dd><a href="#simple3">Apply Via Europass XML</a></dd>
+            <dd class="active"><a href="#simple1"><%= t(:apply_via) %> CV</a></dd>
+            <dd><a href="#simple2"><%= t(:apply_via) %> Linked-In</a></dd>
+            <dd><a href="#simple3"><%= t(:apply_via) %> Europass XML</a></dd>
           </dl>
 
           <ul class="tabs-content">
@@ -74,7 +74,7 @@
                     </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                        <%=f.label :name, :class=>"right inline"%>
+                        <%=f.label t(:name), :class=>"right inline"%>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :name, :class=>"eight", required:true %>
@@ -82,7 +82,7 @@
                   </div> 
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :email, :class=>"right inline" %>
+                      <%=f.label t(:email), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :email, :class=>"eight", required:true %>
@@ -90,7 +90,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :nationality, :class=>"right inline" %>
+                      <%=f.label t(:nationality), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :nationality, :class=>"eight", required:true %>
@@ -98,7 +98,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :location, :class=>"right inline" %>
+                      <%=f.label t(:location), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :location, :class=>"eight", required:true %>
@@ -106,7 +106,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :phone, :class=>"right inline" %>
+                      <%=f.label t(:telephone), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                      <%= f.text_field :phone, :class=>"eight", required:true %>
@@ -125,7 +125,7 @@
 
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.submit 'Apply via CV!' , :class=>"radius button" %>
+                      <%= f.submit  t(:apply_job) , :class=>"radius button" %>
                     </div>
                   </div>
                 <% end %>
@@ -144,7 +144,7 @@
                   <% end %>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :name, :class=>"right inline"%>
+                      <%=f.label t(:name), :class=>"right inline"%>
                       <%=hidden_field_tag 'cv_type' , 'linkedin'%>
                     </div>
                     <div class="ten mobile-three columns">
@@ -153,7 +153,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :email, :class=>"right inline" %>
+                      <%=f.label t(:email), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :email, :class=>"eight", required:true %>
@@ -161,7 +161,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :nationality, :class=>"right inline" %>
+                      <%=f.label t(:nationality), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :nationality, :class=>"eight", required:true %>
@@ -169,7 +169,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :location, :class=>"right inline" %>
+                      <%=f.label t(:location), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :location, :class=>"eight", required:true %>
@@ -177,7 +177,7 @@
                   </div>
                   <div class="row">
                     <div class="two mobile-one columns">
-                      <%=f.label :phone, :class=>"right inline" %>
+                      <%=f.label t(:telephone), :class=>"right inline" %>
                     </div>
                     <div class="ten mobile-three columns">
                       <%= f.text_field :phone, :class=>"eight", required:true %>
@@ -188,7 +188,7 @@
 
                     </div>
                     <div class="ten mobile-three columns">
-                      <%= f.submit 'Apply Via Linked In!' , :class=>"radius button" %>
+                      <%= f.submit t(:apply_job) , :class=>"radius button" %>
                     </div>
                   </div>
               <% end %>
@@ -207,60 +207,60 @@
                     </div>
                   <% end %>
                   <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label :name, :class=>"right inline"%>
+                    <div class="three mobile-one columns">
+                      <%=f.label t(:name), :class=>"right inline"%>
                       <%=hidden_field_tag 'cv_type' , 'xml'%>
                     </div>
-                    <div class="ten mobile-three columns">
+                    <div class="nine mobile-three columns">
                       <%= f.text_field :name, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label :email, :class=>"right inline" %>
+                    <div class="three mobile-one columns">
+                      <%=f.label t(:email), :class=>"right inline" %>
                     </div>
-                    <div class="ten mobile-three columns">
+                    <div class="nine mobile-three columns">
                       <%= f.text_field :email, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label :nationality, :class=>"right inline" %>
+                    <div class="three mobile-one columns">
+                      <%=f.label t(:nationality), :class=>"right inline" %>
                     </div>
-                    <div class="ten mobile-three columns">
+                    <div class="nine mobile-three columns">
                       <%= f.text_field :nationality, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label :location, :class=>"right inline" %>
+                    <div class="three mobile-one columns">
+                      <%=f.label t(:location), :class=>"right inline" %>
                     </div>
-                    <div class="ten mobile-three columns">
+                    <div class="nine mobile-three columns">
                       <%= f.text_field :location, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label :phone, :class=>"right inline" %>
+                    <div class="three mobile-one columns">
+                      <%=f.label t(:telephone), :class=>"right inline" %>
                     </div>
-                    <div class="ten mobile-three columns">
+                    <div class="nine mobile-three columns">
                       <%= f.text_field :phone, :class=>"eight", required:true %>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="two mobile-one columns">
-                      <label class="right inline">XML(europass format):</label>
+                    <div class="three mobile-one columns">
+                      <label class="right inline">XML <%=t(:europass)%>:</label>
                     </div>
-                    <div class="ten mobile-three columns">
+                    <div class="nine mobile-three columns">
                       <%= f.file_field "file", :name=>"file", required:true %>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="two mobile-one columns">
+                    <div class="three mobile-one columns">
 
                     </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.submit 'Apply via XML!' , :class=>"radius button" %>
+                    <div class="nine mobile-three columns">
+                      <%= f.submit t(:apply_job) , :class=>"radius button" %>
                     </div>
                   </div>
               <% end %>
