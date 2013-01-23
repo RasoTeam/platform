@@ -37,17 +37,19 @@
 
             <%= form_tag(:controller => "exportsingle", :action => "export_users_step", :method => "post") do %>
               
-              <div style="text-align: center">
-                <%= submit_tag 'Download', :class=>"radius button" %>
-                <%= link_to 'Done', :back , :class=>"radius button"%>
-              </div>
-             </br>
-              <p><%= t(:choose_users_export)%></p>
+              <p class="radius label"><%= t(:choose_users_export)%></p> <br/> <br/>
 
               <% @users.each do |u| %>
                 <span><%= check_box_tag "users_emails[]" , u.email , :checked => true %><%= u.name + "(" + u.email + ")" %></span>
                 </br>
               <% end %>
+              <br/>
+              <div style="text-align: center">
+                <%= submit_tag t(:download), :class=>"radius button" %>
+                <%= link_to t(:done), :back , :class=>"radius button"%>
+              </div>
+             </br>
+  
             <% end -%>
           </div>
         </div>

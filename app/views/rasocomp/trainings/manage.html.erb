@@ -10,21 +10,17 @@
 </div>
 
 <div class="row">
-	<div id="signup">
-
-		<div class="four columns">
-			<h3><%= t(:trainings) %></h3>
-		</div>
-		<div class="eight columns ">
-			<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
-		</div>
+	<div class="four columns">
+		<h3><%= t(:trainings) %></h3>
+	</div>
+	<div class="eight columns ">
+		<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
 	</div>
 </div>
 
 
 <div class="row">
   	<div class="twelve columns">
-  		<div id="signup">
   			<% if @trainings.any? %>
 	  		<table class="twelve">
 				<thead>
@@ -42,7 +38,7 @@
 							<td style="text-align: center">
 								<ul class="jobs_links">
 									<li><%= link_to t(:start_course), new_company_training_course_path( @company, t), :class =>"radius label" %> </li>
-									<li><%= link_to "Delete training", company_training_path(@company, t), :method => :delete, :class =>"radius alert label" %></li>
+									<li><%= link_to t(:delete_training), company_training_path(@company, t), :method => :delete, :class =>"radius alert label" %></li>
 								</ul>	
 							</td>
 						</tr>
@@ -55,7 +51,6 @@
 				</div>
 			<%end%>
 		</div>
-	</div>
 </div>
 
 

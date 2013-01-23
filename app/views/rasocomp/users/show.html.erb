@@ -1,5 +1,6 @@
-<div class="row">
-  <div class="nine columns">
+<div class="row dashboard">
+
+  <div class="eight columns">
     <div class="row">
       <div class="twelve columns">
         <ul class="breadcrumbs">
@@ -14,7 +15,7 @@
       </div>
     </div>
       <div class="panel">
-        <h3>User Profile </h3>
+        <h3><%= t(:user_profile) %></h3>
         <hr/>
         <!-- <p><span class=" radius label">ID</span><span> <%= @user.id %></span></p> -->
         <table class="twelve tableJobs">
@@ -38,22 +39,22 @@
           </tbody>
         </table>
         <div style:"text-alig">
-          <p style="text-align: center"><%= link_to "Edit", edit_company_user_path(@company, @user), :class=>"radius button" %></p>
+          <p style="text-align: center"><%= link_to t(:edit), edit_company_user_path(@company, @user), :class=>"radius button" %></p>
         </div>
       </div>
       
       
       <div class="panel">
-        <h4>Contracts</h4>
+        <h4><%= t(:contracts) %></h4>
         <hr/>
         <% if !@contracts.any? %>
-          <h3 style="text-align:center">There are no contracts</h3>
+          <h3 style="text-align:center"><%= t(:no_contracts_found) %></h3>
         <%else%>
         <%= render :partial => "rasocomp/contracts/list" %>
         <% end %>
 
         <% if current_user(@company.slug).role == ROLE[:manager] %>
-          <p style="text-align: center"><%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button" %></p>
+          <p style="text-align: center"><%= link_to t(:add_contract), new_company_user_contract_path( @company, @user), :class=>"radius button" %></p>
         <% end %>
 
     </div>
@@ -61,12 +62,14 @@
 
 
 
-
-  <div class="three columns">
-
-      <div class="twelve columns" style="padding-bottom:20px">
-        <a href="#" class="th"><%= image_tag @user.attach.url %></a>
+  <div class="four columns">
+    <div class="twelve columns" style="padding-bottom:20px">
+      <div class="panel">
+        <div id="imagem">
+          <%= image_tag @user.attach.url %>
+        </div>
       </div>
-</div>
+    </div>
+  </div>
 </div> 
 

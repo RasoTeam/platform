@@ -28,15 +28,15 @@
           <% @training.errors.full_messages.each do |msg| %>
             <p><%= msg %></p>
           <% end %>
-          <%= f.label :name, :class => "radius label" %>
+          <%= f.label t(:name), :class => "radius label" %>
           <%= f.text_field :name, :class=>"input_space" %>
-          <%= f.label :lecturer, :class => "radius label" %>
+          <%= f.label t(:lecturer), :class => "radius label" %>
           <%= f.text_field :lecturer, :class=>"input_space" %>
-          <%= f.label :start_at, :class => "radius label" %>
+          <%= f.label t(:start_day), :class => "radius label" %>
           <%= f.text_field :start_at, :placeholder => 'dd-mm-yyyy', :class=>"input_space"%>
-          <%= f.label :end_at, :class => "radius label" %>
+          <%= f.label t(:end_day), :class => "radius label" %>
           <%= f.text_field :end_at, :placeholder => 'dd-mm-yyyy', :class=>"input_space"%>
-          <%= f.select :category, [["PUBLIC", 1],["PRIVATE", 2]] %>
+          <%= f.select :category, [[t(:public), 1],[t(:private), 2]] %>
            <p style="text-align: center"><%= f.submit t(:submit), :class=>"button input_space" %></p>
         <% end %>
 
