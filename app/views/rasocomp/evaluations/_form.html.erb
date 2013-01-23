@@ -36,12 +36,8 @@
                 <th>Maximum Value</th>
             </tr>
         </thead>
-        <tbody>
-            <% @parameters.each do |parameter| %>
-                <%= f.fields_for :evaluation_user_parameters do |builder|  %>
-                <%= render 'evaluation_user_parameters_fields', :f => builder, :evaluation => @evaluation, :parameter => parameter %>
-                <% end %>
-            <% end %>
+        <tbody id="parameterList">
+            <%= render 'parameter_list' , :parameters => @parameters , :f => f %>
         </tbody>
     </table>
 

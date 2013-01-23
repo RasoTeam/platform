@@ -21,4 +21,6 @@ class Parameter < ActiveRecord::Base
 
   has_many :evaluations , :through => :evaluation_user_parameters
   has_many :evaluation_user_parameters
+
+  validates :name , :presence => :true
 end
