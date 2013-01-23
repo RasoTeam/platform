@@ -24,10 +24,9 @@
       <div class="eight columns">
         <dl class="sub-nav">
             <dt>Filter:</dt>
-              <dd class="active"><a href="#">All <!-- TODO: LINK FILTERS --></a></dd>
-              <dd><a href="#">Filter1</a></dd>
-              <dd><a href="#">Filter2</a></dd>
-              <dd><a href="#">Filter3</a></dd>
+              <dd id="linkAll" class="active"><%= link_to 'All' , company_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
+              <dd id="linkActive"><%= link_to 'Active' , company_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
+              <dd id="linkClosed"><%= link_to 'Closed' , company_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
       </div> <!-- Fecha eight columns -->
     </div> <!-- Fecha row -->
@@ -100,6 +99,34 @@
     {
         $('#linkDesc').addClass('active');
         $('#linkAsc').removeClass('active');
+    }
+    );
+</script>
+<!-- Fim de script para ASC DESC -->
+
+<!-- Script JQuery para filtros ALL Active Closed -->
+<script>
+    $('#all').click(function(event) //Quando se clica no link A-Z
+    {
+        $('#linkAll').addClass('active');
+        $('#linkActive').removeClass('active');
+        $('#linkClosed').removeClass('active')
+    }
+    );
+
+    $('#active').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkActive').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkClosed').removeClass('active')
+    }
+    );
+
+    $('#closed').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkClosed').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkActive').removeClass('active')
     }
     );
 </script>
