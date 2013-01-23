@@ -3,10 +3,10 @@
 	<div class="eight columns">
 		<div class="row">
 			<div class="ten columns">
-				<h3>Hi <%= @user.name %>! </h3>
+				<h3> <%=t(:hi) %><%= @user.name %>! </h3>
 			</div>
 			<div class="two columns">
-				<%= link_to "Edit", 
+				<%= link_to t(:edit), 
 					edit_company_user_path(@company, @user), 
 					:class=>"small radius button add_user" %>
 			</div>
@@ -23,11 +23,11 @@
 			              <td><%= @user.name %></td>
 			            </tr>
 			            <tr>
-			              <td><span class="label radius"><%= t(:Email) %></span></td>
+			              <td><span class="label radius"><%= t(:email) %></span></td>
 			              <td><%= @user.email %></td>
 			            </tr>
 			            <tr>
-			              <td><span class="label radius"><%= t(:Role) %></span></td>
+			              <td><span class="label radius"><%= t(:role) %></span></td>
 			              <td><%= ROLE.invert[@user.role] %></td>
 			            </tr>
 			          </tbody>
@@ -40,35 +40,35 @@
 	<!-- ########################### CONTRACT TAB ################################ -->
 		<div class="row">
 			<div class="twelve columns">
-				<h4> Contracts </h4>
+				<h4> <%= t(:contracts)%> </h4>
 				<div class="row">
 					<div class="twelve columns">
 						<div class="panel">
 						  	<% if !@contract.nil? %>
 								<h3 class="hide-for-small"><%= @contract.job_title %>
 				          			<% if current_user(@company.slug).role <= ROLE[:manager] %>
-				          				<span class="secondary label radius"><%= link_to "Edit", edit_company_user_contract_path(@company,@user,@contract) %></span>
+				          				<span class="secondary label radius"><%= link_to t(:edit), edit_company_user_contract_path(@company,@user,@contract) %></span>
 				          			<% end %>
 				          		</h3>
 							  	<hr/>
-							  	<p><span class=" radius label">Begin Date</span><span> <%= @contract.start_date %> </span></p>
-							  	<p><span class=" radius label">End Date</span><span> <%= @contract.end_date %> </span></p>
-							  	<p><span class=" radius label">Value</span><span> <%= @contract.value %> </span></p>
+							  	<p><span class=" radius label"><%=t(:begin_date)%></span><span> <%= @contract.start_date %> </span></p>
+							  	<p><span class=" radius label"><%=t(:end_date)%></span><span> <%= @contract.end_date %> </span></p>
+							  	<p><span class=" radius label"><%=t(:value)%></span><span> <%= @contract.value %> </span></p>
 
 							  	<br/>
 
 							  	<% if @contracts.any? %>
-							  		<h5> Previous Contracts </h5>
+							  		<h5> <%= t(:previous_contracts) %> </h5>
 							  		<%= render :partial => "rasocomp/contracts/list" %>
 							  	<% else %>
-							  		<h5> No previous contracts found</h5>
+							  		<h5 style="text-align: center"> <%=   t(:no_previous_contracts_found)%></h5>
 							  	<% end %>
 							<% else %>
-								<h5> No contracts found</h5>
+								<h5 style="text-align: center"> <%=   t(:no_contracts_found)%></h5>
 							<% end %>
 							<% if current_user(@company.slug).role <= ROLE[:manager] %>
 							<div>
-								<p style="text-align: center"><%= link_to "Add Contract", new_company_user_contract_path( @company, @user), :class=>"radius button " %></p>
+								<p style="text-align: center"><%= link_to t(:add_contract), new_company_user_contract_path( @company, @user), :class=>"radius button " %></p>
 							</div>
 							<% end %>
 						</div>
@@ -76,29 +76,29 @@
 				</div>
 			</div>
 		</div>
-<!-- ####################### DASHBOARD TAB ########################### -->
+<!-- ####################### DASHBOARD ########################### -->
 		
 		<div class="row">
 			<div class="four columns">
 				<div class="panel" style="text-align: center">
-					<h4> Time Offs </h4>
-					<%= link_to "Check & Book", 
+					<h4> <%= t(:timeoffs) %> </h4>
+					<%= link_to t(:check_book), 
 						company_user_time_offs_path(@company, @user), 
 						:class=>"radius button" %>
 				</div>
 			</div>
 			<div class="four columns">
 				<div class="panel" style="text-align: center">
-					<h4> Trainings </h4>
-					<%= link_to "Check & Book", 
+					<h4> <%= t(:trainings)%> </h4>
+					<%= link_to t(:check_book), 
 						company_trainings_path(@company), 
 						:class=>"radius button" %>
 				</div>
 			</div>
 			<div class="four columns">
 		        <div class="panel" style="text-align: center">
-		            <h4> Evaluations </h4>
-		            <%= link_to "Check & Evaluate", 
+		            <h4> <%= t(:evaluations)%> </h4>
+		            <%= link_to t(:check_evaluate), 
 		            	company_evaluations_path(@company), 
 		            	:class=>"radius button" %>
 		         </div>
@@ -116,14 +116,9 @@
 				</div>
 			</div>
 		</div>
-<!-- 		<div class="twelve columns" style="padding-bottom:20px">
-			<div class="panel">
-		    	<h5>Formações</h5>
-			</div>
-	    </div> -->
 		<div class="twelve columns" style="padding-bottom:20px">
 			<div class="panel" id="calendario">
-		    	<h5>Calendário</h5>
+		    	<h5><%= t(:calendar) %></h5>
 		    	<div id="datepicker"></div>
 		    </div>
 	    </div>

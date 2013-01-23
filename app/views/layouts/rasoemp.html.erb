@@ -45,33 +45,37 @@
         <!-- Left Nav Section -->
         <ul class="left">
           <% if current_user(@company.slug).role == ROLE[:manager] %>
-          <li class="divider"></li>
-          <li>
-            <%= link_to t(:job_offers), company_job_offers_path(@company) %>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to t(:time_offs), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
-          </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to t(:job_offers), company_job_offers_path(@company) %>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to t(:time_offs), manage_company_user_time_offs_path(@company,current_user(@company.slug)) %>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to t(:trainings), manage_company_trainings_path(@company) %>
+            </li>
           <% end %>
+
           <% if current_user(@company.slug).role <= ROLE[:manager] %>
-          <li class="divider"></li>
-          <li><%= link_to t(:employees), company_users_path(@company) %></li>
+            <li class="divider"></li>
+            <li><%= link_to t(:employees), company_users_path(@company) %></li>
           <% end %>
+
           <li class="divider"></li>
           <% if current_user(@company.slug).role >= ROLE[:manager] %>
-          <li><%= link_to t(:company) , company_path(@company) %></li>
-              <% if current_user(@company.slug).role <= ROLE[:manager] %>
-                  <li class="divider"></li>
-                  <li><%= link_to "Evaluations", company_evaluations_path(@company) %></li>
-              <% end %>
-          <li class="divider"></li>
-          <li><%= link_to t(:calendar), calendar_path(@company) %></li>
-          <li class="divider"></li>
+            <li><%= link_to t(:company) , company_path(@company) %></li>
+
+                <% if current_user(@company.slug).role <= ROLE[:manager] %>
+                    <li class="divider"></li>
+                    <li><%= link_to t(:evaluations), company_evaluations_path(@company) %></li>
+                <% end %>
+
+            <li class="divider"></li>
+            <li><%= link_to t(:calendar), calendar_path(@company) %></li>
+            <li class="divider"></li>
           <%end%>
         </ul>
         <!-- Right Nav Section -->
@@ -128,7 +132,7 @@
   <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
     <div class="row">
      <div class="twelve columns">
-      <h3 style="text-align: center">Give Feedback</h3>
+      <h3 style="text-align: center"><%=t(:give_feedback)%></h3>
       <%= form_for(@feedback) do |f| %>
         <% if @feedback.errors.any? %>
           <div id="error_explanation">
@@ -143,20 +147,20 @@
         <% end %>
           <table class="twelve tableJobs">
             <tr>
-                  <td style="vertical-align:middle;"><p class="radius label">Name:</p></td>
+                  <td style="vertical-align:middle;"><p class="radius label"><%=t(:name)%></p></td>
                   <td><%= f.text_field :nome, :size=>30, :style=>"margin:0px;" %></td>
               </tr>
               <tr>
-                  <td style="vertical-align:middle;"><p class="radius label">*E-Mail:</p></td>
+                  <td style="vertical-align:middle;"><p class="radius label">*<%=t(:email)%></p></td>
                   <td><%= f.text_field :email, :size=>30, required:true, :style=>"margin:0px;" %></td>
               </tr>
               <tr>
-                  <td style="vertical-align:middle;"><p class="radius label">Type:</p></td>
+                  <td style="vertical-align:middle;"><p class="radius label"><%=t(:type)%></p></td>
                   <!-- hack para "feedback[tipo]", ele estava a assumir apenas "tipo" -->
-                  <td><%= select_tag("feedback[tipo]", options_for_select(["Error","Aspect","Funcionality","Other"],"Error")) %></td>
+                  <td><%= select_tag("feedback[tipo]", options_for_select([t(:error),t(:aspect),t(:funcionality),t(:other)],"Error")) %></td>
               </tr>
               <tr>
-                  <td style="vertical-align:top"><p class="radius label">*Description:</p></td>
+                  <td style="vertical-align:top"><p class="radius label">*<%=t(:description)%></p></td>
                   <td><%= f.text_area :texto, :rows=>"5", :cols=>"40", :style=>"width:100%;", required:true %></td>
               </tr>
               <tr>
@@ -164,7 +168,7 @@
                       <%= f.text_field :url, :type=>"hidden" %>
                   </td>
                   <td style="text-align: right">
-                      <%= f.submit "Submit", :id=>"commit", :class=>"small radius button", :style=>"align:right;" %>
+                      <%= f.submit t(:submit), :id=>"commit", :class=>"small radius button", :style=>"align:right;" %>
                   </td>
               </tr>
           </table>
