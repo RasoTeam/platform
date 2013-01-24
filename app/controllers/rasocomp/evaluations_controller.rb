@@ -8,29 +8,36 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
   # Lists all evaluations programmes in a company
   def index
     @company = Company.find(params[:company_id])
-    if params[:status]
-      if params[:status] == 'ALL'
-        @@status = "ALL"
+    if params[:search]  #Se há pesquisa
+      @search_string = params[:search].to_s
+      respond_to do |format|
+        format.html { @evaluations = @company.evaluations.where("user_id = ?",current_user(@company.slug).id.to_s).where("description LIKE '%" + @search_string + "%'").paginate(:page => params[:page], :per_page => 15)}
+      end
+    else
+      if params[:status] #Se há status
+        if params[:status] == 'ALL'
+          @@status = "ALL"
+          respond_to do |format|
+            format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).order("description " + params[:order].to_s).paginate(:page => params[:page], :per_page => 15)}
+            format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).paginate(:page => params[:page], :per_page => 15)}
+          end
+        else
+          @@status = params[:status]
+          respond_to do |format|
+            format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s + " AND status = '" + @@status + "'").order("description " + params[:order].to_s).paginate(:page => params[:page], :per_page => 15)}
+            format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).paginate(:page => params[:page], :per_page => 15)}
+          end
+        end
+      elsif @@status == "ALL" #Se o status é TUDO
         respond_to do |format|
           format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).order("description " + params[:order].to_s).paginate(:page => params[:page], :per_page => 15)}
           format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).paginate(:page => params[:page], :per_page => 15)}
         end
       else
-        @@status = params[:status]
         respond_to do |format|
           format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s + " AND status = '" + @@status + "'").order("description " + params[:order].to_s).paginate(:page => params[:page], :per_page => 15)}
           format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).paginate(:page => params[:page], :per_page => 15)}
         end
-      end
-    elsif @@status == "ALL"
-      respond_to do |format|
-        format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).order("description " + params[:order].to_s).paginate(:page => params[:page], :per_page => 15)}
-        format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).paginate(:page => params[:page], :per_page => 15)}
-      end
-    else
-      respond_to do |format|
-        format.js  { @evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s + " AND status = '" + @@status + "'").order("description " + params[:order].to_s).paginate(:page => params[:page], :per_page => 15)}
-        format.html    {@evaluations = @company.evaluations.where("user_id = " + current_user(@company.slug).id.to_s).paginate(:page => params[:page], :per_page => 15)}
       end
     end
   end

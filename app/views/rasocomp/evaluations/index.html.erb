@@ -58,15 +58,14 @@
             </div>
             <div class="four columns">
               <div class="row collapse">
-                <!-- TODO: FORM SEARCH (VER EXEMPLO JOB OFFERS) -->
-                <form>
-                  <div class="eight columns">
-                    <input id="search" name="Search" type="text"/>
-                  </div>
-                  <div class="four mobile-one columns">
-                    <input class="button expand postfix" type="submit" value="Search"/>
-                  </div>
-                </form>
+                <%= form_tag company_evaluations_path(@company), :method => 'get' do %>
+                    <div class="eight mobile-three columns">
+                      <%= text_field_tag :search %>
+                    </div>
+                    <div class="four mobile-one columns">
+                      <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
+                    </div>
+                <% end %>
               </div> <!--  Fecha row -->
             </div> <!-- Fecha four columns -->
           </div> <!-- Fecha row -->

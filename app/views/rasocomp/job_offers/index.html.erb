@@ -115,22 +115,22 @@
               </tbody>
             </table>
             <%= will_paginate @offers %>
-            <div class="row">
-              <div class="eight columns">
-              </div>
-              <div class="four columns">
-                <div class="row collapse">
-                  <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
-                    <div class="eight mobile-three columns">
-                      <%= text_field_tag :search %>
-                    </div>
-                    <div class="four mobile-one columns">
-                    <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
+              <div class="row">
+                <div class="eight columns">
                 </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+                <div class="four columns">
+                  <div class="row collapse">
+                    <%= form_tag company_job_offers_path(@company), :method => 'get' do %>
+                        <div class="eight mobile-three columns">
+                          <%= text_field_tag :search %>
+                        </div>
+                        <div class="four mobile-one columns">
+                          <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             <% else %>
             <h3 style="text-align:center">There are no offers registered</h3>
             <% end %>

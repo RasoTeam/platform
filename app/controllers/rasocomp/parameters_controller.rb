@@ -38,7 +38,7 @@ class Rasocomp::ParametersController < Rasocomp::ApplicationController
     else
       respond_to do |format|
         format.html{flash[:error] = "Could not save parameter"
-        redirect_to company_parameters_path(@company_id)}
+                    redirect_to new_company_evaluation_path(@company_id)}
         format.js
       end
     end
