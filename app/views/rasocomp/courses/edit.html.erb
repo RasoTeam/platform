@@ -21,30 +21,28 @@
 </div>
 
 <div class="row">
-    <div class="twelve columns">
-        <div id="signup">
-            <div class="panel">
-                <h1><%= t(:edit_course) %></h1>
-                <hr/>
-                <%= form_for [@company, @training, @course], :url => company_training_course_path do |f| %>
-                  <%= f.label t(:name), :class => "radius label" %>
-                  <%= f.text_field :name, :class=>"input_space" %>
-        					<%= f.label t(:lecturer), :class => "radius label" %>
-        					<%= f.text_field :lecturer, :class=>"input_space" %>
-                  <p style="text-align: center"><%= f.submit t(:update_course), :class=>"button" %></p>
-                <% end %>
-                  <%= @users_to_add %>
-                  <% if @course.category == 2 %>
-                    <%= form_tag :controller => 'courses', :action => 'update_users' do %>
-                      <%= hidden_field_tag '_method', 'put' %>
-                      <p class="radius label"><%=t(:select_users) %></p>
-                      <p style="margin-top: 10px"><%= select_tag "users", options_from_collection_for_select(@company.users, "id", "name"), :multiple => true %><p>
-                     <p style="text-align: center"> <%= submit_tag t(:add_users), :class=>"button"%>  </p>
-                    <% end %>
-                  <% end %>
-
-
-            </div>
-        </div>
+  <div class="twelve columns">
+    <div id="signup">
+      <div class="panel">
+        <h1><%= t(:edit_course) %></h1>
+        <hr/>
+        <%= form_for [@company, @training, @course], :url => company_training_course_path do |f| %>
+            <%= f.label t(:name), :class => "radius label" %>
+            <%= f.text_field :name, :class=>"input_space" %>
+            <%= f.label t(:lecturer), :class => "radius label" %>
+            <%= f.text_field :lecturer, :class=>"input_space" %>
+            <p style="text-align: center"><%= f.submit t(:update_course), :class=>"button" %></p>
+        <% end %>
+        <%= @users_to_add %>
+        <% if @course.category == 2 %>
+            <%= form_tag :controller => 'courses', :action => 'update_users' do %>
+                <%= hidden_field_tag '_method', 'put' %>
+                <p class="radius label"><%=t(:select_users) %></p>
+                <p style="margin-top: 10px"><%= select_tag "users", options_from_collection_for_select(@company.users, "id", "name"), :multiple => true %><p>
+                <p style="text-align: center"> <%= submit_tag t(:add_users), :class=>"button"%>  </p>
+            <% end %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>

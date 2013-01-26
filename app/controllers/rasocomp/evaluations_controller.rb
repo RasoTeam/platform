@@ -147,4 +147,18 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
 
   end
 
+  #Deletes an Evaluation
+  def destroy
+    @evaluation = Evaluation.find(params[:id])
+    @company = Company.find(params[:company_id])
+
+    if @evaluation.delete
+      flash[:success] = "Evaluation has been deleted."
+      redirect_to company_evaluations_path(@company)
+    else
+      flash[:error] = "Problem deleting Evaluation, please try again."
+      redirect_to company_evaluations_path(@company)
+    end
+  end
+
 end

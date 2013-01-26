@@ -63,13 +63,16 @@
       <!--   </div>
       </div> -->
        <div class="row">
-        <div class="twelve columns">
-          <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
-            <p style="text-align: center;">
-              <%= link_to "Evaluate" , evaluate_users_path(@company,@evaluation.id),:class=>"button" %>
-            </p>
-          <% end %>
-        </div>
+         <div class="twelve columns">
+           <p style="text-align: center;">
+             <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
+                 <%= link_to "Evaluate" , evaluate_users_path(@company,@evaluation.id),:class=>"button" %>
+             <% end %>
+             <% if (current_user(@company.slug).role == 1) && (@evaluation.status == 'Active') %>
+                 <%= link_to "Delete" , company_evaluation_path(@company,@evaluation.id),:class=>"button", :method => :delete %>
+             <% end %>
+           </p>
+         </div>
       </div>
     </div>
   </div>

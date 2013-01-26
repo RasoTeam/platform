@@ -1,5 +1,5 @@
 <tr>
-  <td><%=h parameter.name %></td>
+  <td><abbr title="<%= parameter.description %>"><%=h parameter.name %></abbr></td>
   <td>
     <%= f.check_box :_destroy %>
     <%= f.hidden_field :parameter_id , :value => parameter.id %>

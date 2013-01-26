@@ -28,7 +28,7 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
       redirect_to company_job_offers_path
     else
       flash[:error] = 'Could not save!'
-      render new_company_job_offer_path(@company)
+      redirect_to new_company_job_offer_path(@company)
     end
   end
 
