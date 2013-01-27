@@ -1,19 +1,63 @@
-<h1> All Bills </h1>
-<%= link_to "Generate Invoices", generate_invoices_path %>
+<div class="row">
+	<div class="twelve columns">
+		<ul class="breadcrumbs">
+			<li><%= link_to "Home" , backoffice_stats_path %></li>
+	  		<li class="current"><a href="#"><%= t(:bills) %></a></li>
+		</ul>
+	</div>
+</div>
+<!-- Main Grid Section -->
 
-<p>
-	<%= link_to "A-Z", backoffice_bills_path( params.merge({order: "ASC"})) %> 
-	<%= link_to "Z-A", backoffice_bills_path( params.merge({order: "DESC"})) %>
-</p>
-
-<p>Filter: 
-	<%= link_to "All", backoffice_bills_path( params.merge({filt: ">= 0"})) %> 
-	<%= link_to "OK", backoffice_bills_path( params.merge({filt: "= 1"})) %> 
-	<%= link_to "Delayed", backoffice_bills_path( params.merge({filt: "= 0"})) %>
-</p>
-
-<%= form_tag backoffice_bills_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-<%= render :partial => 'list' %>
+<div class="row">
+	<div class="twelve columns">
+	<div class="row">
+		<div class="three columns">
+			<dl class="tabs pill">
+				<% if params[:order] == "DESC" %>
+					<dd><%= link_to "A-Z", backoffice_bills_path( params.merge({order: "ASC"})) %>  </dd>
+					<dd class="active"><%= link_to "Z-A", backoffice_bills_path( params.merge({order: "DESC"})) %></dd>
+				<% else %>
+					<dd class="active"><%= link_to "A-Z", backoffice_bills_path( params.merge({order: "ASC"})) %> </dd>
+					<dd><%= link_to "Z-A", backoffice_bills_path( params.merge({order: "DESC"})) %> </dd>
+				<% end %>
+			</dl>
+		</div>
+		<div class="three columns">
+			<dl class="sub-nav">
+		  		<dt>Filter:</dt>
+		  		<dd class="active">
+		  			<%= link_to "All", backoffice_bills_path( params.merge({filt: ">= 0"})) %> 
+		  		</dd>
+		  		<dd>
+		  			<%= link_to "OK", backoffice_bills_path( params.merge({filt: "= 1"})) %>
+		  		</dd>
+		  		<dd>
+		  			<%= link_to "Delayed", backoffice_bills_path( params.merge({filt: "= 0"})) %>
+		  		</dd>
+			</dl>
+		</div>
+		<div class="two columns">
+        	<%= link_to "Generate Invoices", generate_invoices_path, :class=>"radius button" %>
+      	</div>
+		<div class="four columns">
+			<div class="row collapse">
+			<%= form_tag backoffice_companies_path, :method => 'get' do %>
+  			<div class="eight mobile-three columns">
+    			<%= text_field_tag :search, params[:search] %>
+  			</div>
+  			<div class="four mobile-one columns">
+   				 <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+  			</div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+	<br/>
+	<%= render :partial => 'list' %>
+	
+		
+		<ul class="pagination">
+		  <%= will_paginate @companies, :previous_label=>"&laquo", :next_label=>"&raquo", :inner_window=>"4", :outer_window=>"4" %>
+		</ul>
+	</div>
+</div>
