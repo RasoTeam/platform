@@ -229,6 +229,7 @@ en:
   unpaid: "Unpaid"
   until: "Until"
   update: "Update"
+  update_contract: "Update Contract"
   update_course: "Update Course"
   update_offer: "Update Job Offer"
   user_not_exists: "There is not any user with this email in this company"

@@ -229,6 +229,7 @@ pt:
   unpaid: "Não pago"
   until: "Até"
   update: "Atualizar"
+  update_contract: "Atualizar Contrato"
   update_course: "Atualizar Curso"
   update_offer: "Atualizar Proposta"
   user_not_exists: "Não existe utilizador com este email na empresa"
