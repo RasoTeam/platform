@@ -85,7 +85,15 @@
                       <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
                       <td style="text-align:center"><%= offer.created_at %></td>
                       <td style="text-align:center"><%= offer.candidates.count %></td>
-                      <td style="text-align:center" ><span style="color:green;"><%= offer.status  %></span></td>
+                      <td style="text-align:center" >
+                        <% if offer.status == "Open" %>
+                            <span style="color:green;"><%= t(:active)%></span>
+                        <% elsif offer.status == "Closed" %>
+                            <span style="color:red;"><%=  t(:closed) %></span>
+                        <% elsif offer.status == "Selection" %>
+                            <span style="color: orange;"><%= "Selection" %></span>
+                        <% end %>
+                      </td>
                       <td style="text-align:center">
                            <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
                            <% @urlredirect = "#{company_job_offers_url(@company)}" %>

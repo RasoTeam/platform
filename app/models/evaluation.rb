@@ -21,24 +21,29 @@ class Evaluation < ActiveRecord::Base
 
   attr_accessible :description, :period_begin, :period_end, :status, :user_id
 
-  validates :description, :presence => :true
+  validates :description, :presence => :true,  :length => { :maximum => 150 }
   validates :period_begin , :presence => :true
   validates :period_end , :presence => :true
   validates_inclusion_of :status , :in => ["Active","Closed"]
 
+
+  #RELACIONAMENTOS
   has_and_belongs_to_many :users
 
   belongs_to :company
 
-  has_many :parameters , :through => :evaluation_parameters
-  has_many :evaluation_parameters
 
+  #has_many :parameters , :through => :evaluation_parameters
+  #has_many :evaluation_parameters
+  #accepts_nested_attributes_for :evaluation_parameters
+
+  #Relacionamento complexo a 3 tabelas, com modelo de ponte - EvaluationUserParameters
   has_many :parameters , :through => :evaluation_user_parameters
   has_many :evaluation_user_parameters, :dependent => :delete_all
 
   has_many :user , :through => :evaluation_user_parameters
 
-  accepts_nested_attributes_for :evaluation_parameters
+  #Esta instrucao permite a criacao de form aninhados com atributos do relacionamento
   accepts_nested_attributes_for :evaluation_user_parameters ,:allow_destroy => true
 
 end

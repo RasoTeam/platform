@@ -40,235 +40,242 @@
           </table>
         </div>
       </div>
-      
-      <!--<p id="alert"><%= alert %></p>-->
-      <% if @candidate.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@candidate.errors.count, "Error") %>:</h2>
 
-          <ul>
-          <% @candidate.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <% if !(@offer.status == "Closed") %>
+        <!--<p id="alert"><%= alert %></p>-->
+        <% if @candidate.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@candidate.errors.count, "Error") %>:</h2>
 
-      <div class="row">
-        <div class="twelve columns">
-          <dl class="tabs">
-            <dd class="active"><a href="#simple1"><%= t(:apply_via) %> CV</a></dd>
-            <dd><a href="#simple2"><%= t(:apply_via) %> Linked-In</a></dd>
-            <dd><a href="#simple3"><%= t(:apply_via) %> Europass XML</a></dd>
-          </dl>
-
-          <ul class="tabs-content">
-            <li class="active" id="simple1Tab">
-                <%= form_for @candidate , :url => create_apply_path do |f| %>
-                    <div id="error_explanation">
-                      <ul>
-                        <% @candidate.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                        <%=f.label t(:name), :class=>"right inline"%>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :name, :class=>"eight", required:true %>
-                    </div>
-                  </div> 
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:email), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :email, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:nationality), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :nationality, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:location), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :location, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:telephone), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                     <%= f.text_field :phone, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <label class="right inline">CV(.pdf):</label>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.file_field "file", :name=>"file", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.submit  t(:apply_job) , :class=>"radius button" %>
-                    </div>
-                  </div>
+              <ul>
+                <% @candidate.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
                 <% end %>
-            </li>
-            <li id="simple2Tab">
-                <%= form_for @candidate , :url => create_apply_path do |f| %>
-                  <% if @candidate.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
-                      <ul>
-                        <% @candidate.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                    </div>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="row">
+        <div class="twelve columns">
+        <dl class="tabs">
+          <dd class="active"><a href="#simple1"><%= t(:apply_via) %> CV</a></dd>
+          <dd><a href="#simple2"><%= t(:apply_via) %> Linked-In</a></dd>
+          <dd><a href="#simple3"><%= t(:apply_via) %> Europass XML</a></dd>
+        </dl>
+
+        <ul class="tabs-content">
+        <li class="active" id="simple1Tab">
+          <%= form_for @candidate , :url => create_apply_path do |f| %>
+              <div id="error_explanation">
+                <ul>
+                  <% @candidate.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
                   <% end %>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:name), :class=>"right inline"%>
-                      <%=hidden_field_tag 'cv_type' , 'linkedin'%>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :name, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:email), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :email, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:nationality), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :nationality, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:location), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :location, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
-                      <%=f.label t(:telephone), :class=>"right inline" %>
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.text_field :phone, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="two mobile-one columns">
+                </ul>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:name), :class=>"right inline"%>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :name, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:email), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :email, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:nationality), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :nationality, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:location), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :location, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:telephone), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :phone, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <label class="right inline">CV(.pdf):</label>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.file_field "file", :name=>"file", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
 
-                    </div>
-                    <div class="ten mobile-three columns">
-                      <%= f.submit t(:apply_job) , :class=>"radius button" %>
-                    </div>
-                  </div>
-              <% end %>
-            </li>
-            <li id="simple3Tab">
-              <%= form_for @candidate , :url => create_apply_path, :html => {:multipart => true} do |f| %>
-                  <% if @candidate.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(@candidate.errors.count, "erro") %> estão a impedir o envio da candidatura:</h2>
-
-                      <ul>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.submit  t(:apply_job) , :class=>"radius button" %>
+                </div>
+              </div>
+          <% end %>
+        </li>
+        <li id="simple2Tab">
+          <%= form_for @candidate , :url => create_apply_path do |f| %>
+              <% if @candidate.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+                    <ul>
                       <% @candidate.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
+                          <li><%= msg %></li>
                       <% end %>
-                      </ul>
-                    </div>
-                  <% end %>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-                      <%=f.label t(:name), :class=>"right inline"%>
-                      <%=hidden_field_tag 'cv_type' , 'xml'%>
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.text_field :name, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-                      <%=f.label t(:email), :class=>"right inline" %>
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.text_field :email, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-                      <%=f.label t(:nationality), :class=>"right inline" %>
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.text_field :nationality, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-                      <%=f.label t(:location), :class=>"right inline" %>
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.text_field :location, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-                      <%=f.label t(:telephone), :class=>"right inline" %>
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.text_field :phone, :class=>"eight", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-                      <label class="right inline">XML <%=t(:europass)%>:</label>
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.file_field "file", :name=>"file", required:true %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="three mobile-one columns">
-
-                    </div>
-                    <div class="nine mobile-three columns">
-                      <%= f.submit t(:apply_job) , :class=>"radius button" %>
-                    </div>
+                    </ul>
                   </div>
               <% end %>
-            </li>
-          </ul>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:name), :class=>"right inline"%>
+                  <%=hidden_field_tag 'cv_type' , 'linkedin'%>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :name, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:email), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :email, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:nationality), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :nationality, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:location), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :location, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+                  <%=f.label t(:telephone), :class=>"right inline" %>
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.text_field :phone, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="two mobile-one columns">
+
+                </div>
+                <div class="ten mobile-three columns">
+                  <%= f.submit t(:apply_job) , :class=>"radius button" %>
+                </div>
+              </div>
+          <% end %>
+        </li>
+        <li id="simple3Tab">
+          <%= form_for @candidate , :url => create_apply_path, :html => {:multipart => true} do |f| %>
+              <% if @candidate.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@candidate.errors.count, "erro") %> estão a impedir o envio da candidatura:</h2>
+
+                    <ul>
+                      <% @candidate.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <div class="row">
+                <div class="three mobile-one columns">
+                  <%=f.label t(:name), :class=>"right inline"%>
+                  <%=hidden_field_tag 'cv_type' , 'xml'%>
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.text_field :name, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="three mobile-one columns">
+                  <%=f.label t(:email), :class=>"right inline" %>
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.text_field :email, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="three mobile-one columns">
+                  <%=f.label t(:nationality), :class=>"right inline" %>
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.text_field :nationality, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="three mobile-one columns">
+                  <%=f.label t(:location), :class=>"right inline" %>
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.text_field :location, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="three mobile-one columns">
+                  <%=f.label t(:telephone), :class=>"right inline" %>
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.text_field :phone, :class=>"eight", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="three mobile-one columns">
+                  <label class="right inline">XML <%=t(:europass)%>:</label>
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.file_field "file", :name=>"file", required:true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="three mobile-one columns">
+
+                </div>
+                <div class="nine mobile-three columns">
+                  <%= f.submit t(:apply_job) , :class=>"radius button" %>
+                </div>
+              </div>
+          <% end %>
+        </li>
+        </ul>
         </div>
-        
-      </div>
+
+        </div>
+    <% end %>
+
+    <p style="text-align: center;">
+      <%= link_to t(:back_job_offers) , public_company_job_offers_path(@company), :class=>"button" %>
+    </p>
+
     </div>
   </div>
 </div>

@@ -28,13 +28,13 @@ class JobOffer < ActiveRecord::Base
   attr_accessible :status, :conditions, :description, :job_name, :required_education, :skills , :created_at
 
   #VALIDATIONS
-  validates :job_name , :presence => true
+  validates :job_name , :presence => true,  :length => { :maximum => 100 }
 
-  validates :description , :presence => true
+  validates :description , :presence => true,  :length => { :maximum => 500 }
 
-  validates :skills , :presence => true
+  validates :skills , :presence => true ,  :length => { :maximum => 300 }
 
-  validates :conditions , :presence => true
+  validates :conditions , :presence => true,  :length => { :maximum => 200 }
 
   validates_inclusion_of :status , :in => ["Open","Selection","Closed"]
 

@@ -84,13 +84,23 @@ Platform::Application.routes.draw do
 
   #candidates links
   get 'companies/:company_id/job_offers/:job_offer_id/candidates/:id',
-        :to => 'rasocomp/candidates#show' , :as => 'show_candidate'
+      :to => 'rasocomp/candidates#show' , :as => 'show_candidate'
+  get 'companies/:company_id/job_offers/:job_offer_id/candidates/:id/show',
+      :to => 'rasocomp/candidates#show_candidate' , :as => 'show_profile'
+  get 'companies/:company_id/job_offers/:job_offer_id/candidates/:id/status',
+      :to => 'rasocomp/candidates#update_status' , :as => 'update_candidate_status'
+
+
 
   #evaluations
   get 'companies/:company_id/evaluations/:evaluation_id/evaluate',
       :to => 'rasocomp/evaluations#evaluate' , :as => 'evaluate_users'
   get 'companies/:company_id/evaluations/:evaluation_id/evaluation_done',
       :to => 'rasocomp/evaluations#confirm_evaluation', :as => 'confirm_evaluation'
+
+  #job_offers
+  get 'companies/:company_id/job_offer/:job_offer_id/status' ,
+      :to => 'rasocomp/job_offers#update_status' , :as => 'update_offer_status'
 
 #root
   #match '/' => 'public/companies#show', :constraints => {:subdomain => /.+/}

@@ -59,36 +59,56 @@
         <div class="twelve columns">
           <table class="twelve">
             <thead>
-              <tr>
-                <th style="text-align:center"><%= t(:name) %></th>
-                <th style="text-align:center"><%= t(:email) %></th>
-                <th style="text-align:center"><%= t(:nationality) %></th>
-                <th style="text-align:center"><%= t(:telephone) %></th>
-                <th style="text-align:center"><%= t(:resume) %></th>
-                <th style="text-align:center"><%= t(:status) %></th>
-              </tr>
+            <tr>
+              <th style="text-align:center"><%= t(:name) %></th>
+              <th style="text-align:center"><%= t(:email) %></th>
+              <th style="text-align:center"><%= t(:nationality) %></th>
+              <th style="text-align:center"><%= t(:telephone) %></th>
+              <th style="text-align:center"><%= t(:resume) %></th>
+              <th style="text-align:center"><%= t(:status) %></th>
+            </tr>
             </thead>
             <tbody>
-                <% @candidates.each do |candidate| %>
+            <% @candidates.each do |candidate| %>
                 <tr>
-                  <td><%= candidate.name %></td>
+                  <td><%= link_to candidate.name , show_profile_path(@company,@offer,candidate) %></td>
                   <td style="text-align:center"><%= candidate.email %></td>
                   <td style="text-align:center"><%= candidate.nationality %></td>
                   <td style="text-align:center"><%= candidate.phone %></td>
                   <td style="text-align:center"><%= link_to t(:load) , show_candidate_path(@company, @offer, candidate) %></td>
-                  <td style="text-align:center"><%= t(:awaiting_interview) %></td>
+                  <td style="text-align:center">
+                    <% case candidate.status when 'Awaiting Interview'%>
+                        <span style="color:blue;"><%= candidate.status%></span>
+                    <% when 'Interviwed' %>
+                        <span style="color: yellow;"><%= candidate.status %></span>
+                    <% when 'Selected' %>
+                        <span style="color: green;"><%= candidate.status %></span>
+                    <% when 'Rejected' %>
+                        <span style="color: red;"><%= candidate.status %></span>
+                    <% end %>
+                  </td>
                 </tr>
-              <% end %>
+            <% end %>
             </tbody>
           </table>
         </div>
-      </div>  
+      </div>
     </div>
     <!-- END PANEL -->
   </div>
   <!-- END BOTTOM -->
 </div>
-    <p style="text-align: center"><%= link_to t(:back_job_offers) , company_job_offers_path, :class=>"button" %></p>
-  </div>
-</div>
+
+<p style="text-align: center;">
+  <%= link_to t(:back_job_offers) , company_job_offers_path(@company), :class=>"button" %>
+  <% if @offer.status == "Open" %>
+      <%= link_to "Update to Selection" , update_offer_status_path(@company,@offer,:status => "Selection"), :class=>"button" %>
+      <%= link_to "Close Job Offer" , update_offer_status_path(@company,@offer,:status => "Closed"), :class=>"button" %>
+  <% elsif @offer.status == "Selection" %>
+      <%= link_to "Close Job Offer" , update_offer_status_path(@company,@offer,:status => "Closed"), :class=>"button" %>
+  <% else %>
+      <%= link_to "Reopen Job Offer" , update_offer_status_path(@company,@offer,:status => "Open"), :class=>"button" %>
+  <% end %>
+</p>
+
 

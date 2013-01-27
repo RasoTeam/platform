@@ -24,4 +24,29 @@ class Rasocomp::CandidatesController < Rasocomp::ApplicationController
     @file_text = File.read(@candidate.file_path)
   end
 
+  def show_candidate
+    @company = Company.find(params[:company_id])
+    @offer = JobOffer.find(params[:job_offer_id])
+    @candidate = Candidate.find(params[:id])
+  end
+
+  def update_status
+    @company = Company.find(params[:company_id])
+    @offer = JobOffer.find(params[:job_offer_id])
+    @candidate = Candidate.find(params[:id])
+
+    @candidate.status = params[:status]
+
+    if @candidate.save
+      respond_to do |format|
+        format.js {}
+      end
+    else
+      flash[:error] = 'Failure Updating Status'
+      redirect_to show_profile_path(@company,@offer,@candidate)
+
+    end
+
+  end
+
 end

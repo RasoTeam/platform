@@ -59,12 +59,36 @@ class Rasocomp::JobOffersController < Rasocomp::ApplicationController
 
   end
 
+  #Updates the status of the job offer
+  def update_status
+    @company = Company.find(params[:company_id])
+    @offer = @company.job_offers.find(params[:job_offer_id])
+
+    #vai buscar o status enviado pelo link
+    @offer.status = params[:status]
+
+    if @offer.save
+      flash[:success] = "Status updated - " + params[:status]
+      redirect_to company_job_offer_path(@company , @offer)
+    else
+      flash[:error] = 'Failed updating.'
+      render company_job_offers_path(@company)
+    end
+
+  end
+
   # Destroy a job offer in a company
   def destroy
-    JobOffer.find(params[:id]).destroy
-    flash[:success] = 'Job Offer Deleted'
+    @company = Company.find(params[:company_id])
+    @offer = @company.job_offers.find(params[:id])
 
-    redirect_to company_job_offers_path
+    if JobOffer.find(params[:id]).destroy
+      flash[:success] = 'Job Offer Deleted'
+      redirect_to company_job_offers_path(@company)
+    else
+      flash[:error] = "Problem Deleting"
+      redirect_to company_job_offer_path(@company , @offer)
+    end
   end
 
 end
