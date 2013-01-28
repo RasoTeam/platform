@@ -66,6 +66,7 @@
                       <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
                     </div>
                 <% end %>
+                <%= link_to "Reload All" , company_evaluations_path(@company , :search => ""),:class=>"button expand postfix" %>
               </div> <!--  Fecha row -->
             </div> <!-- Fecha four columns -->
           </div> <!-- Fecha row -->
