@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ImportLogic
+  
+    &mdash; Documentation by YARD 0.8.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (I)</a> &raquo;
+    
+    
+    <span class="title">ImportLogic</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: ImportLogic
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">ImportLogic</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/import_logic.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Import+Model">Import Model</h2>
+
+<pre class="code ruby"><code><span class='const'>Used</span> <span class='id identifier rubyid_to'>to</span> <span class='id identifier rubyid_import'>import</span> <span class='id identifier rubyid_users'>users</span> <span class='kw'>and</span> <span class='id identifier rubyid_time'>time</span> <span class='id identifier rubyid_offs'>offs</span> <span class='id identifier rubyid_from'>from</span> <span class='id identifier rubyid_xls'>xls</span> <span class='kw'>or</span> <span class='id identifier rubyid_xlsx'>xlsx</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_sheets_from_excel_file-instance_method" title="#get_sheets_from_excel_file (instance method)">- (Object) <strong>get_sheets_from_excel_file</strong>(fullPath) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the sheets on the target Excel File.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_default_data_from_sheet-instance_method" title="#read_default_data_from_sheet (instance method)">- (Object) <strong>read_default_data_from_sheet</strong>(fullPath, sheet_name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the Data from the target Excel File.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="get_sheets_from_excel_file-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_sheets_from_excel_file</strong>(fullPath) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the sheets on the target Excel File</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/import_logic.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_sheets_from_excel_file'>get_sheets_from_excel_file</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>
+
+	<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>iconv</span><span class='tstring_end'>'</span></span>
+	
+	<span class='id identifier rubyid_sheets_array'>sheets_array</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+	<span class='kw'>case</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>
+
+		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.ods</span><span class='tstring_end'>&quot;</span></span>
+    		<span class='id identifier rubyid_book'>book</span> <span class='op'>=</span> <span class='const'>Openoffice</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>      <span class='comment'># creates an Openoffice Spreadsheet instance
+</span>		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.xls</span><span class='tstring_end'>&quot;</span></span>
+		    <span class='id identifier rubyid_book'>book</span> <span class='op'>=</span> <span class='const'>Excel</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>           <span class='comment'># creates an Excel Spreadsheet instance
+</span>		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.xlsx</span><span class='tstring_end'>&quot;</span></span>
+		    <span class='id identifier rubyid_book'>book</span> <span class='op'>=</span> <span class='const'>Excelx</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>         <span class='comment'># creates an Excel Spreadsheet instance for Excel .xlsx files
+</span>		<span class='kw'>else</span>
+			<span class='id identifier rubyid_sheets_array'>sheets_array</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>
+			<span class='kw'>return</span> <span class='id identifier rubyid_sheets_array'>sheets_array</span>
+   	<span class='kw'>end</span>
+
+	<span class='id identifier rubyid_sheetsNum'>sheetsNum</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_sheets'>sheets</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
+	<span class='comment'>#Iterate trough the excel worksheets
+</span>	<span class='gvar'>$i</span><span class='op'>=</span><span class='int'>0</span>
+	<span class='kw'>while</span> <span class='gvar'>$i</span><span class='op'>&lt;</span><span class='id identifier rubyid_sheetsNum'>sheetsNum</span>
+
+		<span class='id identifier rubyid_sheets_array'>sheets_array</span><span class='lbracket'>[</span><span class='gvar'>$i</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_sheets'>sheets</span><span class='lbracket'>[</span><span class='gvar'>$i</span><span class='rbracket'>]</span>
+
+	<span class='gvar'>$i</span> <span class='op'>+=</span> <span class='int'>1</span>
+	<span class='kw'>end</span>
+
+<span class='kw'>return</span> <span class='id identifier rubyid_sheets_array'>sheets_array</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_default_data_from_sheet-instance_method">
+  
+    - (<tt>Object</tt>) <strong>read_default_data_from_sheet</strong>(fullPath, sheet_name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the Data from the target Excel File</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/import_logic.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_default_data_from_sheet'>read_default_data_from_sheet</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='comma'>,</span> <span class='id identifier rubyid_sheet_name'>sheet_name</span><span class='rparen'>)</span>
+
+	<span class='id identifier rubyid_line_data'>line_data</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+	<span class='id identifier rubyid_sheet_data'>sheet_data</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_line_data'>line_data</span><span class='rparen'>)</span>
+
+	<span class='kw'>case</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>
+
+		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.xls</span><span class='tstring_end'>&quot;</span></span>
+		    <span class='id identifier rubyid_book'>book</span> <span class='op'>=</span> <span class='const'>Excel</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>           <span class='comment'># creates an Excel Spreadsheet instance
+</span>		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.xlsx</span><span class='tstring_end'>&quot;</span></span>
+		    <span class='id identifier rubyid_book'>book</span> <span class='op'>=</span> <span class='const'>Excelx</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fullPath'>fullPath</span><span class='rparen'>)</span>         <span class='comment'># creates an Excel Spreadsheet instance for Excel .xlsx files
+</span>		<span class='kw'>else</span>
+			<span class='kw'>return</span> <span class='id identifier rubyid_sheet_data'>sheet_data</span>
+			
+   	<span class='kw'>end</span>
+
+	<span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_default_sheet'>default_sheet</span> <span class='op'>=</span> <span class='id identifier rubyid_sheet_name'>sheet_name</span>
+
+	<span class='comment'>#Getting the sheet dimensions
+</span>	<span class='id identifier rubyid_fst_row'>fst_row</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_first_row'>first_row</span>
+	<span class='id identifier rubyid_lst_row'>lst_row</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_last_row'>last_row</span>
+	<span class='id identifier rubyid_fst_col'>fst_col</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_first_column'>first_column</span>
+	<span class='id identifier rubyid_lst_col'>lst_col</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_last_column'>last_column</span>
+
+
+	<span class='gvar'>$row_count</span> <span class='op'>=</span> <span class='int'>0</span>
+	<span class='gvar'>$k</span> <span class='op'>=</span> <span class='id identifier rubyid_fst_row'>fst_row</span>
+	<span class='kw'>while</span> <span class='gvar'>$k</span><span class='op'>&lt;=</span><span class='id identifier rubyid_lst_row'>lst_row</span>
+
+			<span class='id identifier rubyid_line_data'>line_data</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+			<span class='gvar'>$column_count</span> <span class='op'>=</span> <span class='int'>0</span>
+			<span class='gvar'>$z</span> <span class='op'>=</span> <span class='id identifier rubyid_fst_col'>fst_col</span>
+			<span class='kw'>while</span> <span class='gvar'>$z</span><span class='op'>&lt;=</span><span class='id identifier rubyid_lst_col'>lst_col</span>
+			
+				<span class='comment'>#storing the data
+</span>				<span class='id identifier rubyid_line_data'>line_data</span><span class='lbracket'>[</span><span class='gvar'>$column_count</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_cell'>cell</span><span class='lparen'>(</span><span class='gvar'>$k</span><span class='comma'>,</span><span class='gvar'>$z</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+			<span class='gvar'>$column_count</span> <span class='op'>+=</span> <span class='int'>1</span>
+			<span class='gvar'>$z</span> <span class='op'>+=</span> <span class='int'>1</span>
+			<span class='kw'>end</span>
+
+			<span class='id identifier rubyid_sheet_data'>sheet_data</span><span class='lbracket'>[</span><span class='gvar'>$row_count</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_line_data'>line_data</span>
+
+	<span class='gvar'>$row_count</span> <span class='op'>+=</span> <span class='int'>1</span>
+	<span class='gvar'>$k</span> <span class='op'>+=</span> <span class='int'>1</span>
+	<span class='kw'>end</span>
+
+<span class='kw'>return</span> <span class='id identifier rubyid_sheet_data'>sheet_data</span>	
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jan 29 18:16:09 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.3 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
