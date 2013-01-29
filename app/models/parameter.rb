@@ -21,4 +21,7 @@ class Parameter < ActiveRecord::Base
 
   has_many :evaluations , :through => :evaluation_user_parameters
   has_many :evaluation_user_parameters
+
+  validates :name , :presence => :true,  :length => { :maximum => 100 }
+  validates :description , :presence => :true , :length => { :maximum => 200 }
 end

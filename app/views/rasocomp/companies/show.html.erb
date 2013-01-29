@@ -42,7 +42,7 @@
   						<tbody>
 		            <tr>
 		            	<td>
-		            		<span class="label radius">Address</span>
+		            		<span class="label radius"><%= t(:address) %></span>
 		            	</td>
 		            	<td> 
 		            		<%= @company.address %>
@@ -58,7 +58,7 @@
         				</tr>
         				<tr>
         					<td>
-        						<span class="label radius">Employees</span> 
+        						<span class="label radius"><%= t(:employees)%></span> 
         					</td> 
         					<td> 
         						<%= @company.users.length-1 %>
@@ -81,4 +81,3 @@
   		</div>
 	</div>
 </div>
-<!-- <%= link_to "Manage Job Offers" , company_job_offers_path(params[:id]) %> -->

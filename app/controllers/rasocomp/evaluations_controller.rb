@@ -2,10 +2,25 @@
 #  Controller to manage Evaluations
 class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
 
+  @@order = "ASC"
+  @@status = "ALL"
+  @@search = ""
+
   # Lists all evaluations programmes in a company
   def index
     @company = Company.find(params[:company_id])
-    @evaluations = @company.evaluations
+
+    #Testa o tipo de utilizador que é, para saber quais as avaliacoes que pode carregar
+    if current_user(@company.slug).role == 1
+       @evaluations = evaluations_hr_manager(@company,params[:status],params[:order],params[:search]).paginate(:page => params[:page], :per_page => 15)
+    else
+      @evaluations = evaluations_colaborator(@company,params[:status],params[:order],params[:search]).paginate(:page => params[:page], :per_page => 15)
+    end
+
+    respond_to do |format|
+      format.js {@evaluations}
+      format.html{@evaluations}
+    end
   end
 
   # New evaluation programme in a company
@@ -110,6 +125,88 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
       flash[:error] = "Problem closing Evaluation, please try again."
       redirect_to company_evaluations_path(@company)
     end
+
+  end
+
+  #Deletes an Evaluation
+  def destroy
+    @evaluation = Evaluation.find(params[:id])
+    @company = Company.find(params[:company_id])
+
+    if @evaluation.delete
+      flash[:success] = "Evaluation has been deleted."
+      redirect_to company_evaluations_path(@company)
+    else
+      flash[:error] = "Problem deleting Evaluation, please try again."
+      redirect_to company_evaluations_path(@company)
+    end
+  end
+
+  ######################################################################################################################
+  #############          METHODS
+  ######################################################################################################################
+
+  #Loads the evaluations of the HR Manager
+  def evaluations_hr_manager(company,status,order,search_string)
+
+    if search_string != nil
+      @@search = search_string
+    end
+    if status != nil
+      @@status = status
+    end
+    if order != nil
+      @@order = order
+    end
+
+    #Aqui é feita a escolha da query a usar dependendo dos parametros passados
+    if @@status != "ALL" #Se não for TUDO, há que respeitar o Status
+      if @@search != ""
+        evaluations = company.evaluations.where("status = ?" , @@status).where("description LIKE '%" + @@search + "%'").order("description " + @@order )
+      else
+        evaluations = company.evaluations.where("status = ?" , @@status).order("description " + @@order )
+      end
+    else                 #Se for TUDO, vem tudo, sem respeito por status
+      if @@search != ""
+        evaluations = company.evaluations.where("description LIKE '%" + @@search + "%'").order("description " + @@order )
+      else
+        evaluations = company.evaluations.order("description " +  @@order )
+      end
+    end
+
+    return evaluations
+
+  end
+
+  #Loads the evaluations of one particular colaborator
+  def evaluations_colaborator(company,status,order,search_string)
+
+    if search_string != nil
+      @@search = search_string
+    end
+    if status != nil
+      @@status = status
+    end
+    if order != nil
+      @@order = order
+    end
+
+    #Aqui é feita a escolha da query a usar dependendo dos parametros passados
+    if @@status != "ALL" #Se não for TUDO, há que respeitar o Status
+      if @@search != ""
+        evaluations = company.evaluations.where("user_id = ?" , current_user(company.slug).id.to_s).where("user_id = ?", current_user(@company.slug).id.to_s)
+      else
+        evaluations = company.evaluations.where("user_id = ?" , current_user(company.slug).id.to_s).where("status = ?" , @@status).order("description " + @@order )
+      end
+    else                 #Se for TUDO, vem tudo, sem respeito por status
+      if @@search != ""
+        evaluations = company.evaluations.where("user_id = ?", current_user(company.slug).id.to_s).where("description LIKE '%" + @@search + "%'").order("description " + @@order )
+      else
+        evaluations = company.evaluations.where("user_id = ?", current_user(company.slug).id.to_s).order("description " + @@order )
+      end
+    end
+
+    return evaluations
 
   end
 

@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    <div class="seven columns">
+    <div class="twelve columns">
       <h3><%= @company.name %> - <%= @evaluation.description %></h3>
     </div>
 </div>
@@ -18,44 +18,62 @@
 <div class="row">
   <div class="twelve columns">
       <div class="panel">
-        <table class="twelve tableJobs">
-        <tbody>
-          <tr>
-            <td><span class="label radius">Status</span></td>
-            <td><%= @evaluation.status %></td>
-          </tr>
-          <tr>
-            <td><span class="label radius">Begins</span></td>
-            <td><%= @evaluation.period_begin %></td>
-          </tr>
-          <tr>
-            <td><span class="label radius">Ends</span></td>
-            <td><%= @evaluation.period_end %></td>
-          </tr>
-          <tr>
-            <td><span class="label radius">Evaluator</span></td>
-            <td><%= link_to(@evaluator.name,company_user_path(@company,@evaluator)) %></td>
-          </tr>
-          <tr>
-            <td><span class="label radius">Evaluatees</span></td>
-            <td><% @evaluatees.each do |ev|%><%= ev.name + "    "%><% end %></td>
-          </tr>
-          <tr>
-            <td><span class="label radius">Evaluation Parameters</span></td>
-            <td>
-              <% @eval_user_params.each do |param|%>
-                  <p><%= param.name  %></p>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
-        <p style="text-align: left;">
-              <%= link_to "Evaluate" , evaluate_users_path(@company,@evaluation.id),:class=>"button" %>
-        </p>
-      <% end %>
+        <!-- <div class="row">
+          <div class="eleven centered"> -->
+            <table class="twelve tableJobs">
+            <tbody>
+              <tr>
+                <td><span class="label radius">Status</span></td>
+                <td><%= @evaluation.status %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Begins</span></td>
+                <td><%= @evaluation.period_begin %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Ends</span></td>
+                <td><%= @evaluation.period_end %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Evaluator</span></td>
+                <td><%= link_to(@evaluator.name,company_user_path(@company,@evaluator)) %></td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Evaluatees</span></td>
+                <td>
+                  <div class="evaluatees">
+                    <% @evaluatees.each do |ev|%>
+                      <p><%= ev.name %></p>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="label radius">Evaluation Parameters</span></td>
+                <td>
+                  <div class="evaluatees">
+                    <% @eval_user_params.each do |param|%>
+                      <p><%= param.name  %></p>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      <!--   </div>
+      </div> -->
+       <div class="row">
+         <div class="twelve columns">
+           <p style="text-align: center;">
+             <% if (@evaluation.status == "Active") && (@evaluator.id == current_user(@company.slug).id) %>
+                 <%= link_to "Evaluate" , evaluate_users_path(@company,@evaluation.id),:class=>"button" %>
+             <% end %>
+             <% if (current_user(@company.slug).role == 1) && (@evaluation.status == 'Active') %>
+                 <%= link_to "Delete" , company_evaluation_path(@company,@evaluation.id),:class=>"button", :method => :delete %>
+             <% end %>
+           </p>
+         </div>
+      </div>
     </div>
   </div>
 </div>

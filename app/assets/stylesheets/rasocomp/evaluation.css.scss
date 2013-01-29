@@ -4,14 +4,65 @@
 
 .evaluations
 {
-	.employees
+	.evaluatees, .employees
 	{
-		margin-top: 7px;
-		border: 1px solid #ccc; 
 		width: 100%; 
 		height: 100px; 
 		overflow-y: scroll;
 		background-color: white;
+		padding: 5px;
+		border: 1px solid #ccc; 
+		
+		p
+		{
+			margin-bottom: 0px;
+			padding: 2px;
+		}
+	}
+
+	.employees
+	{
+		margin-top: 7px;
+		
+	}
+
+	.evaluation
+	{
+		width: 100%;
+		overflow-y: scroll;
+		background-color: white;
+		padding: 5px;
+		max-height: 200px;
+		border: 0px;
+
+		form
+		{
+			text-align: right;
+			display: inline;
+
+			select
+			{
+				width: 40%;
+			}
+		}
+
+		table
+		{
+			margin-top: 0px;
+
+			td
+			{
+				padding: 2px;
+			}
+		}
+
+		.confirmationEval
+		{
+			padding-left: 20px;
+    		background: transparent url('check.png') no-repeat;
+    		background-size: 15px 15px;
+    		background-position: right center;
+		}
 	}
 
 	table
@@ -24,4 +75,6 @@
 		width: 70%;
 		margin: 0 auto;
 	}
+
+	
 }

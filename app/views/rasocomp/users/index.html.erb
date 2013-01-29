@@ -15,10 +15,10 @@
 	</div>
 
 <div class="row">
-		<div class="four columns">
+		<div class="two columns">
 			<h3><%= t(:employees) %></h3>
 		</div>
-		<div class="eight columns ">
+		<div class="ten columns ">
 			<ul class="button-group radius right">
 				<li><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
 				<li><a class="radius button add_user" id="update_credits"> <%= t(:edit_user_days) %></a></li>
@@ -30,14 +30,15 @@
 
 <div id="credits_dialog" class="reveal-modal small">
     <%= form_tag update_credits_to_all_path(@company), :method => :put do %>
-		<%= label_tag(:time_off_days, "Number of credits") %>
+		<%= label_tag(:time_off_days, t(:number_credits)) %>
 		<%= number_field_tag(:time_off_days,nil, required:true) %>
         
 		<p style="text-align: center">
-		<%= submit_tag('Confirm', :class => "button") %>
+		<%= submit_tag( t(:submit), :class => "button") %>
 		</p>
   	<% end %>
 </div>
+
 
 <div class="row">
 	<div class="twelve columns">
@@ -47,11 +48,11 @@
 					<table class="twelve">
 						<thead>
 							<tr>
-								<th style="text-align: center">Name</th>
-								<th style="text-align: center">E-Mail</th>
-								<th style="text-align: center">Role</th>
-								<th style="text-align: center">Status</th>
-								<th style="text-align: center">Actions</th>
+								<th style="text-align: center"><%= t(:name) %></th>
+								<th style="text-align: center"><%= t(:email) %></th>
+								<th style="text-align: center"><%= t(:role) %></th>
+								<th style="text-align: center"><%= t(:status) %></th>
+								<th style="text-align: center"><%= t(:actions) %></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,22 +80,14 @@
 							      	<% end %>
 							      	<td style="text-align: center">
 										<% if u.state == STATE[:active] %>
-											<!--<%= link_to t(:activate), "#"%> -->
 											<%= link_to t(:deactivate), user_deactivate_account_path(u.company,u), :method=>:put, :class=>"alert label radius" %> 
 										<% elsif u.state == STATE[:inactive] %>
-											<!--<%= link_to t(:deactivate), "#"%> -->
 											<%= link_to t(:activate), user_activate_account_path(u.company,u), :method=>:put, :class=>"label radius" %>
 										<% elsif u.state == STATE[:unchecked] %>
-											<!--<%= link_to t(:resend_email), "#"%>-->
 											<%= link_to t(:resend_email), user_resend_verification_email_path(u.company,u), :method=>:put, :class=>"label radius" %>
 										<% end %>
 
 									</td>
-
-
-							      	<!-- <td>
-							      		<form class="custom" style="margin:0;"><label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span></label></form>
-							      	</td> -->
 							    </tr>
 							<% end %>
 
@@ -117,7 +110,7 @@
 			    				<%= text_field_tag :search, params[:search] %>
 			  			</div>
 			  			<div class="four mobile-one columns">
-			   				 	<%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+			   				 	<%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
 			  			</div>
 						<% end %>
 					</div>

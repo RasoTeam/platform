@@ -8,7 +8,7 @@
 
 <div class="row">
   <div class="twelve columns">
-    <h2>Job Offers from <%= @company.name %></h2>
+    <h2><%= t(:job_offers_from) %> <%= @company.name %></h2>
   
   <div class="row">
     <div class="eight columns">
@@ -30,7 +30,7 @@
                 <%= text_field_tag :search, params[:search] %>
               </div>
               <div class="four mobile-one columns">
-                <%= submit_tag "Search", :name => nil, :class=>"button expand postfix" %>
+                <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
               </div>
           <% end %>
         </div>
@@ -39,10 +39,10 @@
       <table class="twelve publicJobsTable">
         <thead>
           <tr>
-            <th style="text-align:center">Job Offer</th>
-            <th style="text-align:center">Date</th>
-            <th style="text-align:center">Status</th>
-            <th style="text-align:center">Actions</th>
+            <th style="text-align:center"><%= t(:job_offer) %></th>
+            <th style="text-align:center"><%= t(:date_t) %></th>
+            <th style="text-align:center"><%= t(:status) %></th>
+            <th style="text-align:center"><%= t(:actions) %></th>
           </tr>
         </thead>
         <tbody>
@@ -51,13 +51,17 @@
               <td><%= link_to offer.job_name , new_apply_path(@company,offer)%></td>
               <td style="text-align:center"><%= offer.created_at %></td>
               <td style="text-align:center">
-                <% if offer.status %>
-                  <span style="color:green;"><%= t(:active)%></span>
-                  <% else %>
-                  <span style="color:red;"><%=  t(:closed) %></span>
-                  <% end %>
-                </td>
-              <td style="text-align:center"><%= link_to 'Apply for this Job' , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
+                <% if offer.status == "Open" %>
+                    <span style="color:green;"><%= t(:active)%></span>
+                <% elsif offer.status == "Closed" %>
+                    <span style="color:red;"><%=  t(:closed) %></span>
+                <% elsif offer.status == "Selection" %>
+                    <span style="color: orange;"><%= "Selection" %></span>
+                <% end %>
+              </td>
+              <% if !(offer.status == "Closed") %>
+                  <td style="text-align:center"><%= link_to t(:apply_job) , new_apply_path(@company,offer), :class=>"radius button tiny" %></td>
+              <% end %>
             </tr>
         <% end %>
         </tbody>

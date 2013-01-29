@@ -18,8 +18,9 @@
       <div class="panel">
           <div class="row">
           <div class="eight columns">
-            <h3> Edit User Profile  </h3>
+            <h3><%= t(:edit_user) %> </h3>
           </div>
+
           <% if current_user(@company.slug) == @user %>
             <div class="four columns">
               <%= link_to t(:change_password), edit_password_company_user_path(@company,@user), :class=>"radius button right add_user" %>
@@ -30,7 +31,7 @@
 
             <%= form_for [@company, @user], :html => { :multipart => true } do |f| %>
 
-              <% if @user.errors.any? %> <span class=" radius label">Error Messages</span>
+              <% if @user.errors.any? %> <span class=" radius label"><%= t(:error_messages) %> </span>
                 <hr/>
               <% end %>
               <% @user.errors.full_messages.each do |msg| %>
@@ -53,7 +54,7 @@
               <% end %>
 
               <p style="text-align: center">
-                <%= f.submit 'Save!', :class => "button" %>
+                <%= f.submit t(:save), :class => "button" %>
               </p>
 
             <% end %>

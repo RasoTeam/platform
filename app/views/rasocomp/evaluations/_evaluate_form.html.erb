@@ -1,5 +1,20 @@
-<p>Nome : <%= evaluatee.name %></p>
-
-<% evaluation_parameters.each do |evp| %>
-        <%= render 'evaluate_parameter' , :evaluate_parameter => evp  %>
-<% end %>
+<tr>
+	<td>
+		<span class="radius label"><%= evaluatee.name %></span>
+	</td>
+</tr>
+<tr>
+	<td style="border-bottom: 1px solid #e6e6e6">
+		<div class="evaluation">
+			<table class="twelve">
+				<tbody>
+					<% evaluation_parameters.each do |evp| %>
+						<tr>
+							<%= render 'evaluate_parameter' , :evaluate_parameter => evp  %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</td>
+</tr>
