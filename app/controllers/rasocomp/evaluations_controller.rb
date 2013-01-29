@@ -112,6 +112,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     @eval_users_params = @evaluation.evaluation_user_parameters
   end
 
+  # Confirm an evaluation
   def confirm_evaluation
     @company = Company.find(params[:company_id])
     @evaluation = Evaluation.find(params[:evaluation_id])
