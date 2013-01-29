@@ -15,13 +15,13 @@
     <h2><%= t(:evaluations) %></h2>
     
     <div class="row">
-      <div class="four columns">
+      <div class="three columns">
         <dl class="tabs pill">
           <dd id="linkAsc" class="active"><%= link_to 'A-Z' , company_evaluations_path(@company, :order => "ASC"), :remote => :true ,:id => "asc" %></dd>
           <dd id="linkDesc"><%= link_to 'Z-A' , company_evaluations_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
         </dl>
       </div>  <!-- Fecha four columns -->
-      <div class="eight columns">
+      <div class="five columns">
         <dl class="sub-nav">
             <dt>Filter:</dt>
               <dd id="linkAll" class="active"><%= link_to 'All' , company_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
@@ -29,6 +29,9 @@
               <dd id="linkClosed"><%= link_to 'Closed' , company_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
       </div> <!-- Fecha eight columns -->
+      <div class="four columns">
+        <%= link_to "My Evaluations", personal_evaluations_path( @company),:class=>"radius button right" %>
+      </div>
     </div> <!-- Fecha row -->
   </div> <!-- Fecha twelve columns -->
 </div> <!-- Fecha row -->
@@ -49,7 +52,7 @@
             </thead>
             <!-- Inicio do corpo da tabela -->
             <tbody id="evalTable">
-                <%= render 'evaluation_table' , :evaluations => @evaluations %>
+                <%= render 'evaluation_table' , :evaluations => @evaluations , :company => @company%>
             </tbody>
             <!--Fim do corpo da tabela -->
           </table>

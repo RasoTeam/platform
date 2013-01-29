@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company, current_user(@company.slug)) %></li>
+        <li class="current">
+          <a href="#"><%= t(:evaluations) %></a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+
+    <h2><%= t(:evaluations) %></h2>
+
+    <div class="row">
+      <div class="three columns">
+        <dl class="tabs pill">
+          <dd id="linkAsc" class="active"><%= link_to 'A-Z' , personal_evaluations_path(@company, :order => "ASC"), :remote => :true ,:id => "asc" %></dd>
+          <dd id="linkDesc"><%= link_to 'Z-A' , personal_evaluations_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
+        </dl>
+      </div>  <!-- Fecha four columns -->
+      <div class="five columns">
+        <dl class="sub-nav">
+            <dt>Filter:</dt>
+              <dd id="linkAll" class="active"><%= link_to 'All' , personal_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
+              <dd id="linkActive"><%= link_to 'Active' , personal_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
+              <dd id="linkClosed"><%= link_to 'Closed' , personal_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
+        </dl>
+      </div> <!-- Fecha eight columns -->
+      <div class="four columns">
+        <%= link_to 'Evaluate Colaborators', company_evaluations_path(@company),:class=>"radius button right" %>
+      </div>
+    </div> <!-- Fecha row -->
+  </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->
+<div class="row">
+  <div class="twelve columns">
+    <div class="panel">
+      <div class="row">
+        <div class="twelve columns">
+          <table class="twelve">
+            <thead>
+              <tr>
+                <th style="text-align:center">Evaluation</th>
+                <th style="text-align:center">Begin Date</th>
+                <th style="text-align:center">End Date</th>
+                <th style="text-align:center">Evaluator</th>
+                <th style="text-align:center">Status</th>
+              </tr>
+            </thead>
+            <!-- Inicio do corpo da tabela -->
+            <tbody id="personalEvalTable">
+                <%= render 'my_evaluations_table' , :evaluations => @evaluations, :company => @company  %>
+            </tbody>
+            <!--Fim do corpo da tabela -->
+          </table>
+          <div class="row">
+            <div class="eight columns">
+            </div>
+            <div class="four columns">
+              <div class="row collapse">
+                <%= form_tag personal_evaluations_path(@company), :method => 'get' do %>
+                    <div class="eight mobile-three columns">
+                      <%= text_field_tag :search %>
+                    </div>
+                    <div class="four mobile-one columns">
+                      <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
+                    </div>
+                <% end %>
+                <%= link_to "Reload All" , personal_evaluations_path(@company , :search => ""),:class=>"button expand postfix" %>
+              </div> <!--  Fecha row -->
+            </div> <!-- Fecha four columns -->
+          </div> <!-- Fecha row -->
+        </div> <!-- Fecha twelve columns -->
+      </div> <!-- Fecha row -->
+    </div> <!-- Fecha panel -->
+  </div> <!-- Fecha twelve columns -->
+</div> <!-- Fecha row -->
+
+
+<!-- Script JQuery para filtros ASC DESC -->
+<script>
+    $('#asc').click(function(event) //Quando se clica no link A-Z
+    {
+        $('#linkAsc').addClass('active');
+        $('#linkDesc').removeClass('active');
+    }
+    );
+
+    $('#desc').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkDesc').addClass('active');
+        $('#linkAsc').removeClass('active');
+    }
+    );
+</script>
+<!-- Fim de script para ASC DESC -->
+
+<!-- Script JQuery para filtros ALL Active Closed -->
+<script>
+    $('#all').click(function(event) //Quando se clica no link A-Z
+    {
+        $('#linkAll').addClass('active');
+        $('#linkActive').removeClass('active');
+        $('#linkClosed').removeClass('active')
+    }
+    );
+
+    $('#active').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkActive').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkClosed').removeClass('active')
+    }
+    );
+
+    $('#closed').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkClosed').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkActive').removeClass('active')
+    }
+    );
+</script>
+<!-- Fim de script para ASC DESC -->
