@@ -1,0 +1,43 @@
+
+<% offers.each do |offer| %>
+    <tr>
+      <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
+      <td style="text-align:center"><%= offer.created_at %></td>
+      <td style="text-align:center"><%= offer.candidates.count %></td>
+      <td style="text-align:center" >
+        <% if offer.status == "Open" %>
+            <span style="color:green;"><%= t(:active)%></span>
+        <% elsif offer.status == "Closed" %>
+            <span style="color:red;"><%=  t(:closed) %></span>
+        <% elsif offer.status == "Selection" %>
+            <span style="color: orange;"><%= "Selection" %></span>
+        <% end %>
+      </td>
+      <td style="text-align:center">
+        <% @urlaux = "#{new_apply_url(company.id, offer.id)}" %>
+        <% @urlredirect = "#{company_job_offers_url(company.id)}" %>
+        <ul class="jobs_links">
+          <li>
+            <%= link_to t(:update) , edit_company_job_offer_path(company,offer), :class=>"radius label"%>
+          </li>
+          <li>
+            <%= link_to t(:delete), [company,offer] , :method => :delete , :confirm => t(:are_you_sure), :class=>"alert radius label" %>
+          </li>
+          <li>
+            <img src="<%=asset_path "share.png"%>" class="facebook_button" onclick='postToFeed("<%= company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
+                    "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' />
+          </li>
+          <li>
+            <a href="https://twitter.com/share" class="twitter-share-button"
+               data-via="RasoHR"
+               data-text="Job Offer: <%= offer.job_name %>"
+               data-url= "<%= @urlaux %>"
+               data-lang="en"
+               data-count="none">Tweet</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+<% end %>
+
+

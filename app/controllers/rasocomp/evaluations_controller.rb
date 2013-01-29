@@ -163,18 +163,14 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     if @@status != "ALL" #Se não for TUDO, há que respeitar o Status
       if @@search != ""
         evaluations = company.evaluations.where("status = ?" , @@status).where("description LIKE '%" + @@search + "%'").order("description " + @@order )
-        puts "PASSEI 1"
       else
         evaluations = company.evaluations.where("status = ?" , @@status).order("description " + @@order )
-        puts "PASSEI 2"
       end
     else                 #Se for TUDO, vem tudo, sem respeito por status
       if @@search != ""
         evaluations = company.evaluations.where("description LIKE '%" + @@search + "%'").order("description " + @@order )
-        puts "PASSEI 3"
       else
         evaluations = company.evaluations.order("description " +  @@order )
-        puts "PASSEI 4"
       end
     end
 

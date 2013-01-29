@@ -18,43 +18,17 @@
     <div class="row">
       <div class="three columns">
         <dl class="tabs pill">
-          <% if params[:order] == "DESC" %>
-              <dd><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
-              <dd class="active"><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
-          <% else %>
-              <dd class="active"><%= link_to "A-Z", company_job_offers_path(@company,params.merge({order: "ASC"})) %> </dd>
-              <dd><%= link_to "Z-A", company_job_offers_path(@company,params.merge({order: "DESC"})  )%> </dd>
-          <% end %>
+          <dd id="linkAsc" class="active"><%= link_to 'A-Z' , company_job_offers_path(@company, :order => "ASC"), :remote => :true ,:id => "asc" %></dd>
+          <dd id="linkDesc"><%= link_to 'Z-A' , company_job_offers_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
         </dl>
       </div>
       <div class="five columns">
         <dl class="sub-nav">
-            <dt><%= t(:filter) %></dt>
-            <% if(params[:search].to_s != "Open" && params[:search].to_s != "Selection" && params[:search].to_s != "Closed") %>
-              <dd class="active">
-                  <%= link_to t(:all), company_job_offers_path(@company) %></dd>
-              <dd><%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd><%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd><%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
-            <% elsif(params[:search].to_s == "Open")%>
-              <dd><%= link_to t(:all), company_job_offers_path(@company) %></dd>
-              <dd class="active">
-                  <%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd><%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd><%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
-            <% elsif params[:search].to_s == "Selection" %>
-              <dd><%= link_to t(:all), company_job_offers_path(@company) %></dd>
-              <dd><%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd class="active">
-                  <%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd><%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
-            <% elsif params[:search].to_s == "Closed" %>
-              <dd><%= link_to t(:all), company_job_offers_path(@company) %></dd>
-              <dd><%= link_to t(:open), company_job_offers_path(@company,params.merge({search: "Open"})) %></dd>
-              <dd><%= link_to t(:selection), company_job_offers_path(@company,params.merge({search: "Selection"})) %></dd>
-              <dd class="active">
-                  <%= link_to t(:closed), company_job_offers_path(@company,params.merge({search: "Closed"})) %></dd>
-            <% end %>
+          <dt><%= t(:filter) %></dt>
+          <dd id="linkAll" class="active"><%= link_to 'All' , company_job_offers_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
+          <dd id="linkOpen"><%= link_to 'Open' , company_job_offers_path(@company, :status => "Open"), :remote => :true ,:id => "open" %></dd>
+          <dd id="linkSelection"><%= link_to 'Selection' , company_job_offers_path(@company, :status => "Selection"), :remote => :true ,:id => "selection" %></dd>
+          <dd id="linkClosed"><%= link_to 'Closed' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
       </div>
       <div class="four columns">
@@ -79,47 +53,8 @@
                   <th style="text-align:center"><%= t(:actions) %></th>
                 </tr>
               </thead>
-              <tbody>
-                <% @offers.each do |offer| %>
-                    <tr>
-                      <td><%= link_to offer.job_name , company_job_offer_path(@company,offer) %></td>
-                      <td style="text-align:center"><%= offer.created_at %></td>
-                      <td style="text-align:center"><%= offer.candidates.count %></td>
-                      <td style="text-align:center" >
-                        <% if offer.status == "Open" %>
-                            <span style="color:green;"><%= t(:active)%></span>
-                        <% elsif offer.status == "Closed" %>
-                            <span style="color:red;"><%=  t(:closed) %></span>
-                        <% elsif offer.status == "Selection" %>
-                            <span style="color: orange;"><%= "Selection" %></span>
-                        <% end %>
-                      </td>
-                      <td style="text-align:center">
-                           <% @urlaux = "#{new_apply_url(@company, offer.id)}" %>
-                           <% @urlredirect = "#{company_job_offers_url(@company)}" %>
-                           <ul class="jobs_links">
-                            <li>
-                              <%= link_to t(:update) , edit_company_job_offer_path(@company,offer), :class=>"radius label"%>
-                            </li>
-                            <li>
-                              <%= link_to t(:delete), [@company,offer] , :method => :delete , :confirm => t(:are_you_sure), :class=>"alert radius label" %>
-                            </li>
-                            <li>
-                              <img src="<%=asset_path "share.png"%>" class="facebook_button" onclick='postToFeed("<%= @company.id %>", "<%=offer.id %>","<%=offer.job_name %>",
-                                "<%=offer.description %>", "<%= @urlaux%>", "<%= @urlredirect%>");return false;' />
-                            </li>
-                                <li>
-                                <a href="https://twitter.com/share" class="twitter-share-button"
-                                data-via="RasoHR"
-                                data-text="Job Offer: <%= offer.job_name %>"
-                                data-url= "<%= @urlaux %>"
-                                data-lang="en"
-                                data-count="none">Tweet</a>
-                              </li>
-                             </ul>
-                      </td>
-                    </tr>
-                <% end %>
+              <tbody id="jobOffersTable">
+                <%= render 'job_offers_table' , :company => @company, :offers => @offers %>
               </tbody>
             </table>
             <%= will_paginate @offers %>
@@ -136,6 +71,7 @@
                           <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
                         </div>
                     <% end %>
+                    <%= link_to "Reload All" , company_job_offers_path(@company , :search => ""),:class=>"button expand postfix" %>
                   </div>
                 </div>
               </div>
@@ -154,48 +90,112 @@
   </div>
 </div>
 
+<!-- Script JQuery para filtros ASC DESC -->
+<script>
+    $('#asc').click(function(event) //Quando se clica no link A-Z
+    {
+        $('#linkAsc').addClass('active');
+        $('#linkDesc').removeClass('active');
+    }
+    );
+
+    $('#desc').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkDesc').addClass('active');
+        $('#linkAsc').removeClass('active');
+    }
+    );
+</script>
+<!-- Fim de script para ASC DESC -->
+
+<!-- Script JQuery para filtros ALL Active Closed -->
+<script>
+    $('#all').click(function(event) //Quando se clica no link A-Z
+    {
+        $('#linkAll').addClass('active');
+        $('#linkOpen').removeClass('active');
+        $('#linkSelection').removeClass('active');
+        $('#linkClosed').removeClass('active');
+    }
+    );
+
+    $('#open').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkOpen').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkSelection').removeClass('active');
+        $('#linkClosed').removeClass('active') ;
+    }
+    );
+
+    $('#selection').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkSelection').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkSelection').removeClass('active');
+        $('#linkClosed').removeClass('active');
+    }
+    );
+
+    $('#closed').click(function(event) //Quando se clica em Z-A
+    {
+        $('#linkClosed').addClass('active');
+        $('#linkAll').removeClass('active');
+        $('#linkOpen').removeClass('active');
+        $('#linkSelection').removeClass('active');
+    }
+    );
+</script>
+<!-- Fim de script para ASC DESC -->
+
+<!-- Inicio de script para aceder a APIs de Facebook e Twitter-->
 <script src='https://connect.facebook.net/en_US/all.js'></script>
 
 <script>
-        FB.init({appId: "302887353149276", status: true, cookie: true});
+    FB.init({appId: "302887353149276", status: true, cookie: true});
 
-        function postToFeed(companyid, offerid, nome, desc, link, red_u) {
+    function postToFeed(companyid, offerid, nome, desc, link, red_u) {
 
-            var red_uri = red_u;
-            var l = link;
-            var pic = 'http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png';
-            var n = nome;
-            var c = 'Job description:';
-            var d = desc;
+        var red_uri = red_u;
+        var l = link;
+        var pic = 'http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png';
+        var n = nome;
+        var c = 'Job description:';
+        var d = desc;
 
-            // calling the API ...
-            var obj = {
-                method: 'feed',
-                redirect_uri: red_uri,
-                link: l,
-                picture: pic,
-                name: n,
-                caption: c,
-                description: d
-            };
+        // calling the API ...
+        var obj = {
+            method: 'feed',
+            redirect_uri: red_uri,
+            link: l,
+            picture: pic,
+            name: n,
+            caption: c,
+            description: d
+        };
 
-            function callback(response) {
-                document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
-            }
-
-            FB.ui(obj, callback);
+        function callback(response) {
+            document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
         }
+
+        FB.ui(obj, callback);
+    }
 </script>
 
 <script>
-        !function(d,s,id){
-            var js,fjs=d.getElementsByTagName(s)[0];
-            if(!d.getElementById(id)){
-                js=d.createElement(s);
-                js.id=id;
-                js.src="https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js,fjs);
-            }
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
         }
-                (document,"script","twitter-wjs");
+    }
+            (document,"script","twitter-wjs");
 </script>
+<!-- Fim de script de acesso a API Facebook e Twitter -->
+
+
+
+
