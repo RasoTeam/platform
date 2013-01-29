@@ -1,0 +1,1038 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Rasocomp::CoursesController
+  
+    &mdash; Documentation by YARD 0.8.3
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'>Rasocomp</span>
+     &raquo; 
+    <span class="title">CoursesController</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Rasocomp::CoursesController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ApplicationController</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ApplicationController</li>
+          
+            <li class="next">Rasocomp::CoursesController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/rasocomp/courses_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Course+Controller">Course Controller</h2>
+
+<pre class="code ruby"><code>Controller used to manage training courses.</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#activate-instance_method" title="#activate (instance method)">- (Object) <strong>activate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Activates a course for training programme in a company.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a course for a training programme.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-instance_method" title="#destroy (instance method)">- (Object) <strong>destroy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Removes a course from a training programme.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit-instance_method" title="#edit (instance method)">- (Object) <strong>edit</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Edit a course for a training programme in a company.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#enroll-instance_method" title="#enroll (instance method)">- (Object) <strong>enroll</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Used for an user to enroll in a course for a training programme.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Lists all courses in a training programme.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#manage-instance_method" title="#manage (instance method)">- (Object) <strong>manage</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return all courses for a training programme in a company.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>New course for a training programme in a company.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unenroll-instance_method" title="#unenroll (instance method)">- (Object) <strong>unenroll</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Used for users to resign a course programme.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Update a course for a training programme in a company.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_users-instance_method" title="#update_users (instance method)">- (Object) <strong>update_users</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Update users enrolled for a course in a trainning programme.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="activate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>activate</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Activates a course for training programme in a company.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_activate'>activate</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_course'>course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_update_attribute'>update_attribute</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+  
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_training_courses_manage_path'>training_courses_manage_path</span><span class='lparen'>(</span><span class='ivar'>@company</span><span class='comma'>,</span><span class='ivar'>@training</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates a course for a training programme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@course</span> <span class='op'>=</span> <span class='ivar'>@training</span><span class='period'>.</span><span class='id identifier rubyid_courses'>courses</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:course</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@course</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>if</span> <span class='ivar'>@course</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_training_courses_manage_path'>training_courses_manage_path</span><span class='lparen'>(</span> <span class='ivar'>@company</span><span class='comma'>,</span><span class='ivar'>@training</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_render'>render</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>new</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="destroy-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destroy</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Removes a course from a training programme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136
+137
+138</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 134</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
+  <span class='id identifier rubyid_course'>course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_training_courses_manage_path'>training_courses_manage_path</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="edit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>edit</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Edit a course for a training programme in a company.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='const'>Training</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='comment'>#ALL USERS EXCEPT ROOT (role != 0) AND INACTIVE USERS state == 0
+</span>  <span class='ivar'>@users</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='symbol'>:all</span><span class='comma'>,</span> <span class='symbol'>:conditions</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>role != ? AND state == ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>ROOT</span><span class='comma'>,</span> <span class='const'>STATE</span><span class='lbracket'>[</span><span class='symbol'>:active</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="enroll-instance_method">
+  
+    - (<tt>Object</tt>) <strong>enroll</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Used for an user to enroll in a course for a training programme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_enroll'>enroll</span>
+  <span class='id identifier rubyid_company'>company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_current_user_id'>current_user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='lparen'>(</span> <span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='comment'>#user = User.find( current_user_id)
+</span>  <span class='id identifier rubyid_course'>course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='comment'>#public auto add user
+</span>    <span class='id identifier rubyid_signup'>signup</span> <span class='op'>=</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_course_signups'>course_signups</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user_id'>current_user_id</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='comment'>#course.users &lt;&lt; user
+</span>  <span class='kw'>else</span>
+    <span class='comment'>#private set status to 1
+</span>    <span class='id identifier rubyid_signup'>signup</span> <span class='op'>=</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_course_signups'>course_signups</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_id'>find_by_user_id</span><span class='lparen'>(</span> <span class='id identifier rubyid_current_user_id'>current_user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_company_trainings_path'>company_trainings_path</span><span class='lparen'>(</span> <span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Lists all courses in a training programme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@trainings</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='comment'># - @courses = @trainings.courses
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="manage-instance_method">
+  
+    - (<tt>Object</tt>) <strong>manage</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return all courses for a training programme in a company</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_manage'>manage</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@courses</span> <span class='op'>=</span> <span class='ivar'>@training</span><span class='period'>.</span><span class='id identifier rubyid_courses'>courses</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>New course for a training programme in a company.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@course</span> <span class='op'>=</span> <span class='ivar'>@training</span><span class='period'>.</span><span class='id identifier rubyid_courses'>courses</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unenroll-instance_method">
+  
+    - (<tt>Object</tt>) <strong>unenroll</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Used for users to resign a course programme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unenroll'>unenroll</span>
+  <span class='id identifier rubyid_company'>company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_current_user_id'>current_user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='lparen'>(</span> <span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='comment'>#user = User.find( current_user_id)
+</span>  <span class='id identifier rubyid_course'>course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='comment'>#course.users.delete(user)
+</span>    <span class='id identifier rubyid_signup'>signup</span> <span class='op'>=</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_course_signups'>course_signups</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_id'>find_by_user_id</span><span class='lparen'>(</span> <span class='id identifier rubyid_current_user_id'>current_user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_signup'>signup</span> <span class='op'>=</span> <span class='id identifier rubyid_course'>course</span><span class='period'>.</span><span class='id identifier rubyid_course_signups'>course_signups</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_id'>find_by_user_id</span><span class='lparen'>(</span> <span class='id identifier rubyid_current_user_id'>current_user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_company_trainings_path'>company_trainings_path</span><span class='lparen'>(</span> <span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Update a course for a training programme in a company.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@course</span><span class='period'>.</span><span class='id identifier rubyid_update_attributes'>update_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:course</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:success</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:successful_update</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_training_courses_manage_path'>training_courses_manage_path</span> <span class='ivar'>@company</span><span class='comma'>,</span> <span class='ivar'>@training</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='ivar'>@course</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_full_messages'>full_messages</span>
+    <span class='id identifier rubyid_render'>render</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>edit</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_users-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_users</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Update users enrolled for a course in a trainning programme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/courses_controller.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_users'>update_users</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@training</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_trainings'>trainings</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@course</span> <span class='op'>=</span> <span class='const'>Course</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@users_to_add</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:users</span><span class='rbracket'>]</span>
+  <span class='comment'>#@course.users.clear
+</span>  <span class='comment'>#if !@users_to_add.nil?
+</span>  <span class='comment'>#  @users_to_add.each do |u_id|
+</span>  <span class='comment'>#    @course.users &lt;&lt; User.find( u_id)
+</span>  <span class='comment'>#  end
+</span>  <span class='comment'>#end
+</span>  <span class='ivar'>@course</span><span class='period'>.</span><span class='id identifier rubyid_course_signups'>course_signups</span><span class='period'>.</span><span class='id identifier rubyid_delete_all'>delete_all</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='ivar'>@users_to_add</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='ivar'>@users_to_add</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_u_id'>u_id</span><span class='op'>|</span>
+      <span class='id identifier rubyid_signup'>signup</span> <span class='op'>=</span> <span class='ivar'>@course</span><span class='period'>.</span><span class='id identifier rubyid_course_signups'>course_signups</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span>
+      <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_u_id'>u_id</span>
+      <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='int'>0</span>
+      <span class='id identifier rubyid_signup'>signup</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_manage_company_trainings_path'>manage_company_trainings_path</span> <span class='ivar'>@company</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jan 29 18:16:11 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.3 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

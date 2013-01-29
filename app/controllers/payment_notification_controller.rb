@@ -1,6 +1,8 @@
+# This class is just used to receive payment notifications from paypal
 class PaymentNotificationController < ApplicationController
   protect_from_forgery :except => [:create]
 
+  # It is used to receive the payment notification from paypal
   def create
     if(params[:payment_status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret])
       bill = Bill.find(params[:invoice])

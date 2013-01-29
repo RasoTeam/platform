@@ -1,0 +1,1954 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Public::JobOffersController
+  
+    &mdash; Documentation by YARD 0.8.3
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (J)</a> &raquo;
+    <span class='title'>Public</span>
+     &raquo; 
+    <span class="title">JobOffersController</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Public::JobOffersController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ApplicationController</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ApplicationController</li>
+          
+            <li class="next">Public::JobOffersController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/public/job_offers_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Job+Offers+Controller">Job Offers Controller</h2>
+
+<pre class="code ruby"><code>Job Offers controller for visitors</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="api_key-classvariable" class="">@@api_key =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Linkdin API keys to this application</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>gdpw09c8khsp</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="api_secret-classvariable" class="">@@api_secret =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>GjOzGtusFpJ2e9as</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="user_token-classvariable" class="">@@user_token =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1b7ef419-844d-4c26-8807-aa9f5fa39d96</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="user_secret-classvariable" class="">@@user_secret =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>00d5f1bf-5d30-45c8-b6cf-e9ce33822a51</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="pin-classvariable" class="">@@pin =
+          
+        </dt>
+        <dd><pre class="code"><span class='kw'>nil</span></pre></dd>
+      
+        <dt id="accesssecret-classvariable" class="">@@accesssecret =
+          
+        </dt>
+        <dd><pre class="code"><span class='kw'>nil</span></pre></dd>
+      
+        <dt id="accesstoken-classvariable" class="">@@accesstoken =
+          
+        </dt>
+        <dd><pre class="code"><span class='kw'>nil</span></pre></dd>
+      
+        <dt id="configuration-classvariable" class="">@@configuration =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Hash confirmation used by the gem oauth e/ou linkedin</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:site</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://api.linkedin.com</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+<span class='symbol'>:authorize_path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/uas/oauth/authenticate</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+<span class='symbol'>:request_token_path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/uas/oauth/requestToken?scope=r_fullprofile</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+<span class='symbol'>:access_token_path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/uas/oauth/accessToken</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+<span class='symbol'>:callback_url</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://localhost:3000/linkedin_callback</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cancel_profile-instance_method" title="#cancel_profile (instance method)">- (Object) <strong>cancel_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Cancel an application.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a new candidate for a job offer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_linkedin_oauth_url-instance_method" title="#generate_linkedin_oauth_url (instance method)">- (Object) <strong>generate_linkedin_oauth_url</strong>(candidate) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>LINKEDIN Generates oauth request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_full_profile-instance_method" title="#get_full_profile (instance method)">- (Object) <strong>get_full_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets and returns user profile from linkedin.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Lists all job offers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#linkedin_profile-instance_method" title="#linkedin_profile (instance method)">- (Object) <strong>linkedin_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Show profile.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>New candidate.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#oauth_account-instance_method" title="#oauth_account (instance method)">- (Object) <strong>oauth_account</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Receives and processes oauth request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pdf_profile-instance_method" title="#pdf_profile (instance method)">- (Object) <strong>pdf_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Collects information from pdf and sends it to database.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#readXMLfile2html-instance_method" title="#readXMLfile2html (instance method)">- (Object) <strong>readXMLfile2html</strong>(xmlf) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Reads a xml file and converts it into html.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save_linkedin_profile-instance_method" title="#save_linkedin_profile (instance method)">- (Object) <strong>save_linkedin_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>It saves a curriculum uploaded through LinkdIn.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save_linkedin_to_html-instance_method" title="#save_linkedin_to_html (instance method)">- (Object) <strong>save_linkedin_to_html</strong>(candidate) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Saves html file from linkedin profide.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save_pdf_profile-instance_method" title="#save_pdf_profile (instance method)">- (Object) <strong>save_pdf_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Saves a curriculum uploaded through PDF.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save_xml_profile-instance_method" title="#save_xml_profile (instance method)">- (Object) <strong>save_xml_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Saves a curriculum uploaded through XML.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show-instance_method" title="#show (instance method)">- (Object) <strong>show</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Show a job offer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xml_profile-instance_method" title="#xml_profile (instance method)">- (Object) <strong>xml_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Collects information from xml file and sends it to database.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="cancel_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cancel_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Cancel an application</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+206
+207
+208
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 206</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cancel_profile'>cancel_profile</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:candidate</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:file_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_new_apply_path'>new_apply_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates a new candidate for a job offer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
+  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='const'>Candidate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_job_offer_id'>job_offer_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:cv_type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>linkedin</span><span class='tstring_end'>'</span></span>     <span class='comment'>#Se for um post para linkedin
+</span>      <span class='comment'>#começa o processo de autenticação no linkedin
+</span>      <span class='id identifier rubyid_generate_linkedin_oauth_url'>generate_linkedin_oauth_url</span> <span class='ivar'>@candidate</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:cv_type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>xml</span><span class='tstring_end'>'</span></span>     <span class='comment'>#Se for um post para xml
+</span>      <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
+      <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@candidate</span>
+
+      <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_xml_profile_path'>xml_profile_path</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
+    <span class='kw'>else</span>     <span class='comment'>#Se for um post para pdf
+</span>      <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
+      <span class='comment'>#so para modificar algo...
+</span>      <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@candidate</span>
+
+      <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_pdf_profile_path'>pdf_profile_path</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>  
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_alert'>alert</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;ul&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_full_messages'>full_messages</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
+      <span class='id identifier rubyid_alert'>alert</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;li&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/li&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_alert'>alert</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/ul&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_alert'>alert</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='symbol'>:action</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>new</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="generate_linkedin_oauth_url-instance_method">
+  
+    - (<tt>Object</tt>) <strong>generate_linkedin_oauth_url</strong>(candidate) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>LINKEDIN Generates oauth request</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 301</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_linkedin_oauth_url'>generate_linkedin_oauth_url</span><span class='lparen'>(</span><span class='id identifier rubyid_candidate'>candidate</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>LinkedIn</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='cvar'>@@api_key</span><span class='comma'>,</span> <span class='cvar'>@@api_secret</span><span class='comma'>,</span> <span class='cvar'>@@configuration</span><span class='rparen'>)</span>
+
+  <span class='comment'>#MUITO IMPORTANTE - esta linha define para onde é esperado de volta a resposta ao request por parte do linkedin
+</span>  <span class='id identifier rubyid_request_token'>request_token</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_request_token'>request_token</span><span class='lparen'>(</span><span class='symbol'>:oauth_callback</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_linkedin_oauth_url'>linkedin_oauth_url</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='comment'>#grava na session os parametros dos tokens do utilizador
+</span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:rtoken</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_request_token'>request_token</span><span class='period'>.</span><span class='id identifier rubyid_token'>token</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:rsecret</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_request_token'>request_token</span><span class='period'>.</span><span class='id identifier rubyid_secret'>secret</span>
+
+  <span class='comment'>#prega o candidate actual na session para não se perder com o reencaminhamento
+</span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_candidate'>candidate</span>
+
+  <span class='comment'>#envia o utilizador para o url de autorizaçao do linkedin
+</span>  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_request_token'>request_token</span><span class='period'>.</span><span class='id identifier rubyid_authorize_url'>authorize_url</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_full_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_full_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets and returns user profile from linkedin</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 350</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_full_profile'>get_full_profile</span>
+  <span class='comment'>#Novo cliente
+</span>  <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>LinkedIn</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='cvar'>@@api_key</span><span class='comma'>,</span> <span class='cvar'>@@api_secret</span><span class='comma'>,</span> <span class='cvar'>@@configuration</span><span class='rparen'>)</span>
+  <span class='comment'>#Autorização
+</span>  <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_authorize_from_access'>authorize_from_access</span><span class='lparen'>(</span><span class='cvar'>@@accesstoken</span><span class='comma'>,</span><span class='cvar'>@@accesssecret</span><span class='rparen'>)</span>
+  <span class='comment'>#SACA O PERFIL!!!
+</span>  <span class='id identifier rubyid_profile'>profile</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='lparen'>(</span><span class='symbol'>:fields</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:positions</span> <span class='comma'>,</span><span class='symbol'>:educations</span> <span class='comma'>,</span> <span class='symbol'>:skills</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='comment'>#Transforma-o em algo útil e fácil de iterar
+</span>  <span class='id identifier rubyid_full_profile'>full_profile</span> <span class='op'>=</span> <span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_full_profile'>full_profile</span>
+  <span class='comment'>#Devolve
+</span>  <span class='kw'>return</span> <span class='id identifier rubyid_full_profile'>full_profile</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Lists all job offers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='comment'>#Usa a função search por causa da pesquisa por palavras chave e ordenação -&gt; ver Modelo JobOffer
+</span>  <span class='ivar'>@offers</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_job_offers'>job_offers</span><span class='period'>.</span><span class='id identifier rubyid_search'>search</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:search</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:order</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_paginate'>paginate</span><span class='lparen'>(</span><span class='symbol'>:page</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:page</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:per_page</span> <span class='op'>=&gt;</span> <span class='int'>15</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="linkedin_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>linkedin_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Show profile</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+342
+343
+344
+345
+346
+347</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 342</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_linkedin_profile'>linkedin_profile</span>
+  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+  <span class='ivar'>@profile</span> <span class='op'>=</span> <span class='id identifier rubyid_get_full_profile'>get_full_profile</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@offer</span> <span class='op'>=</span> <span class='const'>JobOffer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>New candidate</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@offer</span> <span class='op'>=</span> <span class='const'>JobOffer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='ivar'>@offer</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span>
+  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='const'>Candidate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_job_offer_id'>job_offer_id</span> <span class='op'>=</span> <span class='ivar'>@offer</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+
+  <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
+    <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='comment'># new.html.erb
+</span>    <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='ivar'>@candidate</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="oauth_account-instance_method">
+  
+    - (<tt>Object</tt>) <strong>oauth_account</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Receives and processes oauth request</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 320</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_oauth_account'>oauth_account</span>
+  <span class='comment'>#Cria um cliente Linkedin com as credenciais actuais
+</span>  <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>LinkedIn</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='cvar'>@@api_key</span><span class='comma'>,</span> <span class='cvar'>@@api_secret</span><span class='comma'>,</span> <span class='cvar'>@@configuration</span><span class='rparen'>)</span>
+
+  <span class='comment'>#vai buscar o código enviado pelo linkedin
+</span>  <span class='cvar'>@@pin</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:oauth_verifier</span><span class='rbracket'>]</span>
+
+  <span class='comment'>#busca as variáveis potencialmente necessárias
+</span>  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+  <span class='ivar'>@job_offer</span> <span class='op'>=</span> <span class='const'>JobOffer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='cvar'>@@pin</span>
+    <span class='comment'>#trata das autorizações
+</span>    <span class='cvar'>@@accesstoken</span><span class='comma'>,</span> <span class='cvar'>@@accesssecret</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_authorize_from_request'>authorize_from_request</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:rtoken</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:rsecret</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='cvar'>@@pin</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'>#encaminha para o mostrador de perfil obtido&quot;
+</span>  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_linkedin_profile_path'>linkedin_profile_path</span> <span class='ivar'>@company</span><span class='comma'>,</span><span class='ivar'>@job_offer</span><span class='comma'>,</span><span class='ivar'>@candidate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pdf_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>pdf_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Collects information from pdf and sends it to database</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pdf_profile'>pdf_profile</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@offer</span> <span class='op'>=</span> <span class='const'>JobOffer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>public/</span><span class='tstring_end'>'</span></span><span class='op'>+</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.pdf</span><span class='tstring_end'>'</span></span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@file_pdf</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span>
+  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:file</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="readXMLfile2html-instance_method">
+  
+    - (<tt>Object</tt>) <strong>readXMLfile2html</strong>(xmlf) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Reads a xml file and converts it into html</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 218</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_readXMLfile2html'>readXMLfile2html</span><span class='lparen'>(</span><span class='id identifier rubyid_xmlf'>xmlf</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='const'>Hpricot</span><span class='op'>::</span><span class='const'>XML</span><span class='lparen'>(</span><span class='id identifier rubyid_xmlf'>xmlf</span><span class='rparen'>)</span>
+
+  <span class='comment'>#Experiência Profissional
+</span>  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;h3&gt;Work Experience&lt;/h3&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='lparen'>(</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>/</span><span class='symbol'>:europass:learnerinfo</span><span class='tstring_end'>&quot;</span></span><span class='op'>/</span><span class='symbol'>:workexperiencelist</span><span class='op'>/</span><span class='symbol'>:workexperience</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_we'>we</span><span class='op'>|</span>
+    <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;table class=&quot;twelve tableJobs&quot;&gt;</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td&gt;&lt;p class=\&quot;radius label\&quot;&gt;From:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> - </span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td&gt;&lt;p class=\&quot;radius label\&quot;&gt;Until:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> - </span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>position/label</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td&gt;&lt;p class=\&quot;radius label\&quot;&gt;Position:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>position/label</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>activities</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td&gt;&lt;p class=\&quot;radius label\&quot;&gt;Activities:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>activities</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>employer/name</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td&gt;&lt;p class=\&quot;radius label\&quot;&gt;Employer:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_we'>we</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>employer/name</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/table&gt;&lt;br/&gt;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='comment'>#Habilitações
+</span>  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;h3&gt;Education&lt;/h3&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='lparen'>(</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>/</span><span class='symbol'>:europass:learnerinfo</span><span class='tstring_end'>&quot;</span></span><span class='op'>/</span><span class='symbol'>:educationlist</span><span class='op'>/</span><span class='symbol'>:education</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_edu'>edu</span><span class='op'>|</span>
+    <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;table class=&quot;twelve tableJobs&quot;&gt;</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;p class=\&quot;radius label\&quot;&gt;From:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> - </span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/from/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;p class=\&quot;radius label\&quot;&gt;Until:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/month</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> - </span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>period/to/year</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>title</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;p class=\&quot;radius label\&quot;&gt;Title:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>title</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>skills</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;p class=\&quot;radius label\&quot;&gt;Skills:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>skills</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>organisation/name</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;p class=\&quot;radius label\&quot;&gt;Organization:&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_edu'>edu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>organisation/name</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_innerHTML'>innerHTML</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/table&gt;&lt;br/&gt;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_fileHTML'>fileHTML</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save_linkedin_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>save_linkedin_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>It saves a curriculum uploaded through LinkdIn</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save_linkedin_profile'>save_linkedin_profile</span>
+  <span class='comment'>#Obter variáveis guardadas na session
+</span>  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+
+    <span class='comment'>#Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
+</span>    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_file_path'>file_path</span> <span class='op'>=</span> <span class='id identifier rubyid_save_linkedin_to_html'>save_linkedin_to_html</span><span class='lparen'>(</span><span class='ivar'>@candidate</span><span class='rparen'>)</span>
+    <span class='comment'>#Save novamente faz update
+</span>    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='comment'>#Limpa as variáveis de sessão
+</span>    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:success</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Successfully candidate to the job-offer.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_public_company_job_offers_path'>public_company_job_offers_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not save, please retry.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_public_company_job_offers_path'>public_company_job_offers_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save_linkedin_to_html-instance_method">
+  
+    - (<tt>Object</tt>) <strong>save_linkedin_to_html</strong>(candidate) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Saves html file from linkedin profide</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 365</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save_linkedin_to_html'>save_linkedin_to_html</span><span class='lparen'>(</span><span class='id identifier rubyid_candidate'>candidate</span><span class='rparen'>)</span>
+
+  <span class='comment'>#Isto foi um workaround a enviar params, basicamente saca de novo o perfil.
+</span>  <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>LinkedIn</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='cvar'>@@api_key</span><span class='comma'>,</span><span class='cvar'>@@api_secret</span><span class='comma'>,</span><span class='cvar'>@@configuration</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_authorize_from_access'>authorize_from_access</span><span class='lparen'>(</span><span class='cvar'>@@accesstoken</span><span class='comma'>,</span><span class='cvar'>@@accesssecret</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_profile'>profile</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='lparen'>(</span><span class='symbol'>:fields</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:positions</span> <span class='comma'>,</span><span class='symbol'>:educations</span> <span class='comma'>,</span> <span class='symbol'>:skills</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='comment'>#Inicio da criação do HTML necessário.
+</span>  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;div&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'>#Experiência Profissional
+</span>  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;h1&gt;Work Experience&lt;/h1&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_profile'>profile</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>positions</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>all</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_profile'>profile</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>positions</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>all</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pos'>pos</span><span class='op'>|</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;table&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;From:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='id identifier rubyid_pos'>pos</span><span class='period'>.</span><span class='id identifier rubyid_start_date'>start_date</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>year</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;To:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_pos'>pos</span><span class='period'>.</span><span class='id identifier rubyid_is_current'>is_current</span><span class='rparen'>)</span> <span class='comment'>#Caso seja o empre actual
+</span>        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Current</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='id identifier rubyid_pos'>pos</span><span class='period'>.</span><span class='id identifier rubyid_end_date'>end_date</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>year</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Position:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_pos'>pos</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Company:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_pos'>pos</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Industry:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_pos'>pos</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>industry</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/table&gt;&lt;hr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+
+  <span class='comment'>#Habilitações
+</span>  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;h1&gt;Education&lt;/h1&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_profile'>profile</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>educations</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>all</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_profile'>profile</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>educations</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>all</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_edu'>edu</span><span class='op'>|</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;table&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;From:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='comment'>#Caso não haja data de inicio
+</span>      <span class='kw'>if</span> <span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_start_date'>start_date</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_start_date'>start_date</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>year</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--</span><span class='tstring_end'>'</span></span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;To:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='comment'>#Caso não haja data de finalização
+</span>      <span class='kw'>if</span> <span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_end_date'>end_date</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_end_date'>end_date</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>year</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--</span><span class='tstring_end'>'</span></span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Degree:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_degree'>degree</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Field of Study:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_field_of_study'>field_of_study</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Organization:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_edu'>edu</span><span class='period'>.</span><span class='id identifier rubyid_school_name'>school_name</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/table&gt;&lt;hr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+
+  <span class='comment'>#Habilidades/Conhecimentos
+</span>  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;h1&gt;Skills&lt;/h1&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_profile'>profile</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>skills</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_profile'>profile</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>skills</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>all</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_skill'>skill</span><span class='op'>|</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;table&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td align='right'&gt;&lt;b&gt;Name:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='id identifier rubyid_skill'>skill</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>skill</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/table&gt;&lt;hr&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_fileHTML'>fileHTML</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/div&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'>#Open faz open ou create, nice :)
+</span>  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app/assets/candidaturas/</span><span class='tstring_end'>'</span></span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_candidate'>candidate</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.html</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_fileHTML'>fileHTML</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'>#Retorna onde foi guardado. Provavelmente deveria fazer um teste antes
+</span>  <span class='kw'>return</span>  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app/assets/candidaturas/</span><span class='tstring_end'>'</span></span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_candidate'>candidate</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.html</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save_pdf_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>save_pdf_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Saves a curriculum uploaded through PDF</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save_pdf_profile'>save_pdf_profile</span>
+  <span class='comment'>#Obter variáveis guardadas na session
+</span>  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:candidate</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+
+    <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app/assets/candidaturas/</span><span class='tstring_end'>'</span></span><span class='op'>+</span><span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.pdf</span><span class='tstring_end'>'</span></span>
+
+    <span class='comment'>#Open faz open ou create, nice :)
+</span>    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+      <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:file_path</span><span class='rparen'>)</span>
+
+    <span class='comment'>#Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
+</span>    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_file_path'>file_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='comment'>#Save novamente faz update
+</span>    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:success</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Successfully candidate to the job-offer.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_public_company_job_offers_path'>public_company_job_offers_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not save, please retry.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_public_company_job_offers_path'>public_company_job_offers_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save_xml_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>save_xml_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Saves a curriculum uploaded through XML</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save_xml_profile'>save_xml_profile</span>
+  <span class='comment'>#Obter variáveis guardadas na session
+</span>  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:candidate</span><span class='rparen'>)</span>
+
+
+  <span class='kw'>if</span> <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+
+    <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app/assets/candidaturas/</span><span class='tstring_end'>'</span></span><span class='op'>+</span><span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.html</span><span class='tstring_end'>'</span></span>
+
+    <span class='comment'>#Open faz open ou create, nice :)
+</span>    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+      <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:file_path</span><span class='rparen'>)</span>
+
+    <span class='comment'>#Guarda o ficheiro HTML com o perfil e actualiza o Model com o file path
+</span>    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_file_path'>file_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='comment'>#Save novamente faz update
+</span>    <span class='ivar'>@candidate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:success</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Successfully candidate to the job-offer.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_public_company_job_offers_path'>public_company_job_offers_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not save, please retry.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_public_company_job_offers_path'>public_company_job_offers_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="show-instance_method">
+  
+    - (<tt>Object</tt>) <strong>show</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Show a job offer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
+    <span class='ivar'>@offer</span> <span class='op'>=</span> <span class='const'>JobOffer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='ivar'>@company</span> <span class='op'>=</span> <span class='ivar'>@offer</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="xml_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>xml_profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Collects information from xml file and sends it to database</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/public/job_offers_controller.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_xml_profile'>xml_profile</span>
+  <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@offer</span> <span class='op'>=</span> <span class='const'>JobOffer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_xml_contents'>xml_contents</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>r</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:file</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@file_text</span> <span class='op'>=</span> <span class='id identifier rubyid_readXMLfile2html'>readXMLfile2html</span><span class='lparen'>(</span><span class='id identifier rubyid_xml_contents'>xml_contents</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app/assets/candidaturas/</span><span class='tstring_end'>'</span></span><span class='op'>+</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.html</span><span class='tstring_end'>'</span></span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:file_path</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@file_text</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@file_text</span> <span class='op'>=</span> <span class='ivar'>@file_text</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+  <span class='ivar'>@candidate</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:candidate</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jan 29 18:16:11 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.3 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

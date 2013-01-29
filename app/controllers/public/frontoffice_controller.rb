@@ -3,6 +3,7 @@
 #  All pages are static
 class Public::FrontofficeController < Public::ApplicationController
 
+  # Used to send emails to raso team
 	def get_in_touch
     @feedback = Feedback.new(params[:feedback])
 

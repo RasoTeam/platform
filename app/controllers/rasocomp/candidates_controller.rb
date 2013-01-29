@@ -24,12 +24,14 @@ class Rasocomp::CandidatesController < Rasocomp::ApplicationController
     @file_text = File.read(@candidate.file_path)
   end
 
+  # Show a candidate for a job offer in a company
   def show_candidate
     @company = Company.find(params[:company_id])
     @offer = JobOffer.find(params[:job_offer_id])
     @candidate = Candidate.find(params[:id])
   end
 
+  # Update a candidate in a job offer and company
   def update_status
     @company = Company.find(params[:company_id])
     @offer = JobOffer.find(params[:job_offer_id])
