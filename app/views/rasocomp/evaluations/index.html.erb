@@ -21,16 +21,22 @@
           <dd id="linkDesc"><%= link_to 'Z-A' , company_evaluations_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
         </dl>
       </div>  <!-- Fecha four columns -->
-      <div class="five columns">
+      <div class="four columns">
         <dl class="sub-nav">
             <dt><%= t(:filter) %></dt>
               <dd id="linkAll" class="active"><%= link_to t(:all) , company_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
               <dd id="linkActive"><%= link_to t(:active) , company_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
               <dd id="linkClosed"><%= link_to t(:closed) , company_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
-              <dd><%= link_to t(:reload_all) , company_evaluations_path(@company , :search => ""), :id => "linkReloadAll" %></dd>
         </dl>
       </div>
-      <div class="four columns">
+      <div class="two columns">
+        <dl class="sub-nav">
+          <dt>
+            <%= link_to t(:reload_all) , company_evaluations_path(@company , :search => "") %>
+          </dt>
+        </dl>
+      </div>
+      <div class="three columns">
         <%= link_to t(:my_evaluations), personal_evaluations_path( @company),:class=>"radius button right" %>
       </div>
     </div> <!-- Fecha row -->
