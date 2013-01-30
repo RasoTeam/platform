@@ -29,6 +29,7 @@
           <dd id="linkOpen"><%= link_to 'Open' , company_job_offers_path(@company, :status => "Open"), :remote => :true ,:id => "open" %></dd>
           <dd id="linkSelection"><%= link_to 'Selection' , company_job_offers_path(@company, :status => "Selection"), :remote => :true ,:id => "selection" %></dd>
           <dd id="linkClosed"><%= link_to 'Closed' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
+          <dd id="linkReloadAll"><%= link_to 'Reload All' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
       </div>
       <div class="four columns">
@@ -71,7 +72,6 @@
                           <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
                         </div>
                     <% end %>
-                    <%= link_to "Reload All" , company_job_offers_path(@company , :search => ""),:class=>"button expand postfix" %>
                   </div>
                 </div>
               </div>
