@@ -63,8 +63,8 @@
 					<%end)%>
 				<% end %>
 				<td style="text-align:center">
-					<%= link_to t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put %>
-					<%= link_to t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put %>
+					<%= link_to_if t.state != 1, t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put %>
+					<%= link_to_if t.state != 2, t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put %>
 				</td>
 		    </tr>
 		<% end %>
