@@ -17,8 +17,8 @@ ActionMailer::Base.smtp_settings = {
 }
 
 APP_CONFIG = {
-  paypal_email: "raso_1358550325_biz@rasohr.com",
+  paypal_email: "no-reply@rasohr.com",
   paypal_secret: "_secret_",
-  paypal_cert_id: "S9WH6WPKFBG3G",
-  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+  paypal_cert_id: "HGCLQJQ2YE9NA",
+  paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 }
