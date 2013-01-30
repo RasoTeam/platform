@@ -22,17 +22,23 @@
           <dd id="linkDesc"><%= link_to 'Z-A' , company_job_offers_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
         </dl>
       </div>
-      <div class="five columns">
+      <div class="four columns">
         <dl class="sub-nav">
           <dt><%= t(:filter) %></dt>
           <dd id="linkAll" class="active"><%= link_to 'All' , company_job_offers_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
           <dd id="linkOpen"><%= link_to 'Open' , company_job_offers_path(@company, :status => "Open"), :remote => :true ,:id => "open" %></dd>
           <dd id="linkSelection"><%= link_to 'Selection' , company_job_offers_path(@company, :status => "Selection"), :remote => :true ,:id => "selection" %></dd>
           <dd id="linkClosed"><%= link_to 'Closed' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
-          <dd id="linkReloadAll"><%= link_to 'Reload All' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
       </div>
-      <div class="four columns">
+      <div class="two columns">
+        <dl class="sub-nav">
+          <dt>
+            <%= link_to 'Reload All' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %>
+          </dt>
+        </dl>
+      </div>
+      <div class="three columns">
         <%= link_to t(:see_public_page), public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
       </div>
     </div>

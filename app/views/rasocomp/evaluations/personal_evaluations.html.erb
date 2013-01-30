@@ -21,15 +21,22 @@
           <dd id="linkDesc"><%= link_to 'Z-A' , personal_evaluations_path(@company, :order => "DESC"), :remote => :true , :id => "desc" %></dd>
         </dl>
       </div>  <!-- Fecha four columns -->
-      <div class="five columns">
+      <div class="four columns">
         <dl class="sub-nav">
             <dt>Filter:</dt>
               <dd id="linkAll" class="active"><%= link_to t(:all) , personal_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
               <dd id="linkActive"><%= link_to t(:active) , personal_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
               <dd id="linkClosed"><%= link_to t(:closed) , personal_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
-      </div> <!-- Fecha eight columns -->
-      <div class="four columns">
+      </div>
+      <div class="two columns">
+        <dl class="sub-nav">
+          <dt>
+            <%= link_to t(:reload_all) , personal_evaluations_path(@company , :search => "") %>
+          </dt>
+        </dl>
+      </div>
+      <div class="three columns">
         <%= link_to 'Evaluate Colaborators', company_evaluations_path(@company),:class=>"radius button right" %>
       </div>
     </div> <!-- Fecha row -->
@@ -70,7 +77,6 @@
                       <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
                     </div>
                 <% end %>
-                <%= link_to t(:reload_all) , personal_evaluations_path(@company , :search => ""),:class=>"button expand postfix" %>
               </div> <!--  Fecha row -->
             </div> <!-- Fecha four columns -->
           </div> <!-- Fecha row -->
