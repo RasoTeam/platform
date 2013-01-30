@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to "Home" , backoffice_stats_path %></li>
+        <li class="current"><a href="#">Feedbacks</a></li>
+    </ul>
+  </div>
+</div>
+<!-- Main Grid Section -->
+
+<div class="row">
+  <div class="twelve columns">
+  <br/>
+  <table class="twelve">
+    <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Tipo</th>
+          <th>Texto</th>
+          <th>URL</th>
+          <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @feedbacks.each do |feedback| %>
+        <tr>
+          <td><%= feedback.nome %></td>
+          <td><%= feedback.email %></td>
+          <td><%= feedback.tipo %></td>
+          <td><%= feedback.texto %></td>
+          <td><%= feedback.url %></td>
+          <td>
+            <%= link_to "Show", backoffice_feedback_path(feedback), :class=>"secondary radius label" %>
+            <%= link_to "Delete", backoffice_feedback_path(feedback), method: :delete, data: { confirm: 'Are you sure?' }, :class=>"secondary radius label" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
