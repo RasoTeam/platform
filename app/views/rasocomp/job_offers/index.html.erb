@@ -32,7 +32,11 @@
         </dl>
       </div>
       <div class="two columns">
-        <%= link_to 'Reload All' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %>
+        <dl class="sub-nav">
+          <dt>
+            <%= link_to 'Reload All' , company_job_offers_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %>
+          </dt>
+        </dl>
       </div>
       <div class="three columns">
         <%= link_to t(:see_public_page), public_company_job_offers_path( @company), :target => "_blank",:class=>"radius button right" %>
