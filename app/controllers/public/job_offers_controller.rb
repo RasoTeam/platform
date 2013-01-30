@@ -92,8 +92,11 @@ class Public::JobOffersController < Public::ApplicationController
     xml_contents = File.open(session[:file],'r')
     session.delete(:file)
 
+    directory_name = "app/assets/candidaturas/"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+
     @file_text = readXMLfile2html(xml_contents)
-    session[:file_path] = 'app/assets/candidaturas/'+Time.now.to_i.to_s+'.html'
+    session[:file_path] = directory_name+Time.now.to_i.to_s+'.html'
     File.open(session[:file_path],'w') do |file|
       file.write(@file_text)
     end
