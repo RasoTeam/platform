@@ -33,6 +33,8 @@ class TimeOff < ActiveRecord::Base
                             :numericality => { :only_integer => true,
                                                :greater_than_or_equal_to => 1 }
 
+  validates :description, :length => { :maximum => 100 }
+  
   validates :credits, :presence => true,
                       :numericality => { :only_integer => true,
                                          :greater_than_or_equal_to => :total_credits },

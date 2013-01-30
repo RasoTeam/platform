@@ -23,23 +23,23 @@
             <table class="twelve tableJobs">
             <tbody>
               <tr>
-                <td><span class="label radius">Status</span></td>
+                <td><span class="label radius"><%= t(:status) %></span></td>
                 <td><%= @evaluation.status %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Begins</span></td>
+                <td><span class="label radius"><%= t(:begin_date) %></span></td>
                 <td><%= @evaluation.period_begin %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Ends</span></td>
+                <td><span class="label radius"><%= t(:end_date) %></span></td>
                 <td><%= @evaluation.period_end %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Evaluator</span></td>
+                <td><span class="label radius"><%= t(:evaluator) %></span></td>
                 <td><%= link_to(@evaluator.name,company_user_path(@company,@evaluator)) %></td>
               </tr>
               <tr>
-                <td><span class="label radius">Evaluation Parameters</span></td>
+                <td><span class="label radius"><%= t(:evaluation_parameters) %></span></td>
                 <td>
                   <div class="evaluatees">
                     <% @eval_user_params.each do |param|%>
@@ -55,7 +55,7 @@
           <div class="twelve columns">
             <p style="text-align: center;">
 
-                  <%= link_to "Back" , personal_evaluations_path(@company),:class=>"button" %>
+                  <%= link_to t(:back) , personal_evaluations_path(@company),:class=>"button" %>
 
             </p>
           </div>

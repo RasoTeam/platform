@@ -8,9 +8,10 @@
 pt:
   accept: "Aceitar"
   account_activated: "A sua conta foi ativada com sucesso"
-  activate: "Ativado"
+  activate: "Ativar"
   activated_successfully: "Ativado com sucesso"
   active: "Ativo"
+  action: "Action"
   actions: "Ações"  
   add_contract: "Adicionar contrato"
   add_employee: "Adicionar Novo"
@@ -41,6 +42,7 @@ pt:
   check_evaluate: "Verificar e Avaliar"
   choose_users_export: "Escolher utilizadores a exportar"
   closed: "Fechadas"
+  code: "Code"
   company: "Empresa"
   company_account_created: "A conta para a sua empresa foi criada com sucesso. Por favor confirme o email antes iniciar sessão."
   conditions: "Condições"
@@ -97,6 +99,7 @@ pt:
   europass: "(Formato Europass)"
   evaluatees: "Avaliados"
   evaluator: "Avaliadores"
+  evaluators: "Evaluators"
   evaluation: "Avaliação"
   evaluations: "Avaliações"
   excel_data: "Folha de Dados do Excel"
@@ -113,6 +116,7 @@ pt:
   hi: "Olá "
   holidays: "Férias"
   home: "Home"
+  id: "id"
   idea: "ideia"
   import_from_o_sheet: "Importar de outras folhas"
   import_stats: "Importar Dados Estatísticos"
@@ -206,7 +210,7 @@ pt:
   sick: "Doente"
   since: "Desde"
   skills: "Competências"
-  start_day: "Dia inicial"
+  start_date: "Dia inicial"
   start_course: "Começar um novo curso!"
   state: "Estado"
   status: "Estado"
@@ -257,3 +261,12 @@ pt:
     attributes:
       user:
         password_digest: "Password"
+      company: 
+        name: "Name"
+        slug: "Slug"
+        email: "Email"
+      contract:
+        job_title: "Cargo"
+        start_date: "Data de Início"
+        end_date: "Data de Fim"
+        value: "Ordenado"

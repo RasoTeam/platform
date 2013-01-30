@@ -23,15 +23,15 @@
       </div>  <!-- Fecha four columns -->
       <div class="five columns">
         <dl class="sub-nav">
-            <dt>Filter:</dt>
-              <dd id="linkAll" class="active"><%= link_to 'All' , company_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
-              <dd id="linkActive"><%= link_to 'Active' , company_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
-              <dd id="linkClosed"><%= link_to 'Closed' , company_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
-              <dd><%= link_to "Reload All" , company_evaluations_path(@company , :search => ""), :id => "linkReloadAll" %></dd>
+            <dt><%= t(:filter) %></dt>
+              <dd id="linkAll" class="active"><%= link_to t(:all) , company_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
+              <dd id="linkActive"><%= link_to t(:active) , company_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
+              <dd id="linkClosed"><%= link_to t(:closed) , company_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
+              <dd><%= link_to t(:reload_all) , company_evaluations_path(@company , :search => ""), :id => "linkReloadAll" %></dd>
         </dl>
       </div>
       <div class="four columns">
-        <%= link_to "My Evaluations", personal_evaluations_path( @company),:class=>"radius button right" %>
+        <%= link_to t(:my_evaluations), personal_evaluations_path( @company),:class=>"radius button right" %>
       </div>
     </div> <!-- Fecha row -->
   </div> <!-- Fecha twelve columns -->
@@ -44,11 +44,11 @@
           <table class="twelve">
             <thead>
               <tr>
-                <th style="text-align:center">Evaluation</th>
-                <th style="text-align:center">Begin Date</th>
-                <th style="text-align:center">End Date</th>
-                <th style="text-align:center">Evaluator</th>
-                <th style="text-align:center">Status</th>
+                <th style="text-align:center"><%= t(:evaluation) %></th>
+                <th style="text-align:center"><%= t(:begin_date) %></th>
+                <th style="text-align:center"><%= t(:end_date) %></th>
+                <th style="text-align:center"><%= t(:evaluator) %></th>
+                <th style="text-align:center"><%= t(:status) %></th>
               </tr>
             </thead>
             <!-- Inicio do corpo da tabela -->
@@ -84,7 +84,7 @@
     <div class="row">
       <div class="twelve columns">
         <p style="text-align: center">
-          <%= link_to "Create Evaluation Process" , new_company_evaluation_path(@company), :class=>"button" %>
+          <%= link_to t(:create_evaluation_process) , new_company_evaluation_path(@company), :class=>"button" %>
         </p>
       </div>
     </div>

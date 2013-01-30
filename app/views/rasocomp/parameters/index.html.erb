@@ -3,8 +3,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th><%= t(:name) %></th>
+    <th><%= t(:description) %></th>
   </tr>
   <% @parameters.each do |pr| %>
   <tr>
@@ -14,5 +14,5 @@
   <% end %>
 </table>
 
-<%= link_to "Create New Evaluation Parameter" , new_company_parameter_path %>
+<%= link_to t(:create_evaluation_parameter) , new_company_parameter_path %>
 

@@ -31,7 +31,7 @@
           </tbody>
         </table>
         <%= link_to 'Done' , confirm_evaluation_path(@company,@evaluation) ,  :class => "button",
-                    :confirm => "Are you sure?\n Changes are irreversible." %>
+                    :confirm => t(:confirmation_message) %>
 
       </div> <!-- Fecha Panel -->
     </div> <!-- Fecha signup -->

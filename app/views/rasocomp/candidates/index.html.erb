@@ -1,26 +1,26 @@
-<h1>Appliance</h1>
+<h1><%= t(:application) %></h1>
 
 <%= form_for [@company,@offer,@candidate] , :url => { :action => "createapply" } do |f| %>
     <% @candidate.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>
 
-    <%= f.label :name , 'Name' %>
+    <%= f.label :name , t(:name) %>
     <%= f.text_field :name %>
 
-    <%= f.label :location , 'Location' %>
+    <%= f.label :location , t(:location) %>
     <%= f.text_field :location %>
 
-    <%= f.label :nationality , 'Nationality'%>
+    <%= f.label :nationality , t(:nationality) %>
     <%= f.text_field :nationality %>
 
-    <%= f.label :phone , 'Phone' %>
+    <%= f.label :phone , t(:phone) %>
     <%= f.text_field :phone %>
 
-    <%= f.label :email , 'Email' %>
+    <%= f.label :email , t(:email) %>
     <%= f.text_area :email %>
     </br>
 
-    <%= f.submit 'Create the Job Offer!' , apply_create_path(@candidate)  %>
+    <%= f.submit t(:create) , apply_create_path(@candidate)  %>
 
 <% end %>

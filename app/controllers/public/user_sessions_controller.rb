@@ -21,6 +21,7 @@ class Public::UserSessionsController < Public::ApplicationController
         redirect_to user_blocked_path @user.company
       else
         sign_in_user(@user, @company.slug)
+        I18n.locale = @user.locale
         if @user.role == ROOT
           redirect_to company_path @company
         else
