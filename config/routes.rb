@@ -97,6 +97,10 @@ Platform::Application.routes.draw do
       :to => 'rasocomp/evaluations#evaluate' , :as => 'evaluate_users'
   get 'companies/:company_id/evaluations/:evaluation_id/evaluation_done',
       :to => 'rasocomp/evaluations#confirm_evaluation', :as => 'confirm_evaluation'
+  get 'companies/:company_id/evaluations/personal_evaluations',
+      :to => 'rasocomp/evaluations#personal_evaluations' ,  :as => 'personal_evaluations'
+  get 'companies/:company_id/evaluations/:evaluation_id/show_personal_evaluation',
+      :to => 'rasocomp/evaluations#show_personal_evaluation' , :as => 'show_personal_evaluation'
 
   #job_offers
   get 'companies/:company_id/job_offer/:job_offer_id/status' ,

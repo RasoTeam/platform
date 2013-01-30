@@ -6,6 +6,10 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
   @@status = "ALL"
   @@search = ""
 
+  @@order_p = "ASC"
+  @@status_p = "ALL"
+  @@search_p = ""
+
   # Lists all evaluations programmes in a company
   def index
     @company = Company.find(params[:company_id])
@@ -143,6 +147,30 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     end
   end
 
+
+  def personal_evaluations
+    @company = Company.find(params[:company_id])
+    @user = current_user(@company.slug)
+    @evaluations = my_evaluations(@user,params[:status],params[:order],params[:search])
+
+    respond_to do |format|
+      format.js {@evaluations}
+      format.html{@evaluations}
+    end
+
+  end
+
+  def show_personal_evaluation
+    @company = Company.find(params[:company_id])
+    @evaluation = Evaluation.find(params[:evaluation_id])
+    @evaluator = User.find(@evaluation.user_id)
+
+    @evaluatee = current_user(@company.slug)
+
+    @eval_user_params = @evaluation.evaluation_user_parameters.where("user_id = ?", @evaluatee)
+    @eval_user_params.uniq! #Elimina duplicados
+  end
+
   ######################################################################################################################
   #############          METHODS
   ######################################################################################################################
@@ -204,6 +232,38 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
         evaluations = company.evaluations.where("user_id = ?", current_user(company.slug).id.to_s).where("description LIKE '%" + @@search + "%'").order("description " + @@order )
       else
         evaluations = company.evaluations.where("user_id = ?", current_user(company.slug).id.to_s).order("description " + @@order )
+      end
+    end
+
+    return evaluations
+
+  end
+
+  #Loads the personal evaluations of one particular colaborator
+  def my_evaluations(user,status,order,search_string)
+
+    if search_string != nil
+      @@search_p = search_string
+    end
+    if status != nil
+      @@status_p = status
+    end
+    if order != nil
+      @@order_p = order
+    end
+
+    #Aqui é feita a escolha da query a usar dependendo dos parametros passados
+    if @@status_p != "ALL" #Se não for TUDO, há que respeitar o Status
+      if @@search_p != ""
+        evaluations = user.evaluations.uniq!
+      else
+        evaluations = user.evaluations.where("status = ?" , @@status_p).order("description " + @@order_p ).uniq!
+      end
+    else                 #Se for TUDO, vem tudo, sem respeito por status
+      if @@search_p != ""
+        evaluations = user.evaluations.where("description LIKE '%" + @@search_p + "%'").order("description " + @@order_p ).uniq!
+      else
+        evaluations = user.evaluations.order("description " + @@order_p ).uniq!
       end
     end
 
