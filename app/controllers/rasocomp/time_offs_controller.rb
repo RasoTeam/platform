@@ -86,6 +86,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
       @user.save!(:validate => false)
       redirect_to company_user_time_offs_path( params[:company_id], params[:user_id])
     else
+      flash.now[:alert] = t(:error_creating_time_off)
       render 'new'
     end
   end

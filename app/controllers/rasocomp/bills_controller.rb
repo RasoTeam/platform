@@ -5,7 +5,8 @@ class Rasocomp::BillsController < Rasocomp::ApplicationController
 
   # Shows a bill for a company
   def show
-    @bill = Company.find(params[:company_id]).bills.find(params[:id])
+    @company = Company.find(params[:company_id])
+    @bill = @company.bills.find(params[:id])
   end
 
   # Returns all bills for a company

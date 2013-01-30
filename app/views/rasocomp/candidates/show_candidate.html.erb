@@ -3,8 +3,8 @@
 </div>
 
 <p style="text-align: center;">
-  <%= link_to "Back to Job Offer" , company_job_offer_path(@company,@offer), :class=>"button" %>
-  <%= link_to "Mark as Interviewed" , update_candidate_status_path(@company,@offer,@candidate,:status => "Interviewed"),:remote => :true, :class=>"button" %>
-  <%= link_to "Mark as Selected" , update_candidate_status_path(@company,@offer,@candidate,:status => "Selected"),:remote => :true, :class=>"button" %>
-  <%= link_to "Mark as Rejected" , update_candidate_status_path(@company,@offer,@candidate,:status => "Rejected"),:remote => :true, :class=>"button" %>
+  <%= link_to t(:back) , company_job_offer_path(@company,@offer), :class=>"button" %>
+  <%= link_to t(:change_to_interviewed) , update_candidate_status_path(@company,@offer,@candidate,:status => "Interviewed"),:remote => :true, :class=>"button" %>
+  <%= link_to t(:select) , update_candidate_status_path(@company,@offer,@candidate,:status => "Selected"),:remote => :true, :class=>"button" %>
+  <%= link_to t(:reject), update_candidate_status_path(@company,@offer,@candidate,:status => "Rejected"),:remote => :true, :class=>"button" %>
 </p>

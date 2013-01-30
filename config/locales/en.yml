@@ -20,6 +20,7 @@ en:
   approved: "Approved"
   apply_job: "Apply for this Job"
   apply_via: "Apply via "
+  application: "Application"
   application_to: "Application to "
   are_you_sure: "Are you sure?"
   aspect: "Aspect"
@@ -41,6 +42,7 @@ en:
   check_evaluate: "Check & Evaluate"
   choose_users_export: "Choose users to export"
   closed: "Closed"
+  code: "Código"
   company: "Company"
   company_account_created: "The account for your company was successfuly created. Please confirm email before login."
   conditions: "Conditions"
@@ -115,6 +117,7 @@ en:
   hi: "Hi "
   holidays: "Holidays"
   home: "Home"
+  id: "id"
   idea: "idea"
   import_from_o_sheet: "Import from other Sheet"
   import_stats: "Import Data Stats"
@@ -179,7 +182,7 @@ en:
   pay: "Pay"
   pdf_profile: "PDF Profile"
   pending: "Pending"
-  phone: "phone number"
+  phone: "Phone number"
   photo: "Photo"
   please_choose_file: "Please choose a file!"
   positions: "Positions"
@@ -241,6 +244,14 @@ en:
   verify_user: "Verify User"
   yes_: "Yes"
   xml_profile: "XML Profile"
+
+  ammount: "Ammount"
+  bill: "Bill"
+  bills: "Bills"
+  change_to_interviewed: "Change to Interviewed"
+  issued_date: "Issued Date"
+  reject: "Reject"
+  select: "Select"
 
   date:
     formats:
