@@ -11,6 +11,7 @@ pt:
   activate: "Ativar"
   activated_successfully: "Ativado com sucesso"
   active: "Ativo"
+  action: "Action"
   actions: "Ações"  
   add_contract: "Adicionar contrato"
   add_employee: "Adicionar Novo"
@@ -208,7 +209,7 @@ pt:
   sick: "Doente"
   since: "Desde"
   skills: "Competências"
-  start_day: "Dia inicial"
+  start_date: "Dia inicial"
   start_course: "Começar um novo curso!"
   state: "Estado"
   status: "Estado"
@@ -259,3 +260,12 @@ pt:
     attributes:
       user:
         password_digest: "Password"
+      company: 
+        name: "Name"
+        slug: "Slug"
+        email: "Email"
+      contract:
+        job_title: "Cargo"
+        start_date: "Data de Início"
+        end_date: "Data de Fim"
+        value: "Ordenado"

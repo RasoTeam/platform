@@ -11,6 +11,7 @@ en:
   activate: "Activate"
   activated_successfully: "Activated Successfully"
   active: "Active"
+  action: "Action"
   actions: "Actions"
   add_contract: "Add contract"
   add_employee: "Add employee"
@@ -210,7 +211,7 @@ en:
   sick: "Sick"
   since: "Since"
   skills: "Skills"
-  start_day: "Start Day"
+  start_date: "Start Date"
   start_course: "Start a Course!"
   state: "State"
   status: "Status"
@@ -245,13 +246,21 @@ en:
   yes_: "Yes"
   xml_profile: "XML Profile"
 
+  accept: "Accept"
   ammount: "Ammount"
   bill: "Bill"
   bills: "Bills"
   change_to_interviewed: "Change to Interviewed"
   issued_date: "Issued Date"
+  job_title: "Job Title"
+  minimun_value: "Minimun Value"
+  maximun_value: "Maximun Value"
+  new_company: "New Company"
+  parameter_name: "Parameter Name"
   reject: "Reject"
   select: "Select"
+  show_contract: "Show Contract"
+
 
   date:
     formats:
@@ -269,3 +278,22 @@ en:
     attributes:
       user:
         password_digest: "Password"
+      company: 
+        name: "Name"
+        slug: "Slug"
+        email: "Email"
+      contract:
+        job_title: "Job Title"
+        start_date: "Start Date"
+        end_date: "End Date"
+        value: "Value"
+      evaluation:
+        description: "Description"
+        period_begin: "Start Date"
+        period_end: "End Date"
+        status: "Status"
+      evaluation_user_parameter:
+        min_value: "Minimun Value"
+        max_value: "Maximun Value"
+        resutl: "Result"
+

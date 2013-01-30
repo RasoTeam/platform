@@ -1,12 +1,12 @@
 <table class="twelve" >
   <thead>
     <tr>
-      <th>Job Title</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Value</th>
+      <th><%= t(:job_title) %></th>
+      <th><%= t(:start_date) %></th>
+      <th><%= t(:end_date) %></th>
+      <th><%= t(:value) %></th>
       <% if current_user(@company.slug).role <= ROLE[:manager] %>
-        <th>Action</th>
+        <th><%= t(:action) %></th>
       <% end %>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
       <td><%= contract.end_date %></td>
       <td><%= contract.value %></td>
       <% if current_user(@company.slug).role <= ROLE[:manager] %>
-        <td><%= link_to "Edit", edit_company_user_contract_path(@company,@user,contract) %></td>
+        <td><%= link_to t(:edit), edit_company_user_contract_path(@company,@user,contract) %></td>
       <% end %>
     </tr>
   <% end %>
