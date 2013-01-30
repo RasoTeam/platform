@@ -35,7 +35,7 @@ def paypal_encrypted(return_url, payment_notification)
   }
   values.merge!({
     "amount_1" => value,
-    "item_name_1" => "Bill from "# + Date::MONTHNAMES[month.month] + " " + month.year.to_s
+    "item_name_1" => "Bill from " + Date::MONTHNAMES[month.month] + " " + month.year.to_s
   })
   encrypt_for_paypal(values)
 end
