@@ -10,10 +10,12 @@
 </div>
 
 <div class="row">
-	<div class="four columns">
+	<div class="twelve columns ">
 		<h2><%= t(:trainings) %></h2>
 	</div>
-	<div class="eight columns ">
+</div>
+<div class="row">
+	<div class="twelve columns" style="margin-bottom: 20px;">
 		<%= link_to t(:new_training), new_company_training_path( @company, params[:id]), :class=>"radius button right" %>
 	</div>
 </div>
@@ -21,7 +23,7 @@
 
 <div class="row">
   	<div class="twelve columns">
-  			<% if @trainings.any? %>
+  		<% if @trainings.any? %>
 	  		<table class="twelve">
 				<thead>
 					<tr>
@@ -45,12 +47,12 @@
 					<% end %>
 				</tbody>
 			</table>
-			<%else%>
-				<div class="panel">
-		    		<h3 style="text-align:center"> <%= t(:no_trainings_available) %></h3>
-				</div>
-			<%end%>
-		</div>
+		<%else%>
+			<div class="panel">
+		   		<h3 style="text-align:center"> <%= t(:no_trainings_available) %></h3>
+			</div>
+		<%end%>
+	</div>
 </div>
 
 

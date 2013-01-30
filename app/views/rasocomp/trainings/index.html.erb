@@ -8,10 +8,14 @@
     </ul>
   </div>
 </div>
-
+<div class="row">
+	<div class="twelve columns">
+		<h2><%= t(:trainings_available) %></h2>
+	</div>
+</div>
 <div class="row">
   	<div class="twelve columns">
-		<h3><%= t(:trainings_available) %></h3>
+		
 		<%if @trainings.any?%>
 		<% @training_course.each do |t| %>
 		<div class="panel">
