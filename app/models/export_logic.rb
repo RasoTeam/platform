@@ -31,7 +31,7 @@ class ExportLogic < ActiveRecord::Base
 		end
 
 		bookname = company_name.to_s + '_' + (Time.now.to_i).to_s + '_users.xls'
-		bookpath = 'public/_temp_down_excel_files/' + bookname
+		bookpath = 'app/assets/_temp_down_excel_files/' + bookname
 		book.write bookpath
 		
 		return bookpath
@@ -79,7 +79,7 @@ class ExportLogic < ActiveRecord::Base
 		end
 
 		bookname = company_name.to_s + '_' + (Time.now.to_i).to_s + '_timeoffs.xls'
-		bookpath = 'public/_temp_down_excel_files/' + bookname
+		bookpath = 'app/assets/_temp_down_excel_files/' + bookname
 		book.write bookpath
 		
 		return bookpath

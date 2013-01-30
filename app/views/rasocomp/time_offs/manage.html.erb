@@ -11,65 +11,69 @@
 
 <div class="row">
 	<div class="twelve columns">		
-		<div class="four columns">
-			<h2><%= t(:manage_time_offs) %></h2>
+		<h2><%= t(:manage_time_offs) %></h2>
+		<div class="row">
+			<div class="twelve columns ">
+				<ul class="button-group radius right">
+					<li><%= link_to t(:import_time_offs), fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
+					<li><%= link_to t(:export_time_offs), choose_users_step_company_exportsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
+				</ul>
+			</div>
 		</div>
-		<div class="eight columns ">
-			<ul class="button-group radius right">
-				<li><%= link_to t(:import_time_offs), fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
-				<li><%= link_to t(:export_time_offs), choose_users_step_company_exportsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
-			</ul>
-		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
 		<% if @timeoffs.any? %>
 
-			<table class="twelve">
-				<thead>
-					<th style="text-align:center"><%= t(:cooperator_name)%></th>
-					<th style="text-align:center"><%= t(:start_day)%></th>
-					<th style="text-align:center"><%= t(:end_day)%></th>
-					<th style="text-align:center"><%= t(:description)%></th>
-					<th style="text-align:center"><%= t(:type) %></th>
-					<th style="text-align:center"><%= t(:state) %></th>
-					<th style="text-align:center"><%= t(:actions) %></th>
-				</thead>
-			<tbody>
+		<table class="twelve">
+			<thead>
+				<th style="text-align:center"><%= t(:cooperator_name)%></th>
+				<th style="text-align:center"><%= t(:start_day)%></th>
+				<th style="text-align:center"><%= t(:end_day)%></th>
+				<th style="text-align:center"><%= t(:description)%></th>
+				<th style="text-align:center"><%= t(:type) %></th>
+				<th style="text-align:center"><%= t(:state) %></th>
+				<th style="text-align:center"><%= t(:actions) %></th>
+			</thead>
+		<tbody>
 
-				<% @timeoffs.each do |t| %>
-			    <tr>
-					<td><%= User.find(t.user_id).name %></td>
-					<td style="text-align:center"><%= t.start_at %></td>
-					<td style="text-align:center" ><%= t.end_at %></td>
-					<td style="text-align:center"><%= t.description %></td>
-					<% if t.category == TIMETYPE[:holiday] %>
-						<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
-					<% else ( 
-						if t.category == TIMETYPE[:sick] %>
-							<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
+			<% @timeoffs.each do |t| %>
+		    <tr>
+				<td><%= User.find(t.user_id).name %></td>
+				<td style="text-align:center"><%= t.start_at %></td>
+				<td style="text-align:center" ><%= t.end_at %></td>
+				<td style="text-align:center"><%= t.description %></td>
+				<% if t.category == TIMETYPE[:holiday] %>
+					<td style="color:brown; text-align: center"><%= t(:holidays)  %></td>
+				<% else ( 
+					if t.category == TIMETYPE[:sick] %>
+						<td style="color:purple; text-align: center"><%= t(:sick)  %></td>
+					<%end)%>
+				<% end %>
+				<% if t.state == TIMEOFF[:pending] %>
+					<td style="color:orange; text-align: center"><%= t(:pending)  %></td>
+				<% else ( 
+					if t.state == TIMEOFF[:approved] %>
+						<td style="color:green; text-align: center"><%= t(:approved)  %></td>
+					<%else( 
+						if t.state == TIMEOFF[:disapproved]%>
+							<td style="color:red; text-align: center"><%= t(:disapproved)  %></td>
 						<%end)%>
-					<% end %>
-					<% if t.state == TIMEOFF[:pending] %>
-						<td style="color:orange; text-align: center"><%= t(:pending)  %></td>
-					<% else ( 
-						if t.state == TIMEOFF[:approved] %>
-							<td style="color:green; text-align: center"><%= t(:approved)  %></td>
-						<%else( 
-							if t.state == TIMEOFF[:disapproved]%>
-								<td style="color:red; text-align: center"><%= t(:disapproved)  %></td>
-							<%end)%>
-						<%end)%>
-					<% end %>
-					<td style="text-align:center">
-						<%= link_to t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put %>
-						<%= link_to t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put %>
-					</td>
-			    </tr>
-			<% end %>
-			</tbody>
-		</table>
-		<% else %>
-			<div class="panel">
-	    		<h3 style="text-align:center">There are no timeoffs registered</h3>
-	    	</div>
-        <% end %>
+					<%end)%>
+				<% end %>
+				<td style="text-align:center">
+					<%= link_to t(:accept), approve_company_user_time_off_path( @company, @user, t),:class=>"radius label", :method => :put %>
+					<%= link_to t(:deny), disapprove_company_user_time_off_path( @company, @user, t),:class=>"alert radius label", :method => :put %>
+				</td>
+		    </tr>
+		<% end %>
+		</tbody>
+	</table>
+	<% else %>
+		<div class="panel">
+    		<h3 style="text-align:center">There are no timeoffs registered</h3>
+    	</div>
+    <% end %>
 	</div>
 </div>
