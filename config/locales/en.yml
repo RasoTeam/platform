@@ -101,6 +101,7 @@ en:
   europass: "(Europass Format)"
   evaluatees: "Evaluatees"
   evaluator: "Evaluator"
+  evaluators: "Evaluators"
   evaluation: "Evaluation"
   evaluations: "Evaluations"
   excel_data: "Excel Sheet Data"
@@ -251,13 +252,26 @@ en:
   bill: "Bill"
   bills: "Bills"
   change_to_interviewed: "Change to Interviewed"
+  confirmation_message: "Are you sure?\n Changes are irreversible."
+  create_evaluation_parameter: "Create new evaluation parameter"
+  create_evaluation_process: "Create Evaluation Process"
+  custom_process: "Custom Process"
+  evaluation_parameters: "Evaluation Parameters"
+  excel_data_not_valid: "Excel Data Not Valid"
+  import_data_from_other_sheet: "Import Data From Other Sheet"
   issued_date: "Issued Date"
   job_title: "Job Title"
   minimun_value: "Minimun Value"
   maximun_value: "Maximun Value"
+  my_evaluations: "My Evaluations"
   new_company: "New Company"
+  new_parameter: "New Parameter?"
+  no_time_off_registered: "No Time Off Registered"
   parameter_name: "Parameter Name"
+  password: "Password"
+  password_confirmation: "Passowrd Confirmation"
   reject: "Reject"
+  reload_all: "Reload All"
   select: "Select"
   show_contract: "Show Contract"
 
@@ -277,7 +291,12 @@ en:
   activerecord:
     attributes:
       user:
+        name: "Name"
+        email: "Email"
         password_digest: "Password"
+        role: "Role"
+        photo: "Photo"
+        language: "Idiom"
       company: 
         name: "Name"
         slug: "Slug"
@@ -296,4 +315,7 @@ en:
         min_value: "Minimun Value"
         max_value: "Maximun Value"
         resutl: "Result"
+      time_off:
+        start_date: "Start Date"
+        end_date: "End Date"
 

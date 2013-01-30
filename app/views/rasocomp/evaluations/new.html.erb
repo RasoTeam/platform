@@ -1,7 +1,7 @@
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
-      <li><%= link_to 'Home', user_dashboard_path(@company, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:home) , user_dashboard_path(@company, current_user(@company.slug)) %></li>
       <li><%= link_to t(:evaluations), company_evaluations_path(@company) %></li>
       <li class="current"><a href="#"><%= t(:new) %></a></li>
     </ul>

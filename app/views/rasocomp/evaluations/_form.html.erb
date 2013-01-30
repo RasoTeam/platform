@@ -30,10 +30,10 @@
     <table class="twelve">
         <thead>
             <tr>
-                <th>Parameter Name</th>
-                <th>Accept</th>
-                <th>Minimum Value</th>
-                <th>Maximum Value</th>
+                <th><%= t(:parameter_name) %></th>
+                <th><%= t(:accept) %></th>
+                <th><%= t(:minimun_value) %></th>
+                <th><%= t(:maximun_value) %></th>
             </tr>
         </thead>
         <tbody id="parameterList">
@@ -41,7 +41,7 @@
         </tbody>
     </table>
 
-    <%= link_to "New Parameter?" , new_company_parameter_path(@company), :id => 'evaluationModel', :remote => :true %>
+    <%= link_to t(:new_parameter) , new_company_parameter_path(@company), :id => 'evaluationModel', :remote => :true %>
 
     <br/><br/>
 

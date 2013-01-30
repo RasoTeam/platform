@@ -24,9 +24,9 @@
       <div class="five columns">
         <dl class="sub-nav">
             <dt>Filter:</dt>
-              <dd id="linkAll" class="active"><%= link_to 'All' , personal_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
-              <dd id="linkActive"><%= link_to 'Active' , personal_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
-              <dd id="linkClosed"><%= link_to 'Closed' , personal_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
+              <dd id="linkAll" class="active"><%= link_to t(:all) , personal_evaluations_path(@company, :status => "ALL"), :remote => :true ,:id => "all" %></dd>
+              <dd id="linkActive"><%= link_to t(:active) , personal_evaluations_path(@company, :status => "Active"), :remote => :true ,:id => "active" %></dd>
+              <dd id="linkClosed"><%= link_to t(:closed) , personal_evaluations_path(@company, :status => "Closed"), :remote => :true ,:id => "closed" %></dd>
         </dl>
       </div> <!-- Fecha eight columns -->
       <div class="four columns">
@@ -43,11 +43,11 @@
           <table class="twelve">
             <thead>
               <tr>
-                <th style="text-align:center">Evaluation</th>
-                <th style="text-align:center">Begin Date</th>
-                <th style="text-align:center">End Date</th>
-                <th style="text-align:center">Evaluator</th>
-                <th style="text-align:center">Status</th>
+                <th style="text-align:center"><%= t(:evaluation) %></th>
+                <th style="text-align:center"><%= t(:bagin_date) %></th>
+                <th style="text-align:center"><%= t(:end_date) %></th>
+                <th style="text-align:center"><%= t(:evaluators) %></th>
+                <th style="text-align:center"><%= t(:status) %></th>
               </tr>
             </thead>
             <!-- Inicio do corpo da tabela -->
@@ -69,7 +69,7 @@
                       <%= submit_tag t(:search), :name => nil, :class=>"button expand postfix" %>
                     </div>
                 <% end %>
-                <%= link_to "Reload All" , personal_evaluations_path(@company , :search => ""),:class=>"button expand postfix" %>
+                <%= link_to t(:reload_all) , personal_evaluations_path(@company , :search => ""),:class=>"button expand postfix" %>
               </div> <!--  Fecha row -->
             </div> <!-- Fecha four columns -->
           </div> <!-- Fecha row -->
