@@ -151,7 +151,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
   def personal_evaluations
     @company = Company.find(params[:company_id])
     @user = current_user(@company.slug)
-    @evaluations = my_evaluations(@user,params[:status],params[:order],params[:search]).paginate(:page => params[:page,:per_page => 15])
+    @evaluations = my_evaluations(@user,params[:status],params[:order],params[:search])
 
     respond_to do |format|
       format.js {@evaluations}
