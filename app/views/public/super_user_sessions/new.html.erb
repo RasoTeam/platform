@@ -3,7 +3,7 @@
 		<div id="signup">
 			<div class="panel">
 		      <h1>Raso Admin</h1>
-		      <p>This is you company login page</p>
+		      <p><%= t(:this_is_the_backoffice_admin_login_page) %></p>
 				<hr />		
 					<%= form_for(:super_user_session, url: public_super_user_sessions_path) do |f| %>
 					  <%= f.label :email %>

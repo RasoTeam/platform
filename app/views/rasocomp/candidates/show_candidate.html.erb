@@ -1,10 +1,37 @@
-<div id="candidateTable">
-  <%= render 'candidate' , :candidate => @candidate %>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to t(:home), user_dashboard_path(@company, current_user(@company.slug)) %></li>
+      <li><%= link_to t(:job_offers), company_job_offers_path(@company) %></li>
+      <li><%= link_to @offer.job_name, company_job_offer_path(@company,@offer) %></li>
+      <li class="current"><a href="#"><%= @candidate.name %></a></li>
+    </ul>
+  </div>
 </div>
 
-<p style="text-align: center;">
-  <%= link_to t(:back) , company_job_offer_path(@company,@offer), :class=>"button" %>
-  <%= link_to t(:change_to_interviewed) , update_candidate_status_path(@company,@offer,@candidate,:status => "Interviewed"),:remote => :true, :class=>"button" %>
-  <%= link_to t(:select) , update_candidate_status_path(@company,@offer,@candidate,:status => "Selected"),:remote => :true, :class=>"button" %>
-  <%= link_to t(:reject), update_candidate_status_path(@company,@offer,@candidate,:status => "Rejected"),:remote => :true, :class=>"button" %>
-</p>
+<div class="row">
+  	<div class="twelve columns">
+		<h2><%= t(:details) %></h2>
+   	</div>
+</div>
+
+<div class="row">
+	<div class="twelve columns">
+		<div class="panel">
+			<div id="candidateTable">
+			  <%= render 'candidate' , :candidate => @candidate %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<p style="text-align: center;">
+		  <%= link_to "Back to Job Offer" , company_job_offer_path(@company,@offer), :class=>"button" %>
+		  <%= link_to "Mark as Interviewed" , update_candidate_status_path(@company,@offer,@candidate,:status => "Interviewed"),:remote => :true, :class=>"button" %>
+		  <%= link_to "Mark as Selected" , update_candidate_status_path(@company,@offer,@candidate,:status => "Selected"),:remote => :true, :class=>"button" %>
+		  <%= link_to "Mark as Rejected" , update_candidate_status_path(@company,@offer,@candidate,:status => "Rejected"),:remote => :true, :class=>"button" %>
+		</p>
+	</div>
+</div>
+>>>>>>> Job offers, Candidates, etc.
