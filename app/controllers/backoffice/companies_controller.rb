@@ -11,7 +11,7 @@ class Backoffice::CompaniesController < Backoffice::ApplicationController
   def show
     @companies = Company.search(params[:search], params[:order], params[:state]).paginate(:page => params[:page], :per_page => 15)
     @company = Company.find(params[:id])
-    @bills = @company.bills
+    @bills = @company.bills.paginate(:page => params[:page], :per_page => 5) 
   end
 
   # Edit a company
