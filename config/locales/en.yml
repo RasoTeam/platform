@@ -93,6 +93,7 @@ en:
   enroll: "Enrool"
   enrolled: "Enrolled"
   error: "Error"
+  error_creating_time_off: "Error creating time off"
   error_messages: "Error Messages"
   europass: "(Europass Format)"
   evaluatees: "Evaluatees"
