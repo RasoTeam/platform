@@ -151,7 +151,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
   def personal_evaluations
     @company = Company.find(params[:company_id])
     @user = current_user(@company.slug)
-    @evaluations = my_evaluations(@user,params[:status],params[:order],params[:search])
+    @evaluations = my_evaluations(@user,params[:status],params[:order],params[:search]).paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
       format.js {@evaluations}
@@ -255,15 +255,15 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
     #Aqui é feita a escolha da query a usar dependendo dos parametros passados
     if @@status_p != "ALL" #Se não for TUDO, há que respeitar o Status
       if @@search_p != ""
-        evaluations = user.evaluations.uniq!
+        evaluations = user.evaluations.select("DISTINCT evaluations.*")
       else
-        evaluations = user.evaluations.where("status = ?" , @@status_p).order("description " + @@order_p ).uniq!
+        evaluations = user.evaluations.select("DISTINCT evaluations.*").where("status = ?" , @@status_p).order("description " + @@order_p )
       end
     else                 #Se for TUDO, vem tudo, sem respeito por status
       if @@search_p != ""
-        evaluations = user.evaluations.where("description LIKE '%" + @@search_p + "%'").order("description " + @@order_p ).uniq!
+        evaluations = user.evaluations.select("DISTINCT evaluations.*").where("description LIKE '%" + @@search_p + "%'").order("description " + @@order_p )
       else
-        evaluations = user.evaluations.order("description " + @@order_p ).uniq!
+        evaluations = user.evaluations.select("DISTINCT evaluations.*").order("description " + @@order_p )
       end
     end
 
