@@ -23,7 +23,7 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 		@company = Company.find(params[:company_id])
 		if(!params[:excel_file].nil?)
 			filename = params[:excel_file].original_filename
-			directory = "public/_temp_up_excel_files"
+			directory = "app/assets/_temp_up_excel_files"
 		
 
 			if !(filename.split('.')[(filename.split('.').count)-1].eql?("xls")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("xlsx")) && !(filename.split('.')[(filename.split('.').count)-1].eql?("ods"))

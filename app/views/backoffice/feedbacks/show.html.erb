@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="twelve columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to "Home" , backoffice_stats_path %></li>
+      <li><%= link_to "Feedbacks" , backoffice_feedbacks_path %></li>
+    </ul>
+  </div>
+</div>
+<!-- Main Grid Section -->
+
+<div class="row">
+	<div class="twelve columns">
+        <table class="twelve tableJobs">
+			   <tr>
+            	<td><p class="radius label">Name:</td>
+  				<td><%= @feedback.nome %></td>
+          	</tr>
+          	<tr>
+			  	<td><p class="radius label">Mail:</td>
+			  	<td><%= @feedback.email %></td>
+          	</tr>
+          	<tr>
+			  	<td><p class="radius label">Type:</td>
+			  	<td><%= @feedback.tipo %></td>
+          	</tr>
+            <tr>
+          <td><p class="radius label">Description:</td>
+          <td><%= @feedback.texto %></td>
+            </tr>
+            <tr>
+          <td><p class="radius label">Url:</td>
+          <td><%= @feedback.url %></td>
+            </tr>
+        </table>
+    </div>
+</div>

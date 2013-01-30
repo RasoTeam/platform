@@ -1,6 +1,6 @@
 Platform::Application.routes.draw do
 
-  resources :feedbacks , :only => [:new,:create]
+  resources :feedbacks
   post '/payment_notification' => 'payment_notification#create', :as => 'payment_notification'
   get '/locale' => 'locale#set', :as => 'setlocal'
 
@@ -130,6 +130,7 @@ Platform::Application.routes.draw do
 
   namespace "backoffice" do
     resources :super_users
+    resources :feedbacks
 
     resources :companies do
       resources :users do
