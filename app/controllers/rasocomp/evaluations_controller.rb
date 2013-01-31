@@ -87,6 +87,7 @@ class Rasocomp::EvaluationsController < Rasocomp::ApplicationController
 
     #Acção de guardar efectivamente
     if @evaluation.save
+      UserMailer.send_email_new_evaluation(User.find(@evaluation.user_id), @evaluation.users).deliver
       flash[:success] = "Evaluation created successfully"
       redirect_to company_evaluations_path(params[:company_id])
     else

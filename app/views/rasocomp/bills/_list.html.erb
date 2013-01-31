@@ -24,7 +24,6 @@
       <% end %>
       <% if bill.state == BILLSTATE[:unpaid] %>
         <td>
-          <!-- link_to t(:pay), bill.paypal_url(company_url, payment_notification_url) -->
           <%= form_tag APP_CONFIG[:paypal_url] do%>
             <%= hidden_field_tag :cmd, "_s-xclick" %>
             <%= hidden_field_tag :encrypted, bill.paypal_encrypted(company_url, payment_notification_url(:secret => APP_CONFIG[:paypal_secret])) %>
