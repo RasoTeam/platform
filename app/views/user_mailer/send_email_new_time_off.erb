@@ -18,16 +18,14 @@
       <!--<%= image_tag('http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png')%>-->
       <h2 style="text-align: right; margin-right: 20px;">Raso - Lean HR Management</h2>
     </div>
-    <h1> New Evaluation have been created</h1>
-    <p> <h3>Evaluator: </h3> <%=  @evaluatorName %></p>
-    <p> <h3>Users Being Evaluated: </h3> </p>
-    <% @names.each do |n| %>
-      <p> <%= n %> </p>
-    <% end %>
+
+    <h1> New Time Off request</h1>
+    <p>User <%= @user.name %> requested a time off from <%= @start_date %> to <%= @end_date %>.</p>
     <br/>
     </p>
     <p> Looking forward to hear from you, </p>
     <p> Raso Team </p>
+
     <div style="background-color: #2BA6CB; 
                 height: 20px; 
                 color: white; 

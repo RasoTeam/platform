@@ -44,4 +44,23 @@ class UserMailer < ActionMailer::Base
     @evaluatorName = evaluator.name
     mail(:to => emails, :subject => "New Evaluation")
   end
+
+  def send_email_new_time_off(request_user,start_date, end_date, managers)
+    @user = request_user
+    @start_date = start_date
+    @end_date = end_date
+    managers_emails = Array.new
+    managers.each do |m|
+      managers_emails << m.email
+    end
+    mail(:to => managers_emails, :cc => request_user.email, :subject => "Time Off Request")
+  end
+
+  def send_email_time_off_result(user, manager, state, start_date, end_date)
+    @manager = manager
+    @state = state
+    @start_date = start_date
+    @end_date = end_date
+    mail(:to => user.email,  :subject => "Time off" + state)
+  end
 end
