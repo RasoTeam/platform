@@ -48,7 +48,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     end
     timeoff.update_attribute :state, 2
     timeoff.update_attribute :color, '#330000'
-    UserMailer.send_email_time_off_result(@timeoff.user, current_user(@company.slug), "Dennied", @timeoff.start_at, @timeoff.end_at).deliver
+    UserMailer.send_email_time_off_result(timeoff.user, current_user(company.slug), "Dennied", timeoff.start_at, timeoff.end_at).deliver
     redirect_to manage_company_user_time_offs_path( company, User.find( params[:user_id]))
     #redirect_to root_path
   end
@@ -83,7 +83,7 @@ class Rasocomp::TimeOffsController < Rasocomp::ApplicationController
     @timeoff.color = '#B8B8B8'
     @timeoff.name = @user.name + " | " + TIMETYPE.invert[@timeoff.category].to_s
     @timeoff.valid?
-    managers = @company.users.where("role LIKE ?",ROLE[:manager])
+    managers = @company.users.where("role = ?", ROLE[:manager])
     if @timeoff.save
       UserMailer.send_email_new_time_off(@user, @timeoff.start_at, @timeoff.end_at, managers).deliver
       @user.time_off_days -= @timeoff.total_credits
