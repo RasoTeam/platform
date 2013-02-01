@@ -22,7 +22,7 @@ class Rasocomp::ParametersController < Rasocomp::ApplicationController
   def create
     @parameter = Parameter.new(params[:parameter])
     @company_id = params[:company_id]
-puts "---------------------------------------------------------------------------------------------------------------"
+    
     if @parameter.save
       respond_to do |format|
         format.js
