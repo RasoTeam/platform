@@ -3,11 +3,11 @@
         <p><%= msg %></p>
     <% end %>
     <span class=" radius label"><%= t(:description) %></span>
-    <%= f.text_field :description, :class=>"input_space"  %>
+    <%= f.text_field :description, :class=>"input_space", required: true  %>
     <span class=" radius label"><%= t(:start_day) %></span>
-    <%= f.text_field :period_begin, :class=>"input_space" %>
+    <%= f.text_field :period_begin, :class=>"input_space", required: true %>
     <span class=" radius label"><%= t(:end_day) %></span>
-    <%= f.text_field :period_end, :class=>"input_space" %>
+    <%= f.text_field :period_end, :class=>"input_space", required: true %>
     <span class=" radius label"><%= t(:evaluator) %></span>
     <%= f.select :user_id , options_from_collection_for_select(@employees, :id,:name), {}, {:class=>"select"} %>
 

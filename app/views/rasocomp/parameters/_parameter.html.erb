@@ -2,11 +2,11 @@
     <div class="twelve columns">
             <div class="panel">
                 <h1><%= t(:new_evaluation_parameter) %></h1>
-                <%= form_for [@company,@parameter] do |f| %>
+                <%= form_for [@company,@parameter], remote: true do |f| %>
                 	<span class=" radius label"><%= t(:name) %></span>
-                	<%= f.text_field :name, :class=>"input_space"  %>
+                	<%= f.text_field :name, :class=>"input_space", :required => true  %>
                 	<span class=" radius label"><%= t(:description) %></span>
-                	<%= f.text_area :description , :size => "30x5", :class=>"input_space"  %>
+                	<%= f.text_area :description , :size => "30x5", :class=>"input_space", :required => true  %>
                 	<br/>
                 	<%= f.submit %>
                 <% end %>

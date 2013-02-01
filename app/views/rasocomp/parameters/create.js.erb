@@ -1,1 +1,20 @@
+var num = $('#parameterList > tr').length;
+num += 1;
+
+var opt = '';
+
+for (var i=0;i<=100;i++)
+{ 
+opt += '<option value="'+i+'">'+i+'</option>';
+}
+
+$('#parameterList').append(
+	'<tr><td><abbr title="<%= @parameter.description %>"><%= @parameter.name %></abbr></td><td><input name="evaluation[evaluation_user_parameters_attributes]['+
+	num+'][_destroy]" type="hidden" value="0" /><input id="evaluation_evaluation_user_parameters_attributes_'+num+'__destroy" name="evaluation[evaluation_user_parameters_attributes]['+
+	num+'][_destroy]" type="checkbox" value="1" /><input id="evaluation_evaluation_user_parameters_attributes_'+num+'_parameter_id" name="evaluation[evaluation_user_parameters_attributes]['+
+	num+'][parameter_id]" type="hidden" value="<%= @parameter.id %>" /></td><td><select id="evaluation_evaluation_user_parameters_attributes_'+
+	num+'_min_value" name="evaluation[evaluation_user_parameters_attributes]['+num+'][min_value]">'+opt+'</select></td><td><select id="evaluation_evaluation_user_parameters_attributes_'+
+	num+'_max_value" name="evaluation[evaluation_user_parameters_attributes]['+num+'][max_value]">'+opt+'</select></td></tr>'
+	); 
+$('#parameterList').effect('highlight');
 $('#parameter').html("").trigger('reveal:close');
