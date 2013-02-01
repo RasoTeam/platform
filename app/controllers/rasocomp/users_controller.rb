@@ -47,7 +47,7 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     params[:user].delete(:password)
     params[:user].delete(:password_confirmation)
     if @user.update_attributes(params[:user])
-      I18n.locale = params[:user][:locale]
+      I18n.locale = current_user(@company.slug).locale
       flash[:success] = t(:successful_update)
       redirect_to company_user_path @company, @user
     else
