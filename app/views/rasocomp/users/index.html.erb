@@ -22,12 +22,15 @@
 <div class="row">
 		<div class="twelve columns ">
 			<ul class="button-group radius right">
-				<li><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button right add_user" %></li>
+				<li><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button right add_user", remote: true%></li>
 				<li><a class="radius button add_user" id="update_credits"> <%= t(:edit_user_days) %></a></li>
 				<li><%= link_to t(:import_user), fst_step_company_importsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 				<li><%= link_to t(:export_user), choose_users_step_company_exportsingle_index_path(:companyid => @company.id, :model => request.path), :class=>"radius button right add_user" %></li>
 			</ul>
 		</div>
+</div>
+
+<div id="new_user" class="reveal-modal [expand, xlarge, large, medium, small]">
 </div>
 
 <div id="credits_dialog" class="reveal-modal small">
@@ -57,7 +60,7 @@
 								<th style="text-align: center"><%= t(:actions) %></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="user_list">
 							<% @users.each do |u| %>
 								<tr>
 							    	<% if current_user(@company.slug).role == ROLE[:manager] %>

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="twelve columns">
+      <div class="panel">
+        <h2><%= t(:new_employee) %></h2>
+        <hr/>
+        <%= form_for [@company, @user], remote: true do |f| %>
+          <div id="email_error"></div>
+
+          <span class=" radius label"><%= t(:name) %></span>
+          <%= f.text_field :name, :class=>"input_space", required: true %>
+
+          <span class=" radius label"><%= t(:email) %></span>
+          <%= f.email_field :email, :class=>"input_space", required: true %>
+
+          <span class=" radius label"><%= t(:role) %></span>
+          <%= f.select :role, ROLE, {}, {:class=>"select"} %>
+
+          <p style="text-align: center"><%= f.submit t(:submit), :class => "button" %></p>
+        <% end %>
+      </div>
+    </div>
+</div>

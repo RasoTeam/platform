@@ -85,6 +85,11 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
     @company = Company.find( params[:company_id])
     @user = @company.users.build
     @roles = ROLE
+
+    respond_to do |format|
+          format.html # new.html.erb
+          format.js
+    end
   end
 
   # Creates a new employee. Only avaible to managers and root.
@@ -107,9 +112,19 @@ class Rasocomp::UsersController < Rasocomp::ApplicationController
       period.state = STATE[:unchecked]
       period.save
       
-      redirect_to company_users_path
+      respond_to do |format|
+        format.js
+        format.html{
+            flash[:success] = "Employee successfully added."
+            redirect_to company_users_path
+        }
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.js
+        format.html{flash[:error] = "Could not add employee"
+                    render 'new'}
+      end
     end
   end
 
