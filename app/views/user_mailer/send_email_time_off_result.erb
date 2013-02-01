@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <div style="background-color: #2BA6CB; 
+                height: 20px; 
+                color: white; 
+                padding: 10px;
+                -webkit-border-top-left-radius: 2px;
+                -webkit-border-top-right-radius: 2px;
+                -moz-border-radius-topleft: 2px;
+                -moz-border-radius-topright: 2px;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+      ">
+      <!--<%= image_tag('http://rasohr.com/assets/logo-a93807b32d218311cf0d6ebe49309d29.png')%>-->
+      <h2 style="text-align: right; margin-right: 20px;">Raso - Lean HR Management</h2>
+    </div>
+
+    <h1> Time Off <%= @state %> </h1> 
+
+    <p> Your time off from <%= @start_date %> to <%= @end_date %> has been <%= @state %> by <%= @manager.name %> </p>
+
+    <br/>
+    </p>
+    <p> Looking forward to hear from you, </p>
+    <p> Raso Team </p>
+    <div style="background-color: #2BA6CB; 
+                height: 20px; 
+                color: white; 
+                padding: 10px;
+                -webkit-border-bottom-right-radius: 2px;
+                -webkit-border-bottom-left-radius: 2px;
+                -moz-border-radius-bottomright: 2px;
+                -moz-border-radius-bottomleft: 2px;
+                border-bottom-right-radius: 2px;
+                border-bottom-left-radius: 2px;">
+                Copyright © 2012 Raso. All rights reserved. Developed by Raso Team.
+    </div>
+  </body>
+</html>
