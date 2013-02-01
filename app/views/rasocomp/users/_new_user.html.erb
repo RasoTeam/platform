@@ -15,8 +15,16 @@
           <span class=" radius label"><%= t(:role) %></span>
           <%= f.select :role, ROLE, {}, {:class=>"select"} %>
 
-          <p style="text-align: center"><%= f.submit t(:submit), :class => "button" %></p>
+          <p style="text-align: center"><%= f.submit t(:submit), :class => "button" %><%= image_tag ('waiting.gif'), :class => "waiting", :style => "display:none;" %></p>
         <% end %>
       </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('input.button').click(function() {
+    if ($('input#user_name').val() != '' && $('input#user_email').val() != '') $('.waiting').show();
+  });
+});
+</script>

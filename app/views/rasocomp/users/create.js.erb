@@ -1,9 +1,11 @@
 <% if @user.new_record? %> 
 	$('#email_error').html('<%@user.errors.full_messages.each do |msg| %><div class="alert-box alert"><%= msg %></div><% end %>');
+	$('.waiting').hide();
 <% else %>
 	$('#user_list').append(
 		'<tr><td><%= link_to @user.name, company_user_path(@user.company_id, @user) %></td><td style="text-align: center;"><%= @user.email %></td><td style="text-align: center;"><%= t(ROLE.invert[@user.role]) %></td><td style="color:red; text-align: center"><%= t(:unchecked) %></td><td style="text-align: center"><%= link_to t(:resend_email), user_resend_verification_email_path(@user.company,@user), :method=>:put, :class=>"label radius" %></td></tr>'
-		); 
+		);
+	$('.waiting').hide();
 	$('#user_list').effect('highlight');
 	$('#new_user').html("").trigger('reveal:close');
 <% end %>
