@@ -396,7 +396,8 @@
 32
 33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 20</span>
@@ -414,6 +415,7 @@
   <span class='kw'>end</span>
   <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_update_attribute'>update_attribute</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='int'>1</span>
   <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_update_attribute'>update_attribute</span> <span class='symbol'>:color</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#33FF33</span><span class='tstring_end'>'</span></span>
+  <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_send_email_time_off_result'>send_email_time_off_result</span><span class='lparen'>(</span><span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='lparen'>(</span><span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Approved</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_start_at'>start_at</span><span class='comma'>,</span> <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_end_at'>end_at</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_deliver'>deliver</span>
   <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_manage_company_user_time_offs_path'>manage_company_user_time_offs_path</span><span class='lparen'>(</span> <span class='ivar'>@company</span><span class='comma'>,</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='comment'>#redirect_to 
 </span><span class='kw'>end</span></pre>
@@ -448,8 +450,6 @@
       <pre class="lines">
 
 
-74
-75
 76
 77
 78
@@ -466,10 +466,14 @@
 89
 90
 91
-92</pre>
+92
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -481,7 +485,9 @@
   <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#B8B8B8</span><span class='tstring_end'>'</span></span>
   <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> | </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>TIMETYPE</span><span class='period'>.</span><span class='id identifier rubyid_invert'>invert</span><span class='lbracket'>[</span><span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+  <span class='id identifier rubyid_managers'>managers</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>role = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>ROLE</span><span class='lbracket'>[</span><span class='symbol'>:manager</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_send_email_new_time_off'>send_email_new_time_off</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='comma'>,</span> <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_start_at'>start_at</span><span class='comma'>,</span> <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_end_at'>end_at</span><span class='comma'>,</span> <span class='id identifier rubyid_managers'>managers</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_deliver'>deliver</span>
     <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_time_off_days'>time_off_days</span> <span class='op'>-=</span> <span class='ivar'>@timeoff</span><span class='period'>.</span><span class='id identifier rubyid_total_credits'>total_credits</span>
     <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_save!'>save!</span><span class='lparen'>(</span><span class='symbol'>:validate</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_company_user_time_offs_path'>company_user_time_offs_path</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -521,10 +527,6 @@
       <pre class="lines">
 
 
-95
-96
-97
-98
 99
 100
 101
@@ -532,10 +534,14 @@
 103
 104
 105
-106</pre>
+106
+107
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -580,7 +586,6 @@
       <pre class="lines">
 
 
-38
 39
 40
 41
@@ -594,10 +599,12 @@
 49
 50
 51
-52</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disapprove'>disapprove</span>
   <span class='id identifier rubyid_company'>company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -611,6 +618,7 @@
   <span class='kw'>end</span>
   <span class='id identifier rubyid_timeoff'>timeoff</span><span class='period'>.</span><span class='id identifier rubyid_update_attribute'>update_attribute</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='int'>2</span>
   <span class='id identifier rubyid_timeoff'>timeoff</span><span class='period'>.</span><span class='id identifier rubyid_update_attribute'>update_attribute</span> <span class='symbol'>:color</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#330000</span><span class='tstring_end'>'</span></span>
+  <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_send_email_time_off_result'>send_email_time_off_result</span><span class='lparen'>(</span><span class='id identifier rubyid_timeoff'>timeoff</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='lparen'>(</span><span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Dennied</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_timeoff'>timeoff</span><span class='period'>.</span><span class='id identifier rubyid_start_at'>start_at</span><span class='comma'>,</span> <span class='id identifier rubyid_timeoff'>timeoff</span><span class='period'>.</span><span class='id identifier rubyid_end_at'>end_at</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_deliver'>deliver</span>
   <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_manage_company_user_time_offs_path'>manage_company_user_time_offs_path</span><span class='lparen'>(</span> <span class='id identifier rubyid_company'>company</span><span class='comma'>,</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='comment'>#redirect_to root_path
 </span><span class='kw'>end</span></pre>
@@ -735,16 +743,16 @@
       <pre class="lines">
 
 
-65
-66
 67
 68
 69
 70
-71</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -784,12 +792,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_state_to_valid'>set_state_to_valid</span>
    
@@ -825,12 +833,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/time_offs_controller.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='ivar'>@timeoff</span> <span class='op'>=</span> <span class='const'>TimeOff</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -845,7 +853,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jan 30 18:41:33 2013 by
+  Generated on Sun Feb  3 19:53:45 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.3 (ruby-1.9.3).
 </div>
