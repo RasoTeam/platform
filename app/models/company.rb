@@ -18,7 +18,7 @@ class Company < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug
 
-  attr_accessible :address, :logo_url, :name, :state, :slug, :attach, :last_bill
+  attr_accessible :address, :logo_url, :name, :state, :slug, :attach, :last_bill, :description
   has_many :bills
   has_many :users
   has_many :time_offs
@@ -29,7 +29,9 @@ class Company < ActiveRecord::Base
   has_attached_file :attach, :default_url => "http://placehold.it/250x250"
 
 
-  before_save { |company| company.slug = slug.downcase
+  before_save { |company|
+                  company.slug = slug.downcase
+                  company.description ||= "To edit this text login and update the company information"
               }
 
   validates :name, :presence => true, :length => { :maximum => 100 }
