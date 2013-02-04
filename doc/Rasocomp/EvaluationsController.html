@@ -486,7 +486,6 @@
       <pre class="lines">
 
 
-120
 121
 122
 123
@@ -500,10 +499,11 @@
 131
 132
 133
-134</pre>
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirm_evaluation'>confirm_evaluation</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -605,7 +605,8 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 93
 94
 95
-96</pre>
+96
+97</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 49</span>
@@ -651,6 +652,7 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 
   <span class='comment'>#Acção de guardar efectivamente
 </span>  <span class='kw'>if</span> <span class='ivar'>@evaluation</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_send_email_new_evaluation'>send_email_new_evaluation</span><span class='lparen'>(</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='ivar'>@evaluation</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='ivar'>@evaluation</span><span class='period'>.</span><span class='id identifier rubyid_users'>users</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_deliver'>deliver</span>
     <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:success</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Evaluation created successfully</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_company_evaluations_path'>company_evaluations_path</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
@@ -689,7 +691,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-137
 138
 139
 140
@@ -700,10 +701,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 145
 146
 147
-148</pre>
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@evaluation</span> <span class='op'>=</span> <span class='const'>Evaluation</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -748,17 +750,17 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-110
 111
 112
 113
 114
 115
 116
-117</pre>
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_evaluate'>evaluate</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -799,7 +801,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-211
 212
 213
 214
@@ -828,10 +829,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 237
 238
 239
-240</pre>
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 211</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 212</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_evaluations_colaborator'>evaluations_colaborator</span><span class='lparen'>(</span><span class='id identifier rubyid_company'>company</span><span class='comma'>,</span><span class='id identifier rubyid_status'>status</span><span class='comma'>,</span><span class='id identifier rubyid_order'>order</span><span class='comma'>,</span><span class='id identifier rubyid_search_string'>search_string</span><span class='rparen'>)</span>
 
@@ -894,7 +896,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-179
 180
 181
 182
@@ -923,10 +924,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 205
 206
 207
-208</pre>
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 180</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_evaluations_hr_manager'>evaluations_hr_manager</span><span class='lparen'>(</span><span class='id identifier rubyid_company'>company</span><span class='comma'>,</span><span class='id identifier rubyid_status'>status</span><span class='comma'>,</span><span class='id identifier rubyid_order'>order</span><span class='comma'>,</span><span class='id identifier rubyid_search_string'>search_string</span><span class='rparen'>)</span>
 
@@ -1054,7 +1056,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-243
 244
 245
 246
@@ -1083,10 +1084,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 269
 270
 271
-272</pre>
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 243</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 244</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_my_evaluations'>my_evaluations</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_status'>status</span><span class='comma'>,</span><span class='id identifier rubyid_order'>order</span><span class='comma'>,</span><span class='id identifier rubyid_search_string'>search_string</span><span class='rparen'>)</span>
 
@@ -1167,7 +1169,7 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
   <span class='ivar'>@evaluation</span> <span class='op'>=</span> <span class='const'>Evaluation</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@evaluation</span><span class='period'>.</span><span class='id identifier rubyid_company_id'>company_id</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@employees</span> <span class='op'>=</span> <span class='ivar'>@company</span><span class='period'>.</span><span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>role !=  0</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='ivar'>@parameters</span> <span class='op'>=</span> <span class='const'>Parameter</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span><span class='symbol'>:order</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>name ASC</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@parameters</span> <span class='op'>=</span> <span class='const'>Parameter</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
   <span class='comment'>#evaluation_parameter = @evaluation.evaluation_parameters.build()
 </span>  <span class='id identifier rubyid_evaluation_user_parameters'>evaluation_user_parameters</span> <span class='op'>=</span> <span class='ivar'>@evaluation</span><span class='period'>.</span><span class='id identifier rubyid_evaluation_user_parameters'>evaluation_user_parameters</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1191,7 +1193,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-151
 152
 153
 154
@@ -1201,10 +1202,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 158
 159
 160
-161</pre>
+161
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_personal_evaluations'>personal_evaluations</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1248,7 +1250,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-99
 100
 101
 102
@@ -1256,10 +1257,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 104
 105
 106
-107</pre>
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1290,7 +1292,6 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
       <pre class="lines">
 
 
-163
 164
 165
 166
@@ -1299,10 +1300,11 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 169
 170
 171
-172</pre>
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/rasocomp/evaluations_controller.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show_personal_evaluation'>show_personal_evaluation</span>
   <span class='ivar'>@company</span> <span class='op'>=</span> <span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:company_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1324,7 +1326,7 @@ Evaluation Parameters and values: Indicates what are the evaluation parameters a
 </div>
 
     <div id="footer">
-  Generated on Wed Jan 30 18:41:35 2013 by
+  Generated on Sun Feb  3 19:53:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.3 (ruby-1.9.3).
 </div>

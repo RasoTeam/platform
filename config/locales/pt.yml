@@ -55,7 +55,7 @@ pt:
   confirm_account: "Confirmar Conta"
   confirmation_message: "Tem a certeza?\n As mudanças serão irreversiveis."
   confirmation_step: "Passo de Confirmação"
-  contacts: "Contactos"
+  contacts: "contactos"
   continue: "Continuar"
   contracts: "Contratos"
   cooperator: "Colaborador"
@@ -151,6 +151,7 @@ pt:
   lecturer: "Formador"
   load: "Carregar"
   location: "Localização"
+  login_message: "Mensage da janela de início de sessão"
   logout: "Sair"
   manage_time_offs: "Gerir Time Offs"
   manager: "Gestor"
@@ -281,8 +282,6 @@ pt:
 
     month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
     abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
-
-
 
   activerecord:
     attributes:

@@ -140,6 +140,7 @@ en:
   lecturer: "Lecturer"
   load: "Load"
   location: "Location"
+  login_message: "Login Message"
   logout: "Logout"
   manage_time_offs: "Manage Time Offs"
   manager: "Manager"

@@ -33,6 +33,9 @@
           <span class=" radius label"><%= t(:address)%></span>
           <%= f.text_field :address, :class=>"input_space"  %>
 
+          <span class=" radius label"><%= t(:login_message)%></span>
+          <%= f.text_field :description, :class=>"input_space"  %>          
+
           <p style="text-align: center"><%= f.submit t(:save), :class=>"button" %></p>
 
         <% end %>
