@@ -15,7 +15,7 @@
     <div class="twelve columns">
         <div id="signup">
             <div class="panel">
-                <h1>New Contract</h1>
+                <h1><%= t(:new_contract) %></h1>
                 <hr/>
                 <%= form_for [@company, @user, @contract] do |f| %>
                   <% @contract.errors.full_messages.each do |msg| %>
