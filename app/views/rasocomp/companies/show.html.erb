@@ -1,3 +1,4 @@
+<div id="user_added"></div>
 <div class="row">
   <div class="twelve columns">
     <ul class="breadcrumbs">
@@ -11,7 +12,8 @@
   </div>
 </div>
 
-
+<div id="new_user" class="reveal-modal [expand, xlarge, large, medium, small]">
+</div>
 
 <div class="row">
 	<div class="twelve columns">
@@ -33,7 +35,7 @@
           </div>
           <div class="six columns">
             <% if current_user(@company.slug).role == ROOT %>
-              <p class="add_user" style="text-align: right;"><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button" %></p>
+              <p class="add_user" style="text-align: right;"><%= link_to t(:add_employee), new_company_user_path( @company, params[:id]), :class=>"radius button right add_user", :id => "add_user", remote: true%></p>
             <%end%>
            </div>
 
@@ -81,3 +83,11 @@
   		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("a#add_user").click(function() {
+    $('#new_user').html("<%=j render 'new_user' %>").reveal();
+  });
+});
+</script>

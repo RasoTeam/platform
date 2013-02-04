@@ -9,6 +9,7 @@ class Rasocomp::CompaniesController < Rasocomp::ApplicationController
     @companies = Company.search(nil, params[:order]).paginate(:page => params[:page], :per_page => 15)
     @company = Company.find(params[:id])
     @bills = @company.bills.paginate(:page => params[:page], :per_page => 5)
+    @user = @company.users.build
   end
 
   # Edit a company. Only accessible to managers and roots
