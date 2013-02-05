@@ -147,7 +147,11 @@ class Rasocomp::ImportsingleController < Rasocomp::ApplicationController
 						us = company.users.build
 						us.name = name 
 						us.email = email
-						us.role = role.to_i
+						if ROLE[(role.downcase).to_sym].nil?
+						us.role = 10
+						else
+						us.role = ROLE[(role.downcase).to_sym]
+						end
 						us.state = -1
 	    				us.password_digest = 0
 	    				if us.save

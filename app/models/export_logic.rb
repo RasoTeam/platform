@@ -24,7 +24,7 @@ class ExportLogic < ActiveRecord::Base
 			@user = User.find_by_company_id_and_email(company_id, emailsArray[$array_it])
 			sheet1[$row,0]= @user.name.to_s
 			sheet1[$row,1]= @user.email.to_s
-			sheet1[$row,2]= @user.role.to_s
+			sheet1[$row,2]= ROLE.invert[@user.role].to_s
 
 			$row += 1
 			$array_it += 1
@@ -67,7 +67,7 @@ class ExportLogic < ActiveRecord::Base
 				timeoff.each do |toff|
 
 					sheet1[$row,0]= toff.description.to_s
-					sheet1[$row,1]= toff.category.to_s
+					sheet1[$row,1]= TIMETYPE.invert[toff.category].to_s
 					sheet1[$row,2]= toff.start_at.to_s
 					sheet1[$row,3]= toff.end_at.to_s
 					sheet1[$row,4]= @user.email.to_s
